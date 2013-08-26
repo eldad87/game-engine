@@ -1,8 +1,14 @@
 Core = require('./engine/Core');
 
-var Server = function() {
+var Server = Class.extend({
+	_classId: 'Server',
 
-}
+	init: function () {
+		this.log('start', 'log');
+		
+		//TOOD: listen to network
+	}
+});
 
 new Core().start(new Server());
 

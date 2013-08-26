@@ -6,15 +6,39 @@ var Core = Class.extend({
 
 	init: function(ctx)
 	{
+		this._ctx = ctx;
 		this.isServer = (typeof(module) !== 'undefined' && typeof(module.exports) !== 'undefined');
 		engine = this;
+
+
+		if(this.isServer) {
+			this.setRequestAnimationFrame(22);
+		}
 	},
 
-	//Create entity
+	/**
+	 * Set rate in MH
+	 * setRequestAnimationFrame(22) results in 22 iterations per second
+	 */
+	setRequestAnimationFrame: function(rate ){
+		if(rate === undefined) {
+			return false;
+		}
 
-	//Get entity
+		if(this.isServer) {
+			requestAnimFrame = function(callback, element){
+				setTimeout(function () { callback(new Date().getTime()); }, 1000 / rate);
+			};
+		} else {
+			window.requestAnimFrame = function(callback, element){
+				setTimeout(function () { callback(new Date().getTime()); }, 1000 / rate);
+			};
+		}
+	},
 
-	//Get entities by group
+	//TODO: Get entity by id
+
+	//TODO: Get entities by group
 
 	/**
 	 * Set class by id
@@ -38,7 +62,7 @@ var Core = Class.extend({
 	},
 
 	start: function(callback) {
-		requestAnimFrame(engine.engineStep);
+		this.engineStep(new Date().getTime(), this._ctx)
 
 		// Fire callback
 		if (typeof(callback) === 'function') {
@@ -47,8 +71,20 @@ var Core = Class.extend({
 	},
 
 	engineStep: function (timeStamp, ctx) {
+		this.log('engineStep', 'log');
 
-		requestAnimFrame(engine.engineStep);
+		//Work out the delta time
+		this.dt = this.lastframetime ? ( (timeStamp - this.lastframetime)/1000.0).fixed() : 0.016;
+
+		//Store the last frame time
+		this.lastframetime = timeStamp;
+
+
+//TODO: Update 
+
+
+		//schedule the next update
+		this.updateid = requestAnimFrame(engine.engineStep.bind(this), ctx);
 	}
 });
 

@@ -22,7 +22,17 @@ var Class = (function ()
 		log = function(text, type) 
 		{
 			type = type || 'log';
-			console.log('Engine ***' + type + '** [' + this.getClassId() + '] : ' + text);
+			var msg = 'Engine ***' + type + '** [' + this.getClassId() + '] : ' + text;
+
+			if(!console) {
+				return ; //Can't log
+			}
+
+			if(console[type]) {
+				return console[type](msg);
+			}
+
+			console.log(msg);
 		}
 
 		/**
@@ -70,6 +80,8 @@ var Class = (function ()
 				}
 			}
 		};
+
+		//TODO: add component
 
 		/** 
 		 * Create a new Class that inherits from this class
