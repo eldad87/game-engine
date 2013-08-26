@@ -81,7 +81,43 @@ var Class = (function ()
 			}
 		};
 
-		//TODO: add component
+		/**
+		 * Creates a new instance of the component argument passing
+		 * the options argument to the component as it is initialised.
+		 * The new component instance is then added to "this" via
+		 * a property name that is defined in the component class as
+		 * getClassId().
+		 */
+		addComponent = function (component, options) {
+			var newComponent = new component(this, options);
+			this[newComponent.getClassId()] = newComponent;
+
+			// Add the component reference to the class component array
+			this._components = this._components || [];
+			this._components.push(newComponent);
+
+			return this;
+		},
+
+		/**
+		 * Removes a component by it's id.
+		 * @param {String} classId The id of the component to remove.
+		 */
+		removeComponent = function (classId) {
+			// If the component has a destroy method, call it
+			if (this[classId] && this[classId].destroy) {
+				this[classId].destroy();
+			}
+
+			// Remove the component from the class component array
+			if (this._components) {
+				this._components.pull(this[classId]);
+			}
+
+			// Remove the component namespace from the class object
+			delete this[classId];
+			return this;
+		},
 
 		/** 
 		 * Create a new Class that inherits from this class
@@ -161,6 +197,10 @@ var Class = (function ()
 
 			// Add log capability
 			Class.prototype.log = log;
+
+			// Add component capability
+			Class.prototype.addComponent = addComponent;
+			Class.prototype.removeComponent = removeComponent;
 
 			// Add data capability
 			Class.prototype.data = data;

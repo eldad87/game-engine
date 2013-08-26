@@ -9,11 +9,6 @@ var Core = Class.extend({
 		this._ctx = ctx;
 		this.isServer = (typeof(module) !== 'undefined' && typeof(module.exports) !== 'undefined');
 		engine = this;
-
-
-		if(this.isServer) {
-			this.setRequestAnimationFrame(22);
-		}
 	},
 
 	/**
@@ -64,6 +59,19 @@ var Core = Class.extend({
 	start: function(callback) {
 		this.engineStep(new Date().getTime(), this._ctx)
 
+		this.createTimer();
+
+
+		if(this.isServer) {
+			this.setRequestAnimationFrame(22);
+		}
+
+		if(!this.isServer) {
+			//A list of recent server updates we interpolate across
+			//This is the buffer that is the driving factor for our networking
+            this.server_updates = [];
+		}
+
 		// Fire callback
 		if (typeof(callback) === 'function') {
 			callback(true);
@@ -84,7 +92,22 @@ var Core = Class.extend({
 
 
 		//schedule the next update
-		this.updateid = requestAnimFrame(engine.engineStep.bind(this), ctx);
+		this.updateid = requestAnimationFrame(engine.engineStep.bind(this), ctx);
+	},
+
+	/**
+	 * A local timer for precision on server and client
+	 */
+	createTimer: function(){
+        this.local_time = 0.016;            //The local timer
+        this._dt = new Date().getTime();    //The local timer delta
+        this._dte = new Date().getTime();   //The local timer last frame time
+
+		setInterval(function(){
+			this._dt = new Date().getTime() - this._dte;
+			this._dte = new Date().getTime();
+			this.local_time += this._dt/1000.0;
+		}.bind(this), 4);
 	}
 });
 
