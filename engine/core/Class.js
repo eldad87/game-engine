@@ -1,3 +1,4 @@
+require('./common.js');
 var Class = (function () 
 {
 	var initializing = false,
@@ -82,71 +83,20 @@ var Class = (function ()
 		};
 
 		/**
-		 * Creates a new instance of the component argument passing
-		 * the options argument to the component as it is initialised.
-		 * The new component instance is then added to "this" via
-		 * a property name that is defined in the component class as
-		 * getClassId().
+		 * Create a new class that iherit from this one
 		 */
-		addComponent = function (component, options) {
-			var newComponent = new component(this, options);
-			this[newComponent.getClassId()] = newComponent;
-
-			// Add the component reference to the class component array
-			this._components = this._components || [];
-			this._components.push(newComponent);
-
-			return this;
-		},
-
-		/**
-		 * Removes a component by it's id.
-		 * @param {String} classId The id of the component to remove.
-		 */
-		removeComponent = function (classId) {
-			// If the component has a destroy method, call it
-			if (this[classId] && this[classId].destroy) {
-				this[classId].destroy();
-			}
-
-			// Remove the component from the class component array
-			if (this._components) {
-				this._components.pull(this[classId]);
-			}
-
-			// Remove the component namespace from the class object
-			delete this[classId];
-			return this;
-		},
-
-		/** 
-		 * Create a new Class that inherits from this class
-		 * @name extend
-		 * @example #Creating a new class by extending an existing one
-		 *     var NewClass = Class.extend({
-		 *         // Init is your constructor
-		 *         init: function () {
-		 *             console.log('I\'m alive!');
-		 *         }
-		 *     });
-		 * 
-		 * http://ejohn.org/blog/simple-javascript-inheritance/
-		 * @return {Function}
-		 */
-		// Create a new Class that inherits from this class
 		Class.extend = function(prop) {
 			var _super = this.prototype;
 
-			// Check that the class has been assigned a _classId and bug out if not
+			//Make usre that classId is proviede
 			if (!prop._classId) {
 				console.log(prop);
-				throw('Cannot create a new class without giving the class a classId property!');
+				throw('Cannot create a new class without the _classId property!');
 			}
 
-			// Check that the _classId is not already in use
+			//Check if classId is already in use
 			if (ClassRegister[prop._classId]) {
-				// This _classId has already been used, bug out
-				throw('Cannot create class with _classId "' + prop._classId + '" because a class with that ID has already been created!');
+				throw('Cannot create class, _classId "' + prop._classId + '" already been exists');
 			}
 			
 			// Instantiate a base class (but only create the instance,
@@ -197,10 +147,6 @@ var Class = (function ()
 
 			// Add log capability
 			Class.prototype.log = log;
-
-			// Add component capability
-			Class.prototype.addComponent = addComponent;
-			Class.prototype.removeComponent = removeComponent;
 
 			// Add data capability
 			Class.prototype.data = data;

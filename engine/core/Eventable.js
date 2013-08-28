@@ -1,8 +1,9 @@
+Class = require('./Class');
 /**
  * Creates a new class with the capability to emit events.
  */
 var Eventable = Class.extend({
-	classId: 'Eventable',
+	_classId: 'Eventable',
 
 	/**
 	 * Add an event listener method for an event.

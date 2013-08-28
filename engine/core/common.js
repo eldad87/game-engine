@@ -34,6 +34,13 @@ ClassRegister = {};
 }());
 
 
+/**
+ * Exception
+ */
+function Exception(message) {
+   this.message = message;
+   this.name = "Exception";
+}
 
 /**
  * Make property non-enumerable.
@@ -62,6 +69,54 @@ Array.prototype.clone = function () {
 	}
 
 	return newArray;
+};
+
+/**
+ * Make property non-enumerable.
+ */
+Object.defineProperty(Array.prototype, 'pull', {
+	enumerable:false,
+	writable:true,
+	configurable:true
+});
+
+/**
+ * Removes the passed item from an array, the opposite of push().
+ * @param item
+ * @return {*}
+ */
+Array.prototype.pull = function (item) {
+	var index = this.indexOf(item);
+	if (index > -1) {
+		this.splice(index, 1);
+		return index;
+	} else {
+		return -1;
+	}
+};
+
+
+
+/**
+ * Make property non-enumerable.
+ */
+Object.defineProperty(Array.prototype, 'eachMethod', {
+	enumerable:false,
+	writable:true,
+	configurable:true
+});
+
+/**
+ * Iterates through an array's items and execure a method on each item
+ * @param {Function} callback
+ */
+Array.prototype.eachMethod = function (eachMethod) {
+	var len = this.length,
+		i;
+
+	for (i = 0; i < len; i++) {
+		this[i][eachMethod]();
+	}
 };
 
 /**
