@@ -10,7 +10,7 @@ var Core = Entity.extend({
 		this.isServer = (typeof(module) !== 'undefined' && typeof(module.exports) !== 'undefined');
 		engine = this;
 
-		Entity.prototype.init.call(this);
+		Entity.prototype.init.call(this, 'engine');
 	},
 
 	/**
@@ -52,7 +52,7 @@ var Core = Entity.extend({
 	},
 
 	getEntityById: function( entityId ) {
-		return this._register[entity.id()];
+		return this._register[entityId];
 	},
 
 	//TODO: Get entity by id
@@ -100,12 +100,21 @@ var Core = Entity.extend({
 
 	},
 
+	/**
+	 * run every time that requestAnimationFrame is called
+	 */
 	engineStep: function (timeStamp, ctx) {
 		//schedule the next update
 		this.updateid = requestAnimationFrame(engine.engineStep.bind(this), ctx);
 
 		// Update the engine + its childrens
 		this.updateSceneGraph();
+	},
+
+	update: function() {
+		Entity.prototype.update.call(this);
+
+		//Engine updates goes here
 	}
 });
 

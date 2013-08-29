@@ -105,6 +105,9 @@ var Entity = Eventable.extend({
 		this.unAttach();
 	},
 
+	/**
+	 * call the update() method on this, and all childrens
+	 */
 	updateSceneGraph: function() {
 		this.update();
 		this._children.eachMethod('updateSceneGraph');
