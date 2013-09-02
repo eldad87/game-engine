@@ -4,6 +4,9 @@
 engine = null;
 ClassRegister = {};
 
+/**
+ * http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
+ */
 (function() {
 	if(typeof(window) != 'undefined') {
 		var vendors =[ 'ms', 'moz', 'webkit', 'o' ];
@@ -33,42 +36,39 @@ ClassRegister = {};
 	}
 }());
 
-
-/**
- * Exception
- */
-function Exception(message) {
-   this.message = message;
-   this.name = "Exception";
-}
-
 /**
  * Make property non-enumerable.
  */
-Object.defineProperty(Array.prototype, 'clone', {
+Object.defineProperty(Object.prototype, 'clone', {
 	enumerable:false,
 	writable:true,
 	configurable:true
 });
 
 /**
- * Clones the array and returns a new non-referenced
- * array.
- * @return {*}
+ * 
+ * Clone object
+ * http://stackoverflow.com/questions/7486085/copying-array-by-value-in-javascript
+ * http://stackoverflow.com/questions/728360/most-elegant-way-to-clone-a-javascript-object
+ * http://stackoverflow.com/questions/11299284/javascript-deep-copying-object
  */
-Array.prototype.clone = function () {
-	var i, newArray = [];
-	for (i in this) {
-		if (this.hasOwnProperty(i)) {
-			if (this[i] instanceof Array) {
-				newArray[i] = this[i].clone();
-			} else {
-				newArray[i] = this[i];
-			}
-		}
-	}
+Object.prototype.clone = function () {
+	var i,
+		newObj = (this instanceof Array) ? [] : {};
 
-	return newArray;
+	for(i in this) {
+		if (!this.hasOwnProperty(i)) {
+			continue;
+		}
+
+		if(typeof this[i] == "object") {
+			newObj[i] = this[i].clone();
+		} else {
+			newObj[i] = this[i]
+		}
+
+		return newObj;
+	}
 };
 
 /**
@@ -81,21 +81,19 @@ Object.defineProperty(Array.prototype, 'pull', {
 });
 
 /**
- * Removes the passed item from an array, the opposite of push().
- * @param item
- * @return {*}
+ * Remove the given item from this
+ * https://github.com/angular/angular.js/blob/master/src/Angular.js arrayRemove()
+ * work on both objects and arrays
  */
 Array.prototype.pull = function (item) {
 	var index = this.indexOf(item);
-	if (index > -1) {
+	if (index >= 0) {
 		this.splice(index, 1);
 		return index;
 	} else {
 		return -1;
 	}
 };
-
-
 
 /**
  * Make property non-enumerable.

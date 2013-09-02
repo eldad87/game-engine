@@ -1,6 +1,6 @@
 Core = require('./engine/Core');
-SocketClient = require('./engine/components/SocketClient');
-PhysicsSimulation = require('./engine/components/PhysicsSimulation');
+SocketNetworkDriver = require('./engine/components/SocketNetworkDriver');
+//PhysicsSimulation = require('./engine/components/PhysicsSimulation');
 
 var Server = Class.extend({
 	_classId: 'Server',
@@ -8,19 +8,21 @@ var Server = Class.extend({
 	init: function () {
 		this.log('start', 'log');
 
-		engine.addComponent(PhysicsSimulation);
-		engine.PhysicsSimulation
-			.start();
+		/*engine
+			.getRegisteredClassNewInstance('PhysicsSimulation')
+			.attach(engine, true)
+				.start();*/
 
-		engine.addComponent(SocketClient);
-		engine.SocketClient
-			.start(4040)
-			.on('connection', function(){console.log('connected...')}); //Listen to port 4040
+		engine
+			.getRegisteredClassNewInstance('SocketNetworkDriver', true)
+			.attach(engine)
+				/*.start('4040')
+				.on('connection', function(){console.log('connected...')}); //Listen to port 4040*/
 	}
 });
 
 new Core().start(function(){
-	new Server()
+	new Server();
 });
 
 

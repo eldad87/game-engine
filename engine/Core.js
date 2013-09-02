@@ -5,7 +5,7 @@ var Core = Entity.extend({
 
 	init: function(ctx)
 	{
-		this._register = [];
+		this._register = {};
 		this._ctx = ctx;
 		this.isServer = (typeof(module) !== 'undefined' && typeof(module.exports) !== 'undefined');
 		engine = this;
@@ -37,8 +37,14 @@ var Core = Entity.extend({
 	 * Register an entity
 	 * Late can be find using find()
 	 */
-	register: function(entity) {
-		this.unRegister(entity);
+	registerEntity: function(entity, override) {
+		if(this._register[entity.id()] !== undefined) {
+			if(!override) {
+				throw new Exception('entity id [' + entity.id() + '] is already registered');
+			}
+		}
+
+		this.unRegisterEntity(entity);
 		this._register[entity.id()]  = entity;
 		return this;
 	},
@@ -46,24 +52,16 @@ var Core = Entity.extend({
 	/**
 	 * Unregister an entity
 	 */
-	unRegister: function(entity) {
-		this._register.pull(entity.id());
+	unRegisterEntity: function(entity) {
+		delete this._register[entity.id()];
 		return this;
 	},
 
+	/**
+	 * Get registered entity by ID
+	 */
 	getEntityById: function( entityId ) {
 		return this._register[entityId];
-	},
-
-	//TODO: Get entity by id
-
-	//TODO: Get entities by group
-
-	/**
-	 * Set class by classId
-	 */
-	registerClass: function (classId, obj) {
-		ClassRegister[classId] = obj;
 	},
 
 	/**
@@ -81,11 +79,7 @@ var Core = Entity.extend({
 	},
 
 	start: function(callback) {
-		this.engineStep(new Date().getTime(), this._ctx)
-
-		if(this.isServer) {
-			this.setRequestAnimationFrame(22);
-		}
+		this.engineStep(new Date().getTime(), this._ctx);
 
 		if(!this.isServer) {
 			//A list of recent server updates we interpolate across
@@ -97,7 +91,6 @@ var Core = Entity.extend({
 		if (typeof(callback) === 'function') {
 			callback(true);
 		}
-
 	},
 
 	/**

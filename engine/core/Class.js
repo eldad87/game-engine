@@ -1,4 +1,5 @@
 require('./common.js');
+Exception = require('./Exception');
 var Class = (function () 
 {
 	var initializing = false,
@@ -8,22 +9,11 @@ var Class = (function ()
 		Class = function () {},
 
 		/**
-		 * Get class ID
-		 */
-		getClassId = function () 
-		{
-			return this._classId;
-		},
-
-		/**
 		 * Log a message
-		 * @param {String} text - text to log.
-		 * @param {String} type - The type of log, default is 'log',
 		 */
-		log = function(text, type) 
+		log = function(msg, type) 
 		{
 			type = type || 'log';
-			var msg = 'Engine ***' + type + '** [' + this.getClassId() + '] : ' + text;
 
 			if(!console) {
 				return ; //Can't log
@@ -34,71 +24,34 @@ var Class = (function ()
 			}
 
 			console.log(msg);
-		}
+		},
 
 		/**
-		 * Copies all properties and methods from the classObj object
-		 * to "this". If the overwrite flag is not set or set to false,
-		 * only properties and methods that don't already exists in
-		 * "this" will be copied. If overwrite is true, they will be
-		 * copied regardless.
-		 * @param {Function} classObj
-		 * @param {Boolean} overwrite
+		 * Copy over the properties and methods of a given class
+		 * default override is false
 		 */
-		 implement = function (classObj, overwrite) {
-			var i, obj = classObj.prototype || classObj;
+		 copyProperties = function (copyPropFromObject, override) {
+			var i, 
+				obj = copyPropFromObject.prototype || copyPropFromObject;
 
-			// Copy the class object's properties to (this)
 			for (i in obj) {
-				// Only copy the property if this doesn't already have it
-				if (obj.hasOwnProperty(i) && (overwrite || this[i] === undefined)) {
+				if (obj.hasOwnProperty(i) && 
+						(overwrite || this[i] === undefined)) {
+
 					this[i] = obj[i];
 				}
 			}
+
 			return this;
 		},
 
 		/**
-		 * Gets / sets a key / value pair in the object's data object. Useful for
-		 * storing arbitrary game data in the object.
-		 * @param {String} key The key under which the data resides.
-		 * @param {*=} value The data to set under the specified key.
-		 * @return {*}
-		 */
-		data = function (key, value) {
-			if (key !== undefined) {
-				if (value !== undefined) {
-					this._data = this._data || {};
-					this._data[key] = value;
-
-					return this;
-				}
-				
-				if (this._data) {
-					return this._data[key];
-				} else {
-					return null;
-				}
-			}
-		};
-
-		/**
 		 * Create a new class that iherit from this one
+		 * http://ejohn.org/blog/simple-javascript-inheritance/
 		 */
 		Class.extend = function(prop) {
 			var _super = this.prototype;
 
-			//Make usre that classId is proviede
-			if (!prop._classId) {
-				console.log(prop);
-				throw('Cannot create a new class without the _classId property!');
-			}
-
-			//Check if classId is already in use
-			if (ClassRegister[prop._classId]) {
-				throw('Cannot create class, _classId "' + prop._classId + '" already been exists');
-			}
-			
 			// Instantiate a base class (but only create the instance,
 			// don't run the init constructor)
 			initializing = true;
@@ -136,36 +89,26 @@ var Class = (function ()
 					this.init.apply(this, arguments);
 			}
 			
-			// Populate our constructed prototype object
+			//Populate our constructed prototype object
 			Class.prototype = prototype;
 			
-			// Enforce the constructor to be what we expect
+			//Enforce the constructor to be what we expect
 			Class.prototype.constructor = Class;
 			
-			// And make this class extendable
+			//And make this class extendable
 			Class.extend = arguments.callee;
 
-			// Add log capability
+			//Add log
 			Class.prototype.log = log;
 
-			// Add data capability
-			Class.prototype.data = data;
+			//Add the copyProperties method
+			Class.prototype.copyProperties = copyProperties;
 
-			// Add class name capability
-			Class.prototype.getClassId = getClassId; // This is a method that returns _classId
+            //Register class
+            ClassRegister[prop._classId] = Class;
 
-			Class.prototype._classId = prop._classId || 'Class';
-
-			// Add the implement method
-			Class.prototype.implement = implement;
-
-			// Register the class with the class store
-			ClassRegister[prop._classId] = Class;
-			
 			return Class;
 		};
-
-		Class.prototype._classId = 'Class';
 
 		return Class;
 }());

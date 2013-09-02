@@ -1,4 +1,5 @@
 Eventable = require('./Eventable');
+UUID = require('node-uuid');
 
 var Entity = Eventable.extend({
 	_classId: 'Entity',
@@ -7,27 +8,34 @@ var Entity = Eventable.extend({
 		this._id = null;
 		this._parent = null;
 		this._children = [];
-		this._components = [];
+		this._accessors = [];
 
 		this.id(id);
-		engine.register(this);
 	},
 
 	/**
-	 * Creates a new instance of the component(options)
-	 * The comonent is attach and available via this[component.getClassId()]
+	 * Get class ID
 	 */
-	addComponent: function (component, options) {
-		var newComponent = new component(options);
-		newComponent.attach(this);
+	getClassId: function () 
+	{
+		return this._classId;
+	},
 
-		//Set the component to this.ClassId
-		this[newComponent.getClassId()] = newComponent;
+	extend: function(prop) {
+		//Make sure that classId is provided
+		if (!prop._classId) {
+			console.log(prop);
+			throw('Cannot create a new class without the _classId property!');
+		}
 
-		// Add the entity reference to the component array
-		this._components.push(newComponent);
+		//Check if classId is already in use
+		if (ClassRegister[prop._classId]) {
+			throw('Cannot create class, _classId "' + prop._classId + '" already been exists');
+		}
 
-		return this;
+		var Class = Eventable.prototype.extend.call(this, prop);
+
+		return Class;
 	},
 
 	/**
@@ -37,8 +45,7 @@ var Entity = Eventable.extend({
 		if(id == undefined) {
 			if(!this._id) {
 				//Generate a new ID
-				var uuid = require('node-uuid');
-				this._id = uuid.v4();
+				this._id = UUID.v4();
 			}
 
 			return this._id;
@@ -46,20 +53,21 @@ var Entity = Eventable.extend({
 
 
 		/* User is asking to change ID */
-		//Unregister
-		engine.unRegister(this);
+		//Unregister, so it will remove the current ID from the engine
+		engine.unRegisterEntity(this);
 		//Set the new ID
 		this._id = id;
 		//Register again
-		engine.register(this);
+		engine.registerEntity(this);
 
 		return this;
 	},
-
+	
 	/**
 	 * Attach this to parent
+	 * this will be available via parent[this.getClassId()]
 	 */
-	attach: function(parent, componentName) {
+	attach: function(parent, accessor) {
 		if(parent === undefined) {
 			throw new Exception('Cannot attach to an undefined parent'); 
 		}
@@ -67,8 +75,20 @@ var Entity = Eventable.extend({
 		//Before we continue, we must unAtach ourself from our current parent
 		this.unAttach(); 
 
+		//Attach
 		this._parent = parent;
 		parent._children.push(this);
+
+		//Set accessor
+		if(accessor) {
+			if(this._parent[this.getClassId()]) {
+				throw new Exception('Accessor name [' + this.getClassId() + ']' +  'is already in use.');
+			}
+
+			this._parent[this.getClassId()] = this;
+			this._accessors.push(this);
+		}
+		
 		this.emit('attached', this._parent);
 
 		return this;
@@ -85,19 +105,19 @@ var Entity = Eventable.extend({
 
 		//Check if its a component, if so - remove its references
 		if (this._parent[classId] && 
-				this._parent._components.indexOf(this) > -1) {
-
-			this._parent._components.pull(this);
-			delete this._parent[classId] ;
-
-			if(this.destroy) {
-				return this.destroy();
-			}
+				this._parent._accessors.indexOf(this) > -1) {
+			this._parent._accessors.pull(this);
 		}
 
+		var parent = this._parent;
+		
+		//Remove parent reference
+		delete this._parent;
 		//Remove reference from parent
 		this._parent._children.pull(this);
 		
+		this.emit('unattached', this._parent);
+
 		return this;
 	},
 
