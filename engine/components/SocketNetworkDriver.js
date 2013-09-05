@@ -1,58 +1,52 @@
-var io = require('socket.io');
 
+bson = require('bson/browser_build/bson');
+io = require('socket.io');
+Entity = require('./../core/Entity');
+
+//http://www.joezimjs.com/javascript/plugging-into-socket-io-advanced/
+//http://stackoverflow.com/questions/8467784/sending-a-message-to-a-client-via-its-socket-id
 var SocketNetworkDriver = Entity.extend({
 	_classId: 'SocketNetworkDriver',
+    _messageTypes: {},
 
 	init: function() {
 		Entity.prototype.init.call(this);
 
-		/*if(engine.isServer) {
-			var networkImplementation = require('NetworkServer');
-		}
-
-		if(!engine.isServer) {
-			var networkImplementation = require('NetworkClient');
-		}
-
-		this.implement(networkImplementation, true);*/
-	},
-
-	start: function (listentOrConnectTo) {
-		var self = this;
-
 		if(engine.isServer) {
-			this.io = io.listen(listentOrConnectTo);
-			
-			this.io.on('connection', function (socket) {
-				self.connection(socket);
-			});
-
-			/*this.io.on('disconnect', function (socket) {
-				self.disconnect(socket);
-			});*/
+			var NetworkServer = require('./Network/NetworkServer');
+            this.implement(NetworkServer, true);
 		}
 
 		if(!engine.isServer) {
-			this.io = io.connect(listentOrConnectTo);
-
-			this.setCommandHandler('connection',function () {
-				self.connection();
-			});
-
-			this.setCommandHandler('disconnect', function () {
-				self.disconnect();
-			});
+			var NetworkClient = require('./Network/NetworkClient');
+            this.implement(NetworkClient, true);
 		}
 
-		this._io.on('message', this.message.bind(this));
 
-		return this;
 	},
 
-	message: function(data) {
+    defineMessageType: function(name, callback) {
+        this._messageTypes[name] = callback;
+        return this;
+    },
 
-	}
+    callDefinedMessage: function(name, params) {
+        if(undefined == this._messageTypes[name]) {
+            throw new Exception('Socket: undefined message type is used')
+        }
 
+        this._messageTypes[name](params);
+    },
+
+    _serialize: function(data) {
+        var BSON = bson().BSON;
+        return BSON.serialize(message, false, true, false);
+    },
+
+    _deserialize: function(sData) {
+        var BSON = bson().BSON;
+        return BSON.deserialize(smessage);
+    }
 });
 
 if (typeof(module) !== 'undefined' && typeof(module.exports) !== 'undefined') { module.exports = SocketNetworkDriver; }

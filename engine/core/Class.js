@@ -30,13 +30,13 @@ var Class = (function ()
 		 * Copy over the properties and methods of a given class
 		 * default override is false
 		 */
-		 copyProperties = function (copyPropFromObject, override) {
+            implement = function (copyPropFromObject, override) {
 			var i, 
 				obj = copyPropFromObject.prototype || copyPropFromObject;
 
 			for (i in obj) {
 				if (obj.hasOwnProperty(i) && 
-						(overwrite || this[i] === undefined)) {
+						(override || this[i] === undefined)) {
 
 					this[i] = obj[i];
 				}
@@ -101,8 +101,8 @@ var Class = (function ()
 			//Add log
 			Class.prototype.log = log;
 
-			//Add the copyProperties method
-			Class.prototype.copyProperties = copyProperties;
+			//Add the implement method
+			Class.prototype.implement = implement;
 
             //Register class
             ClassRegister[prop._classId] = Class;

@@ -1,16 +1,16 @@
 {
-  "name": "realtime-multiplayer-in-html5",
-  "author" : "Eldad Yamin",
-  "description": "Multipyaer using node.js, three.js and cannon.js",
-  "license": "MIT",
-  "version": "1.0.0",
-  "dependencies": {
-    "requirejs": "2.1.x",
-    "socket.io": "0.9.x",
-    "node-uuid": "1.4.x",
-    "bson": "0.2.2"
-  },
-  "engine": {
-    "node": ">=0.10.x"
-  }
+    "name": "realtime-multiplayer-in-html5",
+    "author" : "Eldad Yamin",
+    "description": "Multipyaer using node.js, three.js and cannon.js",
+    "license": "MIT",
+    "version": "1.0.0",
+    "dependencies": {
+        "requirejs": "2.1.x",
+        "socket.io": "0.9.x",
+        "node-uuid": "1.4.x",
+        "bson": "dev-master"
+    },
+    "engine": {
+        "node": ">=0.10.x"
+    }
 }
