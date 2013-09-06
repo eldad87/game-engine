@@ -1,8 +1,7 @@
-require('./common.js');
-Exception = require('./Exception');
-var Class = (function () 
-{
-	var initializing = false,
+define(['engine/core/Exception', 'engine/core/common'], function(Exception) {
+    var Class = (function ()
+    {
+        var initializing = false,
 			fnTest = /xyz/.test(function(){xyz;}) ? /\b_super\b/ : /.*/;
 
 		// The base Class implementation (does nothing)
@@ -111,6 +110,8 @@ var Class = (function ()
 		};
 
 		return Class;
-}());
+    }());
 
-if (typeof(module) !== 'undefined' && typeof(module.exports) !== 'undefined') { module.exports = Class; }
+//    if (typeof(module) !== 'undefined' && typeof(module.exports) !== 'undefined') { module.exports = Class; }
+    return Class;
+});
