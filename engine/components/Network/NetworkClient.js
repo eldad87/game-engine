@@ -11,7 +11,6 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
         },
 
         connect: function(address) {
-            console.log(io);
             this._socket = io.connect(address);
 
 

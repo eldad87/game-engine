@@ -38,7 +38,6 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
             var sMessage = this._serialize(message);
             this._clientSockets[socketId].socket.send(sMessage);
 
-            this.log('sending: ' + sMessage );
             return this;
         },
 

@@ -1,6 +1,6 @@
 //http://www.joezimjs.com/javascript/plugging-into-socket-io-advanced/
 //http://stackoverflow.com/questions/8467784/sending-a-message-to-a-client-via-its-socket-id
-define(['engine/core/Entity', 'engine/core/Exception', 'bson'], function(Entity, Exception, bson) {
+define(['engine/core/Entity', 'engine/core/Exception'/*, 'bson'*/], function(Entity, Exception/*, bson*/) {
     var SocketNetworkDriver = Entity.extend({
         _classId: 'SocketNetworkDriver',
         _messageTypes: {},
@@ -18,17 +18,26 @@ define(['engine/core/Entity', 'engine/core/Exception', 'bson'], function(Entity,
             return this._messageTypes[name](params);
         },
 
-        _serialize: function(data) {
-            /*console.log(bson);
-            var BSON = bson().BSON;
-            return BSON.serialize(message, false, true, false);*/
+        _serialize: function(message) {
+            /*if(engine.isServer) {
+                return bson.BSONPure.BSON.serialize(message, false, true, false);
+            }
 
-            return JSON.stringify(data);
+            if(!engine.isServer) {
+                return bson.BSON.serialize(message, false, true, false);
+            }*/
+
+            return JSON.stringify(message);
         },
 
         _deserialize: function(smessage) {
-            /*var BSON = bson().BSON;
-            return BSON.deserialize(smessage);*/
+           /* if(engine.isServer) {
+                return bson.BSONPure.BSON.deserialize(smessage);
+            }
+
+            if(!engine.isServer) {
+                return bson.BSON.deserialize(smessage);
+            }*/
 
             return JSON.parse(smessage, true);
         }

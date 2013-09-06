@@ -6,7 +6,7 @@ define(['engine/core/Entity'], function (Entity) {
         {
             this._register = {};
             this._ctx = ctx;
-            this.isServer = (typeof(module) !== 'undefined' && typeof(module.exports) !== 'undefined');
+            this.isServer = (typeof(module) !== 'undefined' && module.exports);
             engine = this;
 
             Entity.prototype.init.call(this, 'engine');
