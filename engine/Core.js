@@ -6,6 +6,7 @@ define(['engine/core/Entity'], function (Entity) {
         {
             this._register = {};
             this._ctx = ctx;
+            this._uptime = 0;
             this.isServer = (typeof(module) !== 'undefined' && module.exports);
             engine = this;
 
@@ -78,7 +79,7 @@ define(['engine/core/Entity'], function (Entity) {
         },
 
         start: function(callback) {
-            this.engineStep(new Date().getTime(), this._ctx);
+            this.engineTick(new Date().getTime(), this._ctx);
 
             if(!this.isServer) {
                 //A list of recent server updates we interpolate across
@@ -95,14 +96,39 @@ define(['engine/core/Entity'], function (Entity) {
         /**
          * run every time that requestAnimationFrame is called
          */
-        engineStep: function (timeStamp, ctx) {
+        engineTick: function (timestamp, ctx) {
+            this.updateUptime(timestamp);
+
             //schedule the next update
-            this.updateid = requestAnimationFrame(engine.engineStep.bind(this), ctx);
+            this.updateid = requestAnimationFrame(engine.engineTick.bind(this), ctx);
 
             // Update the engine + its childrens
             this.updateSceneGraph();
         },
 
+        /**
+         * Update the engine uptime
+         * @param curTimestamp - current uptime
+         * @returns {*}
+         */
+        updateUptime: function(curTimestamp) {
+            var lastUptime = this._lastUptime || timestamp;
+            this._lastUptime = curTimestamp;
+            this._uptime = curTimestamp - lastUptime;
+            return this;
+        },
+
+        /**
+         * Get current engine uptime
+         * @returns {number}
+         */
+        getUptime: function() {
+            return this._uptime;
+        },
+
+        /**
+         * All engine updates should run here
+         */
         update: function() {
             Entity.prototype.update.call(this);
 

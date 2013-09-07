@@ -41,6 +41,11 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
             return this;
         },
 
+        /**
+         *
+         * @param message {id, type, data, is_callback || callback_pending}
+         * @returns {*}
+         */
         onMessage: function(message) {
             //Server response
             if(true == message.is_callback) {

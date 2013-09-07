@@ -28,7 +28,7 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
             return this.onMessage(socket, message);
         },
 
-        _sendMessage: function(message, socketId, callback) {
+        _sendMessage: function(message, callback, socketId) {
             //check if callback is neded
             if(undefined != callback) {
                 message['callback_pending'] = true;
@@ -71,6 +71,12 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
             this._removeClient(socket);
         },
 
+        /**
+         *
+         * @param socket {id}
+         * @param message {id, type, data, is_callback || callback_pending}
+         * @returns {*}
+         */
         onMessage: function(socket, message) {
             //Client response
             if(true == message.is_callback) {
@@ -107,7 +113,8 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
                             id: message.id,
                             data: response,
                             is_callback: true
-                        }
+                        },
+                        undefined
                         , socket.id);
                 }
             } catch (Exc) {
@@ -121,11 +128,11 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
          * Send message to given socketIds
          * @param type - on of the defineMessageType
          * @param data - data to send to sockets
-         * @param socketIds - undefined|array|string undefined - all clients, array list of sockets, string - a single client
          * @param callback - run this callback on each client response
+         * @param socketIds - undefined|array|string undefined - all clients, array list of sockets, string - a single client
          * @returns string - message ID
          */
-        sendMessage: function(type, data, socketIds, callback) {
+        sendMessage: function(type, data, callback, socketIds) {
             //Prepare message
             var message = {
                 id: UUID.v4(),
@@ -136,19 +143,19 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
             //Broadcast to all
             if(!socketIds) {
                 for(var socketId in this._clientSockets) {
-                    this._sendMessage(message, socketId, callback);
+                    this._sendMessage(message, callback, socketId);
                 }
             }
 
             //Send to spesific clients
             if(socketIds instanceof Array) {
                 for(var i in clientIds) {
-                    this._sendMessage(message, socketIds[i], callback);
+                    this._sendMessage(message, callback, socketIds[i]);
                 }
             }
 
             //Send to 1 client
-            this._sendMessage(message, socketIds, callback);
+            this._sendMessage(message, callback, socketIds);
 
             return message.id;
         }
