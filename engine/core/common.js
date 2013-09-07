@@ -6,6 +6,7 @@ ClassRegister = {};
 
 /**
  * http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
+ * TODO: http://gafferongames.com/game-physics/fix-your-timestep/
  */
 (function() {
 	if(typeof(window) != 'undefined') {
@@ -105,15 +106,15 @@ Object.defineProperty(Array.prototype, 'eachMethod', {
 });
 
 /**
- * Iterates through an array's items and execure a method on each item
- * @param {Function} callback
+ * Iterates through an array's items and execute a method on each item
+ * @param method
  */
-Array.prototype.eachMethod = function (eachMethod) {
+Array.prototype.eachMethod = function (method) {
 	var len = this.length,
 		i;
 
 	for (i = 0; i < len; i++) {
-		this[i][eachMethod]();
+		this[i][method]();
 	}
 };
 

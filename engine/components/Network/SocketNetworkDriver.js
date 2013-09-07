@@ -5,6 +5,10 @@ define(['engine/core/Entity', 'engine/core/Exception'/*, 'bson'*/], function(Ent
         _classId: 'SocketNetworkDriver',
         _messageTypes: {},
 
+        init: function() {
+            Entity.prototype.init.call(this);
+        },
+
         defineMessageType: function(name, callback) {
             this._messageTypes[name] = callback;
             return this;

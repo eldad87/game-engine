@@ -137,7 +137,8 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
             var message = {
                 id: UUID.v4(),
                 type: type,
-                data: data
+                data: data,
+                timestamp: new Date().getTime()
             };
 
             //Broadcast to all

@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ebefb21-93d0-4f2c-8482-10babe06f88d" name="Default" comment="">
+    <list default="true" id="2ebefb21-93d0-4f2c-8482-10babe06f88d" name="Default" comment="Engine uptime">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/Core.js" afterPath="$PROJECT_DIR$/engine/Core.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Network/NetworkClient.js" afterPath="$PROJECT_DIR$/engine/components/Network/NetworkClient.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" afterPath="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js" afterPath="$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client.js" afterPath="$PROJECT_DIR$/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/core/common.js" afterPath="$PROJECT_DIR$/engine/core/common.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rawcept.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378426762179" ignored="false" />
-    <file path="/NetworkServer.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378426523194" ignored="false" />
+    <file path="/Dummy.txt" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378582968118" ignored="false" />
+    <file path="/NetworkServer.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378581748712" ignored="false" />
     <file path="/package.json" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378310365514" ignored="false" />
-    <file path="/Core.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378432716369" ignored="false" />
+    <file path="/Core.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378582851949" ignored="false" />
     <file path="/Eventable.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378396206424" ignored="false" />
     <file path="/Entity.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378396818536" ignored="false" />
     <file path="/Class.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378397699540" ignored="false" />
     <file path="/NetworkClient.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378426370737" ignored="false" />
-    <file path="/SocketNetworkDriver.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378433516505" ignored="false" />
+    <file path="/SocketNetworkDriver.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378583408558" ignored="false" />
     <file path="/server.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378432890727" ignored="false" />
     <file path="/client.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378432155677" ignored="false" />
     <file path="/index.html" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378378768234" ignored="false" />
@@ -45,10 +44,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SocketNetworkDriver.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="SocketNetworkDriver.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="8" column="45" selection-start="459" selection-end="459" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -56,28 +55,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Core.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Core.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/engine/Core.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="114" column="61" selection-start="3475" selection-end="3475" vertical-scroll-proportion="0.48023257">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bson.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/bson/lib/bson/bson.js">
+      <file leaf-file-name="NetworkServer.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/components/Network/NetworkServer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1499" column="2" selection-start="63844" selection-end="63844" vertical-scroll-proportion="-1.6">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="client.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="147" selection-start="802" selection-end="802" vertical-scroll-proportion="0.0">
+            <state line="8" column="26" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -108,13 +98,14 @@
         <option value="$PROJECT_DIR$/engine/core/Entity.js" />
         <option value="$PROJECT_DIR$/engine/core/Eventable.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" />
-        <option value="$PROJECT_DIR$/engine/components/Network/NetworkClient.js" />
         <option value="$PROJECT_DIR$/node_modules/bson/browser_build/bson.js" />
         <option value="$PROJECT_DIR$/client.js" />
-        <option value="$PROJECT_DIR$/engine/Core.js" />
         <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/engine/core/common.js" />
+        <option value="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" />
+        <option value="$PROJECT_DIR$/engine/components/Network/NetworkClient.js" />
         <option value="$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js" />
+        <option value="$PROJECT_DIR$/engine/Core.js" />
       </list>
     </option>
   </component>
@@ -180,6 +171,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -267,7 +276,15 @@
       <created>1378426770308</created>
       <updated>1378426770308</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="An attempt to use BSON">
+      <created>1378433650500</created>
+      <updated>1378433650500</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Engine uptime">
+      <created>1378582962236</created>
+      <updated>1378582962236</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -337,7 +354,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working JSON encoded networking layer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Engine uptime" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -352,18 +369,13 @@
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Working JSON encoded networking layer" />
+    <MESSAGE value="An attempt to use BSON" />
+    <MESSAGE value="Engine uptime" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/socket.io/node_modules/socket.io-client/Makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.8465171">
@@ -376,20 +388,6 @@
     <entry file="file://$PROJECT_DIR$/rawcept.sublime-workspace">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/components/Network/NetworkServer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="28" selection-start="2466" selection-end="2469" vertical-scroll-proportion="-0.92">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/components/Network/NetworkClient.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="21" selection-start="2373" selection-end="2373" vertical-scroll-proportion="0.3872093">
           <folding />
         </state>
       </provider>
@@ -438,13 +436,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="147" selection-start="802" selection-end="802" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="19" selection-start="652" selection-end="652" vertical-scroll-proportion="0.33255813">
@@ -454,24 +445,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/bson/lib/bson/bson.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1499" column="2" selection-start="63844" selection-end="63844" vertical-scroll-proportion="-1.6">
+        <state line="1499" column="2" selection-start="63844" selection-end="63844" vertical-scroll-proportion="0.048661802">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/Core.js">
+    <entry file="file://$PROJECT_DIR$/client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="30" column="133" selection-start="795" selection-end="795" vertical-scroll-proportion="0.5255814">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/core/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="65" selection-start="262" selection-end="262" vertical-scroll-proportion="0.15813954">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/Network/NetworkClient.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="10" selection-start="323" selection-end="412" vertical-scroll-proportion="0.19767442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/Network/NetworkServer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="26" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="8" column="45" selection-start="459" selection-end="459" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/Core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="61" selection-start="3475" selection-end="3475" vertical-scroll-proportion="0.48023257">
+          <folding />
         </state>
       </provider>
     </entry>

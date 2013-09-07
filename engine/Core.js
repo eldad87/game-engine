@@ -112,7 +112,7 @@ define(['engine/core/Entity'], function (Entity) {
          * @returns {*}
          */
         updateUptime: function(curTimestamp) {
-            var lastUptime = this._lastUptime || timestamp;
+            var lastUptime = this._lastUptime || curTimestamp;
             this._lastUptime = curTimestamp;
             this._uptime = curTimestamp - lastUptime;
             return this;
