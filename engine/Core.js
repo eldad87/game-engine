@@ -79,7 +79,7 @@ define(['engine/core/Entity'], function (Entity) {
         },
 
         start: function(callback) {
-            this.engineTick(new Date().getTime(), this._ctx);
+            requestAnimationFrame(this.engineTick.bind(this), this._ctx);
 
             if(!this.isServer) {
                 //A list of recent server updates we interpolate across
@@ -114,7 +114,8 @@ define(['engine/core/Entity'], function (Entity) {
         updateUptime: function(curTimestamp) {
             var lastUptime = this._lastUptime || curTimestamp;
             this._lastUptime = curTimestamp;
-            this._uptime = curTimestamp - lastUptime;
+            this._uptime += (curTimestamp - lastUptime);
+
             return this;
         },
 
@@ -133,6 +134,11 @@ define(['engine/core/Entity'], function (Entity) {
             Entity.prototype.update.call(this);
 
             //Engine updates goes here
+        },
+
+        destroy: function() {
+            Entity.prototype.destroy.call(this);
+            clearInterval(this.updateid);
         }
     });
 

@@ -7,14 +7,10 @@
 window.onload = function() 
 {
     requirejs.config({
-        use: {
-            underscore: {
-                attach: "_"
-            }
-        },
         paths: {
             'socket.io' : './node_modules/socket.io/node_modules/socket.io-client/dist/socket.io',
-            'node-uuid' : './node_modules/node-uuid/uuid'//,
+            'node-uuid' : './node_modules/node-uuid/uuid',
+            'moment'    : './lib/moment'
             //'bson' : './node_modules/bson/browser_build/bson'
         }/*,
         shim: {
@@ -28,7 +24,7 @@ window.onload = function()
 
     });
 
-    requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/NetworkClient'], function(Class, Core, NetworkClient) {
+    requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/SocketNetworkDriver'], function(Class, Core, SocketNetworkDriver) {
         var Client = Class.extend({
             _classId: 'Client',
 
@@ -36,7 +32,7 @@ window.onload = function()
                 this.log('start', 'log');
 
                 engine
-                    .getRegisteredClassNewInstance('NetworkClient', true)
+                    .getRegisteredClassNewInstance('SocketNetworkDriver', true)
                     .attach(engine, 'network')
                     .connect('//localhost:4040')
                     .defineMessageType('welcome', function(data) {

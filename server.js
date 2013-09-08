@@ -3,7 +3,14 @@ NetworkServer = require('./engine/components/Network/NetworkServer');*/
 //PhysicsSimulation = require('./engine/components/PhysicsSimulation');
 
 requirejs = require('requirejs');
-requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/NetworkServer'], function(Class, Core, NetworkServer) {
+
+requirejs.config({
+    paths: {
+        'moment'    : './lib/moment'
+    }
+});
+
+requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/SocketNetworkDriver'], function(Class, Core, SocketNetworkDriver) {
 
     var Server = Class.extend({
         _classId: 'Server',
@@ -19,13 +26,13 @@ requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/Networ
             engine.isServer = true;
 
             engine
-                .getRegisteredClassNewInstance('NetworkServer')
+                .getRegisteredClassNewInstance('SocketNetworkDriver')
                 .attach(engine, 'network')
                 .listen(4040)
-                .defineMessageType('greeting', function(data) {
+                .defineMessageType('greeting', function(data, socketId) {
                     engine.log('greeting called: ' + JSON.stringify(data));
                     engine.log('Sending welcome');
-                    engine.network.sendMessage('welcome', {dummy: 'data2'}, data.socketId, function(data) {
+                    engine.network.sendMessage('welcome', {dummy: 'data2'}, socketId, function(data) {
                         engine.log('welcome - response data: ' + JSON.stringify(data));
                     });
                 });

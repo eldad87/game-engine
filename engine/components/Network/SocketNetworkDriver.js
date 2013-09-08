@@ -1,25 +1,120 @@
 //http://www.joezimjs.com/javascript/plugging-into-socket-io-advanced/
 //http://stackoverflow.com/questions/8467784/sending-a-message-to-a-client-via-its-socket-id
-define(['engine/core/Entity', 'engine/core/Exception'/*, 'bson'*/], function(Entity, Exception/*, bson*/) {
+define(['engine/core/Entity', 'engine/core/Exception', 'engine/components/Network/NetworkServer', 'engine/components/Network/NetworkClient', 'moment'/*, 'bson'*/],
+    function(Entity, Exception, NetworkServer, NetworkClient, Moment/*, bson*/) {
+
     var SocketNetworkDriver = Entity.extend({
         _classId: 'SocketNetworkDriver',
         _messageTypes: {},
 
-        init: function() {
+        init: function(options) {
             Entity.prototype.init.call(this);
+
+            if(engine.isServer) {
+                this.implement(NetworkServer);
+            }
+
+            if(!engine.isServer) {
+                this.implement(NetworkClient);
+            }
+
+            if(!engine.isServer) {
+                this._pingPongTimeSyncInterval = 1000; //Every 1 second
+                if(options != undefined && options.pingPongTimeSyncInterval != undefined) {
+                    this._pingPongTimeSyncInterval = options.pingPongTimeSyncInterval;
+                }
+            }
+
+            this.defineMessageType('ping', this.ping.bind(this));
         },
 
+        onConnect: function() {
+            if(this._pingPongTimeSyncInterval) {
+                this.startPingPongTimeSync();
+            }
+        },
+
+        onDisconnect: function() {
+            if(this._pingPongTimeSyncInterval) {
+                clearInterval(this._pingPongTimeSyncTimer);
+            }
+        },
+
+        _getTime: function() {
+            return Date.now();
+
+            /*return moment().valueOf();
+
+            return new Date().getTime()
+            //return Date.now();
+
+            var date = new Date();
+            return date.getTime() +  date.getTimezoneOffset() * 60 * 1000;*/
+        },
+
+        /**
+         * Start ping-pong base time sync
+         * @returns {*}
+         */
+        startPingPongTimeSync: function() {
+            var self = this;
+            if(!this._pingPongTimeSyncTimer) {
+                this._pingPongTimeSyncTimer = setInterval(function () { self.startPingPongTimeSync(); }, this._pingPongTimeSyncInterval);
+            }
+
+            this.sendMessage('ping', {sent_timestamp: this._getTime()}, this.pong.bind(this));
+
+            return this;
+        },
+
+        stopPingPongTimeSync: function() {
+            clearInterval(this._pingPongTimeSyncTimer);
+        },
+
+        /**
+         * Return exact message that received to sender + processed
+         */
+        ping: function(data, sent_uptime) {
+            var processTime = this._getTime();
+            //this.log('Ping received, process time: ' +  processTime);
+
+            return {
+                sent_timestamp:         data.sent_timestamp,
+                processed_timestamp:    processTime,
+                processed_uptime:       engine.getUptime()
+            };
+        },
+
+        /**
+         * Callback of sent ping request
+         */
+        pong: function(data, sentUptime, messageId, socketId) {
+            var curTime = this._getTime();
+
+            var roundTrip = (curTime - data.sent_timestamp);
+            var latency = (data.sent_timestamp - data.processed_timestamp);
+
+            //Check if clocks are out of sync
+            if(latency > roundTrip) {
+                latency = roundTrip/2;
+            }
+
+            this.latency(latency, socketId);
+            this.roundTrip(roundTrip, socketId);
+        },
+
+        //message.type, message.data, message.sent_uptime, message.id, socket.id
         defineMessageType: function(name, callback) {
             this._messageTypes[name] = callback;
             return this;
         },
 
-        callDefinedMessage: function(name, params) {
-            if(undefined == this._messageTypes[name]) {
+        callDefinedMessage: function(name, data, sentUptime, messageId, socketId) {
+            if(undefined == name || undefined == this._messageTypes[name]) {
                 throw new Exception('Socket: undefined message type is used')
             }
 
-            return this._messageTypes[name](params);
+            return this._messageTypes[name](data, sentUptime, messageId, socketId);
         },
 
         _serialize: function(message) {
@@ -44,6 +139,11 @@ define(['engine/core/Entity', 'engine/core/Exception'/*, 'bson'*/], function(Ent
             }*/
 
             return JSON.parse(smessage, true);
+        },
+
+        destroy: function() {
+            Entity.prototype.destroy.call(this);
+            this.stopPingPongTimeSync();
         }
     });
 

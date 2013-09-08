@@ -1,15 +1,10 @@
-define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid'], function(SocketNetworkDriver, io, UUID) {
-    var NetworkServer = SocketNetworkDriver.extend({
+define([ 'socket.io', 'node-uuid'], function(io, UUID) {
+    var NetworkServer = {
         _classId: 'NetworkServer',
 
         _clientSockets: {},
-        _io: null,
+        _io: io,
         _sockets: null,
-
-        init: function() {
-            SocketNetworkDriver.prototype.init.call(this);
-            this._io = io;
-        },
 
         _addClient: function(socket) {
             this._clientSockets[socket.id] = {
@@ -37,6 +32,48 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
 
             var sMessage = this._serialize(message);
             this._clientSockets[socketId].socket.send(sMessage);
+
+            return this;
+        },
+
+        /**
+         * Get/Set latency
+         * @param val
+         * @param socketId
+         * @returns this|latency in MS
+         */
+        latency: function(val, socketId) {
+            if(undefined === socketId) {
+                socketId = val;
+                val = undefined;
+            }
+
+            if(undefined === val) {
+                return this._clientSockets[socketId]['latency'] || 0;
+            }
+
+            this._clientSockets[socketId]['latency'] = val;
+
+            return this;
+        },
+
+        /**
+         * Get/Set round trip
+         * @param val
+         * @param socketId
+         * @returns this|round trip in MS
+         */
+        roundTrip: function(val, socketId) {
+            if(undefined === socketId) {
+                socketId = val;
+                val = undefined;
+            }
+
+            if(undefined === val) {
+                return this._clientSockets[socketId]['roundTrip'] || 0;
+            }
+
+            this._clientSockets[socketId]['roundTrip'] = val;
 
             return this;
         },
@@ -90,7 +127,7 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
                 }
 
                 //Call callback
-                this._clientSockets[socket.id]['pendingCallback'][message.id](message.data, socket.id, message.id);
+                this._clientSockets[socket.id]['pendingCallback'][message.id](message.data, message.sent_uptime/*, message.processed_uptime*/, message.id, socket.id);
 
                 //Remove callback
                 delete this._clientSockets[socket.id]['pendingCallback'][message.id];
@@ -105,13 +142,16 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
             }
 
             try {
-                var response = this.callDefinedMessage(message.type, {message: message, socketId: socket.id});
+                //var processedUptime = engine.getUptime();
+                var response = this.callDefinedMessage(message.type, message.data, message.sent_uptime, message.id, socket.id);
 
                 if(true === message.callback_pending) {
                     //Send response to client
                     this._sendMessage({
                             id: message.id,
                             data: response,
+                            sent_uptime: message.sent_uptime,
+                            //processed_uptime: processedUptime,
                             is_callback: true
                         },
                         undefined
@@ -138,7 +178,7 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
                 id: UUID.v4(),
                 type: type,
                 data: data,
-                timestamp: new Date().getTime()
+                sent_uptime: engine.getUptime()
             };
 
             //Broadcast to all
@@ -160,7 +200,7 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
 
             return message.id;
         }
-    });
+    };
 
 //    if (typeof(module) !== 'undefined' && typeof(module.exports) !== 'undefined') { module.exports = NetworkServer; }
 

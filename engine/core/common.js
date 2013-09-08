@@ -11,7 +11,7 @@ ClassRegister = {};
 (function() {
 	if(typeof(window) != 'undefined') {
 		var vendors =[ 'ms', 'moz', 'webkit', 'o' ];
-		for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+		for(var x = 0; x < vendors.length && !requestAnimationFrame; ++x) {
 			requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
 			cancelAnimationFrame =
 				window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];

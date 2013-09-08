@@ -1,23 +1,22 @@
-define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid'], function   (SocketNetworkDriver, io, UUID) {
-    var NetworkClient = SocketNetworkDriver.extend( {
+define(['socket.io', 'node-uuid'], function   (io, UUID) {
+    var NetworkClient = {
         _classId: 'NetworkClient',
-        _messageTypes: {},
-        _pendingCallback: {},
-        _socket: null,
-        _io: io,
 
-        init: function() {
-            SocketNetworkDriver.prototype.init.call(this);
-        },
+        _pendingCallback: {},
+        _io: io,
+        _socket: null,
+
+        _latency: 0,
+        _roundTrip: 0,
 
         connect: function(address) {
             this._socket = io.connect(address);
-
 
             var self = this;
             this._socket.on('connect', function(socket){
                 self._socket.on('message', self._onMessage.bind(self));
                 self._socket.on('disconnect', self.onDisconnect.bind(self));
+                self.onConnect();
             });
 
             return this;
@@ -42,6 +41,43 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
         },
 
         /**
+         * Get/Set latency
+         * @param val
+         * @returns this|latency in MS
+         */
+        latency: function(val) {
+            if(undefined === val) {
+                return this._latency || 0;
+            }
+
+            this._latency = val;
+
+            return this;
+        },
+
+        /**
+         * Get/Set round trip
+         * @param val
+         * @returns this|round trip in MS
+         */
+        roundTrip: function(val) {
+            if(undefined === val) {
+                return this._roundTrip || 0;
+            }
+
+            this._roundTrip = val;
+
+            return this;
+        },
+
+        /**
+         * Called when a connection is made
+         */
+        onConnect: function() {
+
+        },
+
+        /**
          *
          * @param message {id, type, data, is_callback || callback_pending}
          * @returns {*}
@@ -53,25 +89,31 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
                     ! this._pendingCallback ||
                     ! this._pendingCallback[message.id]) {
 
-                    //Call callback
-                    this._pendingCallback[message.id](message.data, message.id);
-
-                    //Remove callback
-                    delete this._pendingCallback[message.id];
-
-                    return this;
+                    this.log('Invalid callback; socket: message: [' + JSON.stringify(message) + ']');
+                    return false; //Invalid callback
                 }
+
+                //Call callback
+                this._pendingCallback[message.id](message.data, message.sent_uptime/*, message.processed_uptime*/, message.id);
+
+                //Remove callback
+                delete this._pendingCallback[message.id];
+
+                return this;
             }
 
             //Server request
             try {
-                var response = this.callDefinedMessage(message.type, {message: message});
+                //var processedUptime = engine.getUptime();
+                var response = this.callDefinedMessage(message.type, message.data, message.sent_uptime, message.id);
 
                 if(true === message.callback_pending) {
                     //Send response to client
                     this._sendMessage({
                         id: message.id,
                         data: response,
+                        sent_uptime: message.sent_uptime,
+                        //processed_uptime: processedUptime,
                         is_callback: true
                     });
                 }
@@ -82,7 +124,7 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
             return this;
         },
 
-        onDisconnect: function(message) {
+        onDisconnect: function() {
 
         },
 
@@ -92,14 +134,16 @@ define(['engine/components/Network/SocketNetworkDriver', 'socket.io', 'node-uuid
                 id: UUID.v4(),
                 type: type,
                 data: data,
-                timestamp: new Date().getTime()
+                sent_uptime: engine.getUptime()
             };
 
             this._sendMessage(message, callback);
 
             return message.id;
         }
-    });
+    };
 
 //    if (typeof(module) !== 'undefined' && typeof(module.exports) !== 'undefined') { module.exports = NetworkClient; }
+
+    return NetworkClient;
 });
