@@ -114,8 +114,17 @@ define(['engine/core/Entity'], function (Entity) {
         updateUptime: function(curTimestamp) {
             var lastUptime = this._lastUptime || curTimestamp;
             this._lastUptime = curTimestamp;
-            this._uptime += (curTimestamp - lastUptime);
+            return this.incrementUptimeBy(curTimestamp - lastUptime);
+        },
 
+        /**
+         * Increment uptime by
+         * @param increment
+         * @returns {*}
+         */
+        incrementUptimeBy: function(increment) {
+            this._uptime += increment;
+            this.log('Uptime: ' + this._uptime);
             return this;
         },
 

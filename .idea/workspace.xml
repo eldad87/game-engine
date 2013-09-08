@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ebefb21-93d0-4f2c-8482-10babe06f88d" name="Default" comment="Fix engine uptime on client&#10;Add AMD support for Exception&#10;">
+    <list default="true" id="2ebefb21-93d0-4f2c-8482-10babe06f88d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/Core.js" afterPath="$PROJECT_DIR$/engine/Core.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/core/Exception.js" afterPath="$PROJECT_DIR$/engine/core/Exception.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Network/NetworkClient.js" afterPath="$PROJECT_DIR$/engine/components/Network/NetworkClient.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" afterPath="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js" afterPath="$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client.js" afterPath="$PROJECT_DIR$/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/core/common.js" afterPath="$PROJECT_DIR$/engine/core/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rawcept.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378673013311" ignored="false" />
+    <file path="/Dummy.txt" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378673038696" ignored="false" />
     <file path="/NetworkServer.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378597066533" ignored="false" />
     <file path="/package.json" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378599589715" ignored="false" />
-    <file path="/Core.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378672555112" ignored="false" />
+    <file path="/Core.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378674388763" ignored="false" />
     <file path="/Eventable.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378396206424" ignored="false" />
     <file path="/Entity.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378396818536" ignored="false" />
     <file path="/Class.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378397699540" ignored="false" />
     <file path="/NetworkClient.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378594202433" ignored="false" />
-    <file path="/SocketNetworkDriver.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378672664056" ignored="false" />
+    <file path="/SocketNetworkDriver.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378674774051" ignored="false" />
     <file path="/server.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378587268874" ignored="false" />
     <file path="/client.js" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378600263910" ignored="false" />
     <file path="/index.html" changelist="2ebefb21-93d0-4f2c-8482-10babe06f88d" time="1378378768234" ignored="false" />
@@ -69,7 +63,16 @@
       <file leaf-file-name="SocketNetworkDriver.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="14" selection-start="2627" selection-end="2627" vertical-scroll-proportion="-0.4790749">
+            <state line="112" column="18" selection-start="3793" selection-end="3793" vertical-scroll-proportion="0.78634363">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Core.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/Core.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="135" column="24" selection-start="4043" selection-end="4043" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -315,13 +318,18 @@
       <created>1378584704467</created>
       <updated>1378584704467</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fix engine uptime on client&#10;Add AMD support for Exception&#10;">
+      <created>1378673043482</created>
+      <updated>1378673043483</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1911" y="-9" width="1938" height="1098" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -337,7 +345,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295711" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -385,7 +392,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Engine uptime&#10;network - added timestamp to messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix engine uptime on client&#10;Add AMD support for Exception&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -404,6 +411,7 @@
     <MESSAGE value="Engine uptime" />
     <MESSAGE value="Engine uptime&#10;network - added timestamp to messafes" />
     <MESSAGE value="Engine uptime&#10;network - added timestamp to messages" />
+    <MESSAGE value="Fix engine uptime on client&#10;Add AMD support for Exception&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -496,13 +504,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/Core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="0" selection-start="2461" selection-end="2461" vertical-scroll-proportion="1.037445">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/components/Network/NetworkClient.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="30" selection-start="1014" selection-end="1014" vertical-scroll-proportion="0.0">
@@ -510,9 +511,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/engine/Core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="135" column="24" selection-start="4043" selection-end="4043" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="14" selection-start="2627" selection-end="2627" vertical-scroll-proportion="-0.4790749">
+        <state line="112" column="18" selection-start="3793" selection-end="3793" vertical-scroll-proportion="0.78634363">
           <folding />
         </state>
       </provider>

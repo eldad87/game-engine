@@ -99,6 +99,24 @@ define(['engine/core/Entity', 'engine/core/Exception', 'engine/components/Networ
                 latency = roundTrip/2;
             }
 
+
+            if(!engine.isServer && !this._clockSynced) {
+                var uptime = engine.getUptime();
+
+                //Determine the server uptime (received uptime + time it took the message to arrive)
+                var serverUptime = data.processed_uptime + ( (roundTrip - latency) );
+
+                //Get diff in uptime
+                var uptimeDiff = serverUptime - uptime;
+
+                //Apply diff
+                //console.log('Off by: ' + uptimeDiff);
+                engine.incrementUptimeBy(uptimeDiff);
+
+                this._clockSynced = true;
+            }
+
+
             this.latency(latency, socketId);
             this.roundTrip(roundTrip, socketId);
         },
