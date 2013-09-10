@@ -124,7 +124,7 @@ define(['engine/core/Entity'], function (Entity) {
          */
         incrementUptimeBy: function(increment) {
             this._uptime += increment;
-            this.log('Uptime: ' + this._uptime);
+            //this.log('Uptime: ' + this._uptime);
             return this;
         },
 

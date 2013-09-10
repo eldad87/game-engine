@@ -32,7 +32,7 @@ window.onload = function()
                 this.log('start', 'log');
 
                 engine
-                    .getRegisteredClassNewInstance('SocketNetworkDriver', true)
+                    .getRegisteredClassNewInstance('SocketNetworkDriver', {pingPongTimeSyncInterval: 1000})
                     .attach(engine, 'network')
                     .connect('//localhost:4040')
                     .defineMessageType('welcome', function(data) {

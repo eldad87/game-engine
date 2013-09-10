@@ -5,7 +5,9 @@ define(['engine/core/Entity', 'engine/core/Exception', 'engine/components/Networ
 
     var SocketNetworkDriver = Entity.extend({
         _classId: 'SocketNetworkDriver',
+
         _messageTypes: {},
+        _pingPongTimeSyncInterval: 0,
 
         init: function(options) {
             Entity.prototype.init.call(this);
@@ -18,11 +20,8 @@ define(['engine/core/Entity', 'engine/core/Exception', 'engine/components/Networ
                 this.implement(NetworkClient);
             }
 
-            if(!engine.isServer) {
-                this._pingPongTimeSyncInterval = 1000; //Every 1 second
-                if(options != undefined && options.pingPongTimeSyncInterval != undefined) {
-                    this._pingPongTimeSyncInterval = options.pingPongTimeSyncInterval;
-                }
+            if(options != undefined && options.pingPongTimeSyncInterval != undefined) {
+                this._pingPongTimeSyncInterval = options.pingPongTimeSyncInterval;
             }
 
             this.defineMessageType('ping', this.ping.bind(this));
@@ -40,18 +39,6 @@ define(['engine/core/Entity', 'engine/core/Exception', 'engine/components/Networ
             }
         },
 
-        _getTime: function() {
-            return Date.now();
-
-            /*return moment().valueOf();
-
-            return new Date().getTime()
-            //return Date.now();
-
-            var date = new Date();
-            return date.getTime() +  date.getTimezoneOffset() * 60 * 1000;*/
-        },
-
         /**
          * Start ping-pong base time sync
          * @returns {*}
@@ -62,7 +49,7 @@ define(['engine/core/Entity', 'engine/core/Exception', 'engine/components/Networ
                 this._pingPongTimeSyncTimer = setInterval(function () { self.startPingPongTimeSync(); }, this._pingPongTimeSyncInterval);
             }
 
-            this.sendMessage('ping', {sent_timestamp: this._getTime()}, this.pong.bind(this));
+            this.sendMessage('ping', {sent_timestamp: Date.now()}, this.pong.bind(this));
 
             return this;
         },
@@ -75,7 +62,7 @@ define(['engine/core/Entity', 'engine/core/Exception', 'engine/components/Networ
          * Return exact message that received to sender + processed
          */
         ping: function(data, sent_uptime) {
-            var processTime = this._getTime();
+            var processTime = Date.now();
             //this.log('Ping received, process time: ' +  processTime);
 
             return {
@@ -89,7 +76,7 @@ define(['engine/core/Entity', 'engine/core/Exception', 'engine/components/Networ
          * Callback of sent ping request
          */
         pong: function(data, sentUptime, messageId, socketId) {
-            var curTime = this._getTime();
+            var curTime = Date.now();
 
             var roundTrip = (curTime - data.sent_timestamp);
             var latency = (data.sent_timestamp - data.processed_timestamp);
