@@ -18,9 +18,9 @@ define([ 'socket.io', 'node-uuid'], function(io, UUID) {
         },
 
 
-        _onMessage: function(socket, smessage) {
+        _onMessage: function(smessage, socket) {
             var message = this._deserialize(smessage);
-            return this.onMessage(socket, message);
+            return this.onMessage(message, socket);
         },
 
         _sendMessage: function(message, callback, socketId) {
@@ -98,8 +98,8 @@ define([ 'socket.io', 'node-uuid'], function(io, UUID) {
                 self.onDisconnect(socket);
             });
 
-            socket.on('message', function(message, callback){
-                self._onMessage(socket, message, callback);
+            socket.on('message', function(message){
+                self._onMessage(message, socket);
             });
         },
 
@@ -114,7 +114,7 @@ define([ 'socket.io', 'node-uuid'], function(io, UUID) {
          * @param message {id, type, data, is_callback || callback_pending}
          * @returns {*}
          */
-        onMessage: function(socket, message) {
+        onMessage: function(message, socket) {
             //Client response
             if(true == message.is_callback) {
                 if( ! message.id ||
