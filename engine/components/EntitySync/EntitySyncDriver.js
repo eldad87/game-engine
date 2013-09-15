@@ -5,7 +5,6 @@ define(['engine/core/Entity', 'engine/components/EntitySync/EntitySyncServer', '
         _classId: 'EntitySyncDriver',
 
         _start: false,
-        _processMinLatency: 0,
         _networkDriver: false,
 
         init: function(options) {
@@ -42,22 +41,6 @@ define(['engine/core/Entity', 'engine/components/EntitySync/EntitySyncServer', '
             }
 
             this._networkDriver = val;
-
-            return this;
-        },
-
-        /**
-         * Set the minimum 'age' of a input before processing it.
-         *  for example val=100, only when inputs will be 100ms old - they will be process
-         * @param val
-         * @returns {*}
-         */
-        processMinLatency: function(val) {
-            if(undefined === val) {
-                return this._processMinLatency;
-            }
-
-            this._processMinLatency = val;
 
             return this;
         }
