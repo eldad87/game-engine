@@ -14,6 +14,8 @@ define(['socket.io', 'node-uuid'], function   (io, UUID) {
 
             var self = this;
             this._socket.on('connect', function(socket){
+                self.emit('connect');
+
                 self._socket.on('message', self._onMessage.bind(self));
                 self._socket.on('disconnect', self.onDisconnect.bind(self));
                 self.onConnect();
@@ -74,7 +76,9 @@ define(['socket.io', 'node-uuid'], function   (io, UUID) {
          * Called when a connection is made
          */
         onConnect: function() {
-
+            if(this._pingPongTimeSyncInterval) {
+                this.startPingPongTimeSync();
+            }
         },
 
         /**
@@ -125,7 +129,9 @@ define(['socket.io', 'node-uuid'], function   (io, UUID) {
         },
 
         onDisconnect: function() {
-
+            if(this._pingPongTimeSyncInterval) {
+                clearInterval(this._pingPongTimeSyncTimer);
+            }
         },
 
         sendMessage: function(type, data, callback) {

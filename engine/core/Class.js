@@ -29,7 +29,7 @@ define(['engine/core/Exception', 'engine/core/common'], function(Exception) {
 		 * Copy over the properties and methods of a given class
 		 * default override is false
 		 */
-            implement = function (copyPropFromObject, override) {
+         implement = function (copyPropFromObject, override) {
 			var i, 
 				obj = copyPropFromObject.prototype || copyPropFromObject;
 

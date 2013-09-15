@@ -1,6 +1,7 @@
 define(['engine/core/Entity'], function (Entity) {
     var Core = Entity.extend({
         _classId: 'Core',
+        _updateSceneGraphInterval: 45,
 
         init: function(ctx)
         {
@@ -10,7 +11,7 @@ define(['engine/core/Entity'], function (Entity) {
             this.isServer = (typeof(module) !== 'undefined' && module.exports);
             engine = this;
 
-            Entity.prototype.init.call(this, 'engine');
+            Entity.prototype.init.call(this, {id: 'engine'});
         },
 
         /**
@@ -33,6 +34,10 @@ define(['engine/core/Entity'], function (Entity) {
             }
         },
 
+        getRegisteredEntities: function() {
+            return this._register;
+        },
+
         /**
          * Register an entity
          * Late can be find using find()
@@ -46,6 +51,8 @@ define(['engine/core/Entity'], function (Entity) {
 
             this.unRegisterEntity(entity);
             this._register[entity.id()]  = entity;
+
+            this.emit('registerEntity', entity.id());
             return this;
         },
 
@@ -53,7 +60,12 @@ define(['engine/core/Entity'], function (Entity) {
          * Unregister an entity
          */
         unRegisterEntity: function(entity) {
-            delete this._register[entity.id()];
+            if(undefined !== this._register[entity.id()]) {
+
+                this.emit('beforeUnRegisterEntity', entity.id());
+
+                delete this._register[entity.id()];
+            }
             return this;
         },
 
@@ -79,7 +91,9 @@ define(['engine/core/Entity'], function (Entity) {
         },
 
         start: function(callback) {
-            requestAnimationFrame(this.engineTick.bind(this), this._ctx);
+            requestAnimationFrame(this.engineFrame.bind(this), this._ctx);
+
+            setInterval(this.updateSceneGraph.bind(this), this._updateSceneGraphInterval);
 
             if(!this.isServer) {
                 //A list of recent server updates we interpolate across
@@ -96,14 +110,31 @@ define(['engine/core/Entity'], function (Entity) {
         /**
          * run every time that requestAnimationFrame is called
          */
-        engineTick: function (timestamp, ctx) {
+        engineFrame: function (timestamp, ctx) {
             this.updateUptime(timestamp);
 
             //schedule the next update
-            this.updateid = requestAnimationFrame(engine.engineTick.bind(this), ctx);
+            this.updateid = requestAnimationFrame(engine.engineFrame.bind(this), ctx);
 
             // Update the engine + its childrens
-            this.updateSceneGraph();
+            this.processSceneGraph();
+        },
+
+        process: function() {
+            Entity.prototype.process.call(this);
+
+            //Engine processing goes here
+            return true;
+        },
+
+        /**
+         * All engine updates should run here
+         */
+        update: function() {
+            Entity.prototype.update.call(this);
+
+            //Engine updates goes here
+            return true;
         },
 
         /**
@@ -134,15 +165,6 @@ define(['engine/core/Entity'], function (Entity) {
          */
         getUptime: function() {
             return this._uptime;
-        },
-
-        /**
-         * All engine updates should run here
-         */
-        update: function() {
-            Entity.prototype.update.call(this);
-
-            //Engine updates goes here
         },
 
         destroy: function() {

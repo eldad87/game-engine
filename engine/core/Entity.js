@@ -2,13 +2,18 @@ define(['engine/core/Eventable', 'node-uuid'], function(Eventable, UUID) {
     var Entity = Eventable.extend({
         _classId: 'Entity',
 
-        init: function(id) {
+        init: function(options) {
             this._id = null;
             this._parent = null;
             this._children = [];
             this._accessors = [];
 
-            this.id(id);
+            if(undefined !== options &&
+                undefined !== options.id) {
+                this.id(options.id);
+            } else {
+                this.id();
+            }
         },
 
         /**
@@ -119,18 +124,39 @@ define(['engine/core/Eventable', 'node-uuid'], function(Eventable, UUID) {
 
         destroy: function() {
             this.unAttach();
+            engine.unRegisterEntity(this);
         },
 
         /**
          * call the update() method on this, and all childrens
          */
         updateSceneGraph: function() {
-            this.update();
+            if(false === this.update()) {
+                return false; //Stop population
+            }
+
             this._children.eachMethod('updateSceneGraph');
+
+            return true;
+        },
+        update: function() {
+            return true;
         },
 
-        update: function() {
+        /**
+         * call the process() method on this, and all childrens
+         */
+        processSceneGraph: function() {
+            if(false === this.process()) {
+                return false; //Stop population
+            }
 
+            this._children.eachMethod('processSceneGraph');
+
+            return true;
+        },
+        process: function() {
+            return true;
         }
     });
 

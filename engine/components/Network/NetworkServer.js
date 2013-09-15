@@ -84,8 +84,10 @@ define([ 'socket.io', 'node-uuid'], function(io, UUID) {
             this._sockets = this._io.listen(port);
 
             this._sockets.on('connection', function(socket){
-                    self.onConnection(socket);
-                });
+                self.emit('connect', socket.id);
+
+                self.onConnection(socket);
+            });
 
             return this;
         },

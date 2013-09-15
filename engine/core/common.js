@@ -96,6 +96,8 @@ Array.prototype.pull = function (item) {
 	}
 };
 
+function isFunction(value){return typeof value == 'function';}
+
 /**
  * Make property non-enumerable.
  */
