@@ -10,7 +10,8 @@ requirejs.config({
     }
 });
 
-requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/SocketNetworkDriver'], function(Class, Core, SocketNetworkDriver) {
+requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/SocketNetworkDriver', 'engine/components/EntitySync/EntitySyncDriver'],
+    function(Class, Core, SocketNetworkDriver, EntitySyncDriver) {
 
     var Server = Class.extend({
         _classId: 'Server',
@@ -25,6 +26,7 @@ requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/Socket
                     .start();*/
             engine.isServer = true;
 
+            //Networking
             engine
                 .getRegisteredClassNewInstance('SocketNetworkDriver')
                 .attach(engine, 'network')
@@ -36,6 +38,13 @@ requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/Socket
                         engine.log('welcome - response data: ' + JSON.stringify(data));
                     });
                 });
+
+            //Sync
+            engine
+                .getRegisteredClassNewInstance('EntitySyncDriver', {networkDriver: engine.network})
+                //.processMinLatency(100) - Client only
+                .attach(engine, 'sync')
+                .start()
         }
     });
 

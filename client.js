@@ -24,13 +24,16 @@ window.onload = function()
 
     });
 
-    requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/SocketNetworkDriver'], function(Class, Core, SocketNetworkDriver) {
+    requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/SocketNetworkDriver', 'engine/components/EntitySync/EntitySyncDriver'],
+        function(Class, Core, SocketNetworkDriver, EntitySyncDriver) {
+
         var Client = Class.extend({
             _classId: 'Client',
 
             init: function () {
                 this.log('start', 'log');
 
+                //Networking
                 engine
                     .getRegisteredClassNewInstance('SocketNetworkDriver', {pingPongTimeSyncInterval: 1000})
                     .attach(engine, 'network')
@@ -38,6 +41,13 @@ window.onload = function()
                     .defineMessageType('welcome', function(data) {
                         return data;
                     });
+
+                //Sync
+                engine
+                    .getRegisteredClassNewInstance('EntitySyncDriver', {networkDriver: engine.network})
+                    //.processMinLatency(100) - Client only
+                    .attach(engine, 'sync')
+                    .start()
 
                 //Send message
                 engine.network.sendMessage('greeting', {dummy:'data'});

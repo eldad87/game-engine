@@ -14,10 +14,10 @@ define(['engine/core/Exception'], function(Exception) {
 
             var self = this;
 
-            this.networkDriver.on('connect', function() {
-                self.defineMessageType('updateNewEntity',       self.onUpdateNewEntity.bind(self));
-                self.defineMessageType('updateExistingEntity',  self.onUpdateExistingEntity.bind(self));
-                self.defineMessageType('updateRemoveEntity',    self.onUpdateRemoveEntity.bind(self));
+            this.networkDriver().on('connect', function() {
+                self.networkDriver().defineMessageType('updateNewEntity',       self.onUpdateNewEntity.bind(self));
+                self.networkDriver().defineMessageType('updateExistingEntity',  self.onUpdateExistingEntity.bind(self));
+                self.networkDriver().defineMessageType('updateRemoveEntity',    self.onUpdateRemoveEntity.bind(self));
             });
 
             return this;
@@ -263,7 +263,7 @@ define(['engine/core/Exception'], function(Exception) {
 
                             //Check if we need to stop
                             if(uptime < parseFloat(nextUpdate.uptime)) {
-                                break;
+                                break; //BINGO
                             }
                         } else {
                             continue; //All updates are future one, or now updates presents

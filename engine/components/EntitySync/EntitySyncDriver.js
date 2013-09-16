@@ -1,4 +1,4 @@
-define(['engine/core/Entity', 'engine/components/EntitySync/EntitySyncServer', 'engine/components/Network/EntitySyncClient'],
+define(['engine/core/Entity', 'engine/components/EntitySync/EntitySyncServer', 'engine/components/EntitySync/EntitySyncClient'],
     function   ( Entity, EntitySyncServer, EntitySyncClient) {
 
     var EntitySyncDriver = Entity.extend({
@@ -10,14 +10,9 @@ define(['engine/core/Entity', 'engine/components/EntitySync/EntitySyncServer', '
         init: function(options) {
             Entity.prototype.init.call(this);
 
-            if(undefined === options) {
-
+            if(undefined !== options) {
                 if(undefined !== options.networkDriver) {
                     this.networkDriver(options.networkDriver);
-                }
-
-                if(undefined !== options.processMinLatency) {
-                    this.processMinLatency(options.processMinLatency);
                 }
             }
 

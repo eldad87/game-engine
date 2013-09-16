@@ -1,4 +1,4 @@
-define(['engine/core/Exception', 'engine/core/common'], function(Exception) {
+define(['engine/core/Exception'], function(Exception) {
     return {
         start: function() {
             if(!this.networkDriver()) {
@@ -8,11 +8,11 @@ define(['engine/core/Exception', 'engine/core/common'], function(Exception) {
             var self = this;
 
             //Listen to any new entity creation
-            this.networkDriver.on('connect', function(clientId){
+            this.networkDriver().on('connect', function(clientId){
                 //Send to client all current objects
 
                 //Get all registered entities
-                var entities = engine.getRegisterEntities();
+                var entities = engine.getRegisteredEntities();
                 for(var entityId in entities) {
                     if(!self._isSyncableEntity(entities[entityId])) {
                         //No sync method
@@ -44,7 +44,7 @@ define(['engine/core/Exception', 'engine/core/common'], function(Exception) {
                 }
                 delete entity._entitySync;
 
-                this.networkDriver.send('updateRemoveEntity', entityId);
+                this.networkDriver().send('updateRemoveEntity', entityId);
             });
 
             return this;
@@ -90,7 +90,7 @@ define(['engine/core/Exception', 'engine/core/common'], function(Exception) {
                 return true; //Nothing to sync
             }
 
-            this.networkDriver.send('updateNewEntity', data, undefined, socketId);
+            this.networkDriver().send('updateNewEntity', data, undefined, socketId);
         },
 
         _updateExistingEntity: function( entity ) {
@@ -103,7 +103,7 @@ define(['engine/core/Exception', 'engine/core/common'], function(Exception) {
                 return true; //Nothing to sync
             }
 
-            this.networkDriver.send('updateExistingEntity', data);
+            this.networkDriver().send('updateExistingEntity', data);
         },
 
         /**
@@ -117,9 +117,10 @@ define(['engine/core/Exception', 'engine/core/common'], function(Exception) {
             /*undefined !==  entity['sync'] &&
              undefined !==  entity['syncSections'] &&*/
 
-            return isFunction(entity['sync']) &&
-                    isFunction(entity['syncSections']);
+            return typeof entity['sync'] == 'function' &&
+                    typeof entity['syncSections'] == 'function';
         }
+
 
 
         /*process: function() {
