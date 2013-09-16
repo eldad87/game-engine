@@ -39,6 +39,7 @@ window.onload = function()
                     .attach(engine, 'network')
                     .connect('//localhost:4040')
                     .defineMessageType('welcome', function(data) {
+                        console.log('Welcom received: ' + JSON.stringify(data))
                         return data;
                     });
 
@@ -49,8 +50,12 @@ window.onload = function()
                     .attach(engine, 'sync')
                     .start()
 
-                //Send message
-                engine.network.sendMessage('greeting', {dummy:'data'});
+                setInterval(function() {
+                    //Send message
+                    engine.network.sendMessage('greeting', {dummy:'data'});
+                }, 5000);
+
+
             }
         });
 

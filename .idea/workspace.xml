@@ -2,22 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b4343e8-7aaa-454c-90ef-a67361205035" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncClient.js" afterPath="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncClient.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncDriver.js" afterPath="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncDriver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncServer.js" afterPath="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncServer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client.js" afterPath="$PROJECT_DIR$/client.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rawcept.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="4b4343e8-7aaa-454c-90ef-a67361205035" time="1379364982887" ignored="false" />
+    <file path="/Dummy.txt" changelist="4b4343e8-7aaa-454c-90ef-a67361205035" time="1379366419541" ignored="false" />
     <file path="/EntitySyncClient.js" changelist="4b4343e8-7aaa-454c-90ef-a67361205035" time="1379365092878" ignored="false" />
     <file path="/PlayerEntity.js" changelist="4b4343e8-7aaa-454c-90ef-a67361205035" time="1379362181262" ignored="false" />
     <file path="/server.js" changelist="4b4343e8-7aaa-454c-90ef-a67361205035" time="1379365621387" ignored="false" />
     <file path="/EntitySyncDriver.js" changelist="4b4343e8-7aaa-454c-90ef-a67361205035" time="1379365509692" ignored="false" />
     <file path="/EntitySyncServer.js" changelist="4b4343e8-7aaa-454c-90ef-a67361205035" time="1379366021144" ignored="false" />
-    <file path="/NetworkServer.js" changelist="4b4343e8-7aaa-454c-90ef-a67361205035" time="1379366161471" ignored="false" />
+    <file path="/NetworkServer.js" changelist="4b4343e8-7aaa-454c-90ef-a67361205035" time="1379367394414" ignored="false" />
+    <file path="/client.js" changelist="4b4343e8-7aaa-454c-90ef-a67361205035" time="1379367797388" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,10 +35,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NetworkServer.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="server.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="85" selection-start="1397" selection-end="1423" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="41" column="78" selection-start="1374" selection-end="1374" vertical-scroll-proportion="0.4267442">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SocketNetworkDriver.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="109" column="71" selection-start="3838" selection-end="3861" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NetworkServer.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/engine/components/Network/NetworkServer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="20" selection-start="2486" selection-end="2498" vertical-scroll-proportion="0.41437125">
+            <state line="161" column="4" selection-start="5011" selection-end="5011" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -66,11 +95,11 @@
       <list>
         <option value="$PROJECT_DIR$/engine/core/PlayerEntity.js" />
         <option value="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncDriver.js" />
+        <option value="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncServer.js" />
+        <option value="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncClient.js" />
+        <option value="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/client.js" />
-        <option value="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncServer.js" />
-        <option value="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" />
-        <option value="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncClient.js" />
       </list>
     </option>
   </component>
@@ -258,7 +287,11 @@
       <created>1379364987290</created>
       <updated>1379364987290</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added Entity sync to client/server + required fixes">
+      <created>1379366423426</created>
+      <updated>1379366423426</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -328,7 +361,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Client processing updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Entity sync to client/server + required fixes" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -343,6 +376,8 @@
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Client processing updates" />
+    <MESSAGE value="Added Entity sync to client/server + fixes" />
+    <MESSAGE value="Added Entity sync to client/server + required fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -369,15 +404,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/components/EntitySync/EntitySyncDriver.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="17" selection-start="589" selection-end="589" vertical-scroll-proportion="0.29651162">
@@ -389,23 +415,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="98" column="60" selection-start="2385" selection-end="2412" vertical-scroll-proportion="0.33255813">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="28" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.7232558">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1458" selection-end="1716" vertical-scroll-proportion="0.63255817">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -426,7 +436,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/engine/components/Network/NetworkServer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="20" selection-start="2486" selection-end="2498" vertical-scroll-proportion="0.41437125">
+        <state line="161" column="4" selection-start="5011" selection-end="5011" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="71" selection-start="3838" selection-end="3861" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="85" selection-start="1397" selection-end="1423" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="78" selection-start="1374" selection-end="1374" vertical-scroll-proportion="0.4267442">
           <folding />
         </state>
       </provider>
