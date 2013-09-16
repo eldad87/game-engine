@@ -2,6 +2,7 @@ define(['engine/core/Exception'], function(Exception) {
     return {
 
         _processMinLatency: 0,
+        _sectionBufferSize: 120,
         _newEntityUpdatesQueue: {},
         _removeEntityQueue: {},
         _existingEntityUpdateQueue: {},
@@ -22,6 +23,20 @@ define(['engine/core/Exception'], function(Exception) {
             return this;
         },
 
+        process: function() {
+            if(!this.start() ||
+                false === (Entity.prototype.process.call(this))) {
+                return false;
+            }
+
+            this.processUpdateNewEntity();
+            this.processUpdateExistingEntity();
+            this.processUpdateRemoveEntity();
+
+            return true;
+        },
+
+
         /**
          * Set the minimum 'age' of a input before processing it.
          *  for example val=100, only when inputs will be 100ms old - they will be process
@@ -38,6 +53,12 @@ define(['engine/core/Exception'], function(Exception) {
             return this;
         },
 
+        /**
+         * Calc on which UpTime the input should run - which in turn will be processMinLatency() old
+         * @param inputUptime
+         * @returns {number}
+         * @private
+         */
         _getFutureInputProcessingUptime:function(inputUptime) {
             var currentUptime = engine.getUptime(),
                 currentInputAge = currentUptime - inputUptime;
@@ -49,9 +70,8 @@ define(['engine/core/Exception'], function(Exception) {
 
 
         /**
-         * Storing incoming updates
+         * Store new entities updates
          */
-
         onUpdateNewEntity: function(data, sentUptime) {
             var futureProcessingUptime = this._getFutureInputProcessingUptime(sentUptime);
 
@@ -62,43 +82,16 @@ define(['engine/core/Exception'], function(Exception) {
             this._newEntityUpdatesQueue[futureProcessingUptime].push(data)
         },
 
-        onUpdateRemoveEntity: function(entityId, sentUptime) {
-            var futureProcessingUptime = this._getFutureInputProcessingUptime(sentUptime);
-
-            if(undefined === this._removeEntityQueue[futureProcessingUptime]) {
-                this._removeEntityQueue[futureProcessingUptime] = [];
-            }
-
-            this._removeEntityQueue[futureProcessingUptime].push(data)
-        },
-
-        onUpdateExistingEntity: function(data, sentUptime) {
-
-        },
-
-
         /**
-         * Processing stored updates
+         * Process new entities updates
          */
-
-        process: function() {
-            if(!this.start() ||
-                false === (Entity.prototype.process.call(this))) {
-                return false;
-            }
-
-            this.processUpdateNewEntity();
-            this.processUpdateExistingEntity();
-            this.processUpdateRemoveEntity();
-
-            return true;
-        },
-
         processUpdateNewEntity: function() {
             var currentUptime = engine.getUptime(),
                 futureProcessingUptime,
                 updates,
-                i;
+                i,
+                data,
+                entity;
 
             //Go over all updates
             for(futureProcessingUptime in this._newEntityUpdatesQueue) {
@@ -109,7 +102,13 @@ define(['engine/core/Exception'], function(Exception) {
                     //Execute updates
                     updates = this._newEntityUpdatesQueue[futureProcessingUptime];
                     for(i in updates) {
-                        this._updateNewEntity(updates[i]);
+                        data = updates[i];
+                        entity = engine.getRegisteredClassNewInstance(data.classId, {id: data.id})
+                        if(!entity) {
+                            throw new Exception('Cannot create new [' + data.classId + '] with ID [' + data.id + ']');
+                        }
+
+                        entity.sync(data.sync)
                     }
 
                     //Delete updates
@@ -118,11 +117,32 @@ define(['engine/core/Exception'], function(Exception) {
             }
         },
 
+
+        /**
+         * Store remove entity updates
+         * @param entityId
+         * @param sentUptime
+         */
+        onUpdateRemoveEntity: function(entityId, sentUptime) {
+            var futureProcessingUptime = this._getFutureInputProcessingUptime(sentUptime);
+
+            if(undefined === this._removeEntityQueue[futureProcessingUptime]) {
+                this._removeEntityQueue[futureProcessingUptime] = [];
+            }
+
+            this._removeEntityQueue[futureProcessingUptime].push(data)
+        },
+
+        /**
+         * Process remove entity updates
+         */
         processUpdateRemoveEntity: function() {
             var currentUptime = engine.getUptime(),
                 futureProcessingUptime,
                 updates,
-                i;
+                i,
+                entityId,
+                entity;
 
             //Go over all updates
             for(futureProcessingUptime in this._removeEntityQueue) {
@@ -133,7 +153,17 @@ define(['engine/core/Exception'], function(Exception) {
                     //Execute updates
                     updates = this._removeEntityQueue[futureProcessingUptime];
                     for(i in updates) {
-                        this._updateRemoveEntity(updates[i]);
+                        entityId = updates[i];
+
+                        //Delete entity updates
+                        delete this._existingEntityUpdateQueue[entityId];
+
+                        //Destroy entity
+                        entity = engine.getEntityById(entityId);
+                        if(!entity) {
+                            continue;
+                        }
+                        entity.destroy();
                     }
 
                     //Delete updates
@@ -142,39 +172,110 @@ define(['engine/core/Exception'], function(Exception) {
             }
         },
 
+
+        /**
+         * _existingEntityUpdateQueue: {
+         *      entityId: {
+         *          sectionI: []
+         *          sectionII: []
+         *      }
+         * }
+         * @param  data {id:, stnc}
+         * @param sentUptime
+         */
+        onUpdateExistingEntity: function(data, sentUptime) {
+            var entity = engine.getEntityById(data.id);
+            if(!entity) {
+                throw new Exception('Cannot update [' + data.classId + '] with ID [' + data.id + ']');
+            }
+            var futureProcessingUptime = this._getFutureInputProcessingUptime(sentUptime);
+
+            //Get entity sections
+            var syncSctions = entity.syncSections();
+
+            //First entity update
+            if(undefined === this._existingEntityUpdateQueue[entity.id()]) {
+                //Add entity
+                this._existingEntityUpdateQueue[entity.id()] = {};
+
+                //Add sections
+                for(var i in syncSctions) {
+                    this._existingEntityUpdateQueue[entity.id()][syncSctions[i]] = [];
+                }
+            }
+
+
+            //Go over the sync data
+            for(var sectionName in this._existingEntityUpdateQueue[entity.id()]) {
+                //Check if section sync data is provided
+                if(undefined === data[sectionName]) {
+                    continue;
+                }
+
+                //Add sync data to each section
+                this._existingEntityUpdateQueue[entity.id()][sectionName].push(
+                    {
+                        sync: data.sync,
+                        uptime: futureProcessingUptime
+                    }
+                );
+
+                //Limit buffer in max this._sectionBufferSize records PER section
+                if(this._existingEntityUpdateQueue[entity.id()][sectionName].length >= this._sectionBufferSize) {
+                    this._existingEntityUpdateQueue[entity.id()][sectionName].splice(0,1);
+                }
+            }
+
+            return true;
+        },
+
+        /**
+         * Process all updates - per entity-section that their sentUptime is < now
+         */
         processUpdateExistingEntity: function() {
+            var uptime = engine.getUptime();
+            for(var entityId in this._existingEntityUpdateQueue) {
+                var entity = engine.getEntityById(entityId);
+                if(!entity) {
+                    throw new Exception('Cannot process updates entiy with ID [' + data.id + '] not found');
+                }
 
-        },
+                for(var sectionName in this._existingEntityUpdateQueue[entityId]) {
+
+                    /**
+                     * Starting to search for the relevant update from the 'oldest' update to the newest.
+                     *  The relevant update is the 'newest' with uptime<now that
+                     */
+                    for(var i in this._existingEntityUpdateQueue[entityId][sectionName]) {
+
+                        var prevUpdate = this._existingEntityUpdateQueue[entityId][sectionName][i-1],
+                            update = this._existingEntityUpdateQueue[entityId][sectionName][i],
+                            nextUpdate = this._existingEntityUpdateQueue[entityId][sectionName][i+1];
 
 
-        /**
-         * Applying updates
-         */
+                        if(parseFloat(update.uptime) < uptime) {
 
-        /**
-         * Update on new entity
-         * @param data{ id: ,classId: ,sync: }
-         */
-        _updateNewEntity: function(data) {
-            var entity = engine.getRegisteredClassNewInstance(data.classId, {id: data.id})
-            if(!entity) {
-                throw new Exception('Cannot create new [' + data.classId + '] with ID [' + data.id + ']');
+                            //Remove prev update, its too old
+                            if(undefined !== prevUpdate) {
+                                delete this._existingEntityUpdateQueue[entityId][sectionName][i-1];
+                                delete prevUpdate;
+                            }
+
+                            //Check if we need to stop
+                            if(uptime < parseFloat(nextUpdate.uptime)) {
+                                break;
+                            }
+                        } else {
+                            continue; //All updates are future one, or now updates presents
+                        }
+
+                        //Found an update
+                        var syncData = {};
+                        syncData[sectionName] = update;
+                        entity.sync(syncData);
+                    }
+                }
             }
-
-            return entity.sync(data.sync)
-        },
-
-        /**
-         * Remove existing entity
-         * @param entityId
-         */
-        _updateRemoveEntity: function(entityId) {
-            var entity = engine.getEntityById(entityId);
-            if(!entity) {
-                return false;
-            }
-
-            return entity.destroy();
         },
 
         /**

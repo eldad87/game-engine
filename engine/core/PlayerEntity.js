@@ -1,10 +1,12 @@
 define(['engine/core/Entity', 'engine/core/Point'], function (Entity, Point) {
     var PlayerEntity = Entity.extend({
         _classId: 'PlayerEntity',
+        _syncSections: [],
 
         init: function(options)
         {
             Entity.prototype.init.call(this, options);
+            Entity.prototype.syncSections.call(this, ['translation']);
         },
 
         size3d: function (x, y, z) {
@@ -21,21 +23,47 @@ define(['engine/core/Entity', 'engine/core/Point'], function (Entity, Point) {
 
         },
 
-        sync: function(section, data, deltaSyncOnly)
+        /**
+         *
+         * @param data - data to sync, if undefined - return data
+         * @param deltaSyncOnly - true: return only the changes from last sync, false: return all
+         */
+        sync: function(data, deltaSyncOnly)
         {
-
-        },
-
-        syncSections: function(sections, data)
-        {
-            if(id == undefined) {
-                if(!this._id) {
-                    //Generate a new ID
-                    this._id = UUID.v4();
+            //return sync data
+            if(undefined === data) {
+                var syncData = {};
+                if(deltaSyncOnly) {
+                    //Only delta
+                } else {
+                    //All data
                 }
 
-                return this._id;
+                return Entity.prototype.init.sync(this, data, deltaSyncOnly)['translation'] = syncData;
             }
+
+            if(undefined !== data['translation']) {
+                //Handle translation
+
+                //Delete
+                delete data['translation'];
+            }
+
+            //Pass to parent
+            Entity.prototype.init.sync(this, data, deltaSyncOnly);
+        },
+
+        /**
+         * @param sections
+         * @returns {*}
+         */
+        syncSections: function(sections)
+        {
+            if(undefined === sections) {
+                return this._syncSections;
+            }
+
+            this._syncSections = sections
 
             return this;
         }
