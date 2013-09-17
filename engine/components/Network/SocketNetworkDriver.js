@@ -1,16 +1,16 @@
 //http://www.joezimjs.com/javascript/plugging-into-socket-io-advanced/
 //http://stackoverflow.com/questions/8467784/sending-a-message-to-a-client-via-its-socket-id
-define(['engine/core/Entity', 'engine/core/Exception', 'engine/components/Network/NetworkServer', 'engine/components/Network/NetworkClient'/*, 'moment', 'bson'*/],
-    function(Entity, Exception, NetworkServer, NetworkClient, Moment/*, bson*/) {
+define(['engine/core/Base', 'engine/core/Exception', 'engine/components/Network/NetworkServer', 'engine/components/Network/NetworkClient'/*, 'moment', 'bson'*/],
+    function(Base, Exception, NetworkServer, NetworkClient, Moment/*, bson*/) {
 
-    var SocketNetworkDriver = Entity.extend({
+    var SocketNetworkDriver = Base.extend({
         _classId: 'SocketNetworkDriver',
 
         _messageTypes: {},
         _pingPongTimeSyncInterval: 0,
 
         init: function(options) {
-            Entity.prototype.init.call(this);
+            Base.prototype.init.call(this);
 
             if(engine.isServer) {
                 this.implement(NetworkServer);
@@ -135,7 +135,7 @@ define(['engine/core/Entity', 'engine/core/Exception', 'engine/components/Networ
         },
 
         destroy: function() {
-            Entity.prototype.destroy.call(this);
+            Base.prototype.destroy.call(this);
             this.stopPingPongTimeSync();
         }
     });

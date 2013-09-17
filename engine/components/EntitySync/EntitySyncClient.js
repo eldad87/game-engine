@@ -25,7 +25,7 @@ define(['engine/core/Exception'], function(Exception) {
 
         process: function() {
             if(!this.start() ||
-                false === (Entity.prototype.process.call(this))) {
+                false === (Base.prototype.process.call(this))) {
                 return false;
             }
 
@@ -159,7 +159,7 @@ define(['engine/core/Exception'], function(Exception) {
                         delete this._existingEntityUpdateQueue[entityId];
 
                         //Destroy entity
-                        entity = engine.getEntityById(entityId);
+                        entity = engine.getObjectById(entityId);
                         if(!entity) {
                             continue;
                         }
@@ -184,7 +184,7 @@ define(['engine/core/Exception'], function(Exception) {
          * @param sentUptime
          */
         onUpdateExistingEntity: function(data, sentUptime) {
-            var entity = engine.getEntityById(data.id);
+            var entity = engine.getObjectById(data.id);
             if(!entity) {
                 throw new Exception('Cannot update [' + data.classId + '] with ID [' + data.id + ']');
             }
@@ -235,7 +235,7 @@ define(['engine/core/Exception'], function(Exception) {
         processUpdateExistingEntity: function() {
             var uptime = engine.getUptime();
             for(var entityId in this._existingEntityUpdateQueue) {
-                var entity = engine.getEntityById(entityId);
+                var entity = engine.getObjectById(entityId);
                 if(!entity) {
                     throw new Exception('Cannot process updates entiy with ID [' + data.id + '] not found');
                 }
@@ -283,7 +283,7 @@ define(['engine/core/Exception'], function(Exception) {
          * @param data{ id: ,sync: }
          */
         _updateExistingEntity: function(data) {
-            var entity = engine.getEntityById(data.id);
+            var entity = engine.getObjectById(data.id);
             if(!entity) {
                 throw new Exception('Cannot update [' + data.classId + '] with ID [' + data.id + ']');
             }

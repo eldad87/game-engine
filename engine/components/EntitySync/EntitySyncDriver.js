@@ -1,14 +1,14 @@
-define(['engine/core/Entity', 'engine/components/EntitySync/EntitySyncServer', 'engine/components/EntitySync/EntitySyncClient'],
-    function   ( Entity, EntitySyncServer, EntitySyncClient) {
+define(['engine/core/Base', 'engine/components/EntitySync/EntitySyncServer', 'engine/components/EntitySync/EntitySyncClient'],
+    function   ( Base, EntitySyncServer, EntitySyncClient) {
 
-    var EntitySyncDriver = Entity.extend({
+    var EntitySyncDriver = Base.extend({
         _classId: 'EntitySyncDriver',
 
         _start: false,
         _networkDriver: false,
 
         init: function(options) {
-            Entity.prototype.init.call(this);
+            Base.prototype.init.call(this);
 
             if(undefined !== options) {
                 if(undefined !== options.networkDriver) {

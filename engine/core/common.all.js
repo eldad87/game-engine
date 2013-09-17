@@ -69,8 +69,7 @@ Object.defineProperty(Array.prototype, 'destroyAll', {
 
 /**
  * Iterates through an array's items and calls each item's
- * destroy() method if it exists. Useful for destroying an
- * array of IgeEntity instances.
+ * destroy() method if it exists.
  */
 Array.prototype.destroyAll = function () {
 	var arrCount = this.length,

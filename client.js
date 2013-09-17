@@ -42,18 +42,19 @@ window.onload = function()
                         console.log('Welcom received: ' + JSON.stringify(data))
                         return data;
                     });
+                setInterval(function() {
+                    //Send message
+                    engine.network.sendMessage('greeting', {dummy:'data'});
+                }, 5000);
 
                 //Sync
                 engine
                     .getRegisteredClassNewInstance('EntitySyncDriver', {networkDriver: engine.network})
                     //.processMinLatency(100) - Client only
                     .attach(engine, 'sync')
-                    .start()
+                    .start();
 
-                setInterval(function() {
-                    //Send message
-                    engine.network.sendMessage('greeting', {dummy:'data'});
-                }, 5000);
+
 
 
             }

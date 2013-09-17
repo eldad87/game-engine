@@ -1,5 +1,5 @@
-define(['engine/core/Entity'], function (Entity) {
-    var Point = Entity.extend({
+define(['engine/core/Base'], function (Base) {
+    var Point = Base.extend({
         _classId: 'Point',
 
         x: 0,

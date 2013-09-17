@@ -14,7 +14,7 @@ define(['engine/core/Exception'], function(Exception) {
                 //Get all registered entities
                 var entities = engine.getRegisteredEntities();
                 for(var entityId in entities) {
-                    if(!self._isSyncableEntity(entities[entityId])) {
+                    if(!self._isSyncableObject(entities[entityId])) {
                         //No sync method
                         continue;
                     }
@@ -26,32 +26,32 @@ define(['engine/core/Exception'], function(Exception) {
             });
 
             //New entity, add _entitySync
-            engine.on('registerEntity', function(entityId) {
+            engine.on('registerObject', function(objId) {
 
-                var entity = engine.getEntityById(entityId);
-                if(!self._isSyncableEntity(entity)) {
+                var entity = engine.getObjectById(objId);
+                if(!self._isSyncableObject(entity)) {
                     return true;
                 }
                 entity['_entitySync'] = false;
             });
 
             //Remove entity, remove _entitySync
-            engine.on('beforeUnRegisterEntity', function(entityId) {
+            engine.on('beforeUnRegisterObject', function(objId) {
 
-                var entity = engine.getEntityById(entityId);
-                if(!self._isSyncableEntity(entity)) {
+                var entity = engine.getObjectById(objId);
+                if(!self._isSyncableObject(entity)) {
                     return true;
                 }
                 delete entity._entitySync;
 
-                this.networkDriver().send('updateRemoveEntity', entityId);
+                this.networkDriver().send('updateRemoveEntity', objId);
             });
 
             return this;
         },
 
         update: function() {
-            if(false === Entity.prototype.update.call(this)) {
+            if(false === Base.prototype.update.call(this)) {
                 return false;
             }
 
@@ -59,7 +59,7 @@ define(['engine/core/Exception'], function(Exception) {
             var entities = engine.getRegisteredEntities();
 
             for(var entityId in entities) {
-                if(this._isSyncableEntity(entities[entityId])) {
+                if(this._isSyncableObject(entities[entityId])) {
                     //No sync method
                     continue;
                 }
@@ -113,7 +113,7 @@ define(['engine/core/Exception'], function(Exception) {
          * @returns {boolean}
          * @private
          */
-        _isSyncableEntity: function(entity) {
+        _isSyncableObject: function(entity) {
             /*undefined !==  entity['sync'] &&
              undefined !==  entity['syncSections'] &&*/
 
@@ -125,7 +125,7 @@ define(['engine/core/Exception'], function(Exception) {
 
         /*process: function() {
          if(!this.start() ||
-         false === (Entity.prototype.process.call(this))) {
+         false === (Base.prototype.process.call(this))) {
          return false;
          }
 

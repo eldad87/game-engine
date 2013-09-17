@@ -1,8 +1,8 @@
-var PhysicsSimulation = Entity.extend({
+var PhysicsSimulation = Base.extend({
 	_classId: 'PhysicsSimulation',
 
 	init: function() {
-		 Entity.prototype.init.call(this);
+        Base.prototype.init.call(this);
 	},
 
 	/**

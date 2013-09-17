@@ -19,11 +19,6 @@ requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/Socket
         init: function () {
             this.log('start', 'log');
 
-
-            /*engine
-                .getRegisteredClassNewInstance('PhysicsSimulation')
-                .attach(engine, true)
-                    .start();*/
             engine.isServer = true;
 
             //Networking
@@ -38,6 +33,8 @@ requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/Socket
                         engine.log('welcome - response data: ' + JSON.stringify(data));
                     }, socketId);
                 });
+
+            //Define creation of a new entity
 
             //Sync
             engine

@@ -1,5 +1,5 @@
-define(['engine/core/Entity'], function (Entity) {
-    var Core = Entity.extend({
+define(['engine/core/Base'], function (Base) {
+    var Core = Base.extend({
         _classId: 'Core',
         _updateSceneGraphInterval: 45,
 
@@ -11,7 +11,7 @@ define(['engine/core/Entity'], function (Entity) {
             this.isServer = (typeof(module) !== 'undefined' && module.exports);
             engine = this;
 
-            Entity.prototype.init.call(this, {id: 'engine'});
+            Base.prototype.init.call(this, {id: 'engine'});
         },
 
         /**
@@ -39,41 +39,41 @@ define(['engine/core/Entity'], function (Entity) {
         },
 
         /**
-         * Register an entity
+         * Register an object
          * Late can be find using find()
          */
-        registerEntity: function(entity, override) {
-            if(this._register[entity.id()] !== undefined) {
+        registerObject: function(obj, override) {
+            if(this._register[obj.id()] !== undefined) {
                 if(!override) {
-                    throw new Exception('entity id [' + entity.id() + '] is already registered');
+                    throw new Exception('object id [' + obj.id() + '] is already registered');
                 }
             }
 
-            this.unRegisterEntity(entity);
-            this._register[entity.id()]  = entity;
+            this.unRegisterObject(obj);
+            this._register[obj.id()]  = obj;
 
-            this.emit('registerEntity', entity.id());
+            this.emit('registerObject', obj.id());
             return this;
         },
 
         /**
-         * Unregister an entity
+         * Unregister an object
          */
-        unRegisterEntity: function(entity) {
-            if(undefined !== this._register[entity.id()]) {
+        unRegisterObject: function(obj) {
+            if(undefined !== this._register[obj.id()]) {
 
-                this.emit('beforeUnRegisterEntity', entity.id());
+                this.emit('beforeUnRegisterObject', obj.id());
 
-                delete this._register[entity.id()];
+                delete this._register[obj.id()];
             }
             return this;
         },
 
         /**
-         * Get registered entity by ID
+         * Get registered object by ID
          */
-        getEntityById: function( entityId ) {
-            return this._register[entityId];
+        getObjectById: function( objId ) {
+            return this._register[objId];
         },
 
         /**
@@ -121,7 +121,7 @@ define(['engine/core/Entity'], function (Entity) {
         },
 
         process: function() {
-            Entity.prototype.process.call(this);
+            Base.prototype.process.call(this);
 
             //Engine processing goes here
             return true;
@@ -131,7 +131,7 @@ define(['engine/core/Entity'], function (Entity) {
          * All engine updates should run here
          */
         update: function() {
-            Entity.prototype.update.call(this);
+            Base.prototype.update.call(this);
 
             //Engine updates goes here
             return true;
@@ -168,7 +168,7 @@ define(['engine/core/Entity'], function (Entity) {
         },
 
         destroy: function() {
-            Entity.prototype.destroy.call(this);
+            Base.prototype.destroy.call(this);
             clearInterval(this.updateid);
         }
     });
