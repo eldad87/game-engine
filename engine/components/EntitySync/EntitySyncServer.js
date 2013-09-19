@@ -1,5 +1,7 @@
 define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) {
     return {
+        _latestEntitySectionUpdate: {},
+
         start: function() {
             if(!this.networkDriver()) {
                 throw new Exception('Network drive is missing');
@@ -42,6 +44,7 @@ define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) 
                     return true;
                 }
                 delete entity._entitySync;
+                delete this._latestEntitySectionUpdate[entity.id()];
 
                 this.networkDriver().sendMessage('updateRemoveEntity', objId);
             });
@@ -98,6 +101,37 @@ define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) 
             };
 
             if(!data.sync || 0 == data.sync.length) {
+                return true; //Nothing to sync
+            }
+
+            /**
+             * Prevent sending same update again
+             */
+            var syncSctions = entity.syncSections();
+            for(var i in syncSctions) {
+                if(undefined === data.sync[syncSctions[i]]) {
+                    continue;
+                }
+
+                if(undefined === this._latestEntitySectionUpdate[entity.id()]) {
+                    //First update for this entity
+                    this._latestEntitySectionUpdate[entity.id()] = {};
+                }
+                if(undefined === this._latestEntitySectionUpdate[entity.id()][syncSctions[i]]) {
+                    //This is the first update for this entity/section - set this section update data
+                    this._latestEntitySectionUpdate[entity.id()][syncSctions[i]] = data.sync[syncSctions[i]];
+                    continue;
+                }
+
+                //Check if current sync data === latest sync data
+                if(this._latestEntitySectionUpdate[entity.id()][syncSctions[i]] == data.sync[syncSctions[i]]) {
+                    //Remove update
+                    delete data.sync[syncSctions[i]];
+                }
+            }
+
+            //Check if any updates left
+            if(0 == data.sync.length) {
                 return true; //Nothing to sync
             }
 
