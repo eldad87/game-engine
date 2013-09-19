@@ -24,8 +24,8 @@ window.onload = function()
 
     });
 
-    requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/SocketNetworkDriver', 'engine/components/EntitySync/EntitySyncDriver'],
-        function(Class, Core, SocketNetworkDriver, EntitySyncDriver) {
+    requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/SocketNetworkDriver', 'engine/components/EntitySync/EntitySyncDriver', 'game/DummyEntity'],
+        function(Class, Core, SocketNetworkDriver, EntitySyncDriver, DummyEntity) {
 
         var Client = Class.extend({
             _classId: 'Client',
@@ -38,14 +38,15 @@ window.onload = function()
                     .getRegisteredClassNewInstance('SocketNetworkDriver', {pingPongTimeSyncInterval: 1000})
                     .attach(engine, 'network')
                     .connect('//localhost:4040')
-                    .defineMessageType('welcome', function(data) {
+                    /*.defineMessageType('welcome', function(data) {
                         console.log('Welcom received: ' + JSON.stringify(data))
                         return data;
-                    });
-                setInterval(function() {
+                    })*/;
+                /*setInterval(function() {
                     //Send message
                     engine.network.sendMessage('greeting', {dummy:'data'});
-                }, 5000);
+                }, 5000);*/
+
 
                 //Sync
                 engine
@@ -54,7 +55,8 @@ window.onload = function()
                     .attach(engine, 'sync')
                     .start();
 
-
+                //Ask server to createDummyEntity
+                engine.network.sendMessage('createDummyEntity', {});
 
 
             }

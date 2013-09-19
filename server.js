@@ -10,8 +10,8 @@ requirejs.config({
     }
 });
 
-requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/SocketNetworkDriver', 'engine/components/EntitySync/EntitySyncDriver'],
-    function(Class, Core, SocketNetworkDriver, EntitySyncDriver) {
+requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/SocketNetworkDriver', 'engine/components/EntitySync/EntitySyncDriver', 'game/DummyEntity'],
+    function(Class, Core, SocketNetworkDriver, EntitySyncDriver, DummyEntity) {
 
     var Server = Class.extend({
         _classId: 'Server',
@@ -26,22 +26,25 @@ requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/Socket
                 .getRegisteredClassNewInstance('SocketNetworkDriver')
                 .attach(engine, 'network')
                 .listen(4040)
-                .defineMessageType('greeting', function(data, sentUptime, messageId, socketId) {
+                /*.defineMessageType('greeting', function(data, sentUptime, messageId, socketId) {
                     engine.log('greeting called: ' + JSON.stringify(data));
                     engine.log('Sending welcome');
                     engine.network.sendMessage('welcome', {dummy: 'data2'}, function(data) {
                         engine.log('welcome - response data: ' + JSON.stringify(data));
                     }, socketId);
-                });
+                })*/;
 
             //Define creation of a new entity
+            engine.network.defineMessageType('createDummyEntity', function(/*data, sentUptime, messageId, socketId*/) {
+                engine.getRegisteredClassNewInstance('DummyEntity')
+            });
 
             //Sync
             engine
                 .getRegisteredClassNewInstance('EntitySyncDriver', {networkDriver: engine.network})
                 //.processMinLatency(100) - Client only
                 .attach(engine, 'sync')
-                .start()
+                .start();
         }
     });
 

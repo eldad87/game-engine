@@ -1,4 +1,4 @@
-define(['engine/core/Eventable', 'node-uuid'], function(Eventable, UUID) {
+define(['engine/core/Eventable', 'node-uuid', 'engine/core/Exception'], function(Eventable, UUID, Exception) {
     var Base = Eventable.extend({
         _classId: 'Base',
 
@@ -45,22 +45,25 @@ define(['engine/core/Eventable', 'node-uuid'], function(Eventable, UUID) {
          * Get / Set the object ID
          */
         id: function(id) {
-            if(id == undefined) {
+            if(undefined === id) {
                 if(!this._id) {
                     //Generate a new ID
                     this._id = UUID.v4();
+                    //Register
+                    engine.registerObject(this);
                 }
-
                 return this._id;
             }
 
-
             /* User is asking to change ID */
-            //Unregister, so it will remove the current ID from the engine
-            engine.unRegisterObject(this);
-            //Set the new ID
+            //Un-register, so it will remove the current ID from the engine
+            if(this._id) {
+                engine.unRegisterObject(this);
+            }
+
             this._id = id;
-            //Register again
+
+            //Register
             engine.registerObject(this);
 
             return this;

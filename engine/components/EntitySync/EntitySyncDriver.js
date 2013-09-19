@@ -17,11 +17,11 @@ define(['engine/core/Base', 'engine/components/EntitySync/EntitySyncServer', 'en
             }
 
             if(engine.isServer) {
-                this.implement(EntitySyncServer);
+                this.implement(EntitySyncServer, true);
             }
 
             if(!engine.isServer) {
-                this.implement(EntitySyncClient);
+                this.implement(EntitySyncClient, true);
             }
         },
 

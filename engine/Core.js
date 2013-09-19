@@ -1,4 +1,4 @@
-define(['engine/core/Base'], function (Base) {
+define(['engine/core/Base', 'engine/core/Exception'], function (Base, Exception) {
     var Core = Base.extend({
         _classId: 'Core',
         _updateSceneGraphInterval: 45,
@@ -43,13 +43,13 @@ define(['engine/core/Base'], function (Base) {
          * Late can be find using find()
          */
         registerObject: function(obj, override) {
-            if(this._register[obj.id()] !== undefined) {
+            console.log('Engine:registerObject');
+            if(undefined !== this._register[obj.id()]) {
                 if(!override) {
                     throw new Exception('object id [' + obj.id() + '] is already registered');
                 }
             }
 
-            this.unRegisterObject(obj);
             this._register[obj.id()]  = obj;
 
             this.emit('registerObject', obj.id());

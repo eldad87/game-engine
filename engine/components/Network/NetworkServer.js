@@ -184,10 +184,12 @@ define([ 'socket.io', 'node-uuid'], function(io, UUID) {
             };
 
             //Broadcast to all
-            if(!socketIds) {
+            if(undefined === socketIds || 'undefined' == socketIds || !socketIds) {
                 for(var socketId in this._clientSockets) {
                     this._sendMessage(message, callback, socketId);
                 }
+
+                return true;
             }
 
             //Send to spesific clients
@@ -195,6 +197,8 @@ define([ 'socket.io', 'node-uuid'], function(io, UUID) {
                 for(var i in clientIds) {
                     this._sendMessage(message, callback, socketIds[i]);
                 }
+
+                return true;
             }
 
             //Send to 1 client

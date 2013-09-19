@@ -8,8 +8,8 @@ define(['engine/core/Base'], function (Base) {
 
         init: function (x, y, z) {
             this.x = x || 0;
-            this.y = x || 0;
-            this.z = x || 0;
+            this.y = y || 0;
+            this.z = z || 0;
 
             return this;
         },

@@ -1,4 +1,4 @@
-define(['engine/core/Exception'], function(Exception) {
+define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) {
     return {
         start: function() {
             if(!this.networkDriver()) {
@@ -27,7 +27,6 @@ define(['engine/core/Exception'], function(Exception) {
 
             //New entity, add _entitySync
             engine.on('registerObject', function(objId) {
-
                 var entity = engine.getObjectById(objId);
                 if(!self._isSyncableObject(entity)) {
                     return true;
@@ -44,13 +43,14 @@ define(['engine/core/Exception'], function(Exception) {
                 }
                 delete entity._entitySync;
 
-                this.networkDriver().send('updateRemoveEntity', objId);
+                this.networkDriver().sendMessage('updateRemoveEntity', objId);
             });
 
             return this;
         },
 
         update: function() {
+            console.log('EntitySyncServer::update');
             if(false === Base.prototype.update.call(this)) {
                 return false;
             }
@@ -59,18 +59,17 @@ define(['engine/core/Exception'], function(Exception) {
             var entities = engine.getRegisteredEntities();
 
             for(var entityId in entities) {
-                if(this._isSyncableObject(entities[entityId])) {
+                if(!this._isSyncableObject(entities[entityId])) {
                     //No sync method
                     continue;
                 }
 
                 //Check if its a new entity
                 if(false === entities[entityId]['_entitySync']) {
+                    entities[entityId]['_entitySync'] = true;
                     //New entity
                     this._updateNewEntity(entities[entityId]);
                 } else {
-                    entities[entityId]['_entitySync'] = true;
-
                     //Entity already created, just update its delta
                     this._updateExistingEntity(entities[entityId]);
                 }
@@ -90,7 +89,7 @@ define(['engine/core/Exception'], function(Exception) {
                 return true; //Nothing to sync
             }
 
-            this.networkDriver().send('updateNewEntity', data, undefined, socketId);
+            this.networkDriver().sendMessage('updateNewEntity', data, undefined, socketId);
         },
 
         _updateExistingEntity: function( entity ) {
@@ -103,7 +102,7 @@ define(['engine/core/Exception'], function(Exception) {
                 return true; //Nothing to sync
             }
 
-            this.networkDriver().send('updateExistingEntity', data);
+            this.networkDriver().sendMessage('updateExistingEntity', data);
         },
 
         /**

@@ -2,25 +2,22 @@ define(['engine/core/Base', 'engine/core/Point'], function (Base, Point) {
     var Entity = Base.extend({
         _classId: 'Entity',
         _syncSections: [],
+        _geometry: null,
 
         init: function(options)
         {
+            this.geometry(0, 0, 0);
+            this.syncSections(['translation']);
             Base.prototype.init.call(this, options);
-            Base.prototype.syncSections.call(this, ['translation']);
         },
 
-        size3d: function (x, y, z) {
+        geometry: function (x, y, z) {
             if (x !== undefined && y !== undefined && z !== undefined) {
-                this._geometry = new IgePoint(x, y, z);
+                this._geometry = new Point(x, y, z);
                 return this;
             }
 
             return this._geometry;
-        },
-
-        wolrdPos: function()
-        {
-
         },
 
         /**
@@ -32,25 +29,27 @@ define(['engine/core/Base', 'engine/core/Point'], function (Base, Point) {
         {
             //return sync data
             if(undefined === data) {
-                var syncData = {};
+                /*var syncData = {};
                 if(deltaSyncOnly) {
                     //Only delta
                 } else {
                     //All data
-                }
+                }*/
+                return {translation: [this._geometry.x, this._geometry.y, this._geometry.z]};
 
-                return Base.prototype.init.sync(this, data, deltaSyncOnly)['translation'] = syncData;
+                /*return Base.prototype.init.sync(this, data, deltaSyncOnly)['translation'] = syncData;*/
             }
 
             if(undefined !== data['translation']) {
                 //Handle translation
+                this.geometry.apply(this, data['translation']);
 
                 //Delete
                 delete data['translation'];
             }
 
-            //Pass to parent
-            Base.prototype.init.sync(this, data, deltaSyncOnly);
+            /*//Pass to parent
+            Base.prototype.init.sync(this, data, deltaSyncOnly);*/
         },
 
         /**
