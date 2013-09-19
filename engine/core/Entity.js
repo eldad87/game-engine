@@ -53,6 +53,7 @@ define(['engine/core/Base', 'engine/core/Point'], function (Base, Point) {
         },
 
         /**
+         * Set / Get sync sections
          * @param sections
          * @returns {*}
          */
@@ -64,6 +65,16 @@ define(['engine/core/Base', 'engine/core/Point'], function (Base, Point) {
 
             this._syncSections = sections
 
+            return this;
+        },
+
+        /**
+         * Add sync section
+         * @param section
+         * @returns {*}
+         */
+        addSyncSections: function(section) {
+            this._syncSections.push(section);
             return this;
         }
     });

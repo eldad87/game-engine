@@ -50,7 +50,6 @@ define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) 
         },
 
         update: function() {
-            console.log('EntitySyncServer::update');
             if(false === Base.prototype.update.call(this)) {
                 return false;
             }

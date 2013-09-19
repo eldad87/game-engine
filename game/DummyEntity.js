@@ -8,7 +8,8 @@ define(['engine/core/Entity'], function (Entity) {
             Entity.prototype.init.call(this, options);
 
             this.geometry(10, 10, 10);
-            Entity.prototype.syncSections.call(this, ['translation', 'dummySection']);
+            this.addSyncSections('dummySection');
+            //Entity.prototype.syncSections.call(this, ['translation', 'dummySection']);
         },
 
         sync: function(data, deltaSyncOnly)

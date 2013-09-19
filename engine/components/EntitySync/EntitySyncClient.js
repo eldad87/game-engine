@@ -73,7 +73,6 @@ define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) 
          * Store new entities updates
          */
         onUpdateNewEntity: function(data, sentUptime) {
-            console.log('EntityClientSync:onUpdateNewEntity');
 
             var futureProcessingUptime = this._getFutureInputProcessingUptime(sentUptime);
 
@@ -126,7 +125,6 @@ define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) 
          * @param sentUptime
          */
         onUpdateRemoveEntity: function(entityId, sentUptime) {
-            console.log('EntityClientSync:onUpdateRemoveEntity');
             var futureProcessingUptime = this._getFutureInputProcessingUptime(sentUptime);
 
             if(undefined === this._removeEntityQueue[futureProcessingUptime]) {
@@ -187,7 +185,6 @@ define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) 
          * @param sentUptime
          */
         onUpdateExistingEntity: function(data, sentUptime) {
-            console.log('EntityClientSync:onUpdateExistingEntity');
             var entity = engine.getObjectById(data.id);
             if(!entity) {
                 throw new Exception('Cannot update [' + data.classId + '] with ID [' + data.id + ']');
