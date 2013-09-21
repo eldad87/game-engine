@@ -10,6 +10,7 @@ window.onload = function()
         paths: {
             'socket.io' : './node_modules/socket.io/node_modules/socket.io-client/dist/socket.io',
             'node-uuid' : './node_modules/node-uuid/uuid',
+            'underscore' : './node_modules/underscore/underscore',
             'moment'    : './lib/moment'
             //'bson' : './node_modules/bson/browser_build/bson'
         },
@@ -20,7 +21,7 @@ window.onload = function()
             'lib/three.js/examples/js/Detector': {
                 'exports': 'Detector'
             },
-            'lib/underscore/underscore': {
+            'underscore': {
                 'exports': '_'
             }
         }
@@ -38,9 +39,9 @@ window.onload = function()
     });
 
     requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/SocketNetworkDriver',
-                'engine/components/EntitySync/EntitySyncDriver', 'engine/components/Render/Three',
+                'engine/components/EntitySync/EntitySyncDriver', 'engine/components/Render/ThreeIsometric',
                 'engine/core/Point', 'lib/three.js/build/three',  'game/DummyEntity'],
-        function(Class, Core, SocketNetworkDriver, EntitySyncDriver, Three, Point, threejs, DummyEntity) {
+        function(Class, Core, SocketNetworkDriver, EntitySyncDriver, ThreeIsomatric, Point, threejs, DummyEntity) {
 
         var Client = Class.extend({
             _classId: 'Client',
@@ -73,19 +74,28 @@ window.onload = function()
 
                 //Render
                 engine
-                    .getRegisteredClassNewInstance('Three', {width: window.innerWidth,
-                                                            height: window.innerHeight,
-                                                            'appendToElement': document.getElementById('renderer')})
-                    .addCamera('mainCamera', 'Perspective', 45, window.innerWidth / window.innerHeight, 0.1, 10000, new Point(0, 0, 300) , true)
-                    .addPointLight('mainPointLight' ,'0xFFFFFF', new Point(10, 50, 130))
+                    .getRegisteredClassNewInstance('ThreeIsometric', {
+                        width: window.innerWidth,
+                        height: window.innerHeight,
+                        appendToElement: document.getElementById('renderer'),
+                        camera: {
+                            viewAngle: 45,
+                            aspect: window.innerWidth / window.innerHeight,
+                            near: 0.1,
+                            far: 10000,
+                            position: new Point(0, 0, 300)
+                        },
+                        light: {
+                            color: '0xFFFFFF',
+                            position: new Point(10, 50, 130)
+                        }
+                    })
                     .attach(engine, 'renderer')
                     .start(true);
 
-                //On window change, change the renderer width/height
+                //Set resize event handler
                 window.onresize = function() {
-                    engine.renderer.getRenderer().setSize(window.innerWidth,  window.innerHeight);
-                    engine.renderer.getCamera('mainCamera').aspect = window.innerWidth / window.innerHeight;
-                    engine.renderer.getCamera('mainCamera').updateProjectionMatrix();
+                    engine.renderer.onResize(window.innerWidth,  window.innerHeight);
                 }
 
                 var sphereMaterial =

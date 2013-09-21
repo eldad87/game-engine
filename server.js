@@ -7,6 +7,11 @@ requirejs = require('requirejs');
 requirejs.config({
     paths: {
         'moment'    : './lib/moment'
+    },
+    shim: {
+        'underscore': {
+            'exports': '_'
+        }
     }
 });
 

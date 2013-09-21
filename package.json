@@ -8,7 +8,7 @@
         "requirejs": "2.1.x",
         "socket.io": "0.9.x",
         "node-uuid": "1.4.x",
-        "bson": "dev-master"
+        "underscore": "git+http://github.com/jashkenas/underscore.git"
     },
     "engine": {
         "node": ">=0.10.x"
