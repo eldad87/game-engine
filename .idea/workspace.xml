@@ -1,35 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1592d100-f2af-4020-9290-474c44369096" name="Default" comment="EntitySyncServer - Prevent sending same update again">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/aller-bold.eot" afterPath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/aller-bold.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/aller-bold.ttf" afterPath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/aller-bold.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/aller-bold.woff" afterPath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/aller-bold.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/aller-light.eot" afterPath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/aller-light.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/aller-light.ttf" afterPath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/aller-light.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/aller-light.woff" afterPath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/aller-light.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/novecento-bold.eot" afterPath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/novecento-bold.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/novecento-bold.ttf" afterPath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/novecento-bold.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/novecento-bold.woff" afterPath="$PROJECT_DIR$/lib/underscore/docs/public/fonts/novecento-bold.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_body.jpg" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_body.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_gears.jpg" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_gears.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_metalreflect.jpg" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_metalreflect.jpg" />
+    <list default="true" id="1592d100-f2af-4020-9290-474c44369096" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/underscore" afterPath="$PROJECT_DIR$/lib/underscore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/README.md" afterPath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/scripts/ThreeJsExportScript.mel" afterPath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/scripts/ThreeJsExportScript.mel" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/build/build.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/build/build.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/build/build_all.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/build/build_all.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/build/build_debug.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/build/build_debug.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump.dae" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump.dae" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/editors/sublime.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/editors/sublime.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js" afterPath="$PROJECT_DIR$/lib/three.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/plug-ins/threeJsFileTranslator.py" afterPath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/plug-ins/threeJsFileTranslator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rawcept.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379768617644" ignored="false" />
+    <file path="/Dummy.txt" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379768653796" ignored="false" />
     <file path="/client.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379710861355" ignored="false" />
     <file path="/a.dummy" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379758168183" ignored="false" />
     <file path="/Entity.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379631393570" ignored="false" />
@@ -165,114 +142,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Render" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EntitySync" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -282,8 +151,8 @@
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig">
     <servers>
@@ -346,7 +215,11 @@
       <created>1379632406498</created>
       <updated>1379632406498</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Three + underscore">
+      <created>1379768676356</created>
+      <updated>1379768676356</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -358,7 +231,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25773746" sideWeight="0.5688487" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26040554" sideWeight="0.6704289" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295711" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -416,7 +289,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="EntitySyncServer - Prevent sending same update again" />
+    <option name="LAST_COMMIT_MESSAGE" value="Three + underscore" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -434,6 +307,7 @@
     <MESSAGE value="Fix: NetworkServer::sendMessage() - mass message is now working&#10;Fix: Base::id() - caused an infinite recursion loop&#10;EntitySyncClient is working&#10;" />
     <MESSAGE value="Entity::addSyncSections&#10;removal of console.log in EntitySync" />
     <MESSAGE value="EntitySyncServer - Prevent sending same update again" />
+    <MESSAGE value="Three + underscore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
