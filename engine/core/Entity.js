@@ -21,22 +21,14 @@ define(['engine/core/Base', 'engine/core/Point'], function (Base, Point) {
         },
 
         /**
-         *
+         * Set / Get sync data
          * @param data - data to sync, if undefined - return data
-         * @param deltaSyncOnly - true: return only the changes from last sync, false: return all
          */
-        sync: function(data, deltaSyncOnly)
+        sync: function(data)
         {
             //return sync data
             if(undefined === data) {
-                /*var syncData = {};
-                if(deltaSyncOnly) {
-                    //Only delta
-                } else {
-                    //All data
-                }*/
                 return {translation: [this._geometry.x, this._geometry.y, this._geometry.z]};
-
                 /*return Base.prototype.init.sync(this, data, deltaSyncOnly)['translation'] = syncData;*/
             }
 
@@ -53,7 +45,7 @@ define(['engine/core/Base', 'engine/core/Point'], function (Base, Point) {
         },
 
         /**
-         * Set / Get sync sections
+         * Set / Get syc
          * @param sections
          * @returns {*}
          */

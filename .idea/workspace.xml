@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1592d100-f2af-4020-9290-474c44369096" name="Default" comment="">
+    <list default="true" id="1592d100-f2af-4020-9290-474c44369096" name="Default" comment="EntitySyncServer - Prevent sending same update again">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/underscore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/components/Render/Three.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/moment.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/three.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/core/Base.js" afterPath="$PROJECT_DIR$/engine/core/Base.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/DummyEntity.js" afterPath="$PROJECT_DIR$/game/DummyEntity.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/core/Entity.js" afterPath="$PROJECT_DIR$/engine/core/Entity.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncClient.js" afterPath="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncClient.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncDriver.js" afterPath="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncDriver.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncServer.js" afterPath="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncServer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/core/Point.js" afterPath="$PROJECT_DIR$/engine/core/Point.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js" afterPath="$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client.js" afterPath="$PROJECT_DIR$/client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rawcept.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379631505377" ignored="false" />
-    <file path="/client.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379455799905" ignored="false" />
-    <file path="/a.dummy" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379455632770" ignored="false" />
+    <file path="/Dummy.txt" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379768536356" ignored="false" />
+    <file path="/client.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379710861355" ignored="false" />
+    <file path="/a.dummy" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379758168183" ignored="false" />
     <file path="/Entity.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379631393570" ignored="false" />
     <file path="/Core.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379609463378" ignored="false" />
     <file path="/EntitySyncServer.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379632290676" ignored="false" />
@@ -20,6 +32,9 @@
     <file path="/Point.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379630166858" ignored="false" />
     <file path="/EntitySyncDriver.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379629787187" ignored="false" />
     <file path="/NetworkServer.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379630907646" ignored="false" />
+    <file path="/Three.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379710876292" ignored="false" />
+    <file path="/common.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379699281398" ignored="false" />
+    <file path="/index.html" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379701954331" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,59 +48,12 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="EntitySyncClient.js" pinned="false" current="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/engine/components/EntitySync/EntitySyncClient.js">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state line="197" column="60" selection-start="6720" selection-end="6746" vertical-scroll-proportion="3.503138">
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="rawcept" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Entity.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/core/Entity.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="34" selection-start="1747" selection-end="1747" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DummyEntity.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/game/DummyEntity.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="36" selection-start="594" selection-end="594" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EntitySyncServer.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/engine/components/EntitySync/EntitySyncServer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="107" column="48" selection-start="3615" selection-end="3648" vertical-scroll-proportion="0.29651162">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -103,11 +71,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js" />
-        <option value="$PROJECT_DIR$/engine/components/PhysicsSimulation.js" />
-        <option value="$PROJECT_DIR$/engine/core/common.all.js" />
         <option value="$PROJECT_DIR$/engine/core/PlayerEntity.js" />
-        <option value="$PROJECT_DIR$/client.js" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncDriver.js" />
         <option value="$PROJECT_DIR$/engine/core/Point.js" />
@@ -117,8 +81,12 @@
         <option value="$PROJECT_DIR$/engine/Core.js" />
         <option value="$PROJECT_DIR$/game/DummyEntity.js" />
         <option value="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncClient.js" />
-        <option value="$PROJECT_DIR$/engine/core/Entity.js" />
+        <option value="$PROJECT_DIR$/engine/core/common.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/engine/components/Render/Three.js" />
+        <option value="$PROJECT_DIR$/client.js" />
         <option value="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncServer.js" />
+        <option value="$PROJECT_DIR$/engine/core/Entity.js" />
       </list>
     </option>
   </component>
@@ -171,6 +139,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -256,6 +238,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Render" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="EntitySync" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -308,29 +312,33 @@
       <created>1379631509176</created>
       <updated>1379631509176</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="EntitySyncServer - Prevent sending same update again">
+      <created>1379632406498</created>
+      <updated>1379632406498</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43115124" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25506938" sideWeight="0.6704289" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295711" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25506938" sideWeight="0.5688487" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43115124" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -378,7 +386,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Entity::addSyncSections&#10;removal of console.log in EntitySync" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntitySyncServer - Prevent sending same update again" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -395,119 +403,127 @@
     <MESSAGE value="Renamed:&#10;Entity -&gt; Base&#10;PlayerEntity -&gt; Entity" />
     <MESSAGE value="Fix: NetworkServer::sendMessage() - mass message is now working&#10;Fix: Base::id() - caused an infinite recursion loop&#10;EntitySyncClient is working&#10;" />
     <MESSAGE value="Entity::addSyncSections&#10;removal of console.log in EntitySync" />
+    <MESSAGE value="EntitySyncServer - Prevent sending same update again" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/engine/core/common.all.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="33" selection-start="1686" selection-end="1686" vertical-scroll-proportion="0.29707113" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="68" selection-start="2061" selection-end="2061" vertical-scroll-proportion="0.0">
+        <state line="11" column="25" selection-start="276" selection-end="276" vertical-scroll-proportion="-7.1923075">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/core/Class.js">
+    <entry file="file://$PROJECT_DIR$/engine/components/PhysicsSimulation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="9" selection-start="626" selection-end="626" vertical-scroll-proportion="0.33259913">
+        <state line="26" column="82" selection-start="664" selection-end="664" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/engine/core/Point.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="22" selection-start="263" selection-end="263" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/core/common.js">
-      <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="33" selection-start="592" selection-end="592" vertical-scroll-proportion="-1.7476745">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/components/EntitySync/EntitySyncDriver.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="8" selection-start="927" selection-end="927" vertical-scroll-proportion="0.63255817">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/core/Base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="69" selection-start="44" selection-end="69" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/Core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="79" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0">
+        <state line="23" column="34" selection-start="953" selection-end="953" vertical-scroll-proportion="0.37444934">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/engine/components/Network/NetworkServer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="203" column="30" selection-start="6479" selection-end="6479" vertical-scroll-proportion="0.78720933">
+        <state line="88" column="21" selection-start="2402" selection-end="2402" vertical-scroll-proportion="-1.2213657">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
+    <entry file="file://$PROJECT_DIR$/lib/keyboard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="9" selection-start="1878" selection-end="1878" vertical-scroll-proportion="0.69186044">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.3918605">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/Core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="37" selection-start="2558" selection-end="2587" vertical-scroll-proportion="0.6127907">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/components/Network/NetworkClient.js">
+    <entry file="file://$PROJECT_DIR$/lib/three.js/examples/js/Car.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="37" selection-start="3303" selection-end="3314" vertical-scroll-proportion="1.3383721">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-6.4523253">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game/DummyEntity.js">
+    <entry file="file://$PROJECT_DIR$/lib/three.js/examples/js/Detector.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="36" selection-start="594" selection-end="594" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.060212515">
+          <folding>
+            <marker date="1379694585174" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1379694585174" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1379694585174" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1379694585174" expanded="false" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/Render/Three.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="24" selection-start="519" selection-end="519" vertical-scroll-proportion="-6.12">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/core/Entity.js">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="34" selection-start="1747" selection-end="1747" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="14" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/components/EntitySync/EntitySyncClient.js">
+    <entry file="file://$PROJECT_DIR$/client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="197" column="60" selection-start="6720" selection-end="6746" vertical-scroll-proportion="3.503138">
+        <state line="72" column="0" selection-start="2409" selection-end="2409" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/EntitySync/EntitySyncDriver.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/engine/components/EntitySync/EntitySyncServer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="48" selection-start="3615" selection-end="3648" vertical-scroll-proportion="0.29651162">
+        <state line="99" column="41" selection-start="3362" selection-end="3362" vertical-scroll-proportion="0.4251497">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/core/Entity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="30" selection-start="676" selection-end="676" vertical-scroll-proportion="0.33604652">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/EntitySync/EntitySyncClient.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>

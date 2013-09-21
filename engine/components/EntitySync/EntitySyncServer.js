@@ -84,7 +84,7 @@ define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) 
             var data = {
                 'id':       entity.id(),
                 'classId':  entity.getClassId(),
-                'sync':     entity.sync(undefined, false) //WHOLE sync data, not only the delta
+                'sync':     entity.sync()
             };
 
             if(!data.sync || 0 == data.sync.length) {
@@ -97,7 +97,7 @@ define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) 
         _updateExistingEntity: function( entity ) {
             var data = {
                 'id':       entity.id(),
-                'sync':     entity.sync(undefined, true) //Update delta only
+                'sync':     entity.sync()
             };
 
             if(!data.sync || 0 == data.sync.length) {
