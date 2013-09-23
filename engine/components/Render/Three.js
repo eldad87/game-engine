@@ -1,15 +1,17 @@
-define(['engine/core/Base', 'engine/core/Point', 'lib/three.js/build/three', 'lib/three.js/examples/js/Detector', 'underscore', 'engine/core/Exception'],
+define(['engine/core/Base', 'engine/core/Point',
+    'lib/three.js/build/three', 'lib/three.js/examples/js/Detector', 'underscore', 'engine/core/Exception'],
     function(Base, Point, THREE, Detector, _, Exception) {
 
         var Three = Base.extend({
             _classId: 'Three',
 
+            _debug: true,
             _start: false,
             _renderer: null,
             _scene: null,
             _objs: {},
             _mainCamera: null,
-            _defaultOptions: {width: 1920, height: 1080},
+            _defaultOptions: {debug: true, width: 1920, height: 1080},
 
             /**
              *
@@ -25,7 +27,6 @@ define(['engine/core/Base', 'engine/core/Point', 'lib/three.js/build/three', 'li
                 }
                 options = _.extend(this._defaultOptions, options);
 
-
                 //Detect WebGL support: #http://stackoverflow.com/questions/9899807/three-js-detect-webgl-support-and-fallback-to-regular-canvas
                 this._renderer = Detector.webgl ? this.createObject('mainRenderer', 'WebGLRenderer') : this.createObject('mainRenderer', 'CanvasRenderer');
 
@@ -35,6 +36,12 @@ define(['engine/core/Base', 'engine/core/Point', 'lib/three.js/build/three', 'li
 
                 //Init scene
                 this._scene = this.createObject('mainScene', 'Scene');
+
+                this._debug = options.debug;
+                if(this._debug) {
+                    this.createSceneObject('AxisHelper', 'AxisHelper', [100]);
+                    this.createSceneObject('GridHelper', 'GridHelper', [200, 1]);
+                }
             },
 
             start: function(val) {
@@ -76,9 +83,18 @@ define(['engine/core/Base', 'engine/core/Point', 'lib/three.js/build/three', 'li
             },
 
             createSceneObject: function(identifier, name, args) {
+                var obj = this.createObject(identifier, name, args);
+
                 this.addToScene(
-                    this.createObject(identifier, name, args)
+                    obj
                 );
+
+                if(this._debug) {
+                    if( ['Camera', 'OrthographicCamera', 'PerspectiveCamera'].indexOf(name) > -1 ) { //Camera
+                        this.createSceneObject('CameraHelper', 'CameraHelper', [obj]);
+                    }
+                }
+
                 return this;
             },
 

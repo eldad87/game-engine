@@ -18,6 +18,18 @@ window.onload = function()
             'lib/three.js/build/three': {
                 'exports': 'THREE'
             },
+            'lib/three.js/examples/js/loaders/OBJMTLLoader' :{
+                deps: ['lib/three.js/build/three'],
+                'exports': 'THREE'
+            },
+            'lib/three.js/examples/js/loaders/OBJLoader' :{
+                deps: ['lib/three.js/build/three'],
+                'exports': 'THREE'
+            },
+            'lib/three.js/examples/js/loaders/MTLLoader' :{
+                deps: ['lib/three.js/build/three'],
+                'exports': 'THREE'
+            },
             'lib/three.js/examples/js/Detector': {
                 'exports': 'Detector'
             },
@@ -40,8 +52,9 @@ window.onload = function()
 
     requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/SocketNetworkDriver',
                 'engine/components/EntitySync/EntitySyncDriver', 'engine/components/Render/ThreeIsometric',
+                'engine/components/Render/ThreeLoader',
                 'engine/core/Point', 'lib/three.js/build/three',  'game/DummyEntity'],
-        function(Class, Core, SocketNetworkDriver, EntitySyncDriver, ThreeIsomatric, Point, threejs, DummyEntity) {
+        function(Class, Core, SocketNetworkDriver, EntitySyncDriver, ThreeIsomatric, ThreeLoader, Point, THREE, DummyEntity) {
 
         var Client = Class.extend({
             _classId: 'Client',
@@ -75,19 +88,21 @@ window.onload = function()
                 //Render
                 engine
                     .getRegisteredClassNewInstance('ThreeIsometric', {
+                        debug: true,
                         width: window.innerWidth,
                         height: window.innerHeight,
                         appendToElement: document.getElementById('renderer'),
                         camera: {
-                            viewAngle: 45,
+                            viewAngle: 55,
                             aspect: window.innerWidth / window.innerHeight,
                             near: 0.1,
                             far: 10000,
-                            position: new Point(0, 0, 300)
+                            position: new Point(10, 10, 0),
+                            lookAt:  new Point(0, 0, 0)
                         },
                         light: {
-                            color: '0xFFFFFF',
-                            position: new Point(10, 50, 130)
+                            color: 0xffeedd,
+                            position: new Point(100, 60, 30)
                         }
                     })
                     .attach(engine, 'renderer')
@@ -98,25 +113,24 @@ window.onload = function()
                     engine.renderer.onResize(window.innerWidth,  window.innerHeight);
                 }
 
-                var sphereMaterial =
-                    new threejs.MeshLambertMaterial(
-                        {
-                            color: 0xCC0000
-                        });
+                engine.getRegisteredClassNewInstance('ThreeLoader')
+                    .attach(engine, 'threeLoader')
+                    .setOnProgressCallback(function(loaded, total){
+                        if(loaded == total) {
+                            console.log('WooHoo!! let\'s rock! [' + loaded + '/' + total + ']');
 
-                var sphere = new threejs.Mesh(
+                            var mesh = this.createMesh( 'townHallGeo', 'townHallText', 'Lambert', false);
+                            mesh.position.set(0,0,0);
+                            //mesh.scale.set( 3, 3, 3 );
+                            //mesh.overdraw = true;
+                            engine.renderer.addToScene( mesh );
 
-                    new threejs.SphereGeometry(
-                        50,
-                        16,
-                        16),
-
-                    sphereMaterial);
-
-                engine.renderer.addToScene(sphere);
-
-
-
+                        } else {
+                            console.log('Loaded [' + loaded + '/' + total + ']');
+                        }
+                    })
+                    .loadGeometry('townHallGeo', './game/assets/human/town_hall/h_town_hall.js')
+                    .loadTexture('townHallText', './game/assets/human/town_hall/h_town_hall.jpg');
 
 
                 //Ask server to createDummyEntity

@@ -2,21 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1592d100-f2af-4020-9290-474c44369096" name="Default" comment="Three + underscore">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" />
-      <change type="DELETED" beforePath="Z:\rawcept\lib\underscore" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_body.jpg" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_body.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_gears.jpg" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_gears.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_metalreflect.jpg" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_metalreflect.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/README.md" afterPath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/Three.js" afterPath="$PROJECT_DIR$/engine/components/Render/Three.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/scripts/ThreeJsExportScript.mel" afterPath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/scripts/ThreeJsExportScript.mel" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/build/build.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/build/build.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/build/build_all.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/build/build_all.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/build/build_debug.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/build/build_debug.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client.js" afterPath="$PROJECT_DIR$/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump.dae" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump.dae" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/editors/sublime.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/editors/sublime.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js" afterPath="$PROJECT_DIR$/lib/three.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/plug-ins/threeJsFileTranslator.py" afterPath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/plug-ins/threeJsFileTranslator.py" />
@@ -24,9 +21,9 @@
     </list>
     <ignored path="rawcept.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379776643987" ignored="false" />
-    <file path="/client.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379791830195" ignored="false" />
-    <file path="/a.dummy" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379770988207" ignored="false" />
+    <file path="/Dummy.txt" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379973817249" ignored="false" />
+    <file path="/client.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379974456291" ignored="false" />
+    <file path="/a.dummy" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379794891330" ignored="false" />
     <file path="/Entity.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379631393570" ignored="false" />
     <file path="/Core.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379609463378" ignored="false" />
     <file path="/EntitySyncServer.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379632290676" ignored="false" />
@@ -36,11 +33,14 @@
     <file path="/Point.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379630166858" ignored="false" />
     <file path="/EntitySyncDriver.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379629787187" ignored="false" />
     <file path="/NetworkServer.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379630907646" ignored="false" />
-    <file path="/Three.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379791684220" ignored="false" />
+    <file path="/Three.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379886842560" ignored="false" />
     <file path="/common.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379699281398" ignored="false" />
     <file path="/index.html" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379701954331" ignored="false" />
     <file path="/package.json" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379771332145" ignored="false" />
     <file path="/IsomatricThree.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379792398433" ignored="false" />
+    <file path="/ThreeIsometric.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379888563529" ignored="false" />
+    <file path="/ThreeLoader.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379973402071" ignored="false" />
+    <file path="$PROJECT_DIR$/game/assets/human/town_hall/h_town_hall.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379974049709" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,28 +60,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ThreeIsometric.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ThreeIsometric.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="50" selection-start="360" selection-end="360" vertical-scroll-proportion="0.17790698">
+            <state line="44" column="18" selection-start="1929" selection-end="1929" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Three.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/components/Render/Three.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="40" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="client.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="client.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="105" selection-start="1186" selection-end="1186" vertical-scroll-proportion="0.0">
+            <state line="132" column="98" selection-start="5237" selection-end="5237" vertical-scroll-proportion="0.6629956">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ThreeLoader.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeLoader.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="84" column="66" selection-start="2690" selection-end="2690" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -105,8 +105,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" />
-        <option value="$PROJECT_DIR$/engine/core/Base.js" />
         <option value="$PROJECT_DIR$/engine/Core.js" />
         <option value="$PROJECT_DIR$/game/DummyEntity.js" />
         <option value="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncClient.js" />
@@ -118,18 +116,20 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/engine/components/Render/IsomatricThree.js" />
         <option value="$PROJECT_DIR$/engine/components/Render/ThreeIsomatric.js" />
-        <option value="$PROJECT_DIR$/client.js" />
+        <option value="$PROJECT_DIR$/game/assets/human/town_hall/h_town_hall.js" />
+        <option value="$PROJECT_DIR$/engine/components/Render/ThreeLoader.js" />
         <option value="$PROJECT_DIR$/engine/components/Render/Three.js" />
         <option value="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" />
+        <option value="$PROJECT_DIR$/client.js" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
+    <option name="x" value="1911" />
     <option name="y" value="-9" />
     <option name="width" value="1938" />
-    <option name="height" value="1050" />
+    <option name="height" value="1098" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -186,87 +186,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="node_modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="three.js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="three.js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rawcept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="three.js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lights" />
+              <option name="myItemId" value="engine" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -281,6 +201,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -370,6 +294,11 @@
       </server>
     </servers>
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="Z:\rawcept\game" />
+    </key>
+  </component>
   <component name="RunManager">
     <list size="0" />
   </component>
@@ -417,13 +346,22 @@
       <created>1379768676356</created>
       <updated>1379768676356</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Three Isometric - init">
+      <created>1379792454632</created>
+      <updated>1379792454632</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Three assets loader">
+      <created>1379973819795</created>
+      <updated>1379973819795</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
+    <frame x="1911" y="-9" width="1938" height="1098" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43115124" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -439,7 +377,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -487,7 +424,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Three + underscore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Three assets loader" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -506,119 +443,121 @@
     <MESSAGE value="Entity::addSyncSections&#10;removal of console.log in EntitySync" />
     <MESSAGE value="EntitySyncServer - Prevent sending same update again" />
     <MESSAGE value="Three + underscore" />
+    <MESSAGE value="Three Isometric - init" />
+    <MESSAGE value="Three assets loader" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/three.js/src/renderers/WebGLRenderTarget.js">
+    <entry file="file://$PROJECT_DIR$/lib/three.js/utils/converters/obj/convert_obj_three.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="75" selection-start="930" selection-end="930" vertical-scroll-proportion="-0.16627906">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/src/cameras/OrthographicCamera.js">
+    <entry file="file://$PROJECT_DIR$/lib/three.js/src/loaders/ObjectLoader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="24" selection-start="63" selection-end="81" vertical-scroll-proportion="0.07906977">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-5.661628">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/three.js/src/loaders/MaterialLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/assets/human/town_hall/h_town_hall.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="23" selection-start="604" selection-end="674" vertical-scroll-proportion="0.48170012">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/three.js/src/loaders/JSONLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="6" selection-start="102" selection-end="102" vertical-scroll-proportion="0.09883721">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/three.js/src/textures/Texture.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="20" selection-start="1269" selection-end="1280" vertical-scroll-proportion="0.54288703">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/three.js/src/loaders/LoadingManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/core/Eventable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/core/Class.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.059302326">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/engine/core/Base.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="8" selection-start="2087" selection-end="2087" vertical-scroll-proportion="0.33255813">
+        <state line="75" column="30" selection-start="2109" selection-end="2109" vertical-scroll-proportion="0.2372093">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/editor/js/Editor.js">
+    <entry file="file://$PROJECT_DIR$/engine/core/Entity.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="288" column="12" selection-start="5681" selection-end="5681" vertical-scroll-proportion="0.33255813">
+        <state line="10" column="36" selection-start="345" selection-end="349" vertical-scroll-proportion="0.19767442">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/src/core/Clock.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/src/scenes/Scene.js">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/src/cameras/PerspectiveCamera.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="23" selection-start="156" selection-end="173" vertical-scroll-proportion="0.11860465">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/src/lights/AmbientLight.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/src/lights/AreaLight.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/src/lights/HemisphereLight.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/src/lights/PointLight.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="11" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/src/lights/Light.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="40" selection-start="163" selection-end="199" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/build/three.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10037" column="12" selection-start="195636" selection-end="195636" vertical-scroll-proportion="0.37469587">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="105" selection-start="1186" selection-end="1186" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/components/Render/Three.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="40" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="50" selection-start="360" selection-end="360" vertical-scroll-proportion="0.17790698">
+        <state line="44" column="18" selection-start="1929" selection-end="1929" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/Render/Three.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="28" selection-start="365" selection-end="365" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="66" selection-start="2690" selection-end="2690" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="132" column="98" selection-start="5237" selection-end="5237" vertical-scroll-proportion="0.6629956">
           <folding />
         </state>
       </provider>
