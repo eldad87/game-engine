@@ -62,28 +62,30 @@ window.onload = function()
             init: function () {
                 this.log('start', 'log');
 
-                //Networking
-                /*engine
-                    .getRegisteredClassNewInstance('SocketNetworkDriver', {pingPongTimeSyncInterval: 1000})
-                    .attach(engine, 'network')
-                    .connect('//localhost:4040')*/
-                    /*.defineMessageType('welcome', function(data) {
-                        console.log('Welcom received: ' + JSON.stringify(data))
-                        return data;
-                    })*/;
-                /*setInterval(function() {
-                    //Send message
-                    engine.network.sendMessage('greeting', {dummy:'data'});
-                }, 5000);*/
+                var self = this;
+                engine.getRegisteredClassNewInstance('ThreeLoader')
+                    .attach(engine, 'threeLoader')
+                    .setOnProgressCallback(function(loaded, total){
+                        if(loaded == total) {
+                            /*console.log('WooHoo!! let\'s rock! [' + loaded + '/' + total + ']');
 
+                            var mesh = this.createMesh( 'townHallGeo', 'Lambert', 'townHallText', false);
+                            mesh.position.set(0,0,0);
+                            //mesh.scale.set( 3, 3, 3 );
+                            //mesh.overdraw = true;
+                            engine.renderer.addToScene( mesh );*/
 
-                //Sync
-                /*engine
-                    .getRegisteredClassNewInstance('EntitySyncDriver', {networkDriver: engine.network})
-                    .processMinLatency(100) //Client only
-                    .attach(engine, 'sync')
-                    .start();*/
+                            console.log('All assets been loaded [' + total + ']');
+                            self._init();
+                        } else {
+                            console.log('Loaded [' + loaded + '/' + total + '] assets');
+                        }
+                    })
+                    .loadGeometry('townHallGeo', './game/assets/human/town_hall/h_town_hall.js')
+                    .loadTexture('townHallText', './game/assets/human/town_hall/h_town_hall.jpg');
+            },
 
+            _init: function() {
 
                 //Render
                 engine
@@ -93,11 +95,11 @@ window.onload = function()
                         height: window.innerHeight,
                         appendToElement: document.getElementById('renderer'),
                         camera: {
-                            viewAngle: 55,
+                            viewAngle: 27,
                             aspect: window.innerWidth / window.innerHeight,
                             near: 0.1,
                             far: 10000,
-                            position: new Point(10, 10, 0),
+                            position: new Point(25, 25, 0),
                             lookAt:  new Point(0, 0, 0)
                         },
                         light: {
@@ -113,24 +115,30 @@ window.onload = function()
                     engine.renderer.onResize(window.innerWidth,  window.innerHeight);
                 }
 
-                engine.getRegisteredClassNewInstance('ThreeLoader')
-                    .attach(engine, 'threeLoader')
-                    .setOnProgressCallback(function(loaded, total){
-                        if(loaded == total) {
-                            console.log('WooHoo!! let\'s rock! [' + loaded + '/' + total + ']');
+                new DummyEntity();
 
-                            var mesh = this.createMesh( 'townHallGeo', 'townHallText', 'Lambert', false);
-                            mesh.position.set(0,0,0);
-                            //mesh.scale.set( 3, 3, 3 );
-                            //mesh.overdraw = true;
-                            engine.renderer.addToScene( mesh );
 
-                        } else {
-                            console.log('Loaded [' + loaded + '/' + total + ']');
-                        }
-                    })
-                    .loadGeometry('townHallGeo', './game/assets/human/town_hall/h_town_hall.js')
-                    .loadTexture('townHallText', './game/assets/human/town_hall/h_town_hall.jpg');
+                //Networking
+                /*engine
+                 .getRegisteredClassNewInstance('SocketNetworkDriver', {pingPongTimeSyncInterval: 1000})
+                 .attach(engine, 'network')
+                 .connect('//localhost:4040')*/
+                /*.defineMessageType('welcome', function(data) {
+                 console.log('Welcom received: ' + JSON.stringify(data))
+                 return data;
+                 })*/;
+                /*setInterval(function() {
+                 //Send message
+                 engine.network.sendMessage('greeting', {dummy:'data'});
+                 }, 5000);*/
+
+
+                //Sync
+                /*engine
+                 .getRegisteredClassNewInstance('EntitySyncDriver', {networkDriver: engine.network})
+                 .processMinLatency(100) //Client only
+                 .attach(engine, 'sync')
+                 .start();*/
 
 
                 //Ask server to createDummyEntity

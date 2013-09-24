@@ -22,9 +22,6 @@ define(['engine/core/Base', 'engine/core/Point',
             init: function(options) {
                 Base.prototype.init.call(this);
 
-                if(undefined === options) {
-                    throw new Exception('No settings found');
-                }
                 options = _.extend(this._defaultOptions, options);
 
                 //Detect WebGL support: #http://stackoverflow.com/questions/9899807/three-js-detect-webgl-support-and-fallback-to-regular-canvas
@@ -79,6 +76,10 @@ define(['engine/core/Base', 'engine/core/Point',
 
             addToScene: function(object) {
                 this._scene.add(object);
+                return this;
+            },
+            removeFromScene: function(object) {
+                this._scene.remove(object);
                 return this;
             },
 

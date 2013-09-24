@@ -82,9 +82,9 @@ define(['engine/core/Base', 'lib/three.js/build/three', 'underscore', 'engine/co
                 return this._geometries[name];
             },
 
-            createMesh: function( geometryName, textureName, material, inverse) {
+            createMesh: function( geometryName, material, textureName, inverse) {
                 var geometry    = this.getGeometry(geometryName),
-                    texture     = this.getTexture(textureName),
+                    texture     = textureName ? this.getTexture(textureName) : null,
                     material    = new THREE['Mesh' + material + 'Material']( { map:texture, shading: THREE.SmoothShading, blending: THREE.AdditiveBlending }),
                     mesh        = new THREE.Mesh( geometry, material );
 

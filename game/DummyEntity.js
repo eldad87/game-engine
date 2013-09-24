@@ -1,4 +1,4 @@
-define(['engine/core/Entity'], function (Entity) {
+define(['engine/core/Entity', 'engine/components/Render/ThreeBaseRenderable'], function (Entity, ThreeBaseRenderable) {
     var DummyEntity = Entity.extend({
         _classId: 'DummyEntity',
 
@@ -7,9 +7,14 @@ define(['engine/core/Entity'], function (Entity) {
             console.log('DummyEntity:init');
             Entity.prototype.init.call(this, options);
 
-            this.geometry(10, 10, 10);
             this.addSyncSections('dummySection');
             //Entity.prototype.syncSections.call(this, ['translation', 'dummySection']);
+
+            //Give this entity a look
+            if(!engine.isServer) {
+                var render = new ThreeBaseRenderable({geometryName: 'townHallGeo', material: 'Phong', textureName: 'townHallText'});
+                render.attach(this, 'render');
+            }
         },
 
         sync: function(data, deltaSyncOnly)

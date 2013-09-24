@@ -14,6 +14,11 @@ define(['engine/core/Eventable', 'node-uuid', 'engine/core/Exception'], function
             } else {
                 this.id();
             }
+
+            if(engine !== this) {
+                //Engine can't attach to himslef - recursive
+                this.attach(engine);
+            }
         },
 
         /**
@@ -77,6 +82,9 @@ define(['engine/core/Eventable', 'node-uuid', 'engine/core/Exception'], function
             if(parent === undefined) {
                 throw new Exception('Cannot attach to an undefined parent');
             }
+            if(parent === this) {
+                return this; //Can't attach to yourself
+            }
 
             //Before we continue, we must unAtach ourself from our current parent
             this.unAttach();
@@ -117,10 +125,10 @@ define(['engine/core/Eventable', 'node-uuid', 'engine/core/Exception'], function
                 delete this._parent[accessor];
             }
 
-            //Remove parent reference
-            delete this._parent;
             //Remove reference from parent
             this._parent._children.pull(this);
+            //Remove parent reference
+            delete this._parent;
 
             return this;
         },
