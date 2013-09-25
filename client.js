@@ -67,14 +67,6 @@ window.onload = function()
                     .attach(engine, 'threeLoader')
                     .setOnProgressCallback(function(loaded, total){
                         if(loaded == total) {
-                            /*console.log('WooHoo!! let\'s rock! [' + loaded + '/' + total + ']');
-
-                            var mesh = this.createMesh( 'townHallGeo', 'Lambert', 'townHallText', false);
-                            mesh.position.set(0,0,0);
-                            //mesh.scale.set( 3, 3, 3 );
-                            //mesh.overdraw = true;
-                            engine.renderer.addToScene( mesh );*/
-
                             console.log('All assets been loaded [' + total + ']');
                             self._init();
                         } else {
@@ -99,11 +91,11 @@ window.onload = function()
                             aspect: window.innerWidth / window.innerHeight,
                             near: 0.1,
                             far: 10000,
-                            position: new Point(25, 25, 0),
+                            position: new Point(20, 20, 0),
                             lookAt:  new Point(0, 0, 0)
                         },
                         light: {
-                            color: 0xffeedd,
+                            color: 0x253456,
                             position: new Point(100, 60, 30)
                         }
                     })
@@ -115,23 +107,14 @@ window.onload = function()
                     engine.renderer.onResize(window.innerWidth,  window.innerHeight);
                 }
 
-                //new DummyEntity();
+                new DummyEntity();
 
 
-                //Networking
+                /*//Networking
                 engine
                  .getRegisteredClassNewInstance('SocketNetworkDriver', {pingPongTimeSyncInterval: 1000})
                  .attach(engine, 'network')
-                 .connect('//localhost:4040')
-                /*.defineMessageType('welcome', function(data) {
-                 console.log('Welcom received: ' + JSON.stringify(data))
-                 return data;
-                 })*/;
-                /*setInterval(function() {
-                 //Send message
-                 engine.network.sendMessage('greeting', {dummy:'data'});
-                 }, 5000);*/
-
+                 .connect('//localhost:4040');
 
                 //Sync
                 engine
@@ -142,7 +125,7 @@ window.onload = function()
 
 
                 //Ask server to createDummyEntity
-                engine.network.sendMessage('createDummyEntity', {});
+                engine.network.sendMessage('createDummyEntity', {});*/
             }
         });
 

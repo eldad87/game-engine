@@ -86,7 +86,7 @@ define(['engine/core/Base', 'lib/three.js/build/three', 'underscore', 'engine/co
             createMesh: function( geometryName, material, textureName, inverse) {
                 var geometry    = this.getGeometry(geometryName),
                     texture     = textureName ? this.getTexture(textureName) : null,
-                    material    = new THREE['Mesh' + material + 'Material']( { map:texture, shading: THREE.SmoothShading, blending: THREE.AdditiveBlending }),
+                    material    = new THREE['Mesh' + material + 'Material']( { map:texture/*, specularMap:texture*/, bumpMap:texture, bumpScale:0.02, shading: THREE.SmoothShading, blending: THREE.AdditiveBlending }),
                     mesh        = new THREE.Mesh( geometry, material );
 
                     if(inverse) {

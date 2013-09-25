@@ -43,7 +43,7 @@ define(['engine/components/Render/Three', 'engine/core/Point', 'underscore'],
                 mainCamera.lookAt(options.camera.lookAt);
 
 
-                /*this.createSceneObject('DirectionalLight', 'DirectionalLight', [0x222222, 2.25]);
+                this.createSceneObject('DirectionalLight', 'DirectionalLight', [0xfff5df, 1.2]);
                 var light = this.getObject('DirectionalLight');
 
                 light.position.set( 200, 450, 500 );
@@ -58,7 +58,7 @@ define(['engine/components/Render/Three', 'engine/core/Point', 'underscore'],
                 light.shadowCascadeNearZ = [ -1.000, 0.995, 0.998 ];
                 light.shadowCascadeFarZ  = [  0.995, 0.998, 1.000 ];
                 light.shadowCascadeWidth = [ 1024, 1024, 1024 ];
-                light.shadowCascadeHeight = [ 1024, 1024, 1024 ];*/
+                light.shadowCascadeHeight = [ 1024, 1024, 1024 ];
 
                 return this;
             },
