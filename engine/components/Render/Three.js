@@ -4,6 +4,7 @@ define(['engine/core/Base', 'engine/core/Point',
 
         var Three = Base.extend({
             _classId: 'Three',
+            _forceComponentAccessor: 'threeRenderer',
 
             _debug: true,
             _start: false,

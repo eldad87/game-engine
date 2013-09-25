@@ -6,6 +6,7 @@ define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) 
         _newEntityUpdatesQueue: {},
         _removeEntityQueue: {},
         _existingEntityUpdateQueue: {},
+        _rawExistingEntityUpdateQueue: {},
 
         start: function() {
             if(!this.networkDriver()) {
@@ -109,7 +110,10 @@ define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) 
                             throw new Exception('Cannot create new [' + data.classId + '] with ID [' + data.id + ']');
                         }
 
-                        entity.sync(data.sync)
+                        entity.sync(data.sync);
+
+                        //Now updates can get processed for this entity
+                        this._existingEntityUpdateQueue[data.id] = {};
                     }
 
                     //Delete updates
@@ -158,6 +162,8 @@ define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) 
 
                         //Delete entity updates
                         delete this._existingEntityUpdateQueue[entityId];
+                        //Delete entity raw updates
+                        delete this._rawExistingEntityUpdateQueue[entityId];
 
                         //Destroy entity
                         entity = engine.getObjectById(entityId);
@@ -175,19 +181,93 @@ define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) 
 
 
         /**
+         * Store data in RAW update queue
          * _existingEntityUpdateQueue: {
          *      entityId: {
          *          sectionI: []
          *          sectionII: []
          *      }
          * }
-         * @param  data {id:, stnc}
+         * @param  data {id:, sync}
          * @param sentUptime
          */
         onUpdateExistingEntity: function(data, sentUptime) {
+            if(undefined === this._rawExistingEntityUpdateQueue[data.id]) {
+                this._rawExistingEntityUpdateQueue[data.id] = [];
+            }
+            this._rawExistingEntityUpdateQueue[data.id].push([data, sentUptime]);
+        },
+
+        /**
+         * Process all updates - per entity-section that their sentUptime is < now
+         */
+        processUpdateExistingEntity: function() {
+            var uptime = engine.getUptime();
+            for(var entityId in this._existingEntityUpdateQueue) {
+                var entity = engine.getObjectById(entityId);
+                if(!entity) {
+                    throw new Exception('Cannot process updates entiy with ID [' + data.id + '] not found');
+                }
+                this.processRawExistingEntityUpdateQueue(entityId);
+
+                for(var sectionName in this._existingEntityUpdateQueue[entityId]) {
+
+                    /**
+                     * Starting to search for the relevant update from the 'oldest' update to the newest.
+                     *  The relevant update is the 'newest' with uptime<now that
+                     */
+                    for(var i in this._existingEntityUpdateQueue[entityId][sectionName]) {
+
+                        var prevUpdate = this._existingEntityUpdateQueue[entityId][sectionName][i-1],
+                            update = this._existingEntityUpdateQueue[entityId][sectionName][i],
+                            nextUpdate = this._existingEntityUpdateQueue[entityId][sectionName][i+1];
+
+
+                        if(parseFloat(update.uptime) < uptime) {
+
+                            //Remove prev update, its too old
+                            if(undefined !== prevUpdate) {
+                                delete this._existingEntityUpdateQueue[entityId][sectionName][i-1];
+                                delete prevUpdate;
+                            }
+
+                            //Check if we need to stop
+                            if(uptime < parseFloat(nextUpdate.uptime)) {
+                                break; //BINGO
+                            }
+                        } else {
+                            continue; //All updates are future one, or now updates presents
+                        }
+
+                        //Found an update
+                        var syncData = {};
+                        syncData[sectionName] = update;
+                        entity.sync(syncData);
+                    }
+                }
+            }
+        },
+
+
+        /**
+         * Process RAW sync data for existing entity
+         */
+        processRawExistingEntityUpdateQueue: function(entityId) {
+            for(var i in this._rawExistingEntityUpdateQueue[entityId]) {
+                try{
+                    this._processRawExistingEntityUpdateQueue(this._rawExistingEntityUpdateQueue[entityId][i][0], this._rawExistingEntityUpdateQueue[entityId][i][1]);
+                    delete this._rawExistingEntityUpdateQueue[entityId][i];
+                } catch (exception) {
+                    console.log('Exception: ' + exception.message);
+                }
+            }
+            delete this._rawExistingEntityUpdateQueue[entityId];
+        },
+
+        _processRawExistingEntityUpdateQueue: function(data, sentUptime) {
             var entity = engine.getObjectById(data.id);
             if(!entity) {
-                throw new Exception('Cannot update [' + data.classId + '] with ID [' + data.id + ']');
+                throw new Exception('Cannot find entity with ID [' + data.id + '] for update I');
             }
             var futureProcessingUptime = this._getFutureInputProcessingUptime(sentUptime);
 
@@ -231,62 +311,13 @@ define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) 
         },
 
         /**
-         * Process all updates - per entity-section that their sentUptime is < now
-         */
-        processUpdateExistingEntity: function() {
-            var uptime = engine.getUptime();
-            for(var entityId in this._existingEntityUpdateQueue) {
-                var entity = engine.getObjectById(entityId);
-                if(!entity) {
-                    throw new Exception('Cannot process updates entiy with ID [' + data.id + '] not found');
-                }
-
-                for(var sectionName in this._existingEntityUpdateQueue[entityId]) {
-
-                    /**
-                     * Starting to search for the relevant update from the 'oldest' update to the newest.
-                     *  The relevant update is the 'newest' with uptime<now that
-                     */
-                    for(var i in this._existingEntityUpdateQueue[entityId][sectionName]) {
-
-                        var prevUpdate = this._existingEntityUpdateQueue[entityId][sectionName][i-1],
-                            update = this._existingEntityUpdateQueue[entityId][sectionName][i],
-                            nextUpdate = this._existingEntityUpdateQueue[entityId][sectionName][i+1];
-
-
-                        if(parseFloat(update.uptime) < uptime) {
-
-                            //Remove prev update, its too old
-                            if(undefined !== prevUpdate) {
-                                delete this._existingEntityUpdateQueue[entityId][sectionName][i-1];
-                                delete prevUpdate;
-                            }
-
-                            //Check if we need to stop
-                            if(uptime < parseFloat(nextUpdate.uptime)) {
-                                break; //BINGO
-                            }
-                        } else {
-                            continue; //All updates are future one, or now updates presents
-                        }
-
-                        //Found an update
-                        var syncData = {};
-                        syncData[sectionName] = update;
-                        entity.sync(syncData);
-                    }
-                }
-            }
-        },
-
-        /**
          * Update existing entity
          * @param data{ id: ,sync: }
          */
         _updateExistingEntity: function(data) {
             var entity = engine.getObjectById(data.id);
             if(!entity) {
-                throw new Exception('Cannot update [' + data.classId + '] with ID [' + data.id + ']');
+                throw new Exception('Cannot find entity with ID [' + data.id + '] for update II');
             }
 
             return entity.sync(data.sync)

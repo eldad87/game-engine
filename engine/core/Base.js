@@ -86,6 +86,14 @@ define(['engine/core/Eventable', 'node-uuid', 'engine/core/Exception'], function
                 return this; //Can't attach to yourself
             }
 
+            //Check if entity want to force its accessor
+            if(undefined !== accessor && undefined !== this._forceComponentAccessor) {
+                if(this._forceComponentAccessor !== accessor) {
+                    throw new Exception('You cant attach using accessor [' + accessor + '], ' +
+                                            'Instead please use [' + this._forceComponentAccessor + ']');
+                }
+            }
+
             //Before we continue, we must unAtach ourself from our current parent
             this.unAttach();
 

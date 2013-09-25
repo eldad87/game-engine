@@ -3,6 +3,7 @@ define(['engine/core/Base', 'lib/three.js/build/three', 'underscore', 'engine/co
 
         var ThreeLoader = Base.extend({
             _classId: 'ThreeLoader',
+            _forceComponentAccessor: 'threeLoader',
 
             _totalCount: 0,
             _loadedCount: 0,

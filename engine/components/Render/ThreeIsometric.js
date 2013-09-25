@@ -3,6 +3,7 @@ define(['engine/components/Render/Three', 'engine/core/Point', 'underscore'],
 
         var ThreeIsometric = Three.extend({
             _classId: 'ThreeIsometric',
+            _forceComponentAccessor: 'threeRenderer',
 
             _defaultOptions: {
                                 //Camera

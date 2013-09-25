@@ -1,8 +1,9 @@
 define(['engine/core/Base', 'engine/components/EntitySync/EntitySyncServer', 'engine/components/EntitySync/EntitySyncClient'],
-    function   ( Base, EntitySyncServer, EntitySyncClient) {
+    function   (Base, EntitySyncServer, EntitySyncClient) {
 
     var EntitySyncDriver = Base.extend({
         _classId: 'EntitySyncDriver',
+        _forceComponentAccessor: 'sync',
 
         _start: false,
         _networkDriver: false,

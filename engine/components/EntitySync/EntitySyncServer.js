@@ -1,4 +1,4 @@
-define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) {
+define(['engine/core/Base', 'engine/core/Exception', 'underscore'], function(Base, Exception, _) {
     return {
         _latestEntitySectionUpdate: {},
 
@@ -124,14 +124,14 @@ define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) 
                 }
 
                 //Check if current sync data === latest sync data
-                if(this._latestEntitySectionUpdate[entity.id()][syncSctions[i]] == data.sync[syncSctions[i]]) {
+                if(_.isEqual(this._latestEntitySectionUpdate[entity.id()][syncSctions[i]], data.sync[syncSctions[i]])) {
                     //Remove update
                     delete data.sync[syncSctions[i]];
                 }
             }
 
             //Check if any updates left
-            if(0 == data.sync.length) {
+            if(_.isEmpty(data.sync)) {
                 return true; //Nothing to sync
             }
 

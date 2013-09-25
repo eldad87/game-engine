@@ -2,6 +2,7 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
     function(Base, Exception, _) {
         var ThreeBaseRenderable = Base.extend({
             _classId: 'ThreeBaseRenderable',
+            _forceComponentAccessor: 'threeRenderable',
             _defaultOptions: {material: 'Lambert', textureName: null, inverse: false},
             _mesh: null,
 
@@ -31,12 +32,12 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
                 //Check if mesh already exists
                 if(this._mesh) {
                     //Remove mesh from renderer
-                    engine.renderer.removeFromScene( this._mesh );
+                    engine.threeRenderer.removeFromScene( this._mesh );
                 }
 
                 this._mesh = mesh;
-                //Add mesh to renderer
-                engine.renderer.addToScene( this._mesh );
+                //Add mesh to threeRenderer
+                engine.threeRenderer.addToScene( this._mesh );
 
                 return this;
             },
@@ -48,7 +49,7 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
             },
 
             destroy: function() {
-                engine.renderer.removeFromScene( this.mesh() );
+                engine.threeRenderer.removeFromScene( this.mesh() );
                 return this;
             }
         });

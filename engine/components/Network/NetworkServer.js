@@ -24,6 +24,11 @@ define([ 'socket.io', 'node-uuid'], function(io, UUID) {
         },
 
         _sendMessage: function(message, callback, socketId) {
+            if(undefined === this._clientSockets[socketId]) {
+                //Client just D/C
+                return this;
+            }
+
             //check if callback is neded
             if(undefined != callback) {
                 message['callback_pending'] = true;
@@ -84,9 +89,8 @@ define([ 'socket.io', 'node-uuid'], function(io, UUID) {
             this._sockets = this._io.listen(port);
 
             this._sockets.on('connection', function(socket){
-                self.emit('connect', socket.id);
-
                 self.onConnection(socket);
+                self.emit('connect', socket.id);
             });
 
             return this;

@@ -5,6 +5,7 @@ define(['engine/core/Base', 'engine/core/Exception', 'engine/components/Network/
 
     var SocketNetworkDriver = Base.extend({
         _classId: 'SocketNetworkDriver',
+        _forceComponentAccessor: 'network',
 
         _messageTypes: {},
         _pingPongTimeSyncInterval: 0,

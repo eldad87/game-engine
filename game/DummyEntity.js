@@ -12,14 +12,14 @@ define(['engine/core/Entity', 'engine/components/Render/ThreeBaseRenderable'], f
 
             //Give this entity a look
             if(!engine.isServer) {
-                var render = new ThreeBaseRenderable({geometryName: 'townHallGeo', material: 'Phong', textureName: 'townHallText'});
-                render.attach(this, 'render');
+                var threeRenderable = new ThreeBaseRenderable({geometryName: 'townHallGeo', material: 'Phong', textureName: 'townHallText'});
+                threeRenderable.attach(this, 'threeRenderable');
             }
         },
 
         sync: function(data, deltaSyncOnly)
         {
-            console.log('DummyEntity:sync I');
+            //console.log('DummyEntity:sync I');
 
             if(undefined === data) {
 

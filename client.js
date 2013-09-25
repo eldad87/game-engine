@@ -107,7 +107,7 @@ window.onload = function()
                             position: new Point(100, 60, 30)
                         }
                     })
-                    .attach(engine, 'renderer')
+                    .attach(engine, 'threeRenderer')
                     .start(true);
 
                 //Set resize event handler
@@ -115,14 +115,14 @@ window.onload = function()
                     engine.renderer.onResize(window.innerWidth,  window.innerHeight);
                 }
 
-                new DummyEntity();
+                //new DummyEntity();
 
 
                 //Networking
-                /*engine
+                engine
                  .getRegisteredClassNewInstance('SocketNetworkDriver', {pingPongTimeSyncInterval: 1000})
                  .attach(engine, 'network')
-                 .connect('//localhost:4040')*/
+                 .connect('//localhost:4040')
                 /*.defineMessageType('welcome', function(data) {
                  console.log('Welcom received: ' + JSON.stringify(data))
                  return data;
@@ -134,15 +134,15 @@ window.onload = function()
 
 
                 //Sync
-                /*engine
+                engine
                  .getRegisteredClassNewInstance('EntitySyncDriver', {networkDriver: engine.network})
                  .processMinLatency(100) //Client only
                  .attach(engine, 'sync')
-                 .start();*/
+                 .start();
 
 
                 //Ask server to createDummyEntity
-                //engine.network.sendMessage('createDummyEntity', {});
+                engine.network.sendMessage('createDummyEntity', {});
             }
         });
 
