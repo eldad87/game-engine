@@ -7,12 +7,13 @@ define(['engine/core/Base', 'engine/core/Point',
             _forceComponentAccessor: 'threeRenderer',
 
             _debug: true,
+            _shadow: true,
             _start: false,
             _renderer: null,
             _scene: null,
             _objs: {},
             _mainCamera: null,
-            _defaultOptions: {debug: true, width: 1920, height: 1080},
+            _defaultOptions: {debug: true, shadow: true, width: 1920, height: 1080},
 
             /**
              *
@@ -26,7 +27,18 @@ define(['engine/core/Base', 'engine/core/Point',
                 options = _.extend(this._defaultOptions, options);
 
                 //Detect WebGL support: #http://stackoverflow.com/questions/9899807/three-js-detect-webgl-support-and-fallback-to-regular-canvas
-                this._renderer = Detector.webgl ? this.createObject('mainRenderer', 'WebGLRenderer') : this.createObject('mainRenderer', 'CanvasRenderer');
+                this._renderer = Detector.webgl ? this.createObject('mainRenderer', 'WebGLRenderer') : this.createObject('mainRenderer', 'CanvasRenderer', [{ antialias: true }]);
+
+                this.shadow(options.shadow);
+
+
+                if(this.shadow()) {
+                    this._renderer.shadowMapEnabled = true;
+                    this._renderer.shadowMapSoft = true;
+                    this._renderer.shadowMapType = THREE.PCFSoftShadowMap;
+                    this._renderer.physicallyBasedShading = true;
+                }
+
 
                 this._renderer.setSize(options.width, options.height);
                 //Append renderer to view
@@ -38,8 +50,32 @@ define(['engine/core/Base', 'engine/core/Point',
                 this._debug = options.debug;
                 if(this._debug) {
                     this.createSceneObject('AxisHelper', 'AxisHelper', [100]);
-                    this.createSceneObject('GridHelper', 'GridHelper', [200, 1]);
+                    this.createSceneObject('GridHelper', 'GridHelper', [Math.max(options.width, options.height), 1]);
                 }
+            },
+
+            setPlane: function(textureName, repeatX, repeatY) {
+                var floorTexture = engine.threeLoader.getTexture(textureName);
+                floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping;
+                floorTexture.repeat.set(repeatX, repeatY);
+                var plane = new THREE.Mesh(new THREE.PlaneGeometry(repeatX, repeatY), new THREE.MeshLambertMaterial({map: floorTexture, side: THREE.DoubleSide}));
+                plane.position.y = 0;
+                plane.rotation.x = Math.PI / 2;
+                if(this.shadow()) {
+                    plane.receiveShadow = true;
+                }
+                this.addToScene(plane);
+
+                return this;
+            },
+
+            shadow: function(val) {
+                if(undefined === val) {
+                    return this._shadow;
+                }
+
+                this._shadow = val;
+                return this;
             },
 
             start: function(val) {

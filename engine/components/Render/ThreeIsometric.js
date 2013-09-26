@@ -1,9 +1,10 @@
-define(['engine/components/Render/Three', 'engine/core/Point', 'underscore'],
-    function(Three, Point, _) {
+define(['engine/components/Render/Three', 'lib/three.js/build/three', 'engine/core/Point', 'underscore', 'lib/three.js/examples/js/controls/OrbitControls'],
+    function(Three, THREE, Point, _) {
 
         var ThreeIsometric = Three.extend({
             _classId: 'ThreeIsometric',
             _forceComponentAccessor: 'threeRenderer',
+            _controls: null,
 
             _defaultOptions: {
                                 //Camera
@@ -43,24 +44,37 @@ define(['engine/components/Render/Three', 'engine/core/Point', 'underscore'],
                 mainCamera.lookAt(options.camera.lookAt);
 
 
-                this.createSceneObject('DirectionalLight', 'DirectionalLight', [0xfff5df, 1.2]);
-                var light = this.getObject('DirectionalLight');
+                //Set light
+                if(this.shadow()) {
+                    this.createSceneObject('DirectionalLight', 'DirectionalLight', [0xfff5df, 1.2]);
+                    var light = this.getObject('DirectionalLight');
+                    light.position.set(options.camera.far/options.camera.aspect, options.camera.far/options.camera.aspect, options.camera.far/options.camera.aspect);
+                    light.target.position.set(0, 0, 0);
 
-                light.position.set( 200, 450, 500 );
-                light.castShadow = true;
-                light.shadowMapWidth = 1024;
-                light.shadowMapHeight = 1024;
-                light.shadowMapDarkness = 0.95;
-                //light.shadowCameraVisible = true;
+                    light.onlyShadow = true; //Only used for shadow
+                    light.castShadow = true;
+                    light.shadowMapDarkness = 0.95;
+                    light.shadowDarkness = 0.5;
+                    light.shadowCameraVisible = this._debug; // only for debugging
 
-                light.shadowCascade = true;
-                light.shadowCascadeCount = 3;
-                light.shadowCascadeNearZ = [ -1.000, 0.995, 0.998 ];
-                light.shadowCascadeFarZ  = [  0.995, 0.998, 1.000 ];
-                light.shadowCascadeWidth = [ 1024, 1024, 1024 ];
-                light.shadowCascadeHeight = [ 1024, 1024, 1024 ];
+                    // these six values define the boundaries of the yellow box seen above
+                    light.shadowCameraNear = options.camera.near;
+                    light.shadowCameraFar = options.camera.far;
+                    light.shadowCameraLeft = -1 * options.width/80;
+                    light.shadowCameraRight = options.width/80;
+                    light.shadowCameraTop = options.height/80;
+                    light.shadowCameraBottom = -1 * options.height/80;
+                }
+
+                //Set controls
+                this._controls = new THREE.OrbitControls( mainCamera, this._renderer.domElement );
 
                 return this;
+            },
+
+            process: function() {
+                Three.prototype.process.call(this);
+                this._controls.update();
             },
 
             setLightColor: function(hextColor) {

@@ -3,7 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/three.js" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/lib/underscore" vcs="Git" />
   </component>
 </project>
 

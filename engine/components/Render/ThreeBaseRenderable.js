@@ -35,6 +35,13 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
                     engine.threeRenderer.removeFromScene( this._mesh );
                 }
 
+                mesh.scale.set(2,2,2);
+
+                if(engine.threeRenderer.shadow()) {
+                    mesh.castShadow = true;
+                    mesh.receiveShadow  = false;
+                }
+
                 this._mesh = mesh;
                 //Add mesh to threeRenderer
                 engine.threeRenderer.addToScene( this._mesh );

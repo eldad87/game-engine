@@ -12,6 +12,7 @@ define(['engine/core/Base', 'engine/core/Point'], function (Base, Point) {
         },
 
         geometry: function (x, y, z) {
+
             if (x !== undefined && y !== undefined && z !== undefined) {
                 this._geometry = new Point(x, y, z);
                 return this;

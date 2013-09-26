@@ -12,9 +12,10 @@ define(['engine/core/Entity', 'engine/components/Render/ThreeBaseRenderable'], f
 
             //Give this entity a look
             if(!engine.isServer) {
-                var threeRenderable = new ThreeBaseRenderable({geometryName: 'townHallGeo', material: 'Phong', textureName: 'townHallText'});
+                var threeRenderable = new ThreeBaseRenderable({geometryName: 'aviaryGeo', material: 'Lambert', textureName: 'aviaryText'});
                 threeRenderable.attach(this, 'threeRenderable');
             }
+
         },
 
         sync: function(data, deltaSyncOnly)
