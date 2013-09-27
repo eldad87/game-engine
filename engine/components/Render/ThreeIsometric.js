@@ -46,12 +46,12 @@ define(['engine/components/Render/Three', 'lib/three.js/build/three', 'engine/co
 
                 //Set light
                 if(this.shadow()) {
-                    this.createSceneObject('DirectionalLight', 'DirectionalLight', [0xfff5df, 1.2]);
+                    this.createSceneObject('DirectionalLight', 'DirectionalLight', [0xfff5df, 0.7]);
                     var light = this.getObject('DirectionalLight');
                     light.position.set(options.camera.far/options.camera.aspect, options.camera.far/options.camera.aspect, options.camera.far/options.camera.aspect);
                     light.target.position.set(0, 0, 0);
 
-                    light.onlyShadow = true; //Only used for shadow
+                    light.onlyShadow = false; //Only used for shadow
                     light.castShadow = true;
                     light.shadowMapDarkness = 0.95;
                     light.shadowDarkness = 0.5;

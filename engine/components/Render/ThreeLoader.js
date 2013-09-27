@@ -8,7 +8,7 @@ define(['engine/core/Base', 'lib/three.js/build/three', 'underscore', 'engine/co
             _totalCount: 0,
             _loadedCount: 0,
 
-            _geometries: {},
+            _meshes: {},
             _textures: [],
 
             _onProgressCallback: function(loaded, total) {
@@ -21,9 +21,9 @@ define(['engine/core/Base', 'lib/three.js/build/three', 'underscore', 'engine/co
                 return this;
             },
 
-            loadGeometry: function(name, geometryPath) {
-                if(undefined !== this._geometries[name]) {
-                    throw new Exception('Geometry Name already exists');
+            loadJS: function(name, JSPath) {
+                if(undefined !== this._meshes[name]) {
+                    throw new Exception('Mesh Name already exists');
                 }
 
                 //Load model
@@ -31,9 +31,22 @@ define(['engine/core/Base', 'lib/three.js/build/three', 'underscore', 'engine/co
                 var self = this,
                     loader = new THREE.JSONLoader();
 
-                loader.load( geometryPath, function(geometry){
+                loader.load( JSPath, function(geometry, materials){
 
-                    self._geometries[name] = geometry;
+                    //If no materials - set default
+                    if( !materials || materials.length==0) {
+                        materials = new THREE.MeshLambertMaterial()
+                    }
+
+                    // for preparing animation
+                    for (var i = 0; i < materials.length; i++) {
+                        materials[i].morphTargets = true;
+                    }
+
+                    var material = new THREE.MeshFaceMaterial( materials );
+                    var mesh = new THREE.Mesh( geometry, material );
+                    self._meshes[name] = mesh;
+
                     self._loadedCount++;
 
                     //Callback
@@ -75,19 +88,22 @@ define(['engine/core/Base', 'lib/three.js/build/three', 'underscore', 'engine/co
                 return this._textures[name];
             },
 
-            getGeometry: function(name) {
-                if(undefined === this._geometries[name]) {
-                    throw new Exception('Geometry Name [' + name + '] doest NOT exists');
+            getMesh: function(name) {
+                if(undefined === this._meshes[name]) {
+                    throw new Exception('Mesh Name [' + name + '] doest NOT exists');
                 }
 
-                return this._geometries[name];
+                return this._meshes[name];
             },
 
-            createMesh: function( geometryName, material, textureName, inverse) {
-                var geometry    = this.getGeometry(geometryName),
-                    texture     = textureName ? this.getTexture(textureName) : null,
-                    material    = new THREE['Mesh' + material + 'Material']( { map: texture/*, specularMap:texture, bumpMap:texture, bumpScale:0.01*/, shading: THREE.SmoothShading, blending: THREE.AdditiveBlending }),
-                    mesh        = new THREE.Mesh( geometry, material );
+            createMesh: function( meshName, textureName, inverse) {
+                var mesh = this.getMesh(meshName).clone();
+                for(var i = 0; i <  mesh.material.materials.length; i++){
+                    mesh.material.materials[i].map = textureName ? this.getTexture(textureName) : null;
+                    mesh.material.materials[i].shading = THREE.SmoothShading;
+                    mesh.material.materials[i].blending = THREE.AdditiveBlending;
+                }
+
 
                     if(inverse) {
                         mesh.geometry.dynamic = true

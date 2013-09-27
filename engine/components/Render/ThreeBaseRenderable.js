@@ -3,7 +3,7 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
         var ThreeBaseRenderable = Base.extend({
             _classId: 'ThreeBaseRenderable',
             _forceComponentAccessor: 'threeRenderable',
-            _defaultOptions: {material: 'Lambert', textureName: null, inverse: false},
+            _defaultOptions: {textureName: null, inverse: false},
             _mesh: null,
 
             init: function(options) {
@@ -12,15 +12,15 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
                 if(undefined === options) {
                     throw new Exception('No options provided');
                 }
-                if(undefined === options.geometryName) {
-                    throw new Exception('geometryName option is missing in settings')
+                if(undefined === options.meshName) {
+                    throw new Exception('meshName option is missing in settings')
                 }
 
                 options = _.extend(this._defaultOptions, options);
 
                 //Set mesh
                 this.mesh(
-                    engine.threeLoader.createMesh(options.geometryName, options.material, options.textureName, options.inverse)
+                    engine.threeLoader.createMesh(options.meshName, options.textureName, options.inverse)
                 );
             },
 

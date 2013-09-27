@@ -77,9 +77,9 @@ window.onload = function()
                             console.log('Loaded [' + loaded + '/' + total + '] assets');
                         }
                     })
-                    .loadGeometry('townHallGeo', './game/assets/human/town_hall/h_town_hall.js')
+                    .loadJS('townHallMesh', './game/assets/human/town_hall/h_town_hall.js')
                     .loadTexture('townHallText', './game/assets/human/town_hall/h_town_hall.jpg')
-                    .loadGeometry('aviaryGeo', './game/assets/human/h_aviary/h_aviary.js')
+                    .loadJS('aviaryMesh', './game/assets/human/h_aviary/h_aviary.js')
                     .loadTexture('aviaryText', './game/assets/human/h_aviary/h_aviary.jpg')
                     .loadTexture('ground', './game/assets/ground/grass001.jpg');
             },
