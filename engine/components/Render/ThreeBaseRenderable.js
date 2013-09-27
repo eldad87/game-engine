@@ -5,6 +5,8 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
             _forceComponentAccessor: 'threeRenderable',
             _defaultOptions: {textureName: null, inverse: false},
             _mesh: null,
+            _currentAnimation: undefined,
+            _animations: {},
 
             init: function(options) {
                 Base.prototype.init.apply(this, options);
@@ -49,9 +51,68 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
                 return this;
             },
 
+            /**
+             *
+             * @param name
+             * @param keyframes -  total number of animation frames
+             * @param duration - milliseconds to complete animation
+             * @param animOffset - starting frame of animation
+             */
+            defineAnimation: function(name, keyframes, duration, animOffset) {
+                if(undefined !== this._animations[name]) {
+                    //throw new Exception('Animation name [' + name + '] already exists!');
+                }
+
+                this._animations[name] = {
+                    animOffset: animOffset || 0,
+                    duration: duration,
+                    interpolation: duration / keyframes,
+                    lastKeyframe: 0,
+                    currentKeyframe: 0
+                };
+
+                return this;
+            },
+
+            playAnimation: function(name) {
+                if(undefined === name) {
+                    return this._currentAnimation;
+                }
+
+                if(undefined === this._animations[name]) {
+                    throw new Exception('Animation name [' + name + '] is missing!');
+                }
+
+                return this._currentAnimation = name;
+                return this;
+            },
+
+            _playAnimation: function(name) {
+                var settings = this._animations[name];
+
+                var time = engine.getUptime() % settings.duration;
+                var keyframe = Math.floor( time / settings.interpolation ) + settings.animOffset;
+                if ( keyframe != settings.currentKeyframe ) {
+
+                    this.mesh().morphTargetInfluences[ settings.lastKeyframe ] = 0;
+                    this.mesh().morphTargetInfluences[ settings.currentKeyframe ] = 1;
+                    this.mesh().morphTargetInfluences[ keyframe ] = 0;
+
+                    this._animations[name].lastKeyframe = settings.currentKeyframe;
+                    this._animations[name].currentKeyframe = keyframe;
+                }
+
+                this.mesh().morphTargetInfluences[ keyframe ] = ( time % settings.interpolation ) / settings.interpolation;
+                this.mesh().morphTargetInfluences[ settings.lastKeyframe ] = 1 - this.mesh().morphTargetInfluences[ keyframe ];
+            },
+
             process: function() {
                 var point = this._parent.geometry();
                 this.mesh().position.set(point.x, point.y, point.z);
+
+                if(this.playAnimation()) {
+                    this._playAnimation(this.playAnimation());
+                }
                 return true;
             },
 

@@ -35,7 +35,7 @@ define(['engine/core/Base', 'lib/three.js/build/three', 'underscore', 'engine/co
 
                     //If no materials - set default
                     if( !materials || materials.length==0) {
-                        materials = new THREE.MeshLambertMaterial()
+                        materials = [new THREE.MeshLambertMaterial()];
                     }
 
                     // for preparing animation

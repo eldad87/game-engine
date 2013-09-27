@@ -8,10 +8,12 @@ window.onload = function()
 {
     requirejs.config({
         paths: {
-            'socket.io' : './node_modules/socket.io/node_modules/socket.io-client/dist/socket.io',
-            'node-uuid' : './node_modules/node-uuid/uuid',
-            'underscore' : './node_modules/underscore/underscore',
-            'moment'    : './lib/moment'
+            'socket.io'         : './node_modules/socket.io/node_modules/socket.io-client/dist/socket.io',
+            'node-uuid'             : './node_modules/node-uuid/uuid',
+            'underscore'            : './node_modules/underscore/underscore',
+            'moment'                : './lib/moment',
+            'ShaderParticleGroup'   : './lib/ShaderParticleEngine/src/ShaderParticleGroup',
+            'ShaderParticleEmitter' : './lib/ShaderParticleEngine/src/ShaderParticleEmitter'
             //'bson' : './node_modules/bson/browser_build/bson'
         },
         shim: {
@@ -37,6 +39,14 @@ window.onload = function()
                 deps: ['lib/three.js/build/three'],
                 'exports': 'Detector'
             },
+            'ShaderParticleEmitter': {
+                deps: ['lib/three.js/build/three'],
+                'exports': 'ShaderParticleEmitter'
+            },
+            'ShaderParticleGroup': {
+                deps: ['lib/three.js/build/three', 'ShaderParticleEmitter'],
+                'exports': 'ShaderParticleGroup'
+            },
             'underscore': {
                 'exports': '_'
             }
@@ -57,8 +67,8 @@ window.onload = function()
     requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/SocketNetworkDriver',
                 'engine/components/EntitySync/EntitySyncDriver', 'engine/components/Render/ThreeIsometric',
                 'engine/components/Render/ThreeLoader',
-                'engine/core/Point', 'lib/three.js/build/three',  'game/DummyEntity'],
-        function(Class, Core, SocketNetworkDriver, EntitySyncDriver, ThreeIsomatric, ThreeLoader, Point, THREE, DummyEntity) {
+                'engine/core/Point', 'lib/three.js/build/three', 'game/DummyEntity', 'ShaderParticleEmitter', 'ShaderParticleGroup'],
+        function(Class, Core, SocketNetworkDriver, EntitySyncDriver, ThreeIsomatric, ThreeLoader, Point, THREE, DummyEntity, ShaderParticleEmitter, ShaderParticleGroup) {
 
         var Client = Class.extend({
             _classId: 'Client',
@@ -77,6 +87,8 @@ window.onload = function()
                             console.log('Loaded [' + loaded + '/' + total + '] assets');
                         }
                     })
+                    .loadTexture('smoke_001', './game/assets/smoke_001.png')
+                    .loadJS('horse', './game/assets/horse.js')
                     .loadJS('townHallMesh', './game/assets/human/town_hall/h_town_hall.js')
                     .loadTexture('townHallText', './game/assets/human/town_hall/h_town_hall.jpg')
                     .loadJS('aviaryMesh', './game/assets/human/h_aviary/h_aviary.js')
@@ -99,7 +111,7 @@ window.onload = function()
                             aspect: window.innerWidth / window.innerHeight,
                             near: 0.1,
                             far: 10000,
-                            position: new Point(5, 5, 0),
+                            position: new Point(40, 30, 0),
                             lookAt:  new Point(0, 0, 0)
                         },
                         light: {
@@ -118,7 +130,7 @@ window.onload = function()
 
                 var de = new DummyEntity();
                 var de2 = new DummyEntity();
-                de2.geometry(1, 0, 1);
+                de2.geometry(14, 0, 1);
 
                 //de.geometry(5,5,5);
                 //de.geometry(1,1,1);

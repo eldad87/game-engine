@@ -145,17 +145,31 @@ define(['engine/core/Base', 'engine/core/Exception'], function (Base, Exception)
         updateUptime: function(curTimestamp) {
             var lastUptime = this._lastUptime || curTimestamp;
             this._lastUptime = curTimestamp;
-            return this.incrementUptimeBy(curTimestamp - lastUptime);
+            return this.incrementUptimeByLatestDelta(curTimestamp - lastUptime);
         },
 
         /**
-         * Increment uptime by
-         * @param increment
+         * Increment uptime by latest processing delta time
+         * @param delta
          * @returns {*}
          */
-        incrementUptimeBy: function(increment) {
-            this._uptime += increment;
-            //this.log('Uptime: ' + this._uptime);
+        incrementUptimeByLatestDelta: function(delta) {
+            this._uptime += delta;
+            this.deltaUptime( delta / 1000 );
+            return this;
+        },
+
+        /**
+         * Get / Set latest process time in seconds
+         * @param val
+         * @returns {*}
+         */
+        deltaUptime: function(val) {
+            if(undefined === val) {
+                return this._uptimeDelta;
+            }
+
+            this._uptimeDelta = val;
             return this;
         },
 
