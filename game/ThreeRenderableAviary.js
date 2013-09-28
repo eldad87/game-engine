@@ -22,16 +22,16 @@ define(['engine/components/Render/ThreeBaseRenderable', 'lib/three.js/build/thre
             //Set particle
             this.particleGroup = new ShaderParticleGroup({
                 texture: engine.threeLoader.getTexture('smoke_001'),
-                maxAge: 2,
+                maxAge: 1.5,
                 blending: THREE.NormalBlending
             });
 
             var emitter = new ShaderParticleEmitter({
                 type: 'cube',
-                position: new THREE.Vector3( -0.24, 0.215, 0.06 ),
+                position: new THREE.Vector3( -0.24, 0.2, 0.06 ),
                 positionSpread: new THREE.Vector3( 0.04, 0, 0.04 ),
 
-                acceleration: new THREE.Vector3( 0, 0, 0 ),
+                acceleration: new THREE.Vector3( 0, 0.1, 0 ),
                 accelerationSpread: new THREE.Vector3( 0, 0, 0 ),
 
                 velocity:  new THREE.Vector3(0.05, 0.1, 0.05),
@@ -39,8 +39,8 @@ define(['engine/components/Render/ThreeBaseRenderable', 'lib/three.js/build/thre
                 
                 colorStart: new THREE.Color('lightgrey'),
                 colorEnd: new THREE.Color('sandybrown'),
-                size: 15,
-                sizeEnd: 12,
+                size: 40,
+                sizeEnd: 120,
 
                 particlesPerSecond: 10
             });
