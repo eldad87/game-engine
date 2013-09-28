@@ -1,54 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1592d100-f2af-4020-9290-474c44369096" name="Default" comment="Using materials from JS">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/smoke_001.png" />
+    <list default="true" id="14cf69c4-3998-4036-a475-c14e76683f96" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/smoke_002.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/smokeparticle.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_body.jpg" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_body.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_gears.jpg" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_gears.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_metalreflect.jpg" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_metalreflect.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/src/math/Color.js" afterPath="$PROJECT_DIR$/lib/three.js/src/math/Color.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/Core.js" afterPath="$PROJECT_DIR$/engine/Core.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/ThreeRenderableAviary.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/DummyEntity.js" afterPath="$PROJECT_DIR$/game/DummyEntity.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/README.md" afterPath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/scripts/ThreeJsExportScript.mel" afterPath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/scripts/ThreeJsExportScript.mel" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeLoader.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeLoader.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/build/build.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/build/build.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/build/build_all.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/build/build_all.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/build/build_debug.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/build/build_debug.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/Three.js" afterPath="$PROJECT_DIR$/engine/components/Render/Three.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client.js" afterPath="$PROJECT_DIR$/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump.dae" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump.dae" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/editors/sublime.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/editors/sublime.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js" afterPath="$PROJECT_DIR$/lib/three.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/plug-ins/threeJsFileTranslator.py" afterPath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/plug-ins/threeJsFileTranslator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rawcept.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="1592d100-f2af-4020-9290-474c44369096" time="1380324928358" ignored="false" />
-    <file path="/client.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1380321375064" ignored="false" />
-    <file path="/a.dummy" changelist="1592d100-f2af-4020-9290-474c44369096" time="1380068366112" ignored="false" />
-    <file path="/Entity.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1380223689809" ignored="false" />
-    <file path="/Core.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1380322161798" ignored="false" />
-    <file path="/EntitySyncServer.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1380068214490" ignored="false" />
-    <file path="/Base.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1380068568820" ignored="false" />
-    <file path="/DummyEntity.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1380324116617" ignored="false" />
-    <file path="/server.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379457234663" ignored="false" />
-    <file path="/Point.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379630166858" ignored="false" />
-    <file path="/EntitySyncDriver.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1380068381101" ignored="false" />
-    <file path="/NetworkServer.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1380063233751" ignored="false" />
-    <file path="/Three.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1380239674829" ignored="false" />
-    <file path="/common.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379699281398" ignored="false" />
-    <file path="/index.html" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379701954331" ignored="false" />
-    <file path="/package.json" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379771332145" ignored="false" />
-    <file path="/IsomatricThree.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1379792398433" ignored="false" />
-    <file path="/ThreeIsometric.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1380241828132" ignored="false" />
-    <file path="/ThreeLoader.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1380242397238" ignored="false" />
-    <file path="/ThreeRenderable.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1380061353279" ignored="false" />
-    <file path="/EntitySyncClient.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1380067085678" ignored="false" />
-    <file path="/ThreeBaseRenderable.js" changelist="1592d100-f2af-4020-9290-474c44369096" time="1380324235780" ignored="false" />
+    <file path="/Dummy.txt" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380392575252" ignored="false" />
+    <file path="/Three.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380398341798" ignored="false" />
+    <file path="/ThreeIsometric.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380397834409" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,28 +37,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DummyEntity.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/game/DummyEntity.js">
+      <file leaf-file-name="ThreeRenderableAviary.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/game/ThreeRenderableAviary.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="69" selection-start="1123" selection-end="1132" vertical-scroll-proportion="-8.16">
+            <state line="33" column="59" selection-start="1242" selection-end="1242" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ThreeBaseRenderable.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js">
+      <file leaf-file-name="ThreeIsometric.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="42" selection-start="3768" selection-end="3768" vertical-scroll-proportion="0.6839506">
+            <state line="51" column="66" selection-start="2422" selection-end="2422" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="client.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client.js">
+      <file leaf-file-name="Three.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/engine/components/Render/Three.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="76" selection-start="3555" selection-end="3555" vertical-scroll-proportion="0.0">
+            <state line="69" column="100" selection-start="3167" selection-end="3168" vertical-scroll-proportion="0.7488987">
               <folding />
             </state>
           </provider>
@@ -113,33 +82,20 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" />
-        <option value="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncClient.js" />
-        <option value="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncServer.js" />
-        <option value="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncDriver.js" />
-        <option value="$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js" />
-        <option value="$PROJECT_DIR$/engine/core/Base.js" />
-        <option value="$PROJECT_DIR$/engine/core/Entity.js" />
-        <option value="$PROJECT_DIR$/engine/components/Render/Three.js" />
         <option value="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" />
-        <option value="$PROJECT_DIR$/game/assets/human/h_aviary/h_aviary.js" />
-        <option value="$PROJECT_DIR$/engine/components/Render/ThreeLoader.js" />
-        <option value="$PROJECT_DIR$/lib/three.js/src/math/Color.js" />
-        <option value="$PROJECT_DIR$/engine/Core.js" />
-        <option value="$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js" />
-        <option value="$PROJECT_DIR$/game/DummyEntity.js" />
         <option value="$PROJECT_DIR$/client.js" />
+        <option value="$PROJECT_DIR$/game/ThreeRenderableAviary.js" />
+        <option value="$PROJECT_DIR$/engine/components/Render/Three.js" />
       </list>
     </option>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
+    <option name="x" value="1911" />
     <option name="y" value="-9" />
     <option name="width" value="1938" />
-    <option name="height" value="1050" />
+    <option name="height" value="1098" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -165,6 +121,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -193,7 +150,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
+              <option name="myItemId" value="game" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -207,11 +164,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
+              <option name="myItemId" value="game" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ShaderParticleEngine" />
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="human" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -226,6 +205,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -271,32 +268,10 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="271" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="289" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
-    <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="293" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="296" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="968" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="975" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="288" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="282" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PublishConfig">
     <servers>
@@ -316,120 +291,40 @@
       </server>
     </servers>
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="Z:\rawcept\game\assets" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="Z:\rawcept\game\assets\ground" />
-      <recent name="Z:\rawcept\game" />
-    </key>
-  </component>
   <component name="RunManager">
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
-    <option name="USER" value="" />
-    <option name="PASSWORD" value="" />
-    <option name="mySSHConnectionTimeout" value="30000" />
-    <option name="mySSHReadTimeout" value="30000" />
-    <option name="LAST_MERGED_REVISION" />
-    <option name="MERGE_DRY_RUN" value="false" />
-    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
-    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
-    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
-    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
-    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
-    <option name="FORCE_UPDATE" value="false" />
-    <option name="IGNORE_EXTERNALS" value="false" />
-    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1592d100-f2af-4020-9290-474c44369096" name="Default" comment="" />
-      <created>1379451204339</created>
-      <updated>1379451204339</updated>
+      <changelist id="14cf69c4-3998-4036-a475-c14e76683f96" name="Default" comment="" />
+      <created>1380392570987</created>
+      <updated>1380392570987</updated>
     </task>
-    <task id="LOCAL-00001" summary="Renamed:&#10;Entity -&gt; Base&#10;PlayerEntity -&gt; Entity">
-      <created>1379455740508</created>
-      <updated>1379455740508</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Fix: NetworkServer::sendMessage() - mass message is now working&#10;Fix: Base::id() - caused an infinite recursion loop&#10;EntitySyncClient is working&#10;">
-      <created>1379631312000</created>
-      <updated>1379631312000</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Entity::addSyncSections&#10;removal of console.log in EntitySync">
-      <created>1379631509176</created>
-      <updated>1379631509176</updated>
-    </task>
-    <task id="LOCAL-00004" summary="EntitySyncServer - Prevent sending same update again">
-      <created>1379632406498</created>
-      <updated>1379632406498</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Three + underscore">
-      <created>1379768676356</created>
-      <updated>1379768676356</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Three Isometric - init">
-      <created>1379792454632</created>
-      <updated>1379792454632</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Three assets loader">
-      <created>1379973819795</created>
-      <updated>1379973819795</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Test usage of ThreeLoader">
-      <created>1379974666867</created>
-      <updated>1379974666867</updated>
-    </task>
-    <task id="LOCAL-00009" summary="ThreeBaseRenderable - working">
-      <created>1380062167940</created>
-      <updated>1380062167940</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Fix - networking 'sending updates to client - that not yet added to socket list'&#10;Fix networking 'sending repeating updates of the same sync-data'&#10;Added support for - force component accessor name">
-      <created>1380068812815</created>
-      <updated>1380068812815</updated>
-    </task>
-    <task id="LOCAL-00011" summary="ThreeJS tuning">
-      <created>1380071054917</created>
-      <updated>1380071054917</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Shadow, Ground-plan texture, Orbit control">
-      <created>1380239703483</created>
-      <updated>1380239703483</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Using materials from JS">
-      <created>1380242467236</created>
-      <updated>1380242467236</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
+    <frame x="1911" y="-9" width="1938" height="1098" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26627535" sideWeight="0.5688487" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24493062" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295711" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295711" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43115124" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -474,7 +369,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Using materials from JS" />
+    <option name="LAST_COMMIT_MESSAGE" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -488,132 +383,80 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Renamed:&#10;Entity -&gt; Base&#10;PlayerEntity -&gt; Entity" />
-    <MESSAGE value="Fix: NetworkServer::sendMessage() - mass message is now working&#10;Fix: Base::id() - caused an infinite recursion loop&#10;EntitySyncClient is working&#10;" />
-    <MESSAGE value="Entity::addSyncSections&#10;removal of console.log in EntitySync" />
-    <MESSAGE value="EntitySyncServer - Prevent sending same update again" />
-    <MESSAGE value="Three + underscore" />
-    <MESSAGE value="Three Isometric - init" />
-    <MESSAGE value="Three assets loader" />
-    <MESSAGE value="Test usage of ThreeLoader" />
-    <MESSAGE value="ThreeBaseRenderable - working" />
-    <MESSAGE value="Fix - networking 'sending updates to client - that not yet added to socket list'&#10;Fix networking 'sending repeating updates of the same sync-data'&#10;Added support for - force component accessor name" />
-    <MESSAGE value="ThreeJS tuning" />
-    <MESSAGE value="Shadow, Ground-plan texture, Orbit control" />
-    <MESSAGE value="Using materials from JS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/three.js/README.md">
+    <entry file="file://$PROJECT_DIR$/lib/three.js/src/Three.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.50531286">
+        <state line="193" column="20" selection-start="4385" selection-end="4399" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/core/common.js">
+    <entry file="file://$PROJECT_DIR$/lib/three.js/src/textures/Texture.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="29" selection-start="714" selection-end="735" vertical-scroll-proportion="0.4348837">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/src/core/Clock.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="29" selection-start="603" selection-end="603" vertical-scroll-proportion="0.2754491">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ShaderParticleEngine/src/ShaderParticleEmitter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="35" selection-start="417" selection-end="417" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/components/Render/Three.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="0" selection-start="2990" selection-end="2990" vertical-scroll-proportion="0.6127907">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="84" selection-start="3446" selection-end="3455" vertical-scroll-proportion="-12.32">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/assets/smoke_002.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/assets/smokeparticle.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ShaderParticleEngine/LICENSE.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/src/math/Color.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="394" column="38" selection-start="7700" selection-end="7709" vertical-scroll-proportion="0.63353294">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/Core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="51" selection-start="4807" selection-end="4807" vertical-scroll-proportion="0.50581396">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ShaderParticleEngine/Gruntfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="53" selection-start="283" selection-end="315" vertical-scroll-proportion="0.09883721">
+        <state line="6" column="48" selection-start="186" selection-end="191" vertical-scroll-proportion="-4.08">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeLoader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="49" selection-start="254" selection-end="265" vertical-scroll-proportion="0.1017964">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/assets/ground/grass001.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/three.js/src/extras/helpers/GridHelper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="6" selection-start="54" selection-end="54" vertical-scroll-proportion="0.07488987">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/assets/checkerboard.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/three.js/build/three.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34459" column="32" selection-start="749315" selection-end="749315" vertical-scroll-proportion="0.27597764">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="76" selection-start="3555" selection-end="3555" vertical-scroll-proportion="0.0">
+        <state line="131" column="43" selection-start="5536" selection-end="5536" vertical-scroll-proportion="0.70328426">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game/DummyEntity.js">
+    <entry file="file://$PROJECT_DIR$/game/ThreeRenderableAviary.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="69" selection-start="1123" selection-end="1132" vertical-scroll-proportion="-8.16">
+        <state line="33" column="59" selection-start="1242" selection-end="1242" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js">
+    <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="42" selection-start="3768" selection-end="3768" vertical-scroll-proportion="0.6839506">
+        <state line="51" column="66" selection-start="2422" selection-end="2422" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/Render/Three.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="100" selection-start="3167" selection-end="3168" vertical-scroll-proportion="0.7488987">
           <folding />
         </state>
       </provider>

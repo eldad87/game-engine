@@ -50,21 +50,25 @@ define(['engine/core/Base', 'engine/core/Point',
                 this._debug = options.debug;
                 if(this._debug) {
                     this.createSceneObject('AxisHelper', 'AxisHelper', [100]);
-                    this.createSceneObject('GridHelper', 'GridHelper', [Math.max(options.width, options.height), 1]);
                 }
             },
 
-            setPlane: function(textureName, repeatX, repeatY) {
+            setPlane: function(width, height, textureName, repeatWidth, repeatHeight) {
                 var floorTexture = engine.threeLoader.getTexture(textureName);
+
                 floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping;
-                floorTexture.repeat.set(repeatX, repeatY);
-                var plane = new THREE.Mesh(new THREE.PlaneGeometry(repeatX, repeatY), new THREE.MeshLambertMaterial({map: floorTexture, side: THREE.DoubleSide}));
+                floorTexture.repeat.set( (repeatWidth || width/floorTexture.image.naturalWidth) , (repeatHeight || height/floorTexture.image.naturalHeight) ); //Default 1 texture per 'tile'
+                var plane = new THREE.Mesh(new THREE.PlaneGeometry(width, height, 10, 10), new THREE.MeshLambertMaterial({map: floorTexture, side: THREE.DoubleSide}));
                 plane.position.y = 0;
                 plane.rotation.x = Math.PI / 2;
                 if(this.shadow()) {
                     plane.receiveShadow = true;
                 }
                 this.addToScene(plane);
+
+                if(this._debug) {
+                    this.createSceneObject('GridHelper', 'GridHelper', [Math.max(width, height)/2, 8]);
+                }
 
                 return this;
             },

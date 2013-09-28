@@ -51,7 +51,7 @@ define(['engine/components/Render/Three', 'lib/three.js/build/three', 'engine/co
                     light.position.set(options.camera.far/options.camera.aspect, options.camera.far/options.camera.aspect, options.camera.far/options.camera.aspect);
                     light.target.position.set(0, 0, 0);
 
-                    light.onlyShadow = false; //Only used for shadow
+                    light.onlyShadow = true; //Only used for shadow
                     light.castShadow = true;
                     light.shadowMapDarkness = 0.95;
                     light.shadowDarkness = 0.5;
@@ -60,10 +60,10 @@ define(['engine/components/Render/Three', 'lib/three.js/build/three', 'engine/co
                     // these six values define the boundaries of the yellow box seen above
                     light.shadowCameraNear = options.camera.near;
                     light.shadowCameraFar = options.camera.far;
-                    light.shadowCameraLeft = -1 * options.width/80;
-                    light.shadowCameraRight = options.width/80;
-                    light.shadowCameraTop = options.height/80;
-                    light.shadowCameraBottom = -1 * options.height/80;
+                    light.shadowCameraLeft = -1 * options.width/options.camera.aspect;
+                    light.shadowCameraRight = options.width/options.camera.aspect;
+                    light.shadowCameraTop = options.height/options.camera.aspect;
+                    light.shadowCameraBottom = -1 * options.height/options.camera.aspect;
                 }
 
                 //Set controls

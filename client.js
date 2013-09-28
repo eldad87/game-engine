@@ -87,6 +87,7 @@ window.onload = function()
                             console.log('Loaded [' + loaded + '/' + total + '] assets');
                         }
                     })
+                    .loadTexture('checkerboard', './game/assets/checkerboard.jpg')
                     .loadTexture('smoke_001', './game/assets/smoke_001.png')
                     .loadJS('horse', './game/assets/horse.js')
                     .loadJS('townHallMesh', './game/assets/human/town_hall/h_town_hall.js')
@@ -111,7 +112,7 @@ window.onload = function()
                             aspect: window.innerWidth / window.innerHeight,
                             near: 0.1,
                             far: 10000,
-                            position: new Point(40, 30, 0),
+                            position: new Point(1000, 1000, 0),
                             lookAt:  new Point(0, 0, 0)
                         },
                         light: {
@@ -120,7 +121,7 @@ window.onload = function()
                         }
                     })
                     .attach(engine, 'threeRenderer')
-                    .setPlane('ground', 200, 200) //Add plane
+                    .setPlane(1000, 1000, 'ground') //Add plane
                     .start(true);
 
                 //Set resize event handler
@@ -129,8 +130,9 @@ window.onload = function()
                 }
 
                 var de = new DummyEntity();
-                var de2 = new DummyEntity();
-                de2.geometry(14, 0, 1);
+                //var de2 = new DummyEntity();
+                //de2.threeRenderable.playAnimation('produce');
+                //de2.geometry(14, 0, 1);
 
                 //de.geometry(5,5,5);
                 //de.geometry(1,1,1);
