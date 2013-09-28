@@ -16,7 +16,7 @@ define(['engine/core/Eventable', 'node-uuid', 'engine/core/Exception'], function
             }
 
             if(engine !== this) {
-                //Engine can't attach to himslef - recursive
+                //Engine can't attach to himself - recursive
                 this.attach(engine);
             }
         },
