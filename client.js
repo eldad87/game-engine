@@ -130,9 +130,19 @@ window.onload = function()
                 }
 
                 var de = new DummyEntity();
-                //var de2 = new DummyEntity();
-                //de2.threeRenderable.playAnimation('produce');
-                //de2.geometry(14, 0, 1);
+
+                var de2 = new DummyEntity();
+                de2.threeRenderable.playAnimation('produce');
+
+                //Attach to de + down-scale
+                de2.attach(de);
+                de2.geometry(1, 1, 1);
+                de2.threeRenderable.mesh().scale.set(1,1,1);
+
+                //Attach back to engine
+                de2.geometry(128, 0, 128);
+                de2.threeRenderable.mesh().scale.set(128, 128, 128);
+                de2.attach(engine);
 
                 //de.geometry(5,5,5);
                 //de.geometry(1,1,1);

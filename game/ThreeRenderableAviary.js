@@ -7,6 +7,8 @@ define(['engine/components/Render/ThreeBaseRenderable', 'lib/three.js/build/thre
             if(undefined === options) {
                 options = [];
             }
+
+            //Load mesh
             options.meshName = 'aviaryMesh';
             options.textureName = 'aviaryText';
             ThreeBaseRenderable.prototype.init.call(this, options);

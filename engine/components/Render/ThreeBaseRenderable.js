@@ -4,13 +4,13 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
             _classId: 'ThreeBaseRenderable',
             _forceComponentAccessor: 'threeRenderable',
             _defaultOptions: {textureName: null, inverse: false},
-            _mesh: null,
+            _parendAttachedEvent: null, //Hold event which let us know when our parent attach itself
+            _parentMesh: false, //Point to the parent mesh - if any
+            _mesh: null, //Our mesh
             _currentAnimation: undefined,
             _animations: {},
 
             init: function(options) {
-                Base.prototype.init.apply(this, options);
-
                 if(undefined === options) {
                     throw new Exception('No options provided');
                 }
@@ -20,35 +20,63 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
 
                 options = _.extend(this._defaultOptions, options);
 
-                //Set mesh
-                this.mesh(
-                    engine.threeLoader.createMesh(options.meshName, options.textureName, options.inverse)
-                );
+                //Create mesh
+                this._mesh = engine.threeLoader.createMesh(options.meshName, options.textureName, options.inverse);
+                if(engine.threeRenderer.shadow()) {
+                    this._mesh.castShadow = true;
+                    this._mesh.receiveShadow  = false;
+                }
+
+                //Base class - attach default to the engine, therefore we must create the mesh above first (in order  for the attach() to work properly)
+                Base.prototype.init.apply(this, options);
             },
 
-            mesh: function(mesh) {
-                if(undefined === mesh) {
-                    return this._mesh;
+            /**
+             * Return mesh
+             * @returns {null}
+             */
+            mesh: function() {
+                return this._mesh;
+            },
+
+            attach: function(parent, accessor) {
+                Base.prototype.attach.call(this, parent, accessor);
+                this._attachMesh();
+
+                //When our parent attach itself again
+                this._parendAttachedEvent = this._parent.on('attached', function() {
+                    //Re attach mesh
+                    this._unAttachMesh();
+                    this._attachMesh();
+
+                }, this);
+            },
+
+            _attachMesh: function() {
+                if(this._parent._parent && this._parent._parent.threeRenderable) {
+                    this._parentMesh = this._parent._parent.threeRenderable.mesh();
+                    this._parentMesh.add( this.mesh() );
+                } else {
+                    engine.threeRenderer.addToScene( this.mesh() );
                 }
+            },
 
-                //Check if mesh already exists
-                if(this._mesh) {
-                    //Remove mesh from renderer
-                    engine.threeRenderer.removeFromScene( this._mesh );
+            unAttach: function() {
+                if(this._parent && this._parendAttachedEvent) {
+                    this._parent.off('attached', this._parendAttachedEvent);
                 }
-
-                mesh.scale.set(2,2,2);
-
-                if(engine.threeRenderer.shadow()) {
-                    mesh.castShadow = true;
-                    mesh.receiveShadow  = false;
-                }
-
-                this._mesh = mesh;
-                //Add mesh to threeRenderer
-                engine.threeRenderer.addToScene( this._mesh );
-
+                this._unAttachMesh();
+                Base.prototype.unAttach.apply(this);
                 return this;
+            },
+
+            _unAttachMesh: function() {
+                if(this._parentMesh) {
+                    this._parentMesh.remove( this.mesh() );
+                    this._parentMesh = false;
+                } else {
+                    engine.threeRenderer.removeFromScene( this.mesh() );
+                }
             },
 
             /**
@@ -117,7 +145,11 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
             },
 
             destroy: function() {
-                engine.threeRenderer.removeFromScene( this.mesh() );
+                Base.prototype.destroy.apply(this); //Will call unAttach()
+
+                this._mesh = null;
+
+                //engine.threeRenderer.removeFromScene( this.mesh() );
                 return this;
             }
         });

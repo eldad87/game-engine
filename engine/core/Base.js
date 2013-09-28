@@ -144,6 +144,10 @@ define(['engine/core/Eventable', 'node-uuid', 'engine/core/Exception'], function
         destroy: function() {
             this.unAttach();
             engine.unRegisterObject(this);
+
+            this._children.eachMethod('destroy');
+
+            return true;
         },
 
         /**
