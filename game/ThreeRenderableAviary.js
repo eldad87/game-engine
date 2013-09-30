@@ -14,7 +14,7 @@ define(['engine/components/Render/ThreeBaseRenderable', 'lib/three.js/build/thre
             ThreeBaseRenderable.prototype.init.call(this, options);
 
             //Define animation
-            this.defineAnimation('produce', 15, 10000, 0);
+            this.defineAnimation('produce', 0, 15, 10000);
 
             //Scale
             this.mesh().scale.set(128, 128, 128);

@@ -82,11 +82,11 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
             /**
              *
              * @param name
+             * @param animOffset - starting frame of animation
              * @param keyframes -  total number of animation frames
              * @param duration - milliseconds to complete animation
-             * @param animOffset - starting frame of animation
              */
-            defineAnimation: function(name, keyframes, duration, animOffset) {
+            defineAnimation: function(name, animOffset, keyframes, duration) {
                 if(undefined !== this._animations[name]) {
                     //throw new Exception('Animation name [' + name + '] already exists!');
                 }

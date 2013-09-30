@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/game/ThreeRenderableAviary.js" line="16" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="14cf69c4-3998-4036-a475-c14e76683f96" name="Default" comment="type: himslef -&gt; himself">
+    <list default="true" id="14cf69c4-3998-4036-a475-c14e76683f96" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/character_test.zip" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/human_buildings_DAE.zip" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/light_camera_grid.zip" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/smoke_002.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/smokeparticle.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/core/Base.js" afterPath="$PROJECT_DIR$/engine/core/Base.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/terrain.zip" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/ThreeRenderableAviary.js" afterPath="$PROJECT_DIR$/game/ThreeRenderableAviary.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client.js" afterPath="$PROJECT_DIR$/client.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js" afterPath="$PROJECT_DIR$/lib/three.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rawcept.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380409060570" ignored="false" />
+    <file path="/Dummy.txt" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380409415073" ignored="false" />
     <file path="/Three.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380398341798" ignored="false" />
     <file path="/ThreeIsometric.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380397834409" ignored="false" />
     <file path="/ThreeBaseRenderable.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380409032827" ignored="false" />
@@ -38,10 +43,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Base.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/core/Base.js">
+      <file leaf-file-name="client.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="115" column="18" selection-start="3583" selection-end="3583" vertical-scroll-proportion="0.0">
+            <state line="144" column="35" selection-start="5879" selection-end="6010" vertical-scroll-proportion="0.41189426">
               <folding />
             </state>
           </provider>
@@ -56,10 +61,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="client.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client.js">
+      <file leaf-file-name="ThreeRenderableAviary.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/game/ThreeRenderableAviary.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="144" column="35" selection-start="5879" selection-end="6010" vertical-scroll-proportion="0.0">
+            <state line="16" column="56" selection-start="630" selection-end="630" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -68,16 +73,7 @@
       <file leaf-file-name="ThreeBaseRenderable.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="0" selection-start="1701" selection-end="1701" vertical-scroll-proportion="13.6">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Core.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/engine/Core.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="8" selection-start="1887" selection-end="1887" vertical-scroll-proportion="0.35132158">
+            <state line="86" column="67" selection-start="3449" selection-end="3449" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -103,10 +99,10 @@
       <list>
         <option value="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" />
         <option value="$PROJECT_DIR$/engine/components/Render/Three.js" />
-        <option value="$PROJECT_DIR$/game/ThreeRenderableAviary.js" />
         <option value="$PROJECT_DIR$/engine/core/Base.js" />
-        <option value="$PROJECT_DIR$/client.js" />
         <option value="$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js" />
+        <option value="$PROJECT_DIR$/game/ThreeRenderableAviary.js" />
+        <option value="$PROJECT_DIR$/client.js" />
       </list>
     </option>
   </component>
@@ -172,6 +168,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="human" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -272,6 +308,11 @@
       </server>
     </servers>
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="Z:\rawcept\game\assets" />
+    </key>
+  </component>
   <component name="RunManager">
     <list size="0" />
   </component>
@@ -294,7 +335,11 @@
       <created>1380399617386</created>
       <updated>1380399617386</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ThreeBaseRenderable - attached entities will now attach their meshes; &#10;- Scene&#10;- entity I - attached to engine&#10;- - threeRenderable - mesh is attached to scene&#10;- entity II - attach to entity I&#10;- - threeRenderable - mesh is attached to entity I threeRenderable.mesh&#10;&#10;Fix destroy - now populate to children.&#10;">
+      <created>1380409425160</created>
+      <updated>1380409425160</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -326,7 +371,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="true" />
     <option name="myTodoPanelSettings">
@@ -364,7 +409,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="type: himslef -&gt; himself" />
+    <option name="LAST_COMMIT_MESSAGE" value="ThreeBaseRenderable - attached entities will now attach their meshes; &#10;- Scene&#10;- entity I - attached to engine&#10;- - threeRenderable - mesh is attached to scene&#10;- entity II - attach to entity I&#10;- - threeRenderable - mesh is attached to entity I threeRenderable.mesh&#10;&#10;Fix destroy - now populate to children.&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -381,6 +426,7 @@
     <MESSAGE value="Scale dummy entity mesh&#10;change view camera&#10;change shadow from DirectLight&#10;" />
     <MESSAGE value="Change smoke particle" />
     <MESSAGE value="type: himslef -&gt; himself" />
+    <MESSAGE value="ThreeBaseRenderable - attached entities will now attach their meshes; &#10;- Scene&#10;- entity I - attached to engine&#10;- - threeRenderable - mesh is attached to scene&#10;- entity II - attach to entity I&#10;- - threeRenderable - mesh is attached to entity I threeRenderable.mesh&#10;&#10;Fix destroy - now populate to children.&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -459,9 +505,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client.js">
+    <entry file="file://$PROJECT_DIR$/engine/Core.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="35" selection-start="5879" selection-end="6010" vertical-scroll-proportion="0.0">
+        <state line="50" column="13" selection-start="1687" selection-end="1687" vertical-scroll-proportion="0.9361234">
           <folding />
         </state>
       </provider>
@@ -473,23 +519,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game/ThreeRenderableAviary.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="33" selection-start="687" selection-end="703" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="1701" selection-end="1701" vertical-scroll-proportion="13.6">
+        <state line="86" column="67" selection-start="3449" selection-end="3449" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/Core.js">
+    <entry file="file://$PROJECT_DIR$/game/ThreeRenderableAviary.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="8" selection-start="1887" selection-end="1887" vertical-scroll-proportion="0.35132158">
+        <state line="16" column="56" selection-start="630" selection-end="630" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="144" column="35" selection-start="5879" selection-end="6010" vertical-scroll-proportion="0.41189426">
           <folding />
         </state>
       </provider>
