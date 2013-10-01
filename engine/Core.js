@@ -52,7 +52,7 @@ define(['engine/core/Base', 'engine/core/Exception'], function (Base, Exception)
 
             this._register[obj.id()]  = obj;
 
-            this.emit('registerObject', obj.id());
+            this.trigger('registerObject', obj.id());
             return this;
         },
 
@@ -62,7 +62,7 @@ define(['engine/core/Base', 'engine/core/Exception'], function (Base, Exception)
         unRegisterObject: function(obj) {
             if(undefined !== this._register[obj.id()]) {
 
-                this.emit('beforeUnRegisterObject', obj.id());
+                this.trigger('beforeUnRegisterObject', obj.id());
 
                 delete this._register[obj.id()];
             }

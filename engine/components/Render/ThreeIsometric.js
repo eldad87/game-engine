@@ -1,4 +1,4 @@
-define(['engine/components/Render/Three', 'lib/three.js/build/three', 'engine/core/Point', 'underscore', 'lib/three.js/examples/js/controls/OrbitControls'],
+define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'underscore', 'lib/three.js/examples/js/controls/OrbitControls'],
     function(Three, THREE, Point, _) {
 
         var ThreeIsometric = Three.extend({

@@ -12,25 +12,43 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/smoke_002.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/smokeparticle.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/terrain.zip" />
-      <change type="DELETED" beforePath="Z:\rawcept\engine\core\common.all.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/empty.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/core/eventable.js" />
+      <change type="DELETED" beforePath="Z:\rawcept\engine\core\Eventable.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/core/Base.js" afterPath="$PROJECT_DIR$/engine/core/Base.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/core/Class.js" afterPath="$PROJECT_DIR$/engine/core/Class.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/Core.js" afterPath="$PROJECT_DIR$/engine/Core.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/DummyEntity.js" afterPath="$PROJECT_DIR$/game/DummyEntity.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Network/NetworkClient.js" afterPath="$PROJECT_DIR$/engine/components/Network/NetworkClient.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" afterPath="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/core/Point.js" afterPath="$PROJECT_DIR$/engine/core/Point.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js" afterPath="$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/Three.js" afterPath="$PROJECT_DIR$/engine/components/Render/Three.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeLoader.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeLoader.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/ThreeRenderableAviary.js" afterPath="$PROJECT_DIR$/game/ThreeRenderableAviary.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeTileMap.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeTileMap.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client.js" afterPath="$PROJECT_DIR$/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/core/common.js" afterPath="$PROJECT_DIR$/engine/core/common.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js" afterPath="$PROJECT_DIR$/lib/three.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rawcept.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380659139160" ignored="false" />
+    <file path="/Dummy.txt" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380661226657" ignored="false" />
     <file path="/Three.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380398341798" ignored="false" />
     <file path="/ThreeIsometric.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380656011300" ignored="false" />
     <file path="/ThreeBaseRenderable.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380583062739" ignored="false" />
-    <file path="/Base.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380658255314" ignored="false" />
-    <file path="/client.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380614469466" ignored="false" />
+    <file path="/Base.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380665594077" ignored="false" />
+    <file path="/client.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380664720676" ignored="false" />
     <file path="/ThreeMap.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380583793903" ignored="false" />
     <file path="/ThreeRenderableAviary.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380582949958" ignored="false" />
     <file path="/ThreeTileMap.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380614365275" ignored="false" />
-    <file path="/a.dummy" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380658350424" ignored="false" />
+    <file path="/a.dummy" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380663659197" ignored="false" />
+    <file path="/server.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380663503210" ignored="false" />
+    <file path="/DummyEntity.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380664784452" ignored="false" />
+    <file path="/eventable.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380666764759" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,19 +68,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="common.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/engine/core/common.js">
+      <file leaf-file-name="client.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="0" selection-start="2270" selection-end="2270" vertical-scroll-proportion="1.7599119">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Base.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/core/Base.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="146" column="0" selection-start="4435" selection-end="4435" vertical-scroll-proportion="-0.68">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -86,24 +95,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/engine/components/Render/Three.js" />
-        <option value="$PROJECT_DIR$/engine/components/Render/ThreeMap.js" />
-        <option value="$PROJECT_DIR$/engine/components/Render/ThreeTilleMap.js" />
-        <option value="$PROJECT_DIR$/game/ThreeRenderableAviary.js" />
+        <option value="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" />
         <option value="$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js" />
-        <option value="$PROJECT_DIR$/engine/components/Render/ThreeTileMap.js" />
+        <option value="$PROJECT_DIR$/engine/components/Render/Three.js" />
         <option value="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" />
-        <option value="$PROJECT_DIR$/client.js" />
+        <option value="$PROJECT_DIR$/engine/components/Render/ThreeLoader.js" />
+        <option value="$PROJECT_DIR$/engine/components/Render/ThreeTileMap.js" />
+        <option value="$PROJECT_DIR$/game/ThreeRenderableAviary.js" />
+        <option value="$PROJECT_DIR$/game/DummyEntity.js" />
+        <option value="$PROJECT_DIR$/empty.js" />
+        <option value="$PROJECT_DIR$/node_modules/Eventable/eventable.js" />
+        <option value="$PROJECT_DIR$/engine/core/eventable.js" />
         <option value="$PROJECT_DIR$/engine/core/Base.js" />
-        <option value="$PROJECT_DIR$/engine/core/common.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js" />
+        <option value="$PROJECT_DIR$/client.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1911" />
+    <option name="x" value="-9" />
     <option name="y" value="-9" />
     <option name="width" value="1938" />
-    <option name="height" value="1098" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -160,6 +175,52 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Eventable" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="engine" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -179,6 +240,68 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Network" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EntitySync" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -263,11 +386,15 @@
       <created>1380656127185</created>
       <updated>1380656127185</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Remoe eachMethod from common.js&#10;">
+      <created>1380659177235</created>
+      <updated>1380659177235</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1911" y="-9" width="1938" height="1098" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -281,7 +408,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24493062" sideWeight="0.6702356" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24493062" sideWeight="0.6702356" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -333,7 +460,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix - ThreeTileMap now accept tileset as parameter" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remoe eachMethod from common.js&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -356,112 +483,124 @@
     <MESSAGE value="Minor cosmetics to Tilemap/base renderer&#10;" />
     <MESSAGE value="transparent tile (white) + get position.y/rotation.x from options" />
     <MESSAGE value="Fix - ThreeTileMap now accept tileset as parameter" />
+    <MESSAGE value="Remoe eachMethod from common.js&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/game/assets/map/devini.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="8" selection-start="30469" selection-end="30779" vertical-scroll-proportion="-13.076923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/examples/js/Cloth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="1" selection-start="1181" selection-end="1182" vertical-scroll-proportion="0.5011013">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/DummyEntity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="34" selection-start="531" selection-end="531" vertical-scroll-proportion="0.24339207">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/ThreeRenderableAviary.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="84" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/editor/js/Sidebar.Material.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="49" selection-start="383" selection-end="383" vertical-scroll-proportion="0.20042872">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/components/Render/Three.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="112" selection-start="2749" selection-end="2749" vertical-scroll-proportion="0.2550911">
+        <state line="1" column="10" selection-start="59" selection-end="59" vertical-scroll-proportion="0.028333334">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeLoader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="93" selection-start="68" selection-end="93" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/build/three.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13057" column="6" selection-start="255871" selection-end="255871" vertical-scroll-proportion="34.06002">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/src/materials/MeshLambertMaterial.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="63" selection-start="1752" selection-end="1752" vertical-scroll-proportion="0.6255507">
+        <state line="0" column="34" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="66" selection-start="800" selection-end="850" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="43" selection-start="2579" selection-end="2579" vertical-scroll-proportion="0.99229074">
+        <state line="3" column="42" selection-start="174" selection-end="193" vertical-scroll-proportion="0.0561674">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeTileMap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="1278" selection-end="1278" vertical-scroll-proportion="0.44847113">
+        <state line="9" column="22" selection-start="487" selection-end="487" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client.js">
+    <entry file="file://$PROJECT_DIR$/empty.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="34" selection-start="2444" selection-end="2444" vertical-scroll-proportion="0.11413969">
+        <state line="1" column="43" selection-start="128" selection-end="128" vertical-scroll-proportion="0.018722467">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/ThreeRenderableAviary.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="9" selection-start="9" selection-end="9" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/core/Class.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="43" selection-start="2174" selection-end="2174" vertical-scroll-proportion="0.9504405">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/Eventable/eventable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="19" selection-start="4137" selection-end="4150" vertical-scroll-proportion="0.4416761">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/engine/core/Base.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="0" selection-start="4435" selection-end="4435" vertical-scroll-proportion="-0.68">
+        <state line="23" column="13" selection-start="730" selection-end="730" vertical-scroll-proportion="0.43061674">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/core/common.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="0" selection-start="2270" selection-end="2270" vertical-scroll-proportion="1.7599119">
+        <state line="10" column="70" selection-start="376" selection-end="376" vertical-scroll-proportion="0.19274376">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/core/eventable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="130" column="79" selection-start="5820" selection-end="5820" vertical-scroll-proportion="0.101321585">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/DummyEntity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="74" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="16" selection-start="857" selection-end="857" vertical-scroll-proportion="0.37558138">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="51" selection-start="3183" selection-end="3183" vertical-scroll-proportion="0.33293414">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/Core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="155" column="36" selection-start="4584" selection-end="4612" vertical-scroll-proportion="0.4958084">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>

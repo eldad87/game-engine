@@ -4,7 +4,6 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
             _classId: 'ThreeBaseRenderable',
             _forceComponentAccessor: 'threeRenderable',
             _defaultOptions: {textureName: null, inverse: false, autoMeshCreation: true},
-            _parendAttachedEvent: null, //Hold event which let us know when our parent attach itself
             _parentMesh: false, //Point to the parent mesh - if any
             _mesh: null, //Our mesh
             _currentAnimation: undefined,
@@ -46,13 +45,9 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
                 Base.prototype.attach.call(this, parent, accessor);
                 this._attachMesh();
 
-                //When our parent attach itself again
-                this._parendAttachedEvent = this._parent.on('attached', function() {
-                    //Re attach mesh
-                    this._unAttachMesh();
-                    this._attachMesh();
-
-                }, this);
+                //When our parent attach itself again - Re attach mesh
+                this._parent.on('attached', this._unAttachMesh, this);
+                this._parent.on('attached', this._attachMesh, this);
             },
 
             _attachMesh: function() {
@@ -65,9 +60,12 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
             },
 
             unAttach: function() {
-                if(this._parent && this._parendAttachedEvent) {
-                    this._parent.off('attached', this._parendAttachedEvent);
+                if(this._parent) {
+                    //Remove events
+                    this._parent.off('attached', this._unAttachMesh, this);
+                    this._parent.off('attached', this._attachMesh, this);
                 }
+
                 this._unAttachMesh();
                 Base.prototype.unAttach.apply(this);
                 return this;

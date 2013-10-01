@@ -1,4 +1,4 @@
-define(['engine/components/Render/ThreeBaseRenderable', 'lib/three.js/build/three', 'engine/core/Exception', 'underscore'], function (ThreeBaseRenderable, THREE, Exception, _) {
+define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], function (ThreeBaseRenderable, THREE, Exception, _) {
     //http://stackoverflow.com/questions/13516990/render-tmx-map-on-threejs-plane
     var ThreeTileMap = ThreeBaseRenderable.extend({
         _classId: 'ThreeTileMap',

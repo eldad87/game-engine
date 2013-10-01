@@ -1,23 +1,22 @@
-//Connect to server
-
-//Listen for messages
-
-//Set messages
-
-window.onload = function() 
+window.onload = function()
 {
     requirejs.config({
         paths: {
             'socket.io'             : './node_modules/socket.io/node_modules/socket.io-client/dist/socket.io',
             'node-uuid'             : './node_modules/node-uuid/uuid',
             'underscore'            : './node_modules/underscore/underscore',
+            'Eventable'             : './engine/core/eventable',
             'moment'                : './lib/moment',
+            'THREE'                 : './lib/three.js/build/three',
             'ShaderParticleGroup'   : './lib/ShaderParticleEngine/src/ShaderParticleGroup',
-            'ShaderParticleEmitter' : './lib/ShaderParticleEngine/src/ShaderParticleEmitter'
+            'ShaderParticleEmitter' : './lib/ShaderParticleEngine/src/ShaderParticleEmitter',
             //'bson' : './node_modules/bson/browser_build/bson'
+
+            'ThreeBaseRenderable'   : './engine/components/Render/ThreeBaseRenderable',
+            'ThreeRenderableAviary' : './game/ThreeRenderableAviary'
         },
         shim: {
-            'lib/three.js/build/three': {
+            'THREE': {
                 'exports': 'THREE'
             },
             'lib/three.js/examples/js/loaders/OBJMTLLoader' :{
@@ -56,8 +55,13 @@ window.onload = function()
     requirejs([ 'engine/core/Class', 'engine/Core', 'engine/components/Network/SocketNetworkDriver',
                 'engine/components/EntitySync/EntitySyncDriver', 'engine/components/Render/ThreeIsometric',
                 'engine/components/Render/ThreeLoader',
-                'engine/core/Point', 'lib/three.js/build/three', 'game/DummyEntity',
-                'engine/components/Render/ThreeTileMap'],
+                'engine/core/Point',
+
+                'THREE',
+                './game/DummyEntity',
+                './engine/components/Render/ThreeTileMap',
+
+                ],
         function(Class, Core, SocketNetworkDriver, EntitySyncDriver, ThreeIsomatric, ThreeLoader, Point, THREE, DummyEntity, ThreeTileMap) {
 
         var Client = Class.extend({
@@ -116,7 +120,7 @@ window.onload = function()
                 }
 
                 //Load TMX tile map
-                var ttm = new ThreeTileMap({
+                new ThreeTileMap({
                     size: new THREE.Vector2(20, 20), //Size
                     tileSize: new THREE.Vector2(32, 32),//Tile size
                     layerData: [13, 2, 1, 2, 1, 2, 1, 28, 9, 7, 8, 8, 20, 27, 1, 2, 1, 2, 1, 2, 1, 14, 13, 14, 13, 14, 14, 28, 21, 7, 10, 19, 7, 27, 13, 1, 1, 14, 13, 14, 1, 14, 1, 2, 1, 2, 14, 40, 21, 22, 8, 21, 7, 39, 2, 2, 1, 2, 16, 38, 13, 14, 11, 13, 14, 14, 13, 28, 22, 9, 8, 21, 9, 27, 13, 16, 38, 38, 18, 22, 1, 2, 23, 2, 1, 2, 1, 40, 9, 20, 8, 10, 7, 39, 16, 18, 20, 8, 20, 8, 13, 14, 13, 14, 13, 14, 14, 1, 6, 8, 10, 7, 20, 17, 18, 7, 19, 21, 10, 5, 1, 2, 1, 2, 1, 2, 16, 37, 18, 9, 22, 8, 19, 22, 21, 7, 21, 7, 5, 3, 13, 14, 13, 14, 16, 37, 18, 20, 19, 19, 8, 21, 19, 22, 19, 19, 5, 26, 3, 14, 1, 16, 37, 38, 18, 22, 21, 22, 7, 9, 22, 5, 6, 5, 26, 26, 2, 1, 1, 2, 38, 18, 7, 10, 7, 9, 19, 7, 21, 5, 26, 14, 4, 3, 14, 2, 14, 1, 13, 14, 20, 20, 7, 20, 8, 9, 5, 25, 26, 3, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 22, 20, 22, 5, 25, 26, 3, 14, 13, 14, 13, 14, 13, 22, 22, 14, 13, 14, 13, 14, 21, 9, 5, 3, 1, 2, 1, 2, 1, 2, 1, 2, 1, 22, 22, 22, 1, 2, 11, 2, 25, 26, 3, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 23, 14, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 1, 2, 1, 2, 11, 2, 1, 2, 1, 2, 1, 2, 1, 11, 1, 2, 1, 2, 1, 2, 13, 14, 13, 14, 23, 14, 13, 14, 13, 14, 13, 14, 13, 23, 13, 14, 13, 14, 13, 14, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14], //layerData
@@ -124,7 +128,7 @@ window.onload = function()
                 }).attach(engine);
 
 
-                var de = new DummyEntity();
+               var de = new DummyEntity();
                 var de2 = new DummyEntity();
                 de2.threeRenderable.playAnimation('produce');
 
@@ -137,11 +141,6 @@ window.onload = function()
                 de2.geometry(128, 0, 128);
                 de2.threeRenderable.mesh().scale.set(128, 128, 128);
                 de2.attach(engine);
-
-
-
-
-
 
                 //de.geometry(5,5,5);
                 //de.geometry(1,1,1);

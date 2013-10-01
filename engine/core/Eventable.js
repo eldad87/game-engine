@@ -1,276 +1,173 @@
-/**
- * Creates a new class with the capability to emit events.
- */
-define(['engine/core/Class'], function(Class) {
+define(['engine/core/Class', 'underscore'], function(Class, _) {
+
     var Eventable = Class.extend({
         _classId: 'Eventable',
 
-        /**
-         * Add an event listener method for an event.
-         * @param {String || Array} eventName The name of the event to listen for (string), or an array of events to listen for.
-         * @param {Function} call The method to call when the event listener is triggered.
-         * @param {Object=} context The context in which the call to the listening method will be made (sets the 'this' variable in the method to the object passed as this parameter).
-         * @param {Boolean=} oneShot If set, will instruct the listener to only listen to the event being fired once and will not fire again.
-         * @param {Boolean=} sendEventName If set, will instruct the emitter to send the event name as the argument instead of any emitted arguments.
-         * @return {Object}
-         */
-        on: function (eventName, call, context, oneShot, sendEventName) {
-            var self = this,
-                newListener,
-                addListener,
-                existingIndex,
-                elArr,
-                multiEvent,
-                eventIndex,
-                eventData,
-                eventObj,
-                multiEventName,
-                i;
+        // Backbone.Events
+        // ---------------
 
-            // Check that we have an event listener object
-            this._eventListeners = this._eventListeners || {};
+        // A module that can be mixed in to *any object* in order to provide it with
+        // custom events. You may bind with `on` or remove with `off` callback
+        // functions to an event; `trigger`-ing an event fires all callbacks in
+        // succession.
+        //
+        //     var object = {};
+        //     _.extend(object, Backbone.Events);
+        //     object.on('expand', function(){ alert('expanded'); });
+        //     object.trigger('expand');
+        //
 
-            if (typeof call === 'function') {
-                if (typeof eventName === 'string') {
-                    // Compose the new listener
-                    newListener = {
-                        call:call,
-                        context:context,
-                        oneShot:oneShot,
-                        sendEventName:sendEventName
-                    };
+        init: function() {
+            var array = [];
+            this.slice = array.slice;
+            // Regular expression used to split event strings.
+            this.eventSplitter = /\s+/;
 
-                    elArr = this._eventListeners[eventName] = this._eventListeners[eventName] || [];
 
-                    // Check if we already have this listener in the list
-                    addListener = true;
+            var listenMethods = {listenTo: 'on', listenToOnce: 'once'};
 
-                    // TO-DO - Could this do with using indexOf? Would that work? Would be faster?
-                    existingIndex = elArr.indexOf(newListener);
-                    if (existingIndex > -1) {
-                        addListener = false;
-                    }
-
-                    // Add this new listener
-                    if (addListener) {
-                        elArr.push(newListener);
-                    }
-
-                    return newListener;
-                } else {
-                    // The eventName is an array of names, creating a group of events
-                    // that must be fired to fire this event callback
-                    if (eventName.length) {
-                        // Loop the event array
-                        multiEvent = [];
-                        multiEvent[0] = 0; // This will hold our event count total
-                        multiEvent[1] = 0; // This will hold our number of events fired
-
-                        // Define the multi event callback
-                        multiEvent[3] = function (firedEventName) {
-                            multiEvent[1]++;
-
-                            if (multiEvent[0] === multiEvent[1]) {
-                                // All the multi-event events have fired
-                                // so fire the callback
-                                call.apply(context || self);
-                            }
-                        };
-
-                        for (eventIndex in eventName) {
-                            if (eventName.hasOwnProperty(eventIndex)) {
-                                eventData = eventName[eventIndex];
-                                eventObj = eventData[0];
-                                multiEventName = eventData[1];
-
-                                // Increment the event listening count total
-                                multiEvent[0]++;
-
-                                // Register each event against the event object with a callback
-                                eventObj.on(multiEventName, multiEvent[3], null, true, true);
-                            }
-                        }
-                    }
-                }
-            } else {
-                if (typeof(eventName) !== 'string') {
-                    eventName = '*Multi-Event*';
-                }
-                this.log('Cannot register event listener for event "' + eventName + '" because the passed callback is not a function!', 'error');
-            }
+            // Inversion-of-control versions of `on` and `once`. Tell *this* object to
+            // listen to an event in another object ... keeping track of what it's
+            // listening to.
+            _.each(listenMethods, function(implementation, method) {
+                Eventable[method] = function(obj, name, callback) {
+                    var listeners = this._listeners || (this._listeners = {});
+                    var id = obj._listenerId || (obj._listenerId = _.uniqueId('l'));
+                    listeners[id] = obj;
+                    if (typeof name === 'object') callback = this;
+                    obj[implementation](name, callback, this);
+                    return this;
+                };
+            });
         },
 
-        /**
-         * Emit an event by name.
-         * @param {Object} eventName The name of the event to emit.
-         * @param {Object || Array} args The arguments to send to any listening methods.
-         * If you are sending multiple arguments, use an array containing each argument.
-         * @return {Number}
-         */
-        emit: function (eventName, args) {
-            if (this._eventListeners) {
-                // Check if the event has any listeners
-                if (this._eventListeners[eventName]) {
-
-                    // Fire the listeners for this event
-                    var eventCount = this._eventListeners[eventName].length,
-                        eventCount2 = this._eventListeners[eventName].length - 1,
-                        finalArgs, i, cancelFlag, eventIndex, tempEvt, retVal;
-
-                    // If there are some events, ensure that the args is ready to be used
-                    if (eventCount) {
-                        finalArgs = [];
-                        if (typeof(args) === 'object' && args !== null && args[0] !== null && args[0] !== undefined) {
-                            for (i in args) {
-                                if (args.hasOwnProperty(i)) {
-                                    finalArgs[i] = args[i];
-                                }
-                            }
-                        } else {
-                            finalArgs = [args];
-                        }
-
-                        // Loop and emit!
-                        cancelFlag = false;
-
-                        this._eventListeners._processing = true;
-                        while (eventCount--) {
-                            eventIndex = eventCount2 - eventCount;
-                            tempEvt = this._eventListeners[eventName][eventIndex];
-
-
-                            // If the sendEventName flag is set, overwrite the arguments with the event name
-                            if (tempEvt.sendEventName) { finalArgs = [eventName]; }
-
-                            // Call the callback
-                            retVal = tempEvt.call.apply(tempEvt.context || this, finalArgs);
-
-                            // If the retVal === true then store the cancel flag and return to the emitting method
-                            if (retVal === true) {
-                                // The receiver method asked us to send a cancel request back to the emitter
-                                cancelFlag = true;
-                            }
-
-                            // Check if we should now cancel the event
-                            if (tempEvt.oneShot) {
-                                // The event has a oneShot flag so since we have fired the event,
-                                // lets cancel the listener now
-                                this.off(eventName, tempEvt);
-                                eventCount2--;
-                            }
-                        }
-
-                        // Check that the array still exists because an event
-                        // could have triggered a method that destroyed our object
-                        // which would have deleted the array!
-                        if (this._eventListeners) {
-                            this._eventListeners._processing = false;
-
-                            // Now process any event removal
-                            this._processRemovals();
-                        }
-
-                        if (cancelFlag) {
-                            return 1;
-                        }
-
-                    }
-
-                }
-            }
+        // Bind an event to a `callback` function. Passing `"all"` will bind
+        // the callback to all events fired.
+        on: function(name, callback, context) {
+            if (!this.eventsApi(this, 'on', name, [callback, context]) || !callback) return this;
+            this._events || (this._events = {});
+            var events = this._events[name] || (this._events[name] = []);
+            events.push({callback: callback, context: context, ctx: context || this});
+            return this;
         },
 
-        /**
-         * Loops the removals array and processes off() calls for
-         * each array item.
-         * @private
-         */
-        _processRemovals: function () {
-            if (this._eventListeners) {
-                var remArr = this._eventListeners._removeQueue,
-                    arrCount,
-                    item,
-                    result;
-
-                // If the removal array exists
-                if (remArr) {
-                    // Get the number of items in the removal array
-                    arrCount = remArr.length;
-
-                    // Loop the array
-                    while (arrCount--) {
-                        item = remArr[arrCount];
-
-                        // Call the off() method for this item
-                        result = this.off(item[0], item[1]);
-
-                        // Check if there is a callback
-                        if (typeof remArr[2] === 'function') {
-                            // Call the callback with the removal result
-                            remArr[2](result);
-                        }
-                    }
-                }
-
-                // Remove the removal array
-                delete this._eventListeners._removeQueue;
-            }
+        // Bind an event to only be triggered a single time. After the first time
+        // the callback is invoked, it will be removed.
+        once: function(name, callback, context) {
+            if (!this.eventsApi(this, 'once', name, [callback, context]) || !callback) return this;
+            var self = this;
+            var once = _.once(function() {
+                self.off(name, once);
+                callback.apply(this, arguments);
+            });
+            once._callback = callback;
+            return this.on(name, once, context);
         },
 
-        /**
-         * Remove an event listener. If the _processing flag is true
-         * then the removal will be placed in the removals array to be
-         * processed after the event loop has completed in the emit()
-         * method.
-         * @param {Boolean} eventName The name of the event you originally registered to listen for.
-         * @param {Object} evtListener The event listener object to cancel.
-         * @return {Boolean}
-         */
-        off: function (eventName, evtListener, callback) {
-            if (this._eventListeners) {
-                if (!this._eventListeners._processing) {
-                    if (this._eventListeners[eventName]) {
-                        // Find this listener in the list
-                        var evtListIndex = this._eventListeners[eventName].indexOf(evtListener);
-                        if (evtListIndex > -1) {
-                            // Remove the listener from the event listener list
-                            this._eventListeners[eventName].splice(evtListIndex, 1);
-                            if (callback) {
-                                callback(true);
-                            }
-                            return true;
-                        } else {
-                            this.log('Failed to cancel event listener for event named "' + eventName + '" !', 'warning', evtListener);
-                        }
-                    } else {
-                        this.log('Failed to cancel event listener!');
-                    }
-                } else {
-                    // Add the removal to a remove queue since we are processing
-                    // listeners at the moment and removing one would mess up the
-                    // loop!
-                    this._eventListeners._removeQueue = this._eventListeners._removeQueue || [];
-                    this._eventListeners._removeQueue.push([eventName, evtListener, callback]);
+        // Remove one or many callbacks. If `context` is null, removes all
+        // callbacks with that function. If `callback` is null, removes all
+        // callbacks for the event. If `name` is null, removes all bound
+        // callbacks for all events.
+        off: function(name, callback, context) {
+            var retain, ev, events, names, i, l, j, k;
+            if (!this._events || !this.eventsApi(this, 'off', name, [callback, context])) return this;
+            if (!name && !callback && !context) {
+                this._events = {};
+                return this;
+            }
 
-                    return -1;
+            names = name ? [name] : _.keys(this._events);
+            for (i = 0, l = names.length; i < l; i++) {
+                name = names[i];
+                if (events = this._events[name]) {
+                    this._events[name] = retain = [];
+                    if (callback || context) {
+                        for (j = 0, k = events.length; j < k; j++) {
+                            ev = events[j];
+                            if ((callback && callback !== ev.callback && callback !== ev.callback._callback) ||
+                                (context && context !== ev.context)) {
+                                retain.push(ev);
+                            }
+                        }
+                    }
+                    if (!retain.length) delete this._events[name];
                 }
             }
 
-            if (callback) {
-                callback(false);
-            }
-            return false;
+            return this;
         },
 
-        /**
-         * Returns an object containing the current event listeners.
-         * @return {Object}
-         */
-        eventList: function () {
-            return this._eventListeners;
+        // Trigger one or many events, firing all bound callbacks. Callbacks are
+        // passed the same arguments as `trigger` is, apart from the event name
+        // (unless you're listening on `"all"`, which will cause your callback to
+        // receive the true name of the event as the first argument).
+        trigger: function(name) {
+            if (!this._events) return this;
+            var args = this.slice.call(arguments, 1);
+            if (!this.eventsApi(this, 'trigger', name, args)) return this;
+            var events = this._events[name];
+            var allEvents = this._events.all;
+            if (events) this.triggerEvents(events, args);
+            if (allEvents) this.triggerEvents(allEvents, arguments);
+            return this;
+        },
+
+        // Tell this object to stop listening to either specific events ... or
+        // to every object it's currently listening to.
+        stopListening: function(obj, name, callback) {
+            var listeners = this._listeners;
+            if (!listeners) return this;
+            var deleteListener = !name && !callback;
+            if (typeof name === 'object') callback = this;
+            if (obj) (listeners = {})[obj._listenerId] = obj;
+            for (var id in listeners) {
+                listeners[id].off(name, callback, this);
+                if (deleteListener) delete this._listeners[id];
+            }
+            return this;
+        },
+
+        // Implement fancy features of the Events API such as multiple event
+        // names `"change blur"` and jQuery-style event maps `{change: action}`
+        // in terms of the existing API.
+        eventsApi: function(obj, action, name, rest) {
+            if (!name) return true;
+
+            // Handle event maps.
+            if (typeof name === 'object') {
+                for (var key in name) {
+                    obj[action].apply(obj, [key, name[key]].concat(rest));
+                }
+                return false;
+            }
+
+            // Handle space separated event names.
+            if (this.eventSplitter.test(name)) {
+                var names = name.split(this.eventSplitter);
+                for (var i = 0, l = names.length; i < l; i++) {
+                    obj[action].apply(obj, [names[i]].concat(rest));
+                }
+                return false;
+            }
+
+            return true;
+        },
+        
+        // A difficult-to-believe, but optimized internal dispatch function for
+        // triggering events. Tries to keep the usual cases speedy (most internal
+        // Backbone events have 3 arguments).
+        triggerEvents: function(events, args) {
+            var ev, i = -1, l = events.length, a1 = args[0], a2 = args[1], a3 = args[2];
+            switch (args.length) {
+                case 0: while (++i < l) (ev = events[i]).callback.call(ev.ctx); return;
+                case 1: while (++i < l) (ev = events[i]).callback.call(ev.ctx, a1); return;
+                case 2: while (++i < l) (ev = events[i]).callback.call(ev.ctx, a1, a2); return;
+                case 3: while (++i < l) (ev = events[i]).callback.call(ev.ctx, a1, a2, a3); return;
+                default: while (++i < l) (ev = events[i]).callback.apply(ev.ctx, args);
+            }
         }
     });
 
-//  if (typeof(module) !== 'undefined' && typeof(module.exports) !== 'undefined') { module.exports = Eventable; }
+
     return Eventable;
 });

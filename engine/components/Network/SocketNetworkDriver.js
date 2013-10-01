@@ -87,7 +87,7 @@ define(['engine/core/Base', 'engine/core/Exception', 'engine/components/Network/
 
                 //Apply diff
                 //console.log('Off by: ' + uptimeDiff);
-                engine.incrementUptimeBy(uptimeDiff);
+                engine.incrementUptimeByLatestDelta(uptimeDiff);
 
                 this._clockSynced = true;
             }

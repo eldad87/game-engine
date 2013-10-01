@@ -1,4 +1,4 @@
-define(['engine/core/Base', 'lib/three.js/build/three', 'underscore', 'engine/core/Exception'],
+define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception'],
     function(Base, THREE, _, Exception) {
 
         var ThreeLoader = Base.extend({

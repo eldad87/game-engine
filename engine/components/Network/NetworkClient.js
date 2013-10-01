@@ -14,7 +14,7 @@ define(['socket.io', 'node-uuid'], function   (io, UUID) {
 
             var self = this;
             this._socket.on('connect', function(socket){
-                self.emit('connect');
+                self.trigger('connect');
 
                 self._socket.on('message', self._onMessage.bind(self));
                 self._socket.on('disconnect', self.onDisconnect.bind(self));

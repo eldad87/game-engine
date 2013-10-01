@@ -90,7 +90,7 @@ define([ 'socket.io', 'node-uuid'], function(io, UUID) {
 
             this._sockets.on('connection', function(socket){
                 self.onConnection(socket);
-                self.emit('connect', socket.id);
+                self.trigger('connect', socket.id);
             });
 
             return this;

@@ -19,7 +19,7 @@ define(['engine/core/Base'], function (Base) {
         },
 
         clone: function () {
-            return new IgePoint(this.x, this.y, this.z);
+            return new Point(this.x, this.y, this.z);
         },
 
         interpolate: function (endPoint, startTime, currentTime, endTime) {

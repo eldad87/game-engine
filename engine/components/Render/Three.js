@@ -1,5 +1,5 @@
 define(['engine/core/Base', 'engine/core/Point',
-    'lib/three.js/build/three', 'lib/three.js/examples/js/Detector', 'underscore', 'engine/core/Exception'],
+    'THREE', 'lib/three.js/examples/js/Detector', 'underscore', 'engine/core/Exception'],
     function(Base, Point, THREE, Detector, _, Exception) {
 
         var Three = Base.extend({

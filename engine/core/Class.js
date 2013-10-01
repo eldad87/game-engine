@@ -112,6 +112,5 @@ define(['engine/core/Exception', 'engine/core/common'], function(Exception) {
 		return Class;
     }());
 
-//    if (typeof(module) !== 'undefined' && typeof(module.exports) !== 'undefined') { module.exports = Class; }
     return Class;
 });
