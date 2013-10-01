@@ -81,6 +81,7 @@ window.onload = function()
                             console.log('Loaded [' + loaded + '/' + total + '] assets');
                         }
                     })
+                    .loadTexture('ground', './game/assets/ground/grass001.jpg')
                     .loadTexture('tilesetText', './game/assets/map/grass-tiles-2-small.png')
                     .loadTexture('smoke_001', './game/assets/smoke_001.png')
                     .loadJS('aviaryMesh', './game/assets/human/h_aviary/h_aviary.js')
