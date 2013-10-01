@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="14cf69c4-3998-4036-a475-c14e76683f96" name="Default" comment="Eventable">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/character_test.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/map/grass-tiles-2-small.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/human_buildings_DAE.zip" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/light_camera_grid.zip" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/smoke_002.png" />
@@ -18,7 +17,7 @@
     </list>
     <ignored path="rawcept.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380667295659" ignored="false" />
+    <file path="/Dummy.txt" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380667302432" ignored="false" />
     <file path="/Three.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380398341798" ignored="false" />
     <file path="/ThreeIsometric.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380656011300" ignored="false" />
     <file path="/ThreeBaseRenderable.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380583062739" ignored="false" />
@@ -380,7 +379,11 @@
       <created>1380667281983</created>
       <updated>1380667281983</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Eventable">
+      <created>1380667329710</created>
+      <updated>1380667329710</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -398,7 +401,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24493062" sideWeight="0.6702356" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24493062" sideWeight="0.6702356" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
