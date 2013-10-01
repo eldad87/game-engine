@@ -3,7 +3,7 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
         var ThreeBaseRenderable = Base.extend({
             _classId: 'ThreeBaseRenderable',
             _forceComponentAccessor: 'threeRenderable',
-            _defaultOptions: {textureName: null, inverse: false},
+            _defaultOptions: {textureName: null, inverse: false, autoMesh: true},
             _parendAttachedEvent: null, //Hold event which let us know when our parent attach itself
             _parentMesh: false, //Point to the parent mesh - if any
             _mesh: null, //Our mesh
@@ -14,18 +14,21 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
                 if(undefined === options) {
                     throw new Exception('No options provided');
                 }
-                if(undefined === options.meshName) {
-                    throw new Exception('meshName option is missing in settings')
-                }
 
                 options = _.extend(this._defaultOptions, options);
 
-                //Create mesh
-                this._mesh = engine.threeLoader.createMesh(options.meshName, options.textureName, options.inverse);
+                if(options.autoMesh) {
+                    if(undefined === options.meshName) {
+                        throw new Exception('meshName option is missing in settings')
+                    }
+                    //Create mesh
+                    this._mesh = engine.threeLoader.createMesh(options.meshName, options.textureName, options.inverse);
+                }
                 if(engine.threeRenderer.shadow()) {
                     this._mesh.castShadow = true;
                     this._mesh.receiveShadow  = false;
                 }
+
 
                 //Base class - attach default to the engine, therefore we must create the mesh above first (in order  for the attach() to work properly)
                 Base.prototype.init.apply(this, options);
@@ -135,8 +138,10 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
             },
 
             process: function() {
-                var point = this._parent.geometry();
-                this.mesh().position.set(point.x, point.y, point.z);
+                if(this._parent && this._parent.geometry) {
+                    var point = this._parent.geometry();
+                    this.mesh().position.set(point.x, point.y, point.z);
+                }
 
                 if(this.playAnimation()) {
                     this._playAnimation(this.playAnimation());

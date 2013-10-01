@@ -64,6 +64,8 @@ define(['engine/core/Base', 'engine/core/Point',
                 if(this.shadow()) {
                     plane.receiveShadow = true;
                 }
+
+
                 this.addToScene(plane);
 
                 if(this._debug) {
