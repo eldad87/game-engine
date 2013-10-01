@@ -1,4 +1,5 @@
 define(['engine/components/Render/ThreeBaseRenderable', 'lib/three.js/build/three', 'engine/core/Exception', 'underscore'], function (ThreeBaseRenderable, THREE, Exception, _) {
+    //http://stackoverflow.com/questions/13516990/render-tmx-map-on-threejs-plane
     var ThreeTileMap = ThreeBaseRenderable.extend({
         _classId: 'ThreeTileMap',
 
@@ -28,11 +29,13 @@ define(['engine/components/Render/ThreeBaseRenderable', 'lib/three.js/build/thre
             this.initPlaneMesh();
 
             //Load mesh
-            options.autoMesh = false;
+            options.autoMeshCreation = false;
             ThreeBaseRenderable.prototype.init.call(this, options);
 
-            this._mesh.receiveShadow = true;
-            this._mesh.castShadow  = false;
+            if(engine.threeRenderer.shadow()) {
+                this._mesh.receiveShadow = true;
+                this._mesh.castShadow  = false;
+            }
         },
 
         packArray: function(layerData) {
@@ -128,8 +131,6 @@ define(['engine/components/Render/ThreeBaseRenderable', 'lib/three.js/build/thre
         },
 
         initUniform: function() {
-            //this._uniforms = window._uniforms =  THREE.UniformsUtils.clone(lambertShader.uniforms);
-
             var lambertShader = THREE.ShaderLib['lambert'];
             var uniforms = THREE.UniformsUtils.clone(lambertShader.uniforms);
             this._uniforms = window._uniforms = _.extend(uniforms,

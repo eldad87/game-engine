@@ -3,7 +3,7 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
         var ThreeBaseRenderable = Base.extend({
             _classId: 'ThreeBaseRenderable',
             _forceComponentAccessor: 'threeRenderable',
-            _defaultOptions: {textureName: null, inverse: false, autoMesh: true},
+            _defaultOptions: {textureName: null, inverse: false, autoMeshCreation: true},
             _parendAttachedEvent: null, //Hold event which let us know when our parent attach itself
             _parentMesh: false, //Point to the parent mesh - if any
             _mesh: null, //Our mesh
@@ -17,7 +17,7 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
 
                 options = _.extend(this._defaultOptions, options);
 
-                if(options.autoMesh) {
+                if(options.autoMeshCreation) {
                     if(undefined === options.meshName) {
                         throw new Exception('meshName option is missing in settings')
                     }
