@@ -22,7 +22,7 @@ define(['engine/components/Render/ThreeBaseRenderable', 'lib/three.js/build/thre
 
             this.size = options.size;
             this.tileSize = options.tileSize;
-            this.tileset = engine.threeLoader.getTexture('tilesetText2');
+            this.tileset = engine.threeLoader.getTexture(options.tileset);
             this.tileset.needsUpdate = true;
             this.dataTex = this.packArray(options.layerData);
 
