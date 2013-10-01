@@ -51,17 +51,6 @@ window.onload = function()
                 'exports': '_'
             }
         }
-
-        /*,
-        shim: {
-            'bson': {
-                exports: 'bson',
-                init: function () {
-                    return this.bson();
-                }
-            }
-        }*/
-
     });
 
     requirejs([ 'engine/core/Class', 'engine/Core', 'engine/components/Network/SocketNetworkDriver',

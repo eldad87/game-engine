@@ -1,4 +1,4 @@
-define(['engine/core/Eventable', 'node-uuid', 'engine/core/Exception'], function(Eventable, UUID, Exception) {
+define(['engine/core/Eventable', 'node-uuid', 'engine/core/Exception', 'underscore'], function(Eventable, UUID, Exception, _) {
     var Base = Eventable.extend({
         _classId: 'Base',
 
@@ -145,7 +145,9 @@ define(['engine/core/Eventable', 'node-uuid', 'engine/core/Exception'], function
             this.unAttach();
             engine.unRegisterObject(this);
 
-            this._children.eachMethod('destroy');
+            _.each(this._children, function(element, index){
+                this._children[index]['destroy']();
+            }, this);
 
             return true;
         },
@@ -158,7 +160,9 @@ define(['engine/core/Eventable', 'node-uuid', 'engine/core/Exception'], function
                 return false; //Stop population
             }
 
-            this._children.eachMethod('updateSceneGraph');
+            _.each(this._children, function(element, index){
+                this._children[index]['updateSceneGraph']();
+            }, this);
 
             return true;
         },
@@ -174,7 +178,9 @@ define(['engine/core/Eventable', 'node-uuid', 'engine/core/Exception'], function
                 return false; //Stop population
             }
 
-            this._children.eachMethod('processSceneGraph');
+            _.each(this._children, function(element, index){
+                this._children[index]['processSceneGraph']();
+            }, this);
 
             return true;
         },

@@ -1,6 +1,3 @@
-/************************/
-/*   Basic extensions   */
-/************************/
 engine = null;
 ClassRegister = {};
 
@@ -96,32 +93,9 @@ Array.prototype.pull = function (item) {
 	}
 };
 
-function isFunction(value){return typeof value == 'function';}
-
 /**
  * Make property non-enumerable.
- */
-Object.defineProperty(Array.prototype, 'eachMethod', {
-	enumerable:false,
-	writable:true,
-	configurable:true
-});
-
-/**
- * Iterates through an array's items and execute a method on each item
- * @param method
- */
-Array.prototype.eachMethod = function (method) {
-	var len = this.length,
-		i;
-
-	for (i = 0; i < len; i++) {
-		this[i][method]();
-	}
-};
-
-/**
- * Make property non-enumerable.
+ * https://github.com/underscorediscovery/realtime-multiplayer-in-html5/blob/master/game.core.js
  */
 Object.defineProperty(Number.prototype, 'fixed', {
 	enumerable:false,
