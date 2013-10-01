@@ -2,6 +2,7 @@ define(['engine/components/Render/ThreeBaseRenderable', 'lib/three.js/build/thre
     //http://stackoverflow.com/questions/13516990/render-tmx-map-on-threejs-plane
     var ThreeTileMap = ThreeBaseRenderable.extend({
         _classId: 'ThreeTileMap',
+        _defaultOptions: {position:{ y: 0},  rotation:{x: - Math.PI / 2}},
 
         init: function(options)
         {
@@ -17,6 +18,7 @@ define(['engine/components/Render/ThreeBaseRenderable', 'lib/three.js/build/thre
             if(undefined === options.tileset) {
                 throw new Exception('tileset is missing');
             }
+            options = _.extend(this._defaultOptions, options);
 
             this.size = options.size;
             this.tileSize = options.tileSize;
@@ -26,7 +28,7 @@ define(['engine/components/Render/ThreeBaseRenderable', 'lib/three.js/build/thre
 
             this.initShaders();
             this.initUniform();
-            this.initPlaneMesh();
+            this.initPlaneMesh(options);
 
             //Load mesh
             options.autoMeshCreation = false;
@@ -123,8 +125,9 @@ define(['engine/components/Render/ThreeBaseRenderable', 'lib/three.js/build/thre
                 '   vec2 offset = floor(tileLoc) * tileSize;', //offset in the tileset
                 '   vec2 coord = mod(pixelCoord, tileSize);', //coord of the tile.
 
-                '   gl_FragColor = texture2D(tileset, (offset + coord) * inverseTilesetSize);' //grab tile from tileset
-
+                '   vec4 color = texture2D(tileset, (offset + coord) * inverseTilesetSize);', //grab tile from tileset'
+                '   if ( color.a < 0.1 ) discard;', //If tile is white, make it transparent
+                '   gl_FragColor = color;',
             ].join('\n');
 
             this.fShader = this.fShader.replace("void main() {", fShaderMain).replace("gl_FragColor = vec4( vec3 ( 1.0 ), opacity );", '');
@@ -148,7 +151,7 @@ define(['engine/components/Render/ThreeBaseRenderable', 'lib/three.js/build/thre
             });
         },
 
-        initPlaneMesh: function() {
+        initPlaneMesh: function(options) {
             /** Create plane */
            this._material = new THREE.ShaderMaterial({
                 uniforms: this._uniforms,
@@ -168,8 +171,8 @@ define(['engine/components/Render/ThreeBaseRenderable', 'lib/three.js/build/thre
             );
 
             this._mesh = new THREE.Mesh(this._plane, this._material);
-            this._mesh.position.y =  0;
-            this._mesh.rotation.x = - Math.PI / 2;
+            this._mesh.position.y =  options.position.y;
+            this._mesh.rotation.x = options.rotation.x;
 
             if(engine.threeRenderer.shadow()) {
                 this._mesh.receiveShadow = true;
