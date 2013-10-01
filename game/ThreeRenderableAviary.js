@@ -1,4 +1,4 @@
-define(['engine/components/Render/ThreeBaseRenderable', 'lib/three.js/build/three', 'ShaderParticleEmitter', 'ShaderParticleGroup'], function (ThreeBaseRenderable, THREE) {
+define(['ThreeBaseRenderable', 'THREE', 'ShaderParticleEmitter', 'ShaderParticleGroup'], function (ThreeBaseRenderable, THREE) {
     var ThreeRenderableAviary = ThreeBaseRenderable.extend({
         _classId: 'ThreeRenderableAviary',
 

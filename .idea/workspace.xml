@@ -12,31 +12,16 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/smoke_002.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/smokeparticle.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/terrain.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/empty.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/core/eventable.js" />
-      <change type="DELETED" beforePath="Z:\rawcept\engine\core\Eventable.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/core/Base.js" afterPath="$PROJECT_DIR$/engine/core/Base.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/core/Class.js" afterPath="$PROJECT_DIR$/engine/core/Class.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/Core.js" afterPath="$PROJECT_DIR$/engine/Core.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/DummyEntity.js" afterPath="$PROJECT_DIR$/game/DummyEntity.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Network/NetworkClient.js" afterPath="$PROJECT_DIR$/engine/components/Network/NetworkClient.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" afterPath="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/core/Point.js" afterPath="$PROJECT_DIR$/engine/core/Point.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js" afterPath="$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/Three.js" afterPath="$PROJECT_DIR$/engine/components/Render/Three.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeLoader.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeLoader.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/ThreeRenderableAviary.js" afterPath="$PROJECT_DIR$/game/ThreeRenderableAviary.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeTileMap.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeTileMap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client.js" afterPath="$PROJECT_DIR$/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js" afterPath="$PROJECT_DIR$/lib/three.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="Z:\rawcept\engine\core\Eventable.js" afterPath="$PROJECT_DIR$/engine/core/eventable.js" />
     </list>
     <ignored path="rawcept.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380661226657" ignored="false" />
+    <file path="/Dummy.txt" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380667241387" ignored="false" />
     <file path="/Three.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380398341798" ignored="false" />
     <file path="/ThreeIsometric.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380656011300" ignored="false" />
     <file path="/ThreeBaseRenderable.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380583062739" ignored="false" />
@@ -390,7 +375,11 @@
       <created>1380659177235</created>
       <updated>1380659177235</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Fix SocketNetworkDriver - replaced engine.incrementUptimeBy with engine.incrementUptimeByLatestDelta&#10;Eventable.js - based on backbone v1.0  event-system">
+      <created>1380667253044</created>
+      <updated>1380667253044</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -460,7 +449,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remoe eachMethod from common.js&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix SocketNetworkDriver - replaced engine.incrementUptimeBy with engine.incrementUptimeByLatestDelta&#10;Eventable.js - based on backbone v1.0  event-system" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -484,6 +473,7 @@
     <MESSAGE value="transparent tile (white) + get position.y/rotation.x from options" />
     <MESSAGE value="Fix - ThreeTileMap now accept tileset as parameter" />
     <MESSAGE value="Remoe eachMethod from common.js&#10;" />
+    <MESSAGE value="Fix SocketNetworkDriver - replaced engine.incrementUptimeBy with engine.incrementUptimeByLatestDelta&#10;Eventable.js - based on backbone v1.0  event-system" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

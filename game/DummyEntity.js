@@ -1,4 +1,4 @@
-define(['engine/core/Entity', 'game/ThreeRenderableAviary'], function (Entity, ThreeRenderableAviary) {
+define(['engine/core/Entity', 'ThreeRenderableAviary'], function (Entity, ThreeRenderableAviary) {
     var DummyEntity = Entity.extend({
         _classId: 'DummyEntity',
 

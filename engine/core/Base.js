@@ -1,8 +1,11 @@
-define(['engine/core/Eventable', 'node-uuid', 'engine/core/Exception', 'underscore'], function(Eventable, UUID, Exception, _) {
+define(['Eventable', 'node-uuid', 'engine/core/Exception', 'underscore'], function(Eventable, UUID, Exception, _) {
+
     var Base = Eventable.extend({
         _classId: 'Base',
 
         init: function(options) {
+            Eventable.prototype.init.call(this, options);
+
             this._id = null;
             this._parent = null;
             this._children = [];
@@ -113,7 +116,7 @@ define(['engine/core/Eventable', 'node-uuid', 'engine/core/Exception', 'undersco
                 this._accessors[accessor] = this;
             }
 
-            this.emit('attached', this._parent);
+            this.trigger('attached', this._parent);
 
             return this;
         },
