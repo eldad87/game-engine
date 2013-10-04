@@ -7,8 +7,8 @@ requirejs.config({
         "ThreeRenderableAviary"     : "empty"
     }
 });
-requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/SocketNetworkDriver', 'engine/components/EntitySync/EntitySyncDriver', 'game/DummyEntity'],
-    function(Class, Core, SocketNetworkDriver, EntitySyncDriver, DummyEntity) {
+requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/NetworkServer', 'engine/components/EntitySync/EntitySyncServer', 'game/DummyEntity'],
+    function(Class, Core, NetworkServer, EntitySyncServer, DummyEntity) {
 
     var Server = Class.extend({
         _classId: 'Server',
@@ -20,7 +20,7 @@ requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/Socket
 
             //Networking
             engine
-                .getRegisteredClassNewInstance('SocketNetworkDriver')
+                .getRegisteredClassNewInstance('NetworkServer')
                 .attach(engine, 'network')
                 .listen(4040)
                 .defineMessageType('greeting', function(data, sentUptime, messageId, socketId) {
@@ -38,7 +38,7 @@ requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/Socket
 
             //Sync
             engine
-                .getRegisteredClassNewInstance('EntitySyncDriver', {networkDriver: engine.network})
+                .getRegisteredClassNewInstance('EntitySyncServer', {networkDriver: engine.network})
                 //.processMinLatency(100) - Client only
                 .attach(engine, 'sync')
                 .start();

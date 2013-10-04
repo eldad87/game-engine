@@ -1,5 +1,7 @@
-define(['socket.io', 'node-uuid'], function   (io, UUID) {
-    var NetworkClient = {
+define(['engine/components/Network/NetworkBase', 'socket.io', 'node-uuid'],
+    function (NetworkBase, io, UUID) {
+
+    var NetworkClient = NetworkBase.extend({
         _classId: 'NetworkClient',
 
         _pendingCallback: {},
@@ -147,7 +149,7 @@ define(['socket.io', 'node-uuid'], function   (io, UUID) {
 
             return message.id;
         }
-    };
+    });
 
 //    if (typeof(module) !== 'undefined' && typeof(module.exports) !== 'undefined') { module.exports = NetworkClient; }
 

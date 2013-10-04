@@ -1,5 +1,6 @@
-define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) {
-    return {
+define(['engine/components/EntitySync/EntitySyncBase', 'engine/core/Exception'], function(EntitySyncBase, Exception) {
+    var EntitySyncClient = EntitySyncBase.extend({
+        _classId: 'EntitySyncClient',
 
         _processMinLatency: 0,
         _sectionBufferSize: 120,
@@ -26,7 +27,7 @@ define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) 
 
         process: function() {
             if(!this.start() ||
-                false === (Base.prototype.process.call(this))) {
+                false === (EntitySyncBase.prototype.process.call(this))) {
                 return false;
             }
 
@@ -322,6 +323,7 @@ define(['engine/core/Base', 'engine/core/Exception'], function(Base, Exception) 
 
             return entity.sync(data.sync)
         }
-    };
+    });
 
+    return EntitySyncClient;
 });

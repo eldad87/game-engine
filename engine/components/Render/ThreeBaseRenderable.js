@@ -14,7 +14,7 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
                     throw new Exception('No options provided');
                 }
 
-                options = _.extend(this._defaultOptions, options);
+                options = _.defaults(options, this._defaultOptions);
 
                 if(options.autoMeshCreation) {
                     if(undefined === options.meshName) {

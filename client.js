@@ -52,8 +52,8 @@ window.onload = function()
         }
     });
 
-    requirejs([ 'engine/core/Class', 'engine/Core', 'engine/components/Network/SocketNetworkDriver',
-                'engine/components/EntitySync/EntitySyncDriver', 'engine/components/Render/ThreeIsometric',
+    requirejs([ 'engine/core/Class', 'engine/Core', 'engine/components/Network/NetworkClient',
+                'engine/components/EntitySync/EntitySyncClient', 'engine/components/Render/ThreeIsometric',
                 'engine/components/Render/ThreeLoader',
                 'engine/core/Point',
 
@@ -62,13 +62,15 @@ window.onload = function()
                 './engine/components/Render/ThreeTileMap',
 
                 ],
-        function(Class, Core, SocketNetworkDriver, EntitySyncDriver, ThreeIsomatric, ThreeLoader, Point, THREE, DummyEntity, ThreeTileMap) {
+        function(Class, Core, NetworkClient, EntitySyncClient, ThreeIsomatric, ThreeLoader, Point, THREE, DummyEntity, ThreeTileMap) {
 
         var Client = Class.extend({
             _classId: 'Client',
 
             init: function () {
                 this.log('start', 'log');
+
+                engine.isServer = false;
 
                 var self = this;
                 engine.getRegisteredClassNewInstance('ThreeLoader')
@@ -129,7 +131,7 @@ window.onload = function()
                 }).attach(engine);
 
 
-               var de = new DummyEntity();
+                /*var de = new DummyEntity();
                 var de2 = new DummyEntity();
                 de2.threeRenderable.playAnimation('produce');
 
@@ -141,7 +143,7 @@ window.onload = function()
                 //Attach back to engine
                 de2.geometry(128, 0, 128);
                 de2.threeRenderable.mesh().scale.set(128, 128, 128);
-                de2.attach(engine);
+                de2.attach(engine);*/
 
                 //de.geometry(5,5,5);
                 //de.geometry(1,1,1);
@@ -175,22 +177,22 @@ window.onload = function()
 
 
 
-                /*//Networking
+                //Networking
                 engine
-                 .getRegisteredClassNewInstance('SocketNetworkDriver', {pingPongTimeSyncInterval: 1000})
+                 .getRegisteredClassNewInstance('NetworkClient', {pingPongTimeSyncInterval: 1000})
                  .attach(engine, 'network')
                  .connect('//localhost:4040');
 
                 //Sync
                 engine
-                 .getRegisteredClassNewInstance('EntitySyncDriver', {networkDriver: engine.network})
+                 .getRegisteredClassNewInstance('EntitySyncClient', {networkDriver: engine.network})
                  .processMinLatency(100) //Client only
                  .attach(engine, 'sync')
                  .start();
 
 
                 //Ask server to createDummyEntity
-                engine.network.sendMessage('createDummyEntity', {});*/
+                engine.network.sendMessage('createDummyEntity', {});
             }
         });
 

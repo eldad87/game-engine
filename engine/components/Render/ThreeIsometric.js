@@ -25,7 +25,7 @@ define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'undersc
                             },
 
             init: function(options) {
-                options = _.extend(this._defaultOptions, options);
+                options = _.defaults(options, this._defaultOptions);
 
                 Three.prototype.init.call(this, options);
 

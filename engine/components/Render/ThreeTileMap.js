@@ -18,7 +18,7 @@ define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], 
             if(undefined === options.tileset) {
                 throw new Exception('tileset is missing');
             }
-            options = _.extend(this._defaultOptions, options);
+            options = _.defaults(options, this._defaultOptions);
 
             this.size = options.size;
             this.tileSize = options.tileSize;

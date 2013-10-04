@@ -7,42 +7,26 @@ define(['engine/core/Exception', 'engine/core/common'], function(Exception) {
 		// The base Class implementation (does nothing)
 		Class = function () {},
 
-		/**
-		 * Log a message
-		 */
-		log = function(msg, type) 
-		{
-			type = type || 'log';
+        /**
+         * #http://davidwalsh.name/firebug-console-log
+         *
+         * Log message
+         * @param msg
+         * @param type log | debug | warn | error
+         * @returns {boolean}
+         */
+        log = function(msg, type) {
+            if(undefined === console) {
+                return false;
+            }
 
-			if(!console) {
-				return ; //Can't log
-			}
+            type = type || 'log';
+            if(undefined === console[type]) {
+                type = 'log';
+            }
 
-			if(console[type]) {
-				return console[type](msg);
-			}
-
-			console.log(msg);
-		},
-
-		/**
-		 * Copy over the properties and methods of a given class
-		 * default override is false
-		 */
-         implement = function (copyPropFromObject, override) {
-			var i, 
-				obj = copyPropFromObject.prototype || copyPropFromObject;
-
-			for (i in obj) {
-				if (obj.hasOwnProperty(i) && 
-						(override || this[i] === undefined)) {
-
-					this[i] = obj[i];
-				}
-			}
-
-			return this;
-		},
+            return console[type](msg);
+        },
 
 		/**
 		 * Create a new class that iherit from this one
@@ -99,9 +83,6 @@ define(['engine/core/Exception', 'engine/core/common'], function(Exception) {
 
 			//Add log
 			Class.prototype.log = log;
-
-			//Add the implement method
-			Class.prototype.implement = implement;
 
             //Register class
             ClassRegister[prop._classId] = Class;

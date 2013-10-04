@@ -1,27 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/game/ThreeRenderableAviary.js" line="16" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="14cf69c4-3998-4036-a475-c14e76683f96" name="Default" comment="Eventable">
+    <list default="true" id="64054101-9990-4c5a-ae00-561e61fe17bb" name="Default" comment="Moved log into Base&#10;Remove usage of implement()&#10;use _.defaults instead of _.extend&#10;Redo of the Point class&#10;">
+      <change type="DELETED" beforePath="Z:\rawcept\engine\components\EntitySync\EntitySyncDriver.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_body.jpg" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_body.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_gears.jpg" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_gears.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_metalreflect.jpg" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_metalreflect.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/core/Class.js" afterPath="$PROJECT_DIR$/engine/core/Class.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/src/math/Color.js" afterPath="$PROJECT_DIR$/lib/three.js/src/math/Color.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncClient.js" afterPath="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncClient.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncServer.js" afterPath="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncServer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Network/NetworkClient.js" afterPath="$PROJECT_DIR$/engine/components/Network/NetworkClient.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" afterPath="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/core/Point.js" afterPath="$PROJECT_DIR$/engine/core/Point.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/README.md" afterPath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/Three.js" afterPath="$PROJECT_DIR$/engine/components/Render/Three.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/scripts/ThreeJsExportScript.mel" afterPath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/scripts/ThreeJsExportScript.mel" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeTileMap.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeTileMap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/build/build.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/build/build.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/build/build_all.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/build/build_all.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/build/build_debug.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/build/build_debug.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client.js" afterPath="$PROJECT_DIR$/client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump.dae" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump.dae" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/editors/sublime.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/editors/sublime.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js" afterPath="$PROJECT_DIR$/lib/three.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/plug-ins/threeJsFileTranslator.py" afterPath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/plug-ins/threeJsFileTranslator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="Z:\rawcept\engine\components\EntitySync\EntitySyncDriver.js" afterPath="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncBase.js" />
+      <change type="MOVED" beforePath="Z:\rawcept\engine\components\Network\SocketNetworkDriver.js" afterPath="$PROJECT_DIR$/engine/components/Network/NetworkBase.js" />
     </list>
     <ignored path="rawcept.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380667893820" ignored="false" />
-    <file path="/Three.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380398341798" ignored="false" />
-    <file path="/ThreeIsometric.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380656011300" ignored="false" />
-    <file path="/ThreeBaseRenderable.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380583062739" ignored="false" />
-    <file path="/Base.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380665594077" ignored="false" />
-    <file path="/client.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380664720676" ignored="false" />
-    <file path="/ThreeMap.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380583793903" ignored="false" />
-    <file path="/ThreeRenderableAviary.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380582949958" ignored="false" />
-    <file path="/ThreeTileMap.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380614365275" ignored="false" />
-    <file path="/a.dummy" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380663659197" ignored="false" />
-    <file path="/server.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380663503210" ignored="false" />
-    <file path="/DummyEntity.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380664784452" ignored="false" />
-    <file path="/eventable.js" changelist="14cf69c4-3998-4036-a475-c14e76683f96" time="1380666764759" ignored="false" />
+    <file path="/Dummy.txt" changelist="64054101-9990-4c5a-ae00-561e61fe17bb" time="1380900988614" ignored="false" />
+    <file path="/a.dummy" changelist="64054101-9990-4c5a-ae00-561e61fe17bb" time="1380899199891" ignored="false" />
+    <file path="/Point.js" changelist="64054101-9990-4c5a-ae00-561e61fe17bb" time="1380887245793" ignored="false" />
+    <file path="/Class.js" changelist="64054101-9990-4c5a-ae00-561e61fe17bb" time="1380901082021" ignored="false" />
+    <file path="/EntitySyncServer.js" changelist="64054101-9990-4c5a-ae00-561e61fe17bb" time="1380896412808" ignored="false" />
+    <file path="/EntitySyncBase.js" changelist="64054101-9990-4c5a-ae00-561e61fe17bb" time="1380896480637" ignored="false" />
+    <file path="/EntitySyncClient.js" changelist="64054101-9990-4c5a-ae00-561e61fe17bb" time="1380896743901" ignored="false" />
+    <file path="/EntitySyncDriver.js" changelist="64054101-9990-4c5a-ae00-561e61fe17bb" time="1380897592136" ignored="false" />
+    <file path="/client.js" changelist="64054101-9990-4c5a-ae00-561e61fe17bb" time="1380897026655" ignored="false" />
+    <file path="/SocketNetworkBase.js" changelist="64054101-9990-4c5a-ae00-561e61fe17bb" time="1380898276098" ignored="false" />
+    <file path="/Base.js" changelist="64054101-9990-4c5a-ae00-561e61fe17bb" time="1380900632862" ignored="false" />
+    <file path="/NetworBase.js" changelist="64054101-9990-4c5a-ae00-561e61fe17bb" time="1380900894893" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,26 +66,7 @@
     <favorites_list name="rawcept" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="client.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="77" selection-start="3584" selection-end="3584" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="33" selection-end="33" vertical-scroll-proportion="0.039534885">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -77,22 +84,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" />
-        <option value="$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js" />
-        <option value="$PROJECT_DIR$/engine/components/Render/Three.js" />
         <option value="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" />
-        <option value="$PROJECT_DIR$/engine/components/Render/ThreeLoader.js" />
         <option value="$PROJECT_DIR$/engine/components/Render/ThreeTileMap.js" />
-        <option value="$PROJECT_DIR$/game/ThreeRenderableAviary.js" />
-        <option value="$PROJECT_DIR$/game/DummyEntity.js" />
-        <option value="$PROJECT_DIR$/empty.js" />
-        <option value="$PROJECT_DIR$/node_modules/Eventable/eventable.js" />
-        <option value="$PROJECT_DIR$/engine/core/eventable.js" />
-        <option value="$PROJECT_DIR$/engine/core/Base.js" />
-        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncBase.js" />
+        <option value="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncClient.js" />
+        <option value="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncServer.js" />
+        <option value="$PROJECT_DIR$/engine/components/Network/SocketNetworkBase.js" />
+        <option value="$PROJECT_DIR$/engine/components/Network/NetworkBase.js" />
         <option value="$PROJECT_DIR$/server.js" />
-        <option value="$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js" />
         <option value="$PROJECT_DIR$/client.js" />
+        <option value="$PROJECT_DIR$/engine/components/Network/NetworkServer.js" />
+        <option value="$PROJECT_DIR$/engine/components/Network/NetworkClient.js" />
+        <option value="$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js" />
+        <option value="$PROJECT_DIR$/engine/components/Network/NetworBase.js" />
+        <option value="$PROJECT_DIR$/engine/core/Base.js" />
+        <option value="$PROJECT_DIR$/engine/core/Class.js" />
+        <option value="$PROJECT_DIR$/engine/components/EntitySync/EntitySyncDriver.js" />
       </list>
     </option>
   </component>
@@ -102,7 +109,7 @@
     <option name="width" value="1938" />
     <option name="height" value="1050" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -128,7 +135,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -157,7 +163,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
+              <option name="myItemId" value="node_modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -185,6 +191,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rawcept" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="engine" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -203,7 +227,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
+              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -222,10 +246,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Network" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -253,10 +273,31 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="275" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="292" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="296" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="299" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="971" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="978" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="292" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="285" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig">
     <servers>
@@ -278,113 +319,61 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="Z:\rawcept\game\assets\map" />
-      <recent name="Z:\rawcept\game\assets" />
+      <recent name="Z:\rawcept\engine\components\Network" />
+      <recent name="Z:\rawcept\engine\components\EntitySync" />
     </key>
   </component>
   <component name="RunManager">
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="14cf69c4-3998-4036-a475-c14e76683f96" name="Default" comment="" />
-      <created>1380392570987</created>
-      <updated>1380392570987</updated>
+      <changelist id="64054101-9990-4c5a-ae00-561e61fe17bb" name="Default" comment="" />
+      <created>1380877615661</created>
+      <updated>1380877615661</updated>
     </task>
-    <task id="LOCAL-00001" summary="Scale dummy entity mesh&#10;change view camera&#10;change shadow from DirectLight&#10;">
-      <created>1380398941230</created>
-      <updated>1380398941230</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Change smoke particle">
-      <created>1380399529756</created>
-      <updated>1380399529756</updated>
-    </task>
-    <task id="LOCAL-00003" summary="type: himslef -&gt; himself">
-      <created>1380399617386</created>
-      <updated>1380399617386</updated>
-    </task>
-    <task id="LOCAL-00004" summary="ThreeBaseRenderable - attached entities will now attach their meshes; &#10;- Scene&#10;- entity I - attached to engine&#10;- - threeRenderable - mesh is attached to scene&#10;- entity II - attach to entity I&#10;- - threeRenderable - mesh is attached to entity I threeRenderable.mesh&#10;&#10;Fix destroy - now populate to children.&#10;">
-      <created>1380409425160</created>
-      <updated>1380409425160</updated>
-    </task>
-    <task id="LOCAL-00005" summary="defineAnimation signature change">
-      <created>1380575215828</created>
-      <updated>1380575215828</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Tilemap">
-      <created>1380586878566</created>
-      <updated>1380586878566</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Tilemap">
-      <created>1380587083584</created>
-      <updated>1380587083584</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Minor cosmetics to Tilemap/base renderer&#10;">
-      <created>1380610993440</created>
-      <updated>1380610993440</updated>
-    </task>
-    <task id="LOCAL-00009" summary="transparent tile (white) + get position.y/rotation.x from options">
-      <created>1380614521818</created>
-      <updated>1380614521818</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Fix - ThreeTileMap now accept tileset as parameter">
-      <created>1380656127185</created>
-      <updated>1380656127185</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Remoe eachMethod from common.js&#10;">
-      <created>1380659177235</created>
-      <updated>1380659177235</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Fix SocketNetworkDriver - replaced engine.incrementUptimeBy with engine.incrementUptimeByLatestDelta&#10;Eventable.js - based on backbone v1.0  event-system">
-      <created>1380667253044</created>
-      <updated>1380667253044</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Eventable">
-      <created>1380667281983</created>
-      <updated>1380667281983</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Eventable">
-      <created>1380667329710</created>
-      <updated>1380667329710</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Eventable">
-      <created>1380667496616</created>
-      <updated>1380667496616</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Eventable">
-      <created>1380667712742</created>
-      <updated>1380667712742</updated>
-    </task>
-    <task id="LOCAL-00017" summary="gitignore lib/*">
-      <created>1380667897034</created>
-      <updated>1380667897034</updated>
-    </task>
-    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295711" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24493062" sideWeight="0.6702356" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.6704289" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295711" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
     </layout>
   </component>
@@ -392,7 +381,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="true" />
     <option name="myTodoPanelSettings">
@@ -430,7 +419,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore lib/*" />
+    <option name="LAST_COMMIT_MESSAGE" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -444,136 +433,116 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Scale dummy entity mesh&#10;change view camera&#10;change shadow from DirectLight&#10;" />
-    <MESSAGE value="Change smoke particle" />
-    <MESSAGE value="type: himslef -&gt; himself" />
-    <MESSAGE value="ThreeBaseRenderable - attached entities will now attach their meshes; &#10;- Scene&#10;- entity I - attached to engine&#10;- - threeRenderable - mesh is attached to scene&#10;- entity II - attach to entity I&#10;- - threeRenderable - mesh is attached to entity I threeRenderable.mesh&#10;&#10;Fix destroy - now populate to children.&#10;" />
-    <MESSAGE value="defineAnimation signature change" />
-    <MESSAGE value="Tilemap" />
-    <MESSAGE value="Minor cosmetics to Tilemap/base renderer&#10;" />
-    <MESSAGE value="transparent tile (white) + get position.y/rotation.x from options" />
-    <MESSAGE value="Fix - ThreeTileMap now accept tileset as parameter" />
-    <MESSAGE value="Remoe eachMethod from common.js&#10;" />
-    <MESSAGE value="Fix SocketNetworkDriver - replaced engine.incrementUptimeBy with engine.incrementUptimeByLatestDelta&#10;Eventable.js - based on backbone v1.0  event-system" />
-    <MESSAGE value="Eventable" />
-    <MESSAGE value="gitignore lib/*" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeLoader.js">
+    <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="34" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0">
+        <state line="16" column="68" selection-start="751" selection-end="751" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js">
+    <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="42" selection-start="174" selection-end="193" vertical-scroll-proportion="0.0561674">
+        <state line="27" column="68" selection-start="1212" selection-end="1212" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeTileMap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="22" selection-start="487" selection-end="487" vertical-scroll-proportion="0.0">
+        <state line="138" column="48" selection-start="5731" selection-end="5731" vertical-scroll-proportion="1.9372092">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/empty.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/underscore/underscore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="43" selection-start="128" selection-end="128" vertical-scroll-proportion="0.018722467">
+        <state line="818" column="10" selection-start="28723" selection-end="28729" vertical-scroll-proportion="-2.4155688">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game/ThreeRenderableAviary.js">
+    <entry file="file://$PROJECT_DIR$/engine/components/EntitySync/EntitySyncServer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="9" selection-start="9" selection-end="9" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/core/Class.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="43" selection-start="2174" selection-end="2174" vertical-scroll-proportion="0.9504405">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/Eventable/eventable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="19" selection-start="4137" selection-end="4150" vertical-scroll-proportion="0.4416761">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/core/Base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="13" selection-start="730" selection-end="730" vertical-scroll-proportion="0.43061674">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="70" selection-start="376" selection-end="376" vertical-scroll-proportion="0.19274376">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/core/eventable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="79" selection-start="5820" selection-end="5820" vertical-scroll-proportion="0.101321585">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/DummyEntity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="74" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="16" selection-start="857" selection-end="857" vertical-scroll-proportion="0.37558138">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/components/Network/SocketNetworkDriver.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="51" selection-start="3183" selection-end="3183" vertical-scroll-proportion="0.33293414">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/Core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="36" selection-start="4584" selection-end="4612" vertical-scroll-proportion="0.4958084">
+        <state line="3" column="0" selection-start="233" selection-end="233" vertical-scroll-proportion="-1.3244187">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="77" selection-start="3584" selection-end="3584" vertical-scroll-proportion="0.0">
+        <state line="187" column="96" selection-start="9274" selection-end="9274" vertical-scroll-proportion="-102.92">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/engine/components/EntitySync/EntitySyncClient.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="33" selection-end="33" vertical-scroll-proportion="0.039534885">
+        <state line="1" column="4" selection-start="123" selection-end="169" vertical-scroll-proportion="0.019767443">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/Network/NetworkServer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="35" selection-start="151" selection-end="151" vertical-scroll-proportion="0.059302326">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/Network/NetworkClient.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="126" column="20" selection-start="3727" selection-end="3727" vertical-scroll-proportion="3.7711267">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/Core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="19" selection-start="1441" selection-end="1441" vertical-scroll-proportion="0.21976744">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/Network/NetworkBase.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="18" selection-start="3586" selection-end="3586" vertical-scroll-proportion="0.2488372">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/core/Class.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="10" selection-start="799" selection-end="799" vertical-scroll-proportion="0.5534884">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="27" selection-start="536" selection-end="536" vertical-scroll-proportion="0.07906977">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/core/Base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="191" column="9" selection-start="5618" selection-end="5618" vertical-scroll-proportion="0.86162794">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/EntitySync/EntitySyncBase.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="33" selection-start="104" selection-end="118" vertical-scroll-proportion="0.039534885">
           <folding />
         </state>
       </provider>

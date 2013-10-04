@@ -24,7 +24,7 @@ define(['engine/core/Base', 'engine/core/Point',
             init: function(options) {
                 Base.prototype.init.call(this);
 
-                options = _.extend(this._defaultOptions, options);
+                options = _.defaults(options, this._defaultOptions);
 
                 //Detect WebGL support: #http://stackoverflow.com/questions/9899807/three-js-detect-webgl-support-and-fallback-to-regular-canvas
                 this._renderer = Detector.webgl ? this.createObject('mainRenderer', 'WebGLRenderer') : this.createObject('mainRenderer', 'CanvasRenderer', [{ antialias: true }]);
