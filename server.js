@@ -2,13 +2,14 @@ requirejs = require('requirejs');
 
 requirejs.config({
     paths: {
-        'moment'                    : './lib/moment',
-        'Eventable'                 : './engine/core/eventable',
-        "ThreeRenderableAviary"     : "empty"
+        'moment'                            : './lib/moment',
+        'Eventable'                         : './engine/core/eventable',
+        "ThreeRenderableAviaryEntity"       : "empty",
+        "ThreeRenderableBlacksmithEntity"   : "empty"
     }
 });
-requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/NetworkServer', 'engine/components/EntitySync/EntitySyncServer', 'game/DummyEntity'],
-    function(Class, Core, NetworkServer, EntitySyncServer, DummyEntity) {
+requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/NetworkServer', 'engine/components/EntitySync/EntitySyncServer', 'game/AviaryEntity'],
+    function(Class, Core, NetworkServer, EntitySyncServer, AviaryEntity) {
 
     var Server = Class.extend({
         _classId: 'Server',
@@ -32,8 +33,8 @@ requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/Networ
                 });
 
             //Define creation of a new entity
-            engine.network.defineMessageType('createDummyEntity', function(/*data, sentUptime, messageId, socketId*/) {
-                engine.getRegisteredClassNewInstance('DummyEntity')
+            engine.network.defineMessageType('createAviaryEntity', function(/*data, sentUptime, messageId, socketId*/) {
+                engine.getRegisteredClassNewInstance('AviaryEntity')
             });
 
             //Sync

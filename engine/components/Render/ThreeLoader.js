@@ -138,6 +138,9 @@ define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception'],
              */
             createMesh: function( meshName, textureName, inverse) {
                 var mesh = this.getMesh(meshName).clone();
+                mesh.material = mesh.material.clone(); //Clone matirial, otherwise we won't be able to use different textures on it.
+
+
                 for(var i = 0; i <  mesh.material.materials.length; i++){
                     mesh.material.materials[i].map = textureName ? this.getTexture(textureName) : null;
                     mesh.material.materials[i].shading = THREE.SmoothShading;

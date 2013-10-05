@@ -12,8 +12,9 @@ window.onload = function()
             'ShaderParticleEmitter' : './lib/ShaderParticleEngine/src/ShaderParticleEmitter',
             //'bson' : './node_modules/bson/browser_build/bson'
 
-            'ThreeBaseRenderable'   : './engine/components/Render/ThreeBaseRenderable',
-            'ThreeRenderableAviary' : './game/ThreeRenderableAviary'
+            'ThreeBaseRenderable'               : './engine/components/Render/ThreeBaseRenderable',
+            'ThreeRenderableAviaryEntity'       : './game/ThreeRenderableAviaryEntity',
+            'ThreeRenderableBlacksmithEntity'   : './game/ThreeRenderableBlacksmithEntity'
         },
         shim: {
             'THREE': {
@@ -58,11 +59,13 @@ window.onload = function()
                 'engine/core/Point',
 
                 'THREE',
-                './game/DummyEntity',
                 './engine/components/Render/ThreeTileMap',
+                './game/AviaryEntity',
+                './game/BlacksmithEntity',
+
 
                 ],
-        function(Class, Core, NetworkClient, EntitySyncClient, ThreeIsomatric, ThreeLoader, Point, THREE, DummyEntity, ThreeTileMap) {
+        function(Class, Core, NetworkClient, EntitySyncClient, ThreeIsomatric, ThreeLoader, Point, THREE, ThreeTileMap, AviaryEntity, BlacksmithEntity) {
 
         var Client = Class.extend({
             _classId: 'Client',
@@ -75,19 +78,26 @@ window.onload = function()
                 var self = this;
                 engine.getRegisteredClassNewInstance('ThreeLoader')
                     .attach(engine, 'threeLoader')
-                    .setOnProgressCallback(function(loaded, total){
+                    .setOnProgressCallback(function(loaded, total, name){
                         if(loaded == total) {
-                            console.log('All assets been loaded [' + total + ']');
+                            console.log('All assets been loaded [' + total + '][' + name + ']');
                             self._init();
                         } else {
-                            console.log('Loaded [' + loaded + '/' + total + '] assets');
+                            console.log('Loaded [' + loaded + '/' + total + '][' + name + '] assets');
                         }
                     })
+
+                    //Aviary
+                    .loadJS('aviaryMesh', './game/assets/human/buildings/h_aviary/h_aviary.js')
+                    .loadTexture('aviaryText', './game/assets/human/buildings/h_aviary/h_aviary.jpg')
+
+                    //Blacksmit
+                    .loadJS('blacksmithMesh', './game/assets/human/buildings/h_blacksmith/h_blacksmith.js')
+                    .loadTexture('blacksmithText', './game/assets/human/buildings/h_blacksmith/h_blacksmith.jpg')
+
+                    .loadTexture('smoke_001', './game/assets/other/smoke_001.png')
                     .loadTexture('ground', './game/assets/ground/grass001.jpg')
-                    .loadTexture('tilesetText', './game/assets/map/grass-tiles-2-small.png')
-                    .loadTexture('smoke_001', './game/assets/smoke_001.png')
-                    .loadJS('aviaryMesh', './game/assets/human/h_aviary/h_aviary.js')
-                    .loadTexture('aviaryText', './game/assets/human/h_aviary/h_aviary.jpg')
+                    .loadTexture('tilesetText', './game/assets/map/tilesets.jpg')
             },
 
             _init: function() {
@@ -122,28 +132,33 @@ window.onload = function()
                     engine.threeRenderer.onResize(window.innerWidth,  window.innerHeight);
                 }
 
+
                 //Load TMX tile map
                 new ThreeTileMap({
-                    size: new THREE.Vector2(20, 20), //Size
-                    tileSize: new THREE.Vector2(32, 32),//Tile size
-                    layerData: [13, 2, 1, 2, 1, 2, 1, 28, 9, 7, 8, 8, 20, 27, 1, 2, 1, 2, 1, 2, 1, 14, 13, 14, 13, 14, 14, 28, 21, 7, 10, 19, 7, 27, 13, 1, 1, 14, 13, 14, 1, 14, 1, 2, 1, 2, 14, 40, 21, 22, 8, 21, 7, 39, 2, 2, 1, 2, 16, 38, 13, 14, 11, 13, 14, 14, 13, 28, 22, 9, 8, 21, 9, 27, 13, 16, 38, 38, 18, 22, 1, 2, 23, 2, 1, 2, 1, 40, 9, 20, 8, 10, 7, 39, 16, 18, 20, 8, 20, 8, 13, 14, 13, 14, 13, 14, 14, 1, 6, 8, 10, 7, 20, 17, 18, 7, 19, 21, 10, 5, 1, 2, 1, 2, 1, 2, 16, 37, 18, 9, 22, 8, 19, 22, 21, 7, 21, 7, 5, 3, 13, 14, 13, 14, 16, 37, 18, 20, 19, 19, 8, 21, 19, 22, 19, 19, 5, 26, 3, 14, 1, 16, 37, 38, 18, 22, 21, 22, 7, 9, 22, 5, 6, 5, 26, 26, 2, 1, 1, 2, 38, 18, 7, 10, 7, 9, 19, 7, 21, 5, 26, 14, 4, 3, 14, 2, 14, 1, 13, 14, 20, 20, 7, 20, 8, 9, 5, 25, 26, 3, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 22, 20, 22, 5, 25, 26, 3, 14, 13, 14, 13, 14, 13, 22, 22, 14, 13, 14, 13, 14, 21, 9, 5, 3, 1, 2, 1, 2, 1, 2, 1, 2, 1, 22, 22, 22, 1, 2, 11, 2, 25, 26, 3, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 23, 14, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 1, 2, 1, 2, 11, 2, 1, 2, 1, 2, 1, 2, 1, 11, 1, 2, 1, 2, 1, 2, 13, 14, 13, 14, 23, 14, 13, 14, 13, 14, 13, 14, 13, 23, 13, 14, 13, 14, 13, 14, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14], //layerData
+                    size: new THREE.Vector2(32, 32), //Size
+                    tileSize: new THREE.Vector2(256, 256),//Tile size
+                    layerData: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 5, 5, 5, 5, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 19, 20, 20, 20, 20, 21, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 27, 28, 28, 28, 28, 29, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 27, 28, 28, 28, 28, 29, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 27, 28, 28, 28, 28, 29, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 19, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 21, 36, 36, 36, 28, 29, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 27, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 29, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 5, 5, 5, 5, 5, 5, 5, 27, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 29, 5, 5, 5, 5, 1, 1, 1, 5, 5, 6, 6, 6, 6, 5, 5, 5, 5, 5, 5, 27, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 29, 5, 5, 5, 5, 1, 1, 1, 5, 5, 6, 6, 6, 6, 5, 5, 5, 5, 5, 5, 27, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 29, 5, 5, 5, 5, 1, 1, 1, 5, 6, 6, 6, 6, 5, 5, 5, 5, 5, 5, 5, 35, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 37, 5, 5, 5, 5, 1, 1, 1, 5, 5, 6, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 1, 1, 5, 5, 5, 7, 7, 7, 7, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 1, 1, 5, 7, 7, 7, 7, 7, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7, 7, 7, 7, 7, 7, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7, 7, 7, 7, 7, 7, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 7, 2, 7, 7, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 5, 5, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 5, 5, 5, 4, 4, 4, 4, 4, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 5, 5, 6, 6, 6, 6, 6, 6, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 4, 4, 4, 4, 4, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 4, 4, 4, 4, 4, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], //layerData
                     tileset: 'tilesetText'
                 }).attach(engine);
 
 
-                /*var de = new DummyEntity();
-                var de2 = new DummyEntity();
-                de2.threeRenderable.playAnimation('produce');
+                var bs = new BlacksmithEntity();
+                bs.geometry(100, 100, 100);
+
+
+                var ae = new AviaryEntity();
+                var ae2 = new AviaryEntity();
+                ae2.threeRenderable.playAnimation('produce');
 
                 //Attach to de + down-scale
-                de2.attach(de);
-                de2.geometry(1, 1, 1);
-                de2.threeRenderable.mesh().scale.set(1,1,1);
+                ae2.attach(ae);
+                ae2.geometry(1, 1, 1);
+                ae2.threeRenderable.mesh().scale.set(1,1,1);
 
                 //Attach back to engine
-                de2.geometry(128, 0, 128);
-                de2.threeRenderable.mesh().scale.set(128, 128, 128);
-                de2.attach(engine);*/
+                ae2.geometry(128, 0, 128);
+                ae2.threeRenderable.mesh().scale.set(128, 128, 128);
+                ae2.attach(engine);
 
                 //de.geometry(5,5,5);
                 //de.geometry(1,1,1);
@@ -177,7 +192,7 @@ window.onload = function()
 
 
 
-                //Networking
+                /*//Networking
                 engine
                  .getRegisteredClassNewInstance('NetworkClient', {pingPongTimeSyncInterval: 1000})
                  .attach(engine, 'network')
@@ -191,8 +206,8 @@ window.onload = function()
                  .start();
 
 
-                //Ask server to createDummyEntity
-                engine.network.sendMessage('createDummyEntity', {});
+                //Ask server to createAviaryEntity
+                engine.network.sendMessage('createAviaryEntity', {});*/
             }
         });
 
