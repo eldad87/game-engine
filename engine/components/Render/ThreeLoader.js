@@ -15,7 +15,7 @@ define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception'],
             _meshes: {},
             _textures: [],
 
-            _onProgressCallback: function(loaded, total) {
+            _onProgressCallback: function(loaded, total, name) {
 
             },
 
@@ -66,7 +66,7 @@ define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception'],
                     self._loadedCount++;
 
                     //Callback
-                    self._onProgressCallback.call(self, self._loadedCount, self._totalCount);
+                    self._onProgressCallback.call(self, self._loadedCount, self._totalCount, name);
                 });
 
                 return this;
@@ -96,7 +96,7 @@ define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception'],
                     self._loadedCount++;
 
                     //Callback
-                    self._onProgressCallback.call(self, self._loadedCount, self._totalCount);
+                    self._onProgressCallback.call(self, self._loadedCount, self._totalCount, name);
                 });
 
                 return this;

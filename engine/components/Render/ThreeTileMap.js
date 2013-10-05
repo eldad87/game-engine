@@ -58,6 +58,13 @@ define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], 
                 this._mesh.receiveShadow = true;
                 this._mesh.castShadow  = false;
             }
+
+            if(engine.threeRenderer._debug) {
+                var maxTileSize = Math.max(this.tileSize.x, this.tileSize.y);
+                var maxSize = Math.max(this.size.x, this.size.y);
+
+                engine.threeRenderer.createSceneObject('GridHelper', 'GridHelper', [maxSize*maxTileSize/2, maxTileSize]);
+            }
         },
 
         packArray: function(layerData) {

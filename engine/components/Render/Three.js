@@ -50,7 +50,7 @@ define(['engine/core/Base', 'engine/core/Point',
 
                 this._debug = options.debug;
                 if(this._debug) {
-                    this.createSceneObject('AxisHelper', 'AxisHelper', [100]);
+                    this.createSceneObject('AxisHelper', 'AxisHelper', [100])
                 }
             },
 
@@ -78,12 +78,11 @@ define(['engine/core/Base', 'engine/core/Point',
                     plane.receiveShadow = true;
                 }
 
+                if(this._debug) {
+                    this.createSceneObject('GridHelper', 'GridHelper', [Math.max(options.width, options.height)*2, 8]);
+                }
 
                 this.addToScene(plane);
-
-                if(this._debug) {
-                    this.createSceneObject('GridHelper', 'GridHelper', [Math.max(width, height)/2, 8]);
-                }
 
                 return this;
             },
