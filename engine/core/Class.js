@@ -1,3 +1,4 @@
+//http://ejohn.org/blog/simple-javascript-inheritance/
 define(['engine/core/Exception', 'engine/core/common'], function(Exception) {
     var Class = (function ()
     {
@@ -28,10 +29,13 @@ define(['engine/core/Exception', 'engine/core/common'], function(Exception) {
             return console[type](msg);
         },
 
-		/**
-		 * Create a new class that iherit from this one
-		 * http://ejohn.org/blog/simple-javascript-inheritance/
-		 */
+        /**
+         * Extend this class by the given object.
+         *  Return the a new Class.
+         *
+         * @param obj Object - {prop1: function() {}, prop2: 'text'}
+         * @returns {Function|Object}
+         */
 		Class.extend = function(prop) {
 			var _super = this.prototype;
 

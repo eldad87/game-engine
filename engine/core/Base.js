@@ -2,7 +2,19 @@ define(['Eventable', 'node-uuid', 'engine/core/Exception', 'underscore'], functi
 
     var Base = Eventable.extend({
         _classId: 'Base',
+        /**
+         * If set, and attaching this object.
+         *  The value of the accessor must be equal to this.
+         */
+        _forceComponentAccessor: null,
 
+        /**
+         * Init object
+         *
+         * @param options {
+         *  id: 'object id'
+         * }
+         */
         init: function(options) {
             Eventable.prototype.init.call(this, options);
 
@@ -25,32 +37,37 @@ define(['Eventable', 'node-uuid', 'engine/core/Exception', 'underscore'], functi
         },
 
         /**
-         * Get class ID
+         * Get CLASS ID
          */
         getClassId: function ()
         {
             return this._classId;
         },
 
-        extend: function(prop) {
+
+        /**
+         * @inheritDoc
+         */
+        extend: function(obj) {
             //Make sure that classId is provided
-            if (!prop._classId) {
-                console.log(prop);
-                throw('Cannot create a new class without the _classId property!');
+            if (!obj._classId) {
+                console.log(obj);
+                throw('Cannot create a new class classId property!');
             }
 
             //Check if classId is already in use
-            if (ClassRegister[prop._classId]) {
-                throw('Cannot create class, _classId "' + prop._classId + '" already been exists');
+            if (ClassRegister[obj._classId]) {
+                throw('Cannot create class, _classId "' + obj._classId + '" already been exists');
             }
 
-            var Class = Eventable.prototype.extend.call(this, prop);
+            var Class = Eventable.prototype.extend.call(this, obj);
 
             return Class;
         },
 
         /**
          * Get / Set the object ID
+         *  If no id is provided, UUID is used to generate one.
          */
         id: function(id) {
             if(undefined === id) {
@@ -63,23 +80,23 @@ define(['Eventable', 'node-uuid', 'engine/core/Exception', 'underscore'], functi
                 return this._id;
             }
 
-            /* User is asking to change ID */
-            //Un-register, so it will remove the current ID from the engine
             if(this._id) {
-                engine.unRegisterObject(this);
+                //User is asking to change ID
+                engine.replaceRegisterObjectId(this, id);
+            } else {
+                //Register
+                this._id = id;
+                engine.registerObject(this);
             }
-
-            this._id = id;
-
-            //Register
-            engine.registerObject(this);
-
             return this;
         },
 
         /**
          * Attach this to parent
-         * this will be available via parent[this.getClassId()]
+         *  this will be available via parent[this.getClassId()] OR parent[accessor]
+         * @param parent
+         * @param accessor
+         * @returns {*}
          */
         attach: function(parent, accessor) {
             if(parent === undefined) {
@@ -90,7 +107,7 @@ define(['Eventable', 'node-uuid', 'engine/core/Exception', 'underscore'], functi
             }
 
             //Check if entity want to force its accessor
-            if(undefined !== accessor && undefined !== this._forceComponentAccessor) {
+            if(undefined !== accessor && undefined !== this._forceComponentAccessor && null !== this._forceComponentAccessor) {
                 if(this._forceComponentAccessor !== accessor) {
                     throw new Exception('You cant attach using accessor [' + accessor + '], ' +
                                             'Instead please use [' + this._forceComponentAccessor + ']');
@@ -124,6 +141,7 @@ define(['Eventable', 'node-uuid', 'engine/core/Exception', 'underscore'], functi
         /**
          * UnAttach this from its parent
          * In case of this typeOf component - this will get destroy();
+         * @returns {*}
          */
         unAttach: function() {
             if(!this._parent) {
@@ -144,6 +162,11 @@ define(['Eventable', 'node-uuid', 'engine/core/Exception', 'underscore'], functi
             return this;
         },
 
+        /**
+         * Destroy this object
+         *      and call destroy() on his attachments/children (in scene graph)
+         * @returns {boolean}
+         */
         destroy: function() {
             this.unAttach();
             engine.unRegisterObject(this);
@@ -156,7 +179,7 @@ define(['Eventable', 'node-uuid', 'engine/core/Exception', 'underscore'], functi
         },
 
         /**
-         * call the update() method on this, and all childrens
+         * call the update() method on this, and his attachments/children (in scene graph)
          */
         updateSceneGraph: function() {
             if(false === this.update()) {
@@ -174,7 +197,7 @@ define(['Eventable', 'node-uuid', 'engine/core/Exception', 'underscore'], functi
         },
 
         /**
-         * call the process() method on this, and all childrens
+         * call the process() method on this, his attachments/children (in scene graph)
          */
         processSceneGraph: function() {
             if(false === this.process()) {
@@ -192,6 +215,5 @@ define(['Eventable', 'node-uuid', 'engine/core/Exception', 'underscore'], functi
         }
     });
 
-//  if (typeof(mo~dule) !== 'undefined' && typeof(module.exports) !== 'undefined') { module.exports = Base; }
     return Base;
 });

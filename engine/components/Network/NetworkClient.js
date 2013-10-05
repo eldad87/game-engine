@@ -84,7 +84,7 @@ define(['engine/components/Network/NetworkBase', 'socket.io', 'node-uuid'],
         },
 
         /**
-         *
+         * Called on incoming message
          * @param message {id, type, data, is_callback || callback_pending}
          * @returns {*}
          */
@@ -130,12 +130,22 @@ define(['engine/components/Network/NetworkBase', 'socket.io', 'node-uuid'],
             return this;
         },
 
+        /**
+         * called when client disconnect
+         */
         onDisconnect: function() {
             if(this._pingPongTimeSyncInterval) {
                 clearInterval(this._pingPongTimeSyncTimer);
             }
         },
 
+        /**
+         * Send message to server
+         * @param type - message type, the type should be defined on the server in order to be processed
+         * @param data - message data
+         * @param callback - function that executed with the server response: callback(Response Value, Response uptime, Message ID,)
+         * @returns {*}
+         */
         sendMessage: function(type, data, callback) {
             //Prepare message
             var message = {
@@ -150,8 +160,6 @@ define(['engine/components/Network/NetworkBase', 'socket.io', 'node-uuid'],
             return message.id;
         }
     });
-
-//    if (typeof(module) !== 'undefined' && typeof(module.exports) !== 'undefined') { module.exports = NetworkClient; }
 
     return NetworkClient;
 });

@@ -1,6 +1,10 @@
 define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception'],
     function(Base, THREE, _, Exception) {
 
+        /**
+         * Load textures and JS objects
+         * @type {*}
+         */
         var ThreeLoader = Base.extend({
             _classId: 'ThreeLoader',
             _forceComponentAccessor: 'threeLoader',
@@ -15,12 +19,24 @@ define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception'],
 
             },
 
+            /**
+             * Set a callback for whenever an object is loaded
+             * @param callback
+             * @returns {*}
+             */
             setOnProgressCallback: function(callback) {
                 this._onProgressCallback = callback;
 
                 return this;
             },
 
+            /**
+             * Load JS object
+             *  Object is added as MESH
+             * @param name
+             * @param JSPath
+             * @returns {*}
+             */
             loadJS: function(name, JSPath) {
                 if(undefined !== this._meshes[name]) {
                     throw new Exception('Mesh Name already exists');
@@ -56,6 +72,12 @@ define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception'],
                 return this;
             },
 
+            /**
+             * Load texture
+             * @param name
+             * @param texturePath
+             * @returns {*}
+             */
             loadTexture: function(name, texturePath) {
                 if(undefined !== this._textures[name]) {
                     throw new Exception('Texture Name already exists');
@@ -80,6 +102,11 @@ define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception'],
                 return this;
             },
 
+            /**
+             * Get loaded texture
+             * @param name
+             * @returns {*}
+             */
             getTexture: function(name) {
                 if(undefined === this._textures[name]) {
                     throw new Exception('Texture Name [' + name + '] doest NOT exists');
@@ -88,6 +115,11 @@ define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception'],
                 return this._textures[name];
             },
 
+            /**
+             * Get loaded mesh
+             * @param name
+             * @returns {*}
+             */
             getMesh: function(name) {
                 if(undefined === this._meshes[name]) {
                     throw new Exception('Mesh Name [' + name + '] doest NOT exists');
@@ -96,6 +128,14 @@ define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception'],
                 return this._meshes[name];
             },
 
+            /**
+             * Clone a loaded mesh + apply a texture to it
+             *
+             * @param meshName
+             * @param textureName
+             * @param inverse
+             * @returns mesh object
+             */
             createMesh: function( meshName, textureName, inverse) {
                 var mesh = this.getMesh(meshName).clone();
                 for(var i = 0; i <  mesh.material.materials.length; i++){
@@ -104,22 +144,21 @@ define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception'],
                     mesh.material.materials[i].blending = THREE.AdditiveBlending;
                 }
 
+                if(inverse) {
+                    mesh.geometry.dynamic = true
+                    mesh.geometry.__dirtyVertices = true;
+                    mesh.geometry.__dirtyNormals = true;
 
-                    if(inverse) {
-                        mesh.geometry.dynamic = true
-                        mesh.geometry.__dirtyVertices = true;
-                        mesh.geometry.__dirtyNormals = true;
+                    mesh.flipSided = true;
 
-                        mesh.flipSided = true;
-
-                        for(var i = 0; i<mesh.geometry.faces.length; i++) {
-                            mesh.geometry.faces[i].normal.x = -1*mesh.geometry.faces[i].normal.x;
-                            mesh.geometry.faces[i].normal.y = -1*mesh.geometry.faces[i].normal.y;
-                            mesh.geometry.faces[i].normal.z = -1*mesh.geometry.faces[i].normal.z;
-                        }
-                        mesh.geometry.computeVertexNormals();
-                        mesh.geometry.computeFaceNormals();
+                    for(var i = 0; i<mesh.geometry.faces.length; i++) {
+                        mesh.geometry.faces[i].normal.x = -1*mesh.geometry.faces[i].normal.x;
+                        mesh.geometry.faces[i].normal.y = -1*mesh.geometry.faces[i].normal.y;
+                        mesh.geometry.faces[i].normal.z = -1*mesh.geometry.faces[i].normal.z;
                     }
+                    mesh.geometry.computeVertexNormals();
+                    mesh.geometry.computeFaceNormals();
+                }
 
                 return mesh;
             }

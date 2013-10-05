@@ -11,6 +11,14 @@ define(['engine/core/Base', 'engine/core/Point'], function (Base, Point) {
             Base.prototype.init.call(this, options);
         },
 
+        /**
+         * Set the position of an entity
+         *
+         * @param x
+         * @param y
+         * @param z
+         * @returns {*}
+         */
         geometry: function (x, y, z) {
 
             if (x !== undefined && y !== undefined && z !== undefined) {
@@ -46,7 +54,9 @@ define(['engine/core/Base', 'engine/core/Point'], function (Base, Point) {
         },
 
         /**
-         * Set / Get syc
+         * Set / Get sync sections
+         *  Each sections will be later synced & interpolate individually
+         *
          * @param sections
          * @returns {*}
          */
@@ -62,7 +72,8 @@ define(['engine/core/Base', 'engine/core/Point'], function (Base, Point) {
         },
 
         /**
-         * Add sync section
+         * Add a sync section
+         *
          * @param section
          * @returns {*}
          */

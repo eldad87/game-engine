@@ -1,21 +1,19 @@
 define(['engine/core/Class', 'underscore'], function(Class, _) {
-
+    /**
+     * Backbone.Events
+     * ---------------
+     *
+     * A module that can be mixed in to *any object* in order to provide it with
+     * custom events. You may bind with `on` or remove with `off` callback
+     * functions to an event; `trigger`-ing an event fires all callbacks in
+     * succession.
+     *      var object = {};
+     *      _.extend(object, Backbone.Events);
+     *      object.on('expand', function(){ alert('expanded'); });
+     *      object.trigger('expand');
+     */
     var Eventable = Class.extend({
         _classId: 'Eventable',
-
-        // Backbone.Events
-        // ---------------
-
-        // A module that can be mixed in to *any object* in order to provide it with
-        // custom events. You may bind with `on` or remove with `off` callback
-        // functions to an event; `trigger`-ing an event fires all callbacks in
-        // succession.
-        //
-        //     var object = {};
-        //     _.extend(object, Backbone.Events);
-        //     object.on('expand', function(){ alert('expanded'); });
-        //     object.trigger('expand');
-        //
 
         init: function() {
             var array = [];
@@ -26,9 +24,11 @@ define(['engine/core/Class', 'underscore'], function(Class, _) {
 
             var listenMethods = {listenTo: 'on', listenToOnce: 'once'};
 
-            // Inversion-of-control versions of `on` and `once`. Tell *this* object to
-            // listen to an event in another object ... keeping track of what it's
-            // listening to.
+            /**
+             * Inversion-of-control versions of `on` and `once`. Tell *this* object to
+             * listen to an event in another object ... keeping track of what it's
+             * listening to.
+            */
             _.each(listenMethods, function(implementation, method) {
                 Eventable[method] = function(obj, name, callback) {
                     var listeners = this._listeners || (this._listeners = {});
@@ -41,8 +41,15 @@ define(['engine/core/Class', 'underscore'], function(Class, _) {
             });
         },
 
-        // Bind an event to a `callback` function. Passing `"all"` will bind
-        // the callback to all events fired.
+        /**
+         * Bind an event to a `callback` function. Passing `"all"` will bind
+         * the callback to all events fired.
+         *
+         * @param name
+         * @param callback
+         * @param context
+         * @returns {*}
+         */
         on: function(name, callback, context) {
             if (!this.eventsApi(this, 'on', name, [callback, context]) || !callback) return this;
             this._events || (this._events = {});
@@ -51,8 +58,15 @@ define(['engine/core/Class', 'underscore'], function(Class, _) {
             return this;
         },
 
-        // Bind an event to only be triggered a single time. After the first time
-        // the callback is invoked, it will be removed.
+        /**
+         * Bind an event to only be triggered a single time. After the first time
+         * the callback is invoked, it will be removed.
+         *
+         * @param name
+         * @param callback
+         * @param context
+         * @returns {*}
+         */
         once: function(name, callback, context) {
             if (!this.eventsApi(this, 'once', name, [callback, context]) || !callback) return this;
             var self = this;
@@ -64,10 +78,17 @@ define(['engine/core/Class', 'underscore'], function(Class, _) {
             return this.on(name, once, context);
         },
 
-        // Remove one or many callbacks. If `context` is null, removes all
-        // callbacks with that function. If `callback` is null, removes all
-        // callbacks for the event. If `name` is null, removes all bound
-        // callbacks for all events.
+        /**
+         * Remove one or many callbacks. If `context` is null, removes all
+         * callbacks with that function. If `callback` is null, removes all
+         * callbacks for the event. If `name` is null, removes all bound
+         * callbacks for all events.
+         *
+         * @param name
+         * @param callback
+         * @param context
+         * @returns {*}
+         */
         off: function(name, callback, context) {
             var retain, ev, events, names, i, l, j, k;
             if (!this._events || !this.eventsApi(this, 'off', name, [callback, context])) return this;
@@ -97,10 +118,15 @@ define(['engine/core/Class', 'underscore'], function(Class, _) {
             return this;
         },
 
-        // Trigger one or many events, firing all bound callbacks. Callbacks are
-        // passed the same arguments as `trigger` is, apart from the event name
-        // (unless you're listening on `"all"`, which will cause your callback to
-        // receive the true name of the event as the first argument).
+        /**
+         * Trigger one or many events, firing all bound callbacks. Callbacks are
+         * passed the same arguments as `trigger` is, apart from the event name
+         * (unless you're listening on `"all"`, which will cause your callback to
+         * receive the true name of the event as the first argument).
+         *
+         * @param name
+         * @returns {*}
+         */
         trigger: function(name) {
             if (!this._events) return this;
             var args = this.slice.call(arguments, 1);
@@ -112,8 +138,15 @@ define(['engine/core/Class', 'underscore'], function(Class, _) {
             return this;
         },
 
-        // Tell this object to stop listening to either specific events ... or
-        // to every object it's currently listening to.
+        /**
+         * Tell this object to stop listening to either specific events ... or
+         * to every object it's currently listening to.
+         *
+         * @param obj
+         * @param name
+         * @param callback
+         * @returns {*}
+         */
         stopListening: function(obj, name, callback) {
             var listeners = this._listeners;
             if (!listeners) return this;
@@ -127,9 +160,17 @@ define(['engine/core/Class', 'underscore'], function(Class, _) {
             return this;
         },
 
-        // Implement fancy features of the Events API such as multiple event
-        // names `"change blur"` and jQuery-style event maps `{change: action}`
-        // in terms of the existing API.
+        /**
+         * Implement fancy features of the Events API such as multiple event
+         * names `"change blur"` and jQuery-style event maps `{change: action}`
+         * in terms of the existing API.
+         *
+         * @param obj
+         * @param action
+         * @param name
+         * @param rest
+         * @returns {boolean}
+         */
         eventsApi: function(obj, action, name, rest) {
             if (!name) return true;
 
@@ -152,10 +193,15 @@ define(['engine/core/Class', 'underscore'], function(Class, _) {
 
             return true;
         },
-        
-        // A difficult-to-believe, but optimized internal dispatch function for
-        // triggering events. Tries to keep the usual cases speedy (most internal
-        // Backbone events have 3 arguments).
+
+        /**
+         * A difficult-to-believe, but optimized internal dispatch function for
+         * triggering events. Tries to keep the usual cases speedy (most internal
+         * Backbone events have 3 arguments).
+         *
+         * @param events
+         * @param args
+         */
         triggerEvents: function(events, args) {
             var ev, i = -1, l = events.length, a1 = args[0], a2 = args[1], a3 = args[2];
             switch (args.length) {

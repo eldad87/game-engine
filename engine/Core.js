@@ -39,11 +39,11 @@ define(['engine/core/Base', 'engine/core/Exception'], function (Base, Exception)
         },
 
         /**
-         * Register an object
-         * Late can be find using find()
+         * Register an object.
+         *  Now its Retrievable via getObjectById() method.
          */
         registerObject: function(obj, override) {
-            console.log('Engine:registerObject');
+            console.log('Engine:registerObject: ' + obj.id());
             if(undefined !== this._register[obj.id()]) {
                 if(!override) {
                     throw new Exception('object id [' + obj.id() + '] is already registered');
@@ -57,7 +57,7 @@ define(['engine/core/Base', 'engine/core/Exception'], function (Base, Exception)
         },
 
         /**
-         * Unregister an object
+         * Un-register an object
          */
         unRegisterObject: function(obj) {
             if(undefined !== this._register[obj.id()]) {
@@ -69,22 +69,36 @@ define(['engine/core/Base', 'engine/core/Exception'], function (Base, Exception)
             return this;
         },
 
+        replaceRegisterObjectId: function(obj, newId) {
+            if(undefined ===  this._register[obj.id()]) {
+                throw new Exception('object id [' + obj.id() + '] not exists');
+            }
+            if(undefined != this._register[newId]) {
+                throw new Exception('object id [' + obj.id() + '] is already in use');
+            }
+
+            //Switch to new ID
+            this._register[newId] = this._register[currentId];
+            //Delete old id
+            //delete this._register[currentId];
+        },
+
         /**
-         * Get registered object by ID
+         * Get registered object by ID.
          */
         getObjectById: function( objId ) {
             return this._register[objId];
         },
 
         /**
-         * Get class by classId
+         * Get class by its classId.
          */
         getRegisteredClass: function (classId) {
             return ClassRegister[classId];
         },
 
         /**
-         * Get a new instance of a registeted class by it's id
+         * Get a new instance of a registered class, by it's id.
          */
         getRegisteredClassNewInstance: function (classId, options) {
             return new ClassRegister[classId](options);
@@ -94,12 +108,6 @@ define(['engine/core/Base', 'engine/core/Exception'], function (Base, Exception)
             requestAnimationFrame(this.engineFrame.bind(this), this._ctx);
 
             setInterval(this.updateSceneGraph.bind(this), this._updateSceneGraphInterval);
-
-            if(!this.isServer) {
-                //A list of recent server updates we interpolate across
-                //This is the buffer that is the driving factor for our networking
-                this.server_updates = [];
-            }
 
             // Fire callback
             if (typeof(callback) === 'function') {
@@ -120,6 +128,11 @@ define(['engine/core/Base', 'engine/core/Exception'], function (Base, Exception)
             this.processSceneGraph();
         },
 
+        /**
+         * Engine processing time
+         *  Process / Calculate new state
+         * @returns {boolean}
+         */
         process: function() {
             Base.prototype.process.call(this);
 
@@ -128,7 +141,9 @@ define(['engine/core/Base', 'engine/core/Exception'], function (Base, Exception)
         },
 
         /**
-         * All engine updates should run here
+         * Engine update time
+         *  Send updates to client/server
+         * @returns {boolean}
          */
         update: function() {
             Base.prototype.update.call(this);
@@ -186,8 +201,6 @@ define(['engine/core/Base', 'engine/core/Exception'], function (Base, Exception)
             clearInterval(this.updateid);
         }
     });
-
-//  if (typeof(module) !== 'undefined' && typeof(module.exports) !== 'undefined') { module.exports = Core; }
 
     return Core;
 });

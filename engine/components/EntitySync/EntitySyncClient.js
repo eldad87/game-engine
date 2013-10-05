@@ -25,6 +25,10 @@ define(['engine/components/EntitySync/EntitySyncBase', 'engine/core/Exception'],
             return this;
         },
 
+        /**
+         * Process new entities, existing entities and entities that need to be removed
+         * @returns {boolean}
+         */
         process: function() {
             if(!this.start() ||
                 false === (EntitySyncBase.prototype.process.call(this))) {

@@ -85,6 +85,11 @@ define(['engine/components/Network/NetworkBase', 'socket.io', 'node-uuid'],
             return this;
         },
 
+        /**
+         * Listen to port for incoming connections
+         * @param port
+         * @returns {*}
+         */
         listen: function(port) {
             var self = this;
 
@@ -98,6 +103,10 @@ define(['engine/components/Network/NetworkBase', 'socket.io', 'node-uuid'],
             return this;
         },
 
+        /**
+         * Called on new connection
+         * @param socket
+         */
         onConnection: function(socket) {
             var self = this;
             this._addClient(socket);
@@ -111,12 +120,16 @@ define(['engine/components/Network/NetworkBase', 'socket.io', 'node-uuid'],
             });
         },
 
-
+        /**
+         * Called when a client disconnect
+         * @param socket
+         */
         onDisconnect: function(socket) {
             this._removeClient(socket);
         },
 
         /**
+         * Called on incoming message
          *
          * @param socket {id}
          * @param message {id, type, data, is_callback || callback_pending}
@@ -135,7 +148,7 @@ define(['engine/components/Network/NetworkBase', 'socket.io', 'node-uuid'],
                 }
 
                 //Call callback
-                this._clientSockets[socket.id]['pendingCallback'][message.id](message.data, message.sent_uptime/*, message.processed_uptime*/, message.id, socket.id);
+                this._clientSockets[socket.id]['pendingCallback'][message.id](message.data, message.sent_uptime, message.id, socket.id);
 
                 //Remove callback
                 delete this._clientSockets[socket.id]['pendingCallback'][message.id];
@@ -174,9 +187,9 @@ define(['engine/components/Network/NetworkBase', 'socket.io', 'node-uuid'],
 
         /**
          * Send message to given socketIds
-         * @param type - on of the defineMessageType
-         * @param data - data to send to sockets
-         * @param callback - run this callback on each client response
+         * @param type - message type, the type should be defined on the client in order to be processed
+         * @param data - message data
+         * @param callback - function that executed with each client response: callback(Response Value, Response uptime, Message ID, Socket ID)
          * @param socketIds - undefined|array|string undefined - all clients, array list of sockets, string - a single client
          * @returns string - message ID
          */

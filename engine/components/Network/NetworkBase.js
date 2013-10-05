@@ -90,11 +90,28 @@ define(['engine/core/Base', 'engine/core/Exception'],
         },
 
         //message.type, message.data, message.sent_uptime, message.id, socket.id
+        /**
+         * Define a message type
+         *  whenever a message is recieved (onMessage), and its type matches one of the defined messages
+         *      Its matching callback is executed.
+         * @param name
+         * @param callback Function (Response Value, Response uptime, Message ID, Socket ID)
+         * @returns {*}
+         */
         defineMessageType: function(name, callback) {
             this._messageTypes[name] = callback;
             return this;
         },
 
+        /**
+         * Call a defined message
+         * @param name
+         * @param data
+         * @param sentUptime
+         * @param messageId
+         * @param socketId
+         * @returns {*}
+         */
         callDefinedMessage: function(name, data, sentUptime, messageId, socketId) {
             if(undefined == name || undefined == this._messageTypes[name]) {
                 throw new Exception('Socket: undefined message type is used')

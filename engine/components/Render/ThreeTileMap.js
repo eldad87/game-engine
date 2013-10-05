@@ -1,9 +1,29 @@
 define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], function (ThreeBaseRenderable, THREE, Exception, _) {
     //http://stackoverflow.com/questions/13516990/render-tmx-map-on-threejs-plane
+    /**
+     * Create a tile map
+     * @type {*}
+     */
     var ThreeTileMap = ThreeBaseRenderable.extend({
         _classId: 'ThreeTileMap',
         _defaultOptions: {position:{ y: 0},  rotation:{x: - Math.PI / 2}},
 
+        /**
+         * Create a tile map
+         * new ThreeTileMap({
+         *      size: new THREE.Vector2(20, 20),
+         *      tileSize: new THREE.Vector2(32, 32),
+         *      layerData: [13, 2, 1, 2, 1, 2, 1],
+         *      tileset: 'tilesetText'
+         *  })
+         *
+         * @param options {
+         *  size - Three vector2 of map size
+         *  tilesize - Three vector2 of tile size
+         *  layerData - TMX layer-data as array
+         *  tileset - name of the loaded texture that holds the tile-set
+         * }
+         */
         init: function(options)
         {
             if(undefined === options.size) {

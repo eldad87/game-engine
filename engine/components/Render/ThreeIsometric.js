@@ -1,6 +1,12 @@
 define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'underscore', 'lib/three.js/examples/js/controls/OrbitControls'],
     function(Three, THREE, Point, _) {
 
+        /**
+         * Define an isometric environment
+         *  Camera, Controls and light
+         *  TODO: improve controls, fog-of-war
+         * @type {*}
+         */
         var ThreeIsometric = Three.extend({
             _classId: 'ThreeIsometric',
             _forceComponentAccessor: 'threeRenderer',

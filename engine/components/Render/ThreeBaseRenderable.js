@@ -4,11 +4,30 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
             _classId: 'ThreeBaseRenderable',
             _forceComponentAccessor: 'threeRenderable',
             _defaultOptions: {textureName: null, inverse: false, autoMeshCreation: true},
-            _parentMesh: false, //Point to the parent mesh - if any
-            _mesh: null, //Our mesh
+            /**
+             * Point to the parent mesh - if any
+             */
+            _parentMesh: false,
+            /**
+             * Object's mesh
+             */
+            _mesh: null,
+            /**
+             * Current playing animation
+             */
             _currentAnimation: undefined,
+            /**
+             * Defined animation
+             */
             _animations: {},
 
+            /**
+             *
+             * @param options {  autoMeshCreation: true, - Auto create mesh using the provided meshName + texturename
+             *                      meshName: 'mesh type name'
+             *                      textureName: 'texture name'
+             *                  }
+             */
             init: function(options) {
                 if(undefined === options) {
                     throw new Exception('No options provided');
@@ -28,7 +47,6 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
                     this._mesh.receiveShadow  = false;
                 }
 
-
                 //Base class - attach default to the engine, therefore we must create the mesh above first (in order  for the attach() to work properly)
                 Base.prototype.init.apply(this, options);
             },
@@ -41,6 +59,12 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
                 return this._mesh;
             },
 
+            /**
+             * @inheritDoc
+             *  manage the ThreeJS object attachment.
+             * @param parent
+             * @param accessor
+             */
             attach: function(parent, accessor) {
                 Base.prototype.attach.call(this, parent, accessor);
                 this._attachMesh();
@@ -59,6 +83,11 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
                 }
             },
 
+             /**
+             * @inheritDoc
+             *  manage the ThreeJS object attachment.
+             * @returns {*}
+             */
             unAttach: function() {
                 if(this._parent) {
                     //Remove events
@@ -81,7 +110,7 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
             },
 
             /**
-             *
+             * Define object animation
              * @param name
              * @param animOffset - starting frame of animation
              * @param keyframes -  total number of animation frames
@@ -103,6 +132,11 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
                 return this;
             },
 
+            /**
+             * Play object animation
+             * @param name
+             * @returns {*}
+             */
             playAnimation: function(name) {
                 if(undefined === name) {
                     return this._currentAnimation;
@@ -135,6 +169,10 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
                 this.mesh().morphTargetInfluences[ settings.lastKeyframe ] = 1 - this.mesh().morphTargetInfluences[ keyframe ];
             },
 
+            /**
+             * Process geometry and animation
+             * @returns {boolean}
+             */
             process: function() {
                 if(this._parent && this._parent.geometry) {
                     var point = this._parent.geometry();
@@ -147,6 +185,11 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
                 return true;
             },
 
+            /**
+             * @inheritDoc
+             *  Remove object from ThreeJS
+             * @returns {*}
+             */
             destroy: function() {
                 Base.prototype.destroy.apply(this); //Will call unAttach()
 

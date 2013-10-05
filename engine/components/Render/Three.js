@@ -16,6 +16,8 @@ define(['engine/core/Base', 'engine/core/Point',
             _defaultOptions: {debug: true, shadow: true, width: 1920, height: 1080},
 
             /**
+             * Init ThreeJS renderer
+             *  Create a a WebGL/Canvas Renderer.
              *
              * @param options {  width: window.innerWidth,
              *                   height: window.innerHeight,
@@ -30,7 +32,6 @@ define(['engine/core/Base', 'engine/core/Point',
                 this._renderer = Detector.webgl ? this.createObject('mainRenderer', 'WebGLRenderer') : this.createObject('mainRenderer', 'CanvasRenderer', [{ antialias: true }]);
 
                 this.shadow(options.shadow);
-
 
                 if(this.shadow()) {
                     this._renderer.shadowMapEnabled = true;
@@ -53,11 +54,23 @@ define(['engine/core/Base', 'engine/core/Point',
                 }
             },
 
-            setPlane: function(width, height, textureName, repeatWidth, repeatHeight) {
+            /**
+             * Create a basic plane
+             *
+             * @param width - total plane width
+             * @param height - total plane height
+             * @param textureName - texture name
+             * @param textureRepeatWidth - How many times the texture will repeat itself on the plane WIDTH
+             *                              Texture will scale itself if needed.
+             * @param textureRepeatHeight - How many times the texture will repeat itself on the plane HEIGHT
+             *                              Texture will scale itself if needed.
+             * @returns {*}
+             */
+            setPlane: function(width, height, textureName, textureRepeatWidth, textureRepeatHeight) {
                 var floorTexture = engine.threeLoader.getTexture(textureName);
 
                 floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping;
-                floorTexture.repeat.set( (repeatWidth || width/floorTexture.image.naturalWidth) , (repeatHeight || height/floorTexture.image.naturalHeight) ); //Default 1 texture per 'tile'
+                floorTexture.repeat.set( (textureRepeatWidth || width/floorTexture.image.naturalWidth) , (textureRepeatHeight || height/floorTexture.image.naturalHeight) ); //Default 1 texture per 'tile'
                 var plane = new THREE.Mesh(new THREE.PlaneGeometry(width, height, 10, 10), new THREE.MeshLambertMaterial({map: floorTexture, side: THREE.DoubleSide}));
                 plane.position.y = 0;
                 plane.rotation.x = Math.PI / 2;
@@ -75,6 +88,11 @@ define(['engine/core/Base', 'engine/core/Point',
                 return this;
             },
 
+            /**
+             * Enable / Disable shadow
+             * @param val
+             * @returns {*}
+             */
             shadow: function(val) {
                 if(undefined === val) {
                     return this._shadow;
@@ -102,10 +120,22 @@ define(['engine/core/Base', 'engine/core/Point',
                 this._renderer.render(this._scene, this._objs[this._mainCamera]);
             },
 
+            /**
+             * Get object by its identifier
+             * @param identifier
+             * @returns {*}
+             */
             getObject: function(identifier) {
                 return this._objs[identifier];
             },
 
+            /**
+             * Create a new ThreeJS object
+             * @param identifier - object identifier
+             * @param name - Three object name, I.e Scene
+             * @param args - init arguments
+             * @returns {*}
+             */
             createObject: function(identifier, name, args) {
                 if(undefined === args) {
                     args = [];
@@ -117,15 +147,33 @@ define(['engine/core/Base', 'engine/core/Point',
                 return obj;
             },
 
+            /**
+             * Add object to scene
+             * @param object
+             * @returns {*}
+             */
             addToScene: function(object) {
                 this._scene.add(object);
                 return this;
             },
+
+            /**
+             * Remove object from scene
+             * @param object
+             * @returns {*}
+             */
             removeFromScene: function(object) {
                 this._scene.remove(object);
                 return this;
             },
 
+            /**
+             * Same as createObject + addToScene
+             * @param identifier
+             * @param name
+             * @param args
+             * @returns {*}
+             */
             createSceneObject: function(identifier, name, args) {
                 var obj = this.createObject(identifier, name, args);
 
@@ -142,12 +190,23 @@ define(['engine/core/Base', 'engine/core/Point',
                 return this;
             },
 
+            /**
+             * Set main camera by its identifier
+             * @param identifier
+             * @returns {*}
+             */
             setMainCamera: function(identifier) {
                 this._mainCamera = identifier;
 
                 return this;
             },
 
+            /**
+             * Resize handler
+             * @param width
+             * @param height
+             * @returns {*}
+             */
             onResize: function(width, height) {
                 this._renderer.setSize(width, height);
 
