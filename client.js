@@ -39,6 +39,46 @@ window.onload = function()
                 deps: ['lib/three.js/build/three'],
                 'exports': 'Detector'
             },
+            'lib/three.js/examples/js/postprocessing/EffectComposer': {
+                deps: ['lib/three.js/build/three', 'lib/three.js/examples/js/shaders/CopyShader'],
+                'exports': 'THREE'
+            },
+            'lib/three.js/examples/js/postprocessing/RenderPass': {
+                deps: ['lib/three.js/build/three'],
+                'exports': 'THREE'
+            },
+            'lib/three.js/examples/js/postprocessing/ShaderPass': {
+                deps: ['lib/three.js/build/three',],
+                'exports': 'THREE'
+            },
+            'lib/three.js/examples/js/shaders/CopyShader': {
+                deps: ['lib/three.js/build/three'],
+                'exports': 'THREE'
+            },
+            'lib/three.js/examples/js/shaders/VignetteShader': {
+                deps: ['lib/three.js/build/three'],
+                'exports': 'THREE'
+            },
+            'lib/three.js/examples/js/shaders/ColorCorrectionShader': {
+                deps: ['lib/three.js/build/three'],
+                'exports': 'THREE'
+            },
+            'lib/three.js/examples/js/shaders/SSAOShader': {
+                deps: ['lib/three.js/build/three'],
+                'exports': 'THREE'
+            },
+            'lib/three.js/examples/js/shaders/FXAAShader': {
+                deps: ['lib/three.js/build/three'],
+                'exports': 'THREE'
+            },
+            'lib/three.js/examples/js/shaders/HorizontalTiltShiftShader': {
+                deps: ['lib/three.js/build/three'],
+                'exports': 'THREE'
+            },
+            'lib/three.js/examples/js/shaders/VerticalTiltShiftShader': {
+                deps: ['lib/three.js/build/three'],
+                'exports': 'THREE'
+            },
             'ShaderParticleEmitter': {
                 deps: ['lib/three.js/build/three'],
                 'exports': 'ShaderParticleEmitter'
@@ -52,6 +92,7 @@ window.onload = function()
             }
         }
     });
+
 
     requirejs([ 'engine/core/Class', 'engine/Core', 'engine/components/Network/NetworkClient',
                 'engine/components/EntitySync/EntitySyncClient', 'engine/components/Render/ThreeIsometric',
@@ -119,7 +160,7 @@ window.onload = function()
                             lookAt:  new Point(0, 0, 0)
                         },
                         light: {
-                            color: 0xffffff,
+                            color:  0xffffff,
                             position: new Point(100, 60, 30)
                         }
                     })
@@ -143,10 +184,10 @@ window.onload = function()
 
 
                 var bs = new BlacksmithEntity();
-                bs.geometry(100, 100, 100);
+                bs.geometry(100, 0, 300);
+                bs.attach(engine);
 
-
-                var ae = new AviaryEntity();
+               var ae = new AviaryEntity();
                 var ae2 = new AviaryEntity();
                 ae2.threeRenderable.playAnimation('produce');
 

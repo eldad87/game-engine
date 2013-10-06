@@ -8,7 +8,8 @@
         "requirejs": "2.1.x",
         "socket.io": "0.9.x",
         "node-uuid": "1.4.x",
-        "underscore": "git+http://github.com/jashkenas/underscore.git"
+        "underscore": "git+http://github.com/jashkenas/underscore.git",
+        "cannon"    : "x"
     },
     "engine": {
         "node": ">=0.10.x"

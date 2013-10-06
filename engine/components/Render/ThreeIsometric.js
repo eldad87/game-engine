@@ -1,4 +1,16 @@
-define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'underscore', 'lib/three.js/examples/js/controls/OrbitControls'],
+define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'underscore', 'lib/three.js/examples/js/controls/OrbitControls',
+            'lib/three.js/examples/js/postprocessing/EffectComposer',
+
+            'lib/three.js/examples/js/shaders/ColorCorrectionShader',
+
+    'lib/three.js/examples/js/postprocessing/RenderPass',
+    'lib/three.js/examples/js/postprocessing/ShaderPass',
+
+    'lib/three.js/examples/js/shaders/SSAOShader',
+    'lib/three.js/examples/js/shaders/FXAAShader',
+    'lib/three.js/examples/js/shaders/HorizontalTiltShiftShader',
+    'lib/three.js/examples/js/shaders/VerticalTiltShiftShader'
+],
     function(Three, THREE, Point, _) {
 
         /**
@@ -42,12 +54,44 @@ define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'undersc
                 //Set point light
                     .createSceneObject('AmbientLight', 'AmbientLight', [options.light.color]);
 
+
+                this.SSAO(options);
+
+                /*// Renderer Composer
+                composer = new THREE.EffectComposer( this._renderer );
+
+                renderPass = new THREE.RenderPass( this._scene, this.getObject('mainCamera') );
+                var copyPass = new THREE.ShaderPass( THREE.CopyShader );
+                composer.addPass( renderPass );
+
+                var vh = 1.6, vl = 1.2;
+
+                var colorCorrectionPass = new THREE.ShaderPass( THREE.ColorCorrectionShader );
+                colorCorrectionPass.uniforms[ "powRGB" ].value = new THREE.Vector3( vh, vh, vh );
+                colorCorrectionPass.uniforms[ "mulRGB" ].value = new THREE.Vector3( vl, vl, vl );
+                composer.addPass( colorCorrectionPass );
+
+                var vignettePass = new THREE.ShaderPass( THREE.VignetteShader );
+                vignettePass.uniforms[ "darkness" ].value = 1.0;
+                composer.addPass( vignettePass );
+
+                composer.addPass( copyPass );
+                // set last pass in composer chain to renderToScreen
+                copyPass.renderToScreen = true;*/
+
+
+
+
                 //Set camera position
                 var mainCamera = this.getObject('mainCamera');
                 mainCamera.position.x = options.camera.position.x;
                 mainCamera.position.y = options.camera.position.y;
                 mainCamera.position.z = options.camera.position.z;
                 mainCamera.lookAt(options.camera.lookAt);
+
+
+
+
 
 
                 //Set light
@@ -94,7 +138,86 @@ define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'undersc
                 this.getObject('mainCamera').updateProjectionMatrix();
 
                 return this;
+            },
+
+            SSAO: function(options)
+            {
+                var
+                    SCALE = 0.75,
+
+                    effectColor = new THREE.ShaderPass( THREE.ColorCorrectionShader ),
+                    effectSSAO = new THREE.ShaderPass( THREE.SSAOShader ),
+                    effectFXAA = new THREE.ShaderPass( THREE.FXAAShader ),
+                //effectScreen = new THREE.ShaderPass( THREE.ColorCorrectionShader ),
+
+                    hblur = new THREE.ShaderPass( THREE.HorizontalTiltShiftShader ),
+                    vblur = new THREE.ShaderPass( THREE.VerticalTiltShiftShader );
+
+
+                var bluriness = 4;
+
+                hblur.uniforms[ 'h' ].value = bluriness / ( SCALE * options.width );
+                vblur.uniforms[ 'v' ].value = bluriness / ( SCALE * options.height );
+
+                hblur.uniforms[ 'r' ].value = vblur.uniforms[ 'r' ].value = 0.5;
+
+                var renderTargetParametersRGB  = { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBFormat };
+                var renderTargetParametersRGBA = { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat };
+                var depthTarget = new THREE.WebGLRenderTarget( SCALE * options.width, SCALE * options.height, renderTargetParametersRGBA );
+                var colorTarget = new THREE.WebGLRenderTarget( SCALE * options.width, SCALE * options.height, renderTargetParametersRGB );
+
+                //effectScreen.renderToScreen = true;
+                vblur.renderToScreen = true;
+
+                //effectScreen.enabled = !tiltShiftEnabled;
+
+                var composer = new THREE.EffectComposer( this._renderer, colorTarget );
+                composer.addPass( effectSSAO );
+                composer.addPass( effectColor );
+                composer.addPass( effectFXAA );
+                //composer.addPass( effectScreen );
+                composer.addPass( hblur );
+                composer.addPass( vblur );
+
+
+                var camera = this.getObject('mainCamera');
+                var FAR = camera.far * 0.8;
+                this._scene.fog = new THREE.Fog( 0x000000, 10, FAR );
+
+                effectSSAO.uniforms[ 'tDepth' ].texture = depthTarget;
+                effectSSAO.uniforms[ 'size' ].value.set( SCALE * options.width, SCALE * options.height );
+                effectSSAO.uniforms[ 'cameraNear' ].value = camera.near;
+                effectSSAO.uniforms[ 'cameraFar' ].value = camera.far;
+                effectSSAO.uniforms[ 'fogNear' ].value = this._scene.fog.near;
+                effectSSAO.uniforms[ 'fogFar' ].value = this._scene.fog.far;
+                effectSSAO.uniforms[ 'fogEnabled' ].value = 1;
+                effectSSAO.uniforms[ 'aoClamp' ].value = 0.5;
+                effectSSAO.uniforms.onlyAO.value = 0;
+                effectSSAO.renderToScreen = true;
+                effectSSAO.enabled = true;
+                effectColor.enabled = true;
+
+                effectFXAA.uniforms[ 'resolution' ].value.set( 1 / ( SCALE * options.width ), 1 / ( SCALE * options.height ) );
+
+                effectColor.uniforms[ 'mulRGB' ].value.set( 1.4, 1.4, 1.4 );
+                effectColor.uniforms[ 'powRGB' ].value.set( 1.2, 1.2, 1.2 );
+
+                // depth pass
+
+                var depthPassPlugin = new THREE.DepthPassPlugin();
+                depthPassPlugin.renderTarget = depthTarget;
+                depthPassPlugin.enabled = true;
+
+                this._renderer.addPrePlugin( depthPassPlugin );
+
+                this._renderer.setClearColor( this._scene.fog.color, 1 );
+                this._renderer.autoClear = false;
+                this._renderer.autoUpdateObjects = true;
+                this._renderer.shadowMapEnabled = true;
+
             }
+
+
         });
 
         return ThreeIsometric;

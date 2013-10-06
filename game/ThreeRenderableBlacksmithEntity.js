@@ -9,7 +9,7 @@ define(['ThreeBaseRenderable'], function (ThreeBaseRenderable) {
             }
 
             //Load mesh
-            options.meshName = 'aviaryMesh';
+            options.meshName = 'blacksmithMesh';
             options.textureName = 'blacksmithText';
             ThreeBaseRenderable.prototype.init.call(this, options);
             //Scale
