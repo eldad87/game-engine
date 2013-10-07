@@ -55,7 +55,7 @@ define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'undersc
                     .createSceneObject('AmbientLight', 'AmbientLight', [options.light.color]);
 
 
-                this.SSAO(options);
+               // this.SSAO(options);
 
                 /*// Renderer Composer
                 composer = new THREE.EffectComposer( this._renderer );

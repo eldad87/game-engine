@@ -55,8 +55,10 @@ define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception'],
                     }
 
                     // for preparing animation
-                    for (var i = 0; i < materials.length; i++) {
-                        materials[i].morphTargets = true;
+                    if(undefined !== geometry.morphTargets && geometry.morphTargets.length > 0) {
+                        for (var i = 0; i < materials.length; i++) {
+                            materials[i].morphTargets = true;
+                        }
                     }
 
                     var material = new THREE.MeshFaceMaterial( materials );
@@ -145,6 +147,9 @@ define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception'],
                     mesh.material.materials[i].map = textureName ? this.getTexture(textureName) : null;
                     mesh.material.materials[i].shading = THREE.SmoothShading;
                     mesh.material.materials[i].blending = THREE.AdditiveBlending;
+                    if(engine.threeRenderer._debug) {
+//                        mesh.material.materials[i].wireframe = true;
+                    }
                 }
 
                 if(inverse) {

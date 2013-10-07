@@ -9,11 +9,11 @@ define(['ThreeBaseRenderable'], function (ThreeBaseRenderable) {
             }
 
             //Load mesh
-            options.meshName = 'blacksmithMesh';
-            options.textureName = 'blacksmithText';
+            options.meshName = 'castleMesh';
+            options.textureName = 'castleText';
             ThreeBaseRenderable.prototype.init.call(this, options);
             //Scale
-            this.mesh().scale.set(128, 128, 128);
+//            this.mesh().scale.set(128, 128, 128);
         }
     });
 

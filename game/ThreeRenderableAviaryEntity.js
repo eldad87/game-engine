@@ -16,8 +16,6 @@ define(['ThreeBaseRenderable', 'THREE', 'ShaderParticleEmitter', 'ShaderParticle
             //Define animation
             this.defineAnimation('produce', 0, 15, 10000);
 
-            //Scale
-            this.mesh().scale.set(128, 128, 128);
 
 
             //TODO: build a wrapper

@@ -14,7 +14,8 @@ window.onload = function()
 
             'ThreeBaseRenderable'               : './engine/components/Render/ThreeBaseRenderable',
             'ThreeRenderableAviaryEntity'       : './game/ThreeRenderableAviaryEntity',
-            'ThreeRenderableBlacksmithEntity'   : './game/ThreeRenderableBlacksmithEntity'
+           /* 'ThreeRenderableBlacksmithEntity'   : './game/ThreeRenderableBlacksmithEntity',*/
+            'ThreeRenderableCastleEntity'       : './game/ThreeRenderableCastleEntity'
         },
         shim: {
             'THREE': {
@@ -102,11 +103,12 @@ window.onload = function()
                 'THREE',
                 './engine/components/Render/ThreeTileMap',
                 './game/AviaryEntity',
-                './game/BlacksmithEntity',
+                /*'./game/BlacksmithEntity',*/
+                './game/CastleEntity'
 
 
                 ],
-        function(Class, Core, NetworkClient, EntitySyncClient, ThreeIsomatric, ThreeLoader, Point, THREE, ThreeTileMap, AviaryEntity, BlacksmithEntity) {
+        function(Class, Core, NetworkClient, EntitySyncClient, ThreeIsomatric, ThreeLoader, Point, THREE, ThreeTileMap, AviaryEntity, /*BlacksmithEntity,*/ CastleEntity) {
 
         var Client = Class.extend({
             _classId: 'Client',
@@ -132,9 +134,9 @@ window.onload = function()
                     .loadJS('aviaryMesh', './game/assets/human/buildings/h_aviary/h_aviary.js')
                     .loadTexture('aviaryText', './game/assets/human/buildings/h_aviary/h_aviary.jpg')
 
-                    //Blacksmit
-                    .loadJS('blacksmithMesh', './game/assets/human/buildings/h_blacksmith/h_blacksmith.js')
-                    .loadTexture('blacksmithText', './game/assets/human/buildings/h_blacksmith/h_blacksmith.jpg')
+                    //castel
+                    .loadJS('castleMesh', './game/assets/human/buildings/h_castle/h_castle.js')
+                    .loadTexture('castleText', './game/assets/human/buildings/h_castle/h_castle.jpg')
 
                     .loadTexture('smoke_001', './game/assets/other/smoke_001.png')
                     .loadTexture('ground', './game/assets/ground/grass001.jpg')
@@ -183,22 +185,24 @@ window.onload = function()
                 }).attach(engine);
 
 
-                var bs = new BlacksmithEntity();
+                /*var bs = new BlacksmithEntity();
                 bs.geometry(100, 0, 300);
-                bs.attach(engine);
+                bs.attach(engine);*/
 
-               var ae = new AviaryEntity();
+                var ce = new CastleEntity();
+                ce.geometry(500, 0, 0);
+
+                var ae = new AviaryEntity();
                 var ae2 = new AviaryEntity();
                 ae2.threeRenderable.playAnimation('produce');
 
                 //Attach to de + down-scale
                 ae2.attach(ae);
-                ae2.geometry(1, 1, 1);
+                ae2.threeRenderable.mesh().scale.set(128, 128, 128);
                 ae2.threeRenderable.mesh().scale.set(1,1,1);
 
                 //Attach back to engine
                 ae2.geometry(128, 0, 128);
-                ae2.threeRenderable.mesh().scale.set(128, 128, 128);
                 ae2.attach(engine);
 
                 //de.geometry(5,5,5);

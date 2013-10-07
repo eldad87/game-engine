@@ -1,17 +1,24 @@
 {
-    "name": "realtime-multiplayer-in-html5",
-    "author" : "Eldad Yamin",
+    "name": "multijs",
+    "author": "Eldad Yamin",
     "description": "Multipyaer using node.js, three.js and cannon.js",
     "license": "MIT",
-    "version": "1.0.0",
+    "version": "1.0.0-1",
     "dependencies": {
         "requirejs": "2.1.x",
         "socket.io": "0.9.x",
         "node-uuid": "1.4.x",
         "underscore": "git+http://github.com/jashkenas/underscore.git",
-        "cannon"    : "x"
+        "cannon": "x"
     },
     "engine": {
         "node": ">=0.10.x"
+    },
+    "subdomain": "multijs",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "engines": {
+        "node": "0.10.x"
     }
 }
