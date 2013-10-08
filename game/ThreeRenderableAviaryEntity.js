@@ -8,13 +8,19 @@ define(['ThreeBaseRenderable', 'THREE', 'ShaderParticleEmitter', 'ShaderParticle
                 options = [];
             }
 
+            options.autoMeshCreation = false;
+            this._mesh = engine.threeLoader.getSea('h_aviary_main');
+
+            //this._mesh.play("idle");
+
+            ThreeBaseRenderable.prototype.init.call(this, options);
             //Load mesh
-            options.meshName = 'aviaryMesh';
+            /*options.meshName = 'aviaryMesh';
             options.textureName = 'aviaryText';
             ThreeBaseRenderable.prototype.init.call(this, options);
 
             //Define animation
-            this.defineAnimation('produce', 0, 15, 10000);
+            this.defineAnimation('produce', 0, 15, 10000);*/
 
 
 

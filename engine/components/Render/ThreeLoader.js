@@ -1,4 +1,4 @@
-define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception'],
+define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception', 'SEA3D', 'SEA3DLoader', 'SEA3DDeflate', 'SEA3DLZMA'],
     function(Base, THREE, _, Exception) {
 
         /**
@@ -14,6 +14,7 @@ define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception'],
 
             _meshes: {},
             _textures: [],
+            _sea: {},
 
             _onProgressCallback: function(loaded, total, name) {
 
@@ -28,6 +29,45 @@ define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception'],
                 this._onProgressCallback = callback;
 
                 return this;
+            },
+
+            loadSea: function(meshName, seaPath) {
+                if(undefined !== this._sea[meshName]) {
+                    throw new Exception('SEA [' + meshName + '] Name already exists');
+                }
+
+                //Load model
+                this._totalCount++;
+
+
+
+                var loader = new THREE.SEA3D( false );
+                loader.matrixAutoUpdate = true;
+                loader.invertCamera = true;
+
+                var self = this;
+                loader.onComplete = function( e ) {
+
+                    self._sea[meshName] = loader.getMesh(meshName);
+
+                    self._loadedCount++;
+                    self._onProgressCallback.call(self, self._loadedCount, self._totalCount, meshName);
+
+
+                    /*player.play("idle");
+                    player.scale.set( playerConfig.scale, playerConfig.scale, -playerConfig.scale );
+                    scene.add( player );*/
+                };
+                loader.load( seaPath );
+
+                return this;
+            },
+
+            getSea: function(name) {
+                if(undefined === this._sea[name]) {
+                    throw new Exception('Sea Name [' + name + '] doest NOT exists');
+                }
+                return this._sea[name];
             },
 
             /**

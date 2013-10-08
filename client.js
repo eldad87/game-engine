@@ -15,7 +15,12 @@ window.onload = function()
             'ThreeBaseRenderable'               : './engine/components/Render/ThreeBaseRenderable',
             'ThreeRenderableAviaryEntity'       : './game/ThreeRenderableAviaryEntity',
            /* 'ThreeRenderableBlacksmithEntity'   : './game/ThreeRenderableBlacksmithEntity',*/
-            'ThreeRenderableCastleEntity'       : './game/ThreeRenderableCastleEntity'
+            'ThreeRenderableCastleEntity'       : './game/ThreeRenderableCastleEntity',
+
+            'SEA3D'         : './engine/components/Render/Sea3D/SEA3D',
+            'SEA3DLoader'   : './engine/components/Render/Sea3D/SEA3DLoader',
+            'SEA3DDeflate'  : './engine/components/Render/Sea3D/SEA3DDeflate',
+            'SEA3DLZMA'     : './engine/components/Render/Sea3D/SEA3DLZMA'
         },
         shim: {
             'THREE': {
@@ -88,12 +93,27 @@ window.onload = function()
                 deps: ['lib/three.js/build/three', 'ShaderParticleEmitter'],
                 'exports': 'ShaderParticleGroup'
             },
+            'SEA3D': {
+                'exports': 'SEA3D'
+            },
+            'SEA3DLoader': {
+                deps: ['THREE', 'SEA3D'],
+                'exports': 'THREE'
+            },
+            'SEA3DDeflate': {
+                deps: ['SEA3D'],
+                'exports': 'SEA3D'
+            },
+            'SEA3DLZMA': {
+                deps: ['SEA3D'],
+                'exports': 'SEA3D'
+            },
+
             'underscore': {
                 'exports': '_'
             }
         }
     });
-
 
     requirejs([ 'engine/core/Class', 'engine/Core', 'engine/components/Network/NetworkClient',
                 'engine/components/EntitySync/EntitySyncClient', 'engine/components/Render/ThreeIsometric',
@@ -130,6 +150,7 @@ window.onload = function()
                         }
                     })
 
+                    .loadSea('h_aviary_main', './game/assets/human/buildings/h_aviary/h_aviary2.sea')
                     //Aviary
                     .loadJS('aviaryMesh', './game/assets/human/buildings/h_aviary/h_aviary.js')
                     .loadTexture('aviaryText', './game/assets/human/buildings/h_aviary/h_aviary.jpg')
@@ -189,11 +210,11 @@ window.onload = function()
                 bs.geometry(100, 0, 300);
                 bs.attach(engine);*/
 
-                var ce = new CastleEntity();
-                ce.geometry(500, 0, 0);
+               /* var ce = new CastleEntity();
+                ce.geometry(500, 0, 0);*/
 
                 var ae = new AviaryEntity();
-                var ae2 = new AviaryEntity();
+                /*var ae2 = new AviaryEntity();
                 ae2.threeRenderable.playAnimation('produce');
 
                 //Attach to de + down-scale
@@ -203,7 +224,7 @@ window.onload = function()
 
                 //Attach back to engine
                 ae2.geometry(128, 0, 128);
-                ae2.attach(engine);
+                ae2.attach(engine);*/
 
                 //de.geometry(5,5,5);
                 //de.geometry(1,1,1);

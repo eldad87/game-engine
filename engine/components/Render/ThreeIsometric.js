@@ -54,34 +54,6 @@ define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'undersc
                 //Set point light
                     .createSceneObject('AmbientLight', 'AmbientLight', [options.light.color]);
 
-
-               // this.SSAO(options);
-
-                /*// Renderer Composer
-                composer = new THREE.EffectComposer( this._renderer );
-
-                renderPass = new THREE.RenderPass( this._scene, this.getObject('mainCamera') );
-                var copyPass = new THREE.ShaderPass( THREE.CopyShader );
-                composer.addPass( renderPass );
-
-                var vh = 1.6, vl = 1.2;
-
-                var colorCorrectionPass = new THREE.ShaderPass( THREE.ColorCorrectionShader );
-                colorCorrectionPass.uniforms[ "powRGB" ].value = new THREE.Vector3( vh, vh, vh );
-                colorCorrectionPass.uniforms[ "mulRGB" ].value = new THREE.Vector3( vl, vl, vl );
-                composer.addPass( colorCorrectionPass );
-
-                var vignettePass = new THREE.ShaderPass( THREE.VignetteShader );
-                vignettePass.uniforms[ "darkness" ].value = 1.0;
-                composer.addPass( vignettePass );
-
-                composer.addPass( copyPass );
-                // set last pass in composer chain to renderToScreen
-                copyPass.renderToScreen = true;*/
-
-
-
-
                 //Set camera position
                 var mainCamera = this.getObject('mainCamera');
                 mainCamera.position.x = options.camera.position.x;
