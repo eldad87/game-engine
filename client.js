@@ -10,6 +10,7 @@ window.onload = function()
             'THREE'                 : './lib/three.js/build/three',
             'ShaderParticleGroup'   : './lib/ShaderParticleEngine/src/ShaderParticleGroup',
             'ShaderParticleEmitter' : './lib/ShaderParticleEngine/src/ShaderParticleEmitter',
+
             //'bson' : './node_modules/bson/browser_build/bson'
 
             'ThreeBaseRenderable'               : './engine/components/Render/ThreeBaseRenderable',
@@ -46,7 +47,7 @@ window.onload = function()
                 'exports': 'Detector'
             },
             'lib/three.js/examples/js/postprocessing/EffectComposer': {
-                deps: ['lib/three.js/build/three', 'lib/three.js/examples/js/shaders/CopyShader'],
+                deps: ['lib/three.js/build/three', 'lib/three.js/examples/js/shaders/CopyShader', 'lib/three.js/examples/js/postprocessing/MaskPass'],
                 'exports': 'THREE'
             },
             'lib/three.js/examples/js/postprocessing/RenderPass': {
@@ -54,7 +55,11 @@ window.onload = function()
                 'exports': 'THREE'
             },
             'lib/three.js/examples/js/postprocessing/ShaderPass': {
-                deps: ['lib/three.js/build/three',],
+                deps: ['lib/three.js/build/three'],
+                'exports': 'THREE'
+            },
+            'lib/three.js/examples/js/postprocessing/MaskPass': {
+                deps: ['lib/three.js/build/three'],
                 'exports': 'THREE'
             },
             'lib/three.js/examples/js/shaders/CopyShader': {
@@ -74,6 +79,10 @@ window.onload = function()
                 'exports': 'THREE'
             },
             'lib/three.js/examples/js/shaders/FXAAShader': {
+                deps: ['lib/three.js/build/three'],
+                'exports': 'THREE'
+            },
+            'lib/three.js/examples/js/shaders/VignetteShader': {
                 deps: ['lib/three.js/build/three'],
                 'exports': 'THREE'
             },
@@ -150,14 +159,9 @@ window.onload = function()
                         }
                     })
 
-                    .loadSea('h_aviary_main', './game/assets/human/buildings/h_aviary/h_aviary2.sea')
-                    //Aviary
-                    .loadJS('aviaryMesh', './game/assets/human/buildings/h_aviary/h_aviary.js')
-                    .loadTexture('aviaryText', './game/assets/human/buildings/h_aviary/h_aviary.jpg')
+                    .loadSea('h_aviary_main', './game/assets/human/buildings/h_aviary/h_aviary.sea')
+                    .loadSea('h_castle', './game/assets/human/buildings/h_castle/h_castle.sea')
 
-                    //castel
-                    .loadJS('castleMesh', './game/assets/human/buildings/h_castle/h_castle.js')
-                    .loadTexture('castleText', './game/assets/human/buildings/h_castle/h_castle.jpg')
 
                     .loadTexture('smoke_001', './game/assets/other/smoke_001.png')
                     .loadTexture('ground', './game/assets/ground/grass001.jpg')
@@ -206,14 +210,12 @@ window.onload = function()
                 }).attach(engine);
 
 
-                /*var bs = new BlacksmithEntity();
-                bs.geometry(100, 0, 300);
-                bs.attach(engine);*/
-
-               /* var ce = new CastleEntity();
-                ce.geometry(500, 0, 0);*/
-
                 var ae = new AviaryEntity();
+                ae.geometry(0, 0, 0);
+
+                var ce = new CastleEntity();
+                ce.geometry(256, 0, 256);
+
                 /*var ae2 = new AviaryEntity();
                 ae2.threeRenderable.playAnimation('produce');
 

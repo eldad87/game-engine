@@ -67,7 +67,7 @@ define(['engine/core/Base', 'THREE', 'underscore', 'engine/core/Exception', 'SEA
                 if(undefined === this._sea[name]) {
                     throw new Exception('Sea Name [' + name + '] doest NOT exists');
                 }
-                return this._sea[name];
+                return this._sea[name].clone();
             },
 
             /**

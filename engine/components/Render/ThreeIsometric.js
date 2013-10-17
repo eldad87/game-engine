@@ -1,15 +1,16 @@
 define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'underscore', 'lib/three.js/examples/js/controls/OrbitControls',
-            'lib/three.js/examples/js/postprocessing/EffectComposer',
-
-            'lib/three.js/examples/js/shaders/ColorCorrectionShader',
-
+    'lib/three.js/examples/js/postprocessing/EffectComposer',
+    'lib/three.js/examples/js/shaders/CopyShader',
+    'lib/three.js/examples/js/shaders/SSAOShader',
     'lib/three.js/examples/js/postprocessing/RenderPass',
     'lib/three.js/examples/js/postprocessing/ShaderPass',
 
-    'lib/three.js/examples/js/shaders/SSAOShader',
-    'lib/three.js/examples/js/shaders/FXAAShader',
-    'lib/three.js/examples/js/shaders/HorizontalTiltShiftShader',
-    'lib/three.js/examples/js/shaders/VerticalTiltShiftShader'
+
+            'lib/three.js/examples/js/shaders/ColorCorrectionShader',
+            'lib/three.js/examples/js/shaders/FXAAShader',
+            'lib/three.js/examples/js/shaders/VignetteShader',
+            'lib/three.js/examples/js/shaders/HorizontalTiltShiftShader',
+            'lib/three.js/examples/js/shaders/VerticalTiltShiftShader'
 ],
     function(Three, THREE, Point, _) {
 
@@ -91,11 +92,20 @@ define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'undersc
                 //Set controls
                 this._controls = new THREE.OrbitControls( mainCamera, this._renderer.domElement );
 
+                this.SSAO(options);
+
                 return this;
             },
 
             process: function() {
-                Three.prototype.process.call(this);
+                //Three.prototype.process.call(this);
+
+                this._scene.overrideMaterial = this.depthMaterial;
+                this._renderer.render(this._scene, this._objs[this._mainCamera], this.depthTarget);
+
+                this._scene.overrideMaterial = null;
+                this.composer.render();
+
                 this._controls.update();
             },
 
@@ -112,83 +122,109 @@ define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'undersc
                 return this;
             },
 
-            SSAO: function(options)
+            SSAO: function (options)
             {
-                var
-                    SCALE = 0.75,
+                // depth
 
-                    effectColor = new THREE.ShaderPass( THREE.ColorCorrectionShader ),
-                    effectSSAO = new THREE.ShaderPass( THREE.SSAOShader ),
-                    effectFXAA = new THREE.ShaderPass( THREE.FXAAShader ),
-                //effectScreen = new THREE.ShaderPass( THREE.ColorCorrectionShader ),
+                this.group = new THREE.Object3D();
+                this._scene.add( this.group );
 
-                    hblur = new THREE.ShaderPass( THREE.HorizontalTiltShiftShader ),
-                    vblur = new THREE.ShaderPass( THREE.VerticalTiltShiftShader );
+                var geometry = new THREE.CubeGeometry( 10, 10, 10 );
+                var material = new THREE.MeshLambertMaterial( { color: 0xfff000 } );
+
+                for ( var i = 0; i < 100; i ++ ) {
+
+                    var mesh = new THREE.Mesh( geometry, material );
+                    mesh.position.x = Math.random() * 400 - 200;
+                    mesh.position.y = Math.random() * 400 - 200;
+                    mesh.position.z = 400 + (Math.random() * 400 - 200 );
+                    mesh.rotation.x = Math.random();
+                    mesh.rotation.y = Math.random();
+                    mesh.rotation.z = Math.random();
+                    mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 10 + 1;
+                    this.group.add( mesh );
+
+                }
+                // depth
+
+                var depthShader = THREE.ShaderLib[ "depth" ];
+                var depthUniforms = THREE.UniformsUtils.clone( depthShader.uniforms );
+
+                this.depthMaterial = new THREE.ShaderMaterial( { fragmentShader: depthShader.fragmentShader, vertexShader: depthShader.vertexShader, uniforms: depthUniforms } );
+                this.depthMaterial.blending = THREE.NoBlending;
+
+                // postprocessing
+                var camera = this._objs[this._mainCamera];
 
 
-                var bluriness = 4;
 
-                hblur.uniforms[ 'h' ].value = bluriness / ( SCALE * options.width );
-                vblur.uniforms[ 'v' ].value = bluriness / ( SCALE * options.height );
+                var colorCorrectionPass = new THREE.ShaderPass( THREE.ColorCorrectionShader );
+                ssao = new THREE.ShaderPass( THREE.SSAOShader );
+                effectFXAA = new THREE.ShaderPass( THREE.FXAAShader );
+                //var effectVignette = new THREE.ShaderPass( THREE.VignetteShader );
+                hblur = new THREE.ShaderPass( THREE.HorizontalTiltShiftShader );
+                vblur = new THREE.ShaderPass( THREE.VerticalTiltShiftShader );
 
+
+                this.depthTarget = new THREE.WebGLRenderTarget( options.width, options.height, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter, format: THREE.RGBAFormat, stencilBuffer: false } );
+                this.colorTarget = new THREE.WebGLRenderTarget( options.width, options.height, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter, format: THREE.RGBFormat, stencilBuffer: false  } );
+                this.composer = new THREE.EffectComposer( this._renderer, this.colorTarget );
+                this.composer.addPass( new THREE.RenderPass( this._scene, camera ) );
+
+
+
+                var vh = 1.6, vl = 1.2;
+                colorCorrectionPass.uniforms[ "powRGB" ].value = new THREE.Vector3( vh, vh, vh );
+                colorCorrectionPass.uniforms[ "mulRGB" ].value = new THREE.Vector3( vl, vl, vl );
+                colorCorrectionPass.enabled = true;
+
+
+                ssao.uniforms[ 'tDepth' ].value = this.depthTarget;
+                ssao.uniforms[ 'size' ].value.set( options.width, options.height  );
+                ssao.uniforms[ 'cameraNear' ].value = camera.near;
+                ssao.uniforms[ 'cameraFar' ].value = camera.far;
+             /*   ssao.uniforms[ 'fogNear' ].value = camera.near;
+                ssao.uniforms[ 'fogFar' ].value = camera.far;*/
+                ssao.uniforms[ 'fogEnabled' ].value = 1;
+                ssao.uniforms[ 'aoClamp' ].value = 0.5;
+                ssao.renderToScreen = true;
+                ssao.enabled = true;
+
+
+
+                effectFXAA.uniforms[ 'resolution' ].value.set( 1 / options.width, 1 / options.height );
+
+                var bluriness = 2;
+                hblur.uniforms[ 'h' ].value = bluriness / options.width;
+                vblur.uniforms[ 'v' ].value = bluriness / options.height;
                 hblur.uniforms[ 'r' ].value = vblur.uniforms[ 'r' ].value = 0.5;
-
-                var renderTargetParametersRGB  = { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBFormat };
-                var renderTargetParametersRGBA = { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat };
-                var depthTarget = new THREE.WebGLRenderTarget( SCALE * options.width, SCALE * options.height, renderTargetParametersRGBA );
-                var colorTarget = new THREE.WebGLRenderTarget( SCALE * options.width, SCALE * options.height, renderTargetParametersRGB );
-
-                //effectScreen.renderToScreen = true;
-                vblur.renderToScreen = true;
-
-                //effectScreen.enabled = !tiltShiftEnabled;
-
-                var composer = new THREE.EffectComposer( this._renderer, colorTarget );
-                composer.addPass( effectSSAO );
-                composer.addPass( effectColor );
-                composer.addPass( effectFXAA );
-                //composer.addPass( effectScreen );
-                composer.addPass( hblur );
-                composer.addPass( vblur );
+                hblur.renderToScreen = true;
 
 
-                var camera = this.getObject('mainCamera');
-                var FAR = camera.far * 0.8;
-                this._scene.fog = new THREE.Fog( 0x000000, 10, FAR );
+                this.composer.addPass( effectFXAA );
+                this.composer.addPass( ssao );
+                //this.composer.addPass( effectVignette );
+                /*this.composer.addPass( hblur );
+                this.composer.addPass( vblur );*/
+                this.composer.addPass( colorCorrectionPass );
+            },
 
-                effectSSAO.uniforms[ 'tDepth' ].texture = depthTarget;
-                effectSSAO.uniforms[ 'size' ].value.set( SCALE * options.width, SCALE * options.height );
-                effectSSAO.uniforms[ 'cameraNear' ].value = camera.near;
-                effectSSAO.uniforms[ 'cameraFar' ].value = camera.far;
-                effectSSAO.uniforms[ 'fogNear' ].value = this._scene.fog.near;
-                effectSSAO.uniforms[ 'fogFar' ].value = this._scene.fog.far;
-                effectSSAO.uniforms[ 'fogEnabled' ].value = 1;
-                effectSSAO.uniforms[ 'aoClamp' ].value = 0.5;
-                effectSSAO.uniforms.onlyAO.value = 0;
-                effectSSAO.renderToScreen = true;
-                effectSSAO.enabled = true;
-                effectColor.enabled = true;
+            onResize: function(width, height) {
+                Three.prototype.init.call(this, width, height);
 
-                effectFXAA.uniforms[ 'resolution' ].value.set( 1 / ( SCALE * options.width ), 1 / ( SCALE * options.height ) );
+                this.depthTarget = new THREE.WebGLRenderTarget( width, height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat, stencilBuffer: false } );
+                this.colorTarget = new THREE.WebGLRenderTarget( width, height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBFormat, stencilBuffer: false  } );
 
-                effectColor.uniforms[ 'mulRGB' ].value.set( 1.4, 1.4, 1.4 );
-                effectColor.uniforms[ 'powRGB' ].value.set( 1.2, 1.2, 1.2 );
+                effectFXAA.uniforms[ 'resolution' ].value.set( 1 / width, 1 / height );
+                ssao.uniforms[ 'size' ].value.set( width, height );
+                ssao.uniforms[ 'tDepth' ].value = this.depthTarget;
 
-                // depth pass
 
-                var depthPassPlugin = new THREE.DepthPassPlugin();
-                depthPassPlugin.renderTarget = depthTarget;
-                depthPassPlugin.enabled = true;
-
-                this._renderer.addPrePlugin( depthPassPlugin );
-
-                this._renderer.setClearColor( this._scene.fog.color, 1 );
-                this._renderer.autoClear = false;
-                this._renderer.autoUpdateObjects = true;
-                this._renderer.shadowMapEnabled = true;
+                this.composer.setSize( width, height );
+                /*hblur.uniforms[ 'h' ].value = 4 / width;
+                vblur.uniforms[ 'v' ].value = 4 / height;*/
 
             }
-
 
         });
 

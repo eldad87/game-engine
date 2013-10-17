@@ -9,8 +9,12 @@ define(['ThreeBaseRenderable'], function (ThreeBaseRenderable) {
             }
 
             //Load mesh
-            options.meshName = 'castleMesh';
-            options.textureName = 'castleText';
+            //options.meshName = 'castleMesh';
+            //options.textureName = 'castleTextBlank';
+            //options.textureName = false;
+
+            options.autoMeshCreation = false;
+            this._mesh = engine.threeLoader.getSea('h_castle');
             ThreeBaseRenderable.prototype.init.call(this, options);
             //Scale
 //            this.mesh().scale.set(128, 128, 128);
