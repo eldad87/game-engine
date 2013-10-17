@@ -98,6 +98,9 @@ define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'undersc
             },
 
             process: function() {
+                //this.group.rotation.x += engine.deltaUptime() * 0.2;
+                //this.group.rotation.y += engine.deltaUptime() * 0.5;
+                //console.log(  this.group.rotation.x);
                 //Three.prototype.process.call(this);
 
                 this._scene.overrideMaterial = this.depthMaterial;
@@ -147,7 +150,7 @@ define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'undersc
                 }
                 // depth
 
-                var depthShader = THREE.ShaderLib[ "depth" ];
+                var depthShader = THREE.ShaderLib[ "depthRGBA" ];
                 var depthUniforms = THREE.UniformsUtils.clone( depthShader.uniforms );
 
                 this.depthMaterial = new THREE.ShaderMaterial( { fragmentShader: depthShader.fragmentShader, vertexShader: depthShader.vertexShader, uniforms: depthUniforms } );
@@ -157,21 +160,19 @@ define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'undersc
                 var camera = this._objs[this._mainCamera];
 
 
-
-                var colorCorrectionPass = new THREE.ShaderPass( THREE.ColorCorrectionShader );
-                ssao = new THREE.ShaderPass( THREE.SSAOShader );
-                effectFXAA = new THREE.ShaderPass( THREE.FXAAShader );
-                //var effectVignette = new THREE.ShaderPass( THREE.VignetteShader );
-                hblur = new THREE.ShaderPass( THREE.HorizontalTiltShiftShader );
-                vblur = new THREE.ShaderPass( THREE.VerticalTiltShiftShader );
-
-
                 this.depthTarget = new THREE.WebGLRenderTarget( options.width, options.height, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter, format: THREE.RGBAFormat, stencilBuffer: false } );
                 this.colorTarget = new THREE.WebGLRenderTarget( options.width, options.height, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter, format: THREE.RGBFormat, stencilBuffer: false  } );
                 this.composer = new THREE.EffectComposer( this._renderer, this.colorTarget );
                 this.composer.addPass( new THREE.RenderPass( this._scene, camera ) );
 
 
+
+                colorCorrectionPass = new THREE.ShaderPass( THREE.ColorCorrectionShader );
+                ssao = new THREE.ShaderPass( THREE.SSAOShader );
+                effectFXAA = new THREE.ShaderPass( THREE.FXAAShader );
+                //var effectVignette = new THREE.ShaderPass( THREE.VignetteShader );
+                hblur = new THREE.ShaderPass( THREE.HorizontalTiltShiftShader );
+                vblur = new THREE.ShaderPass( THREE.VerticalTiltShiftShader );
 
                 var vh = 1.6, vl = 1.2;
                 colorCorrectionPass.uniforms[ "powRGB" ].value = new THREE.Vector3( vh, vh, vh );
@@ -184,13 +185,11 @@ define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'undersc
                 ssao.uniforms[ 'cameraNear' ].value = camera.near;
                 ssao.uniforms[ 'cameraFar' ].value = camera.far;
              /*   ssao.uniforms[ 'fogNear' ].value = camera.near;
-                ssao.uniforms[ 'fogFar' ].value = camera.far;*/
-                ssao.uniforms[ 'fogEnabled' ].value = 1;
+                ssao.uniforms[ 'fogFar' ].value = camera.far
+                ssao.uniforms[ 'fogEnabled' ].value = 1;*/
                 ssao.uniforms[ 'aoClamp' ].value = 0.5;
                 ssao.renderToScreen = true;
                 ssao.enabled = true;
-
-
 
                 effectFXAA.uniforms[ 'resolution' ].value.set( 1 / options.width, 1 / options.height );
 
@@ -215,12 +214,13 @@ define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'undersc
                 this.depthTarget = new THREE.WebGLRenderTarget( width, height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat, stencilBuffer: false } );
                 this.colorTarget = new THREE.WebGLRenderTarget( width, height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBFormat, stencilBuffer: false  } );
 
+                this.composer.reset( this.colorTarget );
+
                 effectFXAA.uniforms[ 'resolution' ].value.set( 1 / width, 1 / height );
                 ssao.uniforms[ 'size' ].value.set( width, height );
                 ssao.uniforms[ 'tDepth' ].value = this.depthTarget;
 
 
-                this.composer.setSize( width, height );
                 /*hblur.uniforms[ 'h' ].value = 4 / width;
                 vblur.uniforms[ 'v' ].value = 4 / height;*/
 

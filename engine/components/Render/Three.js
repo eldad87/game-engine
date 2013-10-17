@@ -209,6 +209,10 @@ define(['engine/core/Base', 'engine/core/Point',
             onResize: function(width, height) {
                 this._renderer.setSize(width, height);
 
+                var camera = this.getObject(this._mainCamera);
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+
                 return this;
             }
         });
