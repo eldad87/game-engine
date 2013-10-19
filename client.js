@@ -211,7 +211,7 @@ window.onload = function()
 
 
                 var ae = new AviaryEntity();
-                ae.geometry(0, 0, 0);
+                //ae.geometry(0, 32.5, 0);
 
                 var ce = new CastleEntity();
                 ce.geometry(256, 0, 256);
