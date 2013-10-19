@@ -146,7 +146,7 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
                     throw new Exception('Animation name [' + name + '] is missing!');
                 }
 
-                return this._currentAnimation = name;
+                this._currentAnimation = name;
                 return this;
             },
 

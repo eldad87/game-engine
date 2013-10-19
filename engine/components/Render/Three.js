@@ -115,6 +115,7 @@ define(['engine/core/Base', 'engine/core/Point',
              */
             process: function() {
                 Base.prototype.process.call(this);
+                THREE.AnimationHandler.update( engine.deltaUptime() );
 
                 this._renderer.render(this._scene, this._objs[this._mainCamera]);
             },

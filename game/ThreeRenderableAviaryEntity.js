@@ -1,5 +1,5 @@
-define(['ThreeBaseRenderable', 'THREE', 'ShaderParticleEmitter', 'ShaderParticleGroup'], function (ThreeBaseRenderable, THREE) {
-    var ThreeRenderableAviaryEntity = ThreeBaseRenderable.extend({
+define(['ThreeSeaBaseRenderable', 'THREE', 'ShaderParticleEmitter', 'ShaderParticleGroup'], function (ThreeSeaBaseRenderable, THREE) {
+    var ThreeRenderableAviaryEntity = ThreeSeaBaseRenderable.extend({
         _classId: 'ThreeRenderableAviaryEntity',
 
         init: function(options)
@@ -13,11 +13,11 @@ define(['ThreeBaseRenderable', 'THREE', 'ShaderParticleEmitter', 'ShaderParticle
 
             //this._mesh.play("idle");
 
-            ThreeBaseRenderable.prototype.init.call(this, options);
+            ThreeSeaBaseRenderable.prototype.init.call(this, options);
             //Load mesh
             /*options.meshName = 'aviaryMesh';
             options.textureName = 'aviaryText';
-            ThreeBaseRenderable.prototype.init.call(this, options);
+             ThreeSeaBaseRenderable.prototype.init.call(this, options);
 
             //Define animation
             this.defineAnimation('produce', 0, 15, 10000);*/
@@ -57,7 +57,7 @@ define(['ThreeBaseRenderable', 'THREE', 'ShaderParticleEmitter', 'ShaderParticle
         },
 
         process: function() {
-            ThreeBaseRenderable.prototype.process.call(this);
+            ThreeSeaBaseRenderable.prototype.process.call(this);
 
             if('produce' === this.playAnimation()) {
                 this.particleGroup.tick( engine.deltaUptime() );

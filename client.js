@@ -14,6 +14,7 @@ window.onload = function()
             //'bson' : './node_modules/bson/browser_build/bson'
 
             'ThreeBaseRenderable'               : './engine/components/Render/ThreeBaseRenderable',
+            'ThreeSeaBaseRenderable'               : './engine/components/Render/Sea3D/ThreeSeaBaseRenderable',
             'ThreeRenderableAviaryEntity'       : './game/ThreeRenderableAviaryEntity',
            /* 'ThreeRenderableBlacksmithEntity'   : './game/ThreeRenderableBlacksmithEntity',*/
             'ThreeRenderableCastleEntity'       : './game/ThreeRenderableCastleEntity',
@@ -101,6 +102,10 @@ window.onload = function()
             'ShaderParticleGroup': {
                 deps: ['lib/three.js/build/three', 'ShaderParticleEmitter'],
                 'exports': 'ShaderParticleGroup'
+            },
+            'Animation': {
+                deps: ['lib/three.js/build/three'],
+                'exports': 'Animation'
             },
             'SEA3D': {
                 'exports': 'SEA3D'
@@ -212,6 +217,7 @@ window.onload = function()
 
                 var ae = new AviaryEntity();
                 //ae.geometry(0, 32.5, 0);
+                ae.threeRenderable.playAnimation('idle');
 
                 var ce = new CastleEntity();
                 ce.geometry(256, 0, 256);
