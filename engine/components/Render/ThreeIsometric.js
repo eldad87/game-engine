@@ -1,4 +1,4 @@
-define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'underscore', 'lib/three.js/examples/js/controls/OrbitControls',
+define(['engine/core/Base', 'engine/components/Render/Three', 'THREE', 'engine/core/Point', 'underscore', 'lib/three.js/examples/js/controls/OrbitControls',
     'lib/three.js/examples/js/postprocessing/EffectComposer',
     'lib/three.js/examples/js/shaders/CopyShader',
     'lib/three.js/examples/js/shaders/SSAOShader',
@@ -12,7 +12,7 @@ define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'undersc
             'lib/three.js/examples/js/shaders/HorizontalTiltShiftShader',
             'lib/three.js/examples/js/shaders/VerticalTiltShiftShader'
 ],
-    function(Three, THREE, Point, _) {
+    function(Base, Three, THREE, Point, _) {
 
         /**
          * Define an isometric environment
@@ -98,6 +98,8 @@ define(['engine/components/Render/Three', 'THREE', 'engine/core/Point', 'undersc
             },
 
             process: function() {
+                Base.prototype.process.call(this);
+                THREE.AnimationHandler.update( engine.deltaUptime() );
                 //this.group.rotation.x += engine.deltaUptime() * 0.2;
                 //this.group.rotation.y += engine.deltaUptime() * 0.5;
                 //console.log(  this.group.rotation.x);

@@ -7,6 +7,7 @@ define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], 
     var ThreeTileMap = ThreeBaseRenderable.extend({
         _classId: 'ThreeTileMap',
         _defaultOptions: {position:{ y: 0},  rotation:{x: - Math.PI / 2}},
+        _forceComponentAccessor: undefined,
 
         /**
          * Create a tile map
