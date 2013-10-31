@@ -1,7 +1,7 @@
 define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], function (ThreeBaseRenderable, THREE, Exception, _) {
-    //http://stackoverflow.com/questions/13516990/render-tmx-map-on-threejs-plane
     //http://stemkoski.github.io/Three.js/Shader-Heightmap-Textures.html
     //http://www.chandlerprall.com/webgl/terrain/
+
     /**
      * Create a layer map
      * @type {*}
@@ -11,8 +11,31 @@ define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], 
 
         init: function(options)
         {
-            this.initShaders();
-            this.initUniform();
+            if(!options) {
+                throw new Exception('Missing parameters');
+            }
+
+            if(undefined === options.width) {
+                throw new Exception('width is missing');
+            }
+            if(undefined === options.height) {
+                throw new Exception('height is missing');
+            }
+            if(undefined === options.maskTexture) {
+                throw new Exception('maskTexture is missing');
+            }
+            if(undefined === options.tilesTexture) {
+                throw new Exception('tilesTexture is missing');
+            }
+            if(options.maskTexture.length != options.tilesTexture.length) {
+                throw new Exception('tilesTexture and maskTexture length must be identical');
+            }
+            if(undefined === options.tilesSegments) {
+                throw new Exception('tilesSegments is missing');
+            }
+
+            this.initShaders(options);
+            this.initUniform(options);
             this.initPlaneMesh(options);
 
             //Load mesh
@@ -22,81 +45,80 @@ define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], 
             //engine.threeLoader.getTexture(options.tileset);
         },
 
-        initShaders: function() {
-            this.vShader = [
-            'uniform sampler2D bumpTexture;' +
-            'uniform float bumpScale;' +
 
-            'varying float vAmount;' +
-            'varying vec2 vUV;' +
+        initShaders: function(options) {
 
-            'void main()' +
-            '{' +
-                'vUV = uv;' +
-                'vec4 bumpData = texture2D( bumpTexture, uv );' +
+            this.vShader = [];
+            for(var i in options.maskTexture) {
+                this.vShader.push( 'uniform sampler2D ' + 'mask_' + options.maskTexture[i] + ';'); //uniform sampler2D mask_grass;
+                this.vShader.push( 'varying float ' + 'v_' + options.maskTexture[i] + '_amount;'); //varying float v_grass_amount;
+            }
 
+            this.vShader.push('varying vec2 vUV;');
+
+            this.vShader.push('void main()');
+            this.vShader.push('{');
+            this.vShader.push('vUV = uv;');
+
+            for(var i in options.maskTexture) {
                 // assuming map is grayscale it doesn't matter if you use r, g, or b.
-                'vAmount = bumpData.r;' +
+                this.vShader.push('v_' + options.maskTexture[i] + '_amount = texture2D( mask_' + options.maskTexture[i] + ', vUV ).r;' ); //v_grass_amount = texture2D( mask_grass, vUV ).r;
+            }
 
-                // move the position along the normal
-                'vec3 newPosition = position + normal * bumpScale * vAmount;' +
+            this.vShader.push('gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );');
+            this.vShader.push('}');
 
-                'gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );' +
-            '}'].join('\n');
+            this.vShader = this.vShader.join('\n');
 
-            this.fShader = [
-            'uniform sampler2D oceanTexture;' +
-            'uniform sampler2D sandyTexture;' +
-            'uniform sampler2D grassTexture;' +
-            'uniform sampler2D rockyTexture;' +
-            'uniform sampler2D snowyTexture;' +
 
-            'varying vec2 vUV;' +
+            this.fShader = [];
+            for(var i in options.tilesTexture) {
+                this.fShader.push( 'uniform sampler2D ' + 'tile_' + options.tilesTexture[i] + ';'); //uniform sampler2D tile_grass;
+                this.fShader.push( 'varying float ' + 'v_' + options.maskTexture[i] + '_amount;'); //varying float v_grass_amount;
+            }
 
-            'varying float vAmount;' +
+            this.fShader.push('varying vec2 vUV;');
 
-            'void main()' +
-            '{' +
-                'vec4 water = (smoothstep(0.01, 0.25, vAmount) - smoothstep(0.24, 0.26, vAmount)) * texture2D( oceanTexture, vUV * 10.0 );' +
-                'vec4 sandy = (smoothstep(0.24, 0.27, vAmount) - smoothstep(0.28, 0.31, vAmount)) * texture2D( sandyTexture, vUV * 10.0 );' +
-                'vec4 grass = (smoothstep(0.28, 0.32, vAmount) - smoothstep(0.35, 0.40, vAmount)) * texture2D( grassTexture, vUV * 20.0 );' +
-                'vec4 rocky = (smoothstep(0.30, 0.50, vAmount) - smoothstep(0.40, 0.70, vAmount)) * texture2D( rockyTexture, vUV * 20.0 );' +
-                'vec4 snowy = (smoothstep(0.50, 0.65, vAmount))                                   * texture2D( snowyTexture, vUV * 10.0 );' +
-                'gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0) + water + sandy + grass + rocky + snowy;' + //, 1.0);
-            '}'].join('\n');
+            this.fShader.push('void main()');
+            this.fShader.push('{');
+
+            for(var i in options.tilesTexture) {
+                //Calc how 'Strong' the texture should be
+                this.fShader.push( 'float per_' + options.tilesTexture[i] + ' = 100.0 / 256.0 * v_' + options.maskTexture[i] + '_amount;'); //float per_grass = 100.0 / 256.0 * v_grass_amount;
+                this.fShader.push('vec4 color_' + options.tilesTexture[i] + ' = per_' + options.tilesTexture[i] + ' * texture2D( tile_' + options.tilesTexture[i] + ', vUV * ' + options.tilesSegments.toFixed(1) + ' );'); //vec4 color_grass = per_grass * texture2D( tile_grass, vUV * 10.0);
+            }
+
+            this.fShader.push('vec4 color = vec4(0.0, 0.0, 0.0, 0.0)'); //vec4 color = vec4(0.0, 0.0, 0.0, 0.0)
+            for(var i in options.tilesTexture) {
+
+                this.fShader.push(' + color_' + options.tilesTexture[i]); // + color_grass
+            }
+            this.fShader.push(';'); // ;
+
+            this.fShader.push('if ( color.a < 0.1 ) discard;'); //If empty, make it transparent
+            this.fShader.push('gl_FragColor = color;');
+
+            this.fShader.push('}');
+            this.fShader = this.fShader.join('\n');
         },
 
-        initUniform: function() {
-            var bumpTexture = engine.threeLoader.getTexture('heightmap');
-            bumpTexture.wrapS = bumpTexture.wrapT = THREE.RepeatWrapping;
-            // magnitude of normal displacement
-            var bumpScale   = 200.0;
+        initUniform: function(options) {
+
+            this._uniforms = {};
+
+            //Add masks + tiles to uniform
+            for(var i in options.maskTexture) {
+                //Mask
+                var tmpMaskTexture = engine.threeLoader.getTexture(options.maskTexture[i]);
+                tmpMaskTexture.wrapS = tmpMaskTexture.wrapT = THREE.RepeatWrapping;
+                this._uniforms['mask_' + options.maskTexture[i]] = { type: "t", value: tmpMaskTexture };
 
 
-            var oceanTexture = engine.threeLoader.getTexture('dirt');
-            oceanTexture.wrapS = oceanTexture.wrapT = THREE.RepeatWrapping;
-
-            var sandyTexture = engine.threeLoader.getTexture('sand');
-            sandyTexture.wrapS = sandyTexture.wrapT = THREE.RepeatWrapping;
-
-            var grassTexture = engine.threeLoader.getTexture('grass');
-            grassTexture.wrapS = grassTexture.wrapT = THREE.RepeatWrapping;
-
-            var rockyTexture = engine.threeLoader.getTexture('rock');
-            rockyTexture.wrapS = rockyTexture.wrapT = THREE.RepeatWrapping;
-
-            var snowyTexture = engine.threeLoader.getTexture('snow');
-            snowyTexture.wrapS = snowyTexture.wrapT = THREE.RepeatWrapping;
-
-            this._uniforms = window._uniforms = {
-                bumpTexture:	{ type: "t", value: bumpTexture },
-                bumpScale:	    { type: "f", value: bumpScale },
-                oceanTexture:	{ type: "t", value: oceanTexture },
-                sandyTexture:	{ type: "t", value: sandyTexture },
-                grassTexture:	{ type: "t", value: grassTexture },
-                rockyTexture:	{ type: "t", value: rockyTexture },
-                snowyTexture:	{ type: "t", value: snowyTexture }
-            };
+                //Tile
+                var tmpTileTexture = engine.threeLoader.getTexture(options.tilesTexture[i]);
+                tmpTileTexture.wrapS = tmpTileTexture.wrapT = THREE.RepeatWrapping;
+                this._uniforms['tile_' + options.tilesTexture[i]] = { type: "t", value: tmpTileTexture }
+            }
         },
 
         initPlaneMesh: function(options) {
@@ -110,8 +132,8 @@ define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], 
                     // side: THREE.DoubleSide
                 }   );
 
-            this._plane = new THREE.PlaneGeometry( 1000, 1000, 100, 100 );
-            this._mesh = new THREE.Mesh(	this._plane, this._material );
+            this._plane = new THREE.PlaneGeometry( options.width, options.height, options.tilesSegments, options.tilesSegments );
+            this._mesh = new THREE.Mesh( this._plane, this._material );
             this._mesh.rotation.x = -Math.PI / 2;
             this._mesh.position.y = -100;
         }
