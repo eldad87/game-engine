@@ -4,6 +4,13 @@ define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], 
 
     /**
      * Create a layer map
+     * new ThreeLayerMap({
+     *      maskTexture: ['grass_mask', 'pavel_mask', 'rock_mask'], //Texture masks
+     *      tilesTexture: ['dirt_tile', 'grass_tile', 'tile_tile'], //Textures
+     *      tilesSegments: 10, //how many tiles segments will be, 10 = each tile will placed 10x10 times on the grid
+     *      width: 1000,
+     *      height: 1000
+     *  });
      * @type {*}
      */
     var ThreeLayerMap = ThreeBaseRenderable.extend({
