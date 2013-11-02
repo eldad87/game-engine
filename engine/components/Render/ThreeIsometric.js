@@ -131,27 +131,6 @@ define(['engine/core/Base', 'engine/components/Render/Three', 'THREE', 'engine/c
             {
                 // depth
 
-                this.group = new THREE.Object3D();
-                this._scene.add( this.group );
-
-                var geometry = new THREE.CubeGeometry( 10, 10, 10 );
-                var material = new THREE.MeshLambertMaterial( { color: 0xfff000 } );
-
-                for ( var i = 0; i < 100; i ++ ) {
-
-                    var mesh = new THREE.Mesh( geometry, material );
-                    mesh.position.x = Math.random() * 400 - 200;
-                    mesh.position.y = Math.random() * 400 - 200;
-                    mesh.position.z = 400 + (Math.random() * 400 - 200 );
-                    mesh.rotation.x = Math.random();
-                    mesh.rotation.y = Math.random();
-                    mesh.rotation.z = Math.random();
-                    mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 10 + 1;
-                    this.group.add( mesh );
-
-                }
-                // depth
-
                 var depthShader = THREE.ShaderLib[ "depthRGBA" ];
                 var depthUniforms = THREE.UniformsUtils.clone( depthShader.uniforms );
 

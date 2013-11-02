@@ -92,7 +92,7 @@ define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], 
             for(var i in options.tilesTexture) {
                 //Calc how 'Strong' the texture should be
                 this.fShader.push( 'float per_' + options.tilesTexture[i] + ' = 100.0 / 256.0 * v_' + options.maskTexture[i] + '_amount;'); //float per_grass = 100.0 / 256.0 * v_grass_amount;
-                this.fShader.push('vec4 color_' + options.tilesTexture[i] + ' = per_' + options.tilesTexture[i] + ' * texture2D( tile_' + options.tilesTexture[i] + ', vUV * ' + options.tilesSegments.toFixed(1) + ' );'); //vec4 color_grass = per_grass * texture2D( tile_grass, vUV * 10.0);
+                this.fShader.push('vec4 color_' + options.tilesTexture[i] + ' = per_' + options.tilesTexture[i] + ' * texture2D( tile_' + options.tilesTexture[i] + ', vUV * 10.0 );'); //vec4 color_grass = per_grass * texture2D( tile_grass, vUV * 10.0);
             }
 
             this.fShader.push('vec4 color = vec4(0.0, 0.0, 0.0, 0.0)'); //vec4 color = vec4(0.0, 0.0, 0.0, 0.0)
@@ -142,7 +142,6 @@ define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], 
             this._plane = new THREE.PlaneGeometry( options.width, options.height, options.tilesSegments, options.tilesSegments );
             this._mesh = new THREE.Mesh( this._plane, this._material );
             this._mesh.rotation.x = -Math.PI / 2;
-            this._mesh.position.y = -100;
         }
     });
 
