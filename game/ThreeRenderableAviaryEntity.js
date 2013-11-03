@@ -34,18 +34,18 @@ define(['ThreeSeaBaseRenderable', 'THREE', 'ShaderParticleEmitter', 'ShaderParti
 
             var emitter = new ShaderParticleEmitter({
                 type: 'cube',
-                position: new THREE.Vector3( -0.24, 0.2, 0.06 ),
-                positionSpread: new THREE.Vector3( 0.04, 0, 0.04 ),
+                position: new THREE.Vector3( -70, 80, -70),
+                positionSpread: new THREE.Vector3( 15, 0, 15 ),
 
-                acceleration: new THREE.Vector3( 0, 0.1, 0 ),
+                acceleration: new THREE.Vector3( 0, 10, 0 ),
                 accelerationSpread: new THREE.Vector3( 0, 0, 0 ),
 
-                velocity:  new THREE.Vector3(0.05, 0.1, 0.05),
-                velocitySpread:  new THREE.Vector3(0, 0.1, 0),
-                
+                velocity:  new THREE.Vector3(10, 50, 10),
+                velocitySpread:  new THREE.Vector3(0, 10, 0),
+
                 colorStart: new THREE.Color('lightgrey'),
                 colorEnd: new THREE.Color('sandybrown'),
-                size: 40,
+                size: 80,
                 sizeEnd: 120,
 
                 particlesPerSecond: 10
@@ -59,7 +59,7 @@ define(['ThreeSeaBaseRenderable', 'THREE', 'ShaderParticleEmitter', 'ShaderParti
         process: function() {
             ThreeSeaBaseRenderable.prototype.process.call(this);
 
-            if('produce' === this.playAnimation()) {
+            if('production' === this.playAnimation()) {
                 this.particleGroup.tick( engine.deltaUptime() );
             }
 
