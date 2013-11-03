@@ -164,7 +164,7 @@ define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], 
         initUniform: function() {
             var lambertShader = THREE.ShaderLib['lambert'];
             var uniforms = THREE.UniformsUtils.clone(lambertShader.uniforms);
-            this._uniforms = window._uniforms = _.extend(uniforms,
+            this._uniforms = _.extend(uniforms,
                 {
                 mapSize:            { type: 'v2', value: new THREE.Vector2(this.size.x * this.tileSize.x, this.size.y * this.tileSize.y) },
                 inverseLayerSize:   { type: 'v2', value: new THREE.Vector2(1 / this.size.x, 1 / this.size.y) },
@@ -205,7 +205,6 @@ define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], 
             if(engine.threeRenderer.shadow()) {
                 this._mesh.receiveShadow = true;
             }
-            this._mesh.receiveShadow = true;
         }
 
     });

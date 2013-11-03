@@ -49,12 +49,19 @@ define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], 
             options.autoMeshCreation = false;
             ThreeBaseRenderable.prototype.init.call(this, options);
 
-            //engine.threeLoader.getTexture(options.tileset);
+            if(engine.threeRenderer.shadow()) {
+                this._mesh.receiveShadow = true;
+                this._mesh.castShadow  = false;
+            }
         },
 
 
         initShaders: function(options) {
+            var lambertShader = THREE.ShaderLib['lambert'];
 
+            /**
+             * Vertex shader defines
+             */
             this.vShader = [];
             for(var i in options.maskTexture) {
                 this.vShader.push( 'uniform sampler2D ' + 'mask_' + options.maskTexture[i] + ';'); //uniform sampler2D mask_grass;
@@ -62,22 +69,32 @@ define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], 
             }
 
             this.vShader.push('varying vec2 vUV;');
+            this.vShader = this.vShader.join("\n") + "\n" + lambertShader.vertexShader;
 
-            this.vShader.push('void main()');
-            this.vShader.push('{');
-            this.vShader.push('vUV = uv;');
+            /**
+             * Vertex shader main
+             */
+            var vShaderMain = [];
+            vShaderMain.push('void main()');
+            vShaderMain.push('{');
+            vShaderMain.push('vUV = uv;');
 
             for(var i in options.maskTexture) {
                 // assuming map is grayscale it doesn't matter if you use r, g, or b.
-                this.vShader.push('v_' + options.maskTexture[i] + '_amount = texture2D( mask_' + options.maskTexture[i] + ', vUV ).r;' ); //v_grass_amount = texture2D( mask_grass, vUV ).r;
+                vShaderMain.push('v_' + options.maskTexture[i] + '_amount = texture2D( mask_' + options.maskTexture[i] + ', vUV ).r;' ); //v_grass_amount = texture2D( mask_grass, vUV ).r;
             }
 
-            this.vShader.push('gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );');
-            this.vShader.push('}');
+            vShaderMain.push('gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );');
+            vShaderMain  = vShaderMain.join("\n");
+            /*this.vShader.push('}');
+            this.vShader = this.vShader.join('\n');*/
+            this.vShader = this.vShader.replace("void main() {", vShaderMain);
 
-            this.vShader = this.vShader.join('\n');
 
-
+            
+            /**
+             * Vertex fragment defines
+             */
             this.fShader = [];
             for(var i in options.tilesTexture) {
                 this.fShader.push( 'uniform sampler2D ' + 'tile_' + options.tilesTexture[i] + ';'); //uniform sampler2D tile_grass;
@@ -85,33 +102,41 @@ define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], 
             }
 
             this.fShader.push('varying vec2 vUV;');
+            this.fShader = this.fShader.join("\n" ) + "\n" + lambertShader.fragmentShader;
 
-            this.fShader.push('void main()');
-            this.fShader.push('{');
+            /**
+             * Vertex fragment main
+             */
+            var fShaderMain = [];
+            fShaderMain.push('void main()');
+            fShaderMain.push('{');
 
             for(var i in options.tilesTexture) {
                 //Calc how 'Strong' the texture should be
-                this.fShader.push( 'float per_' + options.tilesTexture[i] + ' = 100.0 / 256.0 * v_' + options.maskTexture[i] + '_amount;'); //float per_grass = 100.0 / 256.0 * v_grass_amount;
-                this.fShader.push('vec4 color_' + options.tilesTexture[i] + ' = per_' + options.tilesTexture[i] + ' * texture2D( tile_' + options.tilesTexture[i] + ', vUV * 10.0 );'); //vec4 color_grass = per_grass * texture2D( tile_grass, vUV * 10.0);
+                fShaderMain.push( 'float per_' + options.tilesTexture[i] + ' = 100.0 / 256.0 * v_' + options.maskTexture[i] + '_amount;'); //float per_grass = 100.0 / 256.0 * v_grass_amount;
+                fShaderMain.push('vec4 color_' + options.tilesTexture[i] + ' = per_' + options.tilesTexture[i] + ' * texture2D( tile_' + options.tilesTexture[i] + ', vUV * 10.0 );'); //vec4 color_grass = per_grass * texture2D( tile_grass, vUV * 10.0);
             }
 
-            this.fShader.push('vec4 color = vec4(0.0, 0.0, 0.0, 0.0)'); //vec4 color = vec4(0.0, 0.0, 0.0, 0.0)
+            fShaderMain.push('vec4 color = vec4(0.0, 0.0, 0.0, 0.0)'); //vec4 color = vec4(0.0, 0.0, 0.0, 0.0)
             for(var i in options.tilesTexture) {
-
-                this.fShader.push(' + color_' + options.tilesTexture[i]); // + color_grass
+                fShaderMain.push(' + color_' + options.tilesTexture[i]); // + color_grass
             }
-            this.fShader.push(';'); // ;
+            fShaderMain.push(';'); // ;
 
-            this.fShader.push('if ( color.a < 0.1 ) discard;'); //If empty, make it transparent
-            this.fShader.push('gl_FragColor = color;');
+            fShaderMain.push('if ( color.a < 0.1 ) discard;'); //If empty, make it transparent
+            fShaderMain.push('gl_FragColor = color;');
+            fShaderMain  = fShaderMain.join("\n");
 
-            this.fShader.push('}');
-            this.fShader = this.fShader.join('\n');
+            /*this.fShader.push('}');
+            this.fShader = this.fShader.join('\n');*/
+            this.fShader = this.fShader.replace("void main() {", fShaderMain).replace("gl_FragColor = vec4( vec3 ( 1.0 ), opacity );", '');
         },
 
         initUniform: function(options) {
 
-            this._uniforms = {};
+            var lambertShader = THREE.ShaderLib['lambert'];
+            this._uniforms = window._uniforms = THREE.UniformsUtils.clone(lambertShader.uniforms);
+            //this._uniforms = {};
 
             //Add masks + tiles to uniform
             for(var i in options.maskTexture) {
@@ -129,19 +154,34 @@ define(['ThreeBaseRenderable', 'THREE', 'engine/core/Exception', 'underscore'], 
         },
 
         initPlaneMesh: function(options) {
-            // create custom material from the shader code above
-            //   that is within specially labelled script tags
-            this._material = new THREE.ShaderMaterial(
-                {
-                    uniforms: this._uniforms,
-                    vertexShader:   this.vShader,
-                    fragmentShader: this.fShader
-                    // side: THREE.DoubleSide
-                }   );
+            /** Create plane */
+            this._material = new THREE.ShaderMaterial({
+                uniforms: this._uniforms,
+                vertexShader: this.vShader,
+                fragmentShader: this.fShader,
+                transparent: (this.opacity === 0),
+                lights:			true,
+                side: THREE.DoubleSide,
 
-            this._plane = new THREE.PlaneGeometry( options.width, options.height, options.tilesSegments, options.tilesSegments );
-            this._mesh = new THREE.Mesh( this._plane, this._material );
+                fog: true
+            });
+            this._material.shading = THREE.SmoothShading;
+
+            this._plane = new THREE.PlaneGeometry(
+                options.width,
+                options.height,
+                options.tilesSegments,
+                options.tilesSegments
+            );
+
+            this._mesh = new THREE.Mesh(this._plane, this._material);
             this._mesh.rotation.x = -Math.PI / 2;
+
+            if(engine.threeRenderer.shadow()) {
+                this._mesh.receiveShadow = true;
+            }
+
+
         }
     });
 
