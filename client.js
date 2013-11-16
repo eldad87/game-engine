@@ -16,6 +16,8 @@ window.onload = function()
             'ThreeBaseRenderable'               : './engine/components/Render/ThreeBaseRenderable',
             'ThreeSeaBaseRenderable'            : './engine/components/Render/Sea3D/ThreeSeaBaseRenderable',
             'ThreeRenderableAviaryEntity'       : './game/ThreeRenderableAviaryEntity',
+            'ThreeRenderableSoliderEntity'       : './game/ThreeRenderableSoliderEntity',
+            'ThreeRenderableTreeEntity'         : './game/ThreeRenderableTreeEntity',
            /* 'ThreeRenderableBlacksmithEntity'   : './game/ThreeRenderableBlacksmithEntity',*/
             'ThreeRenderableCastleEntity'       : './game/ThreeRenderableCastleEntity',
 
@@ -108,6 +110,7 @@ window.onload = function()
                 'exports': 'Animation'
             },
             'SEA3D': {
+                deps: ['THREE'],
                 'exports': 'SEA3D'
             },
             'SEA3DLoader': {
@@ -138,12 +141,14 @@ window.onload = function()
                 './engine/components/Render/ThreeTileMap',
                 './engine/components/Render/ThreeLayerMap',
                 './game/AviaryEntity',
+                './game/SoliderEntity',
+                './game/TreeEntity',
                 /*'./game/BlacksmithEntity',*/
                 './game/CastleEntity'
 
 
                 ],
-        function(Class, Core, NetworkClient, EntitySyncClient, ThreeIsomatric, ThreeLoader, Point, THREE, ThreeTileMap, ThreeLayerMap, AviaryEntity, /*BlacksmithEntity,*/ CastleEntity) {
+        function(Class, Core, NetworkClient, EntitySyncClient, ThreeIsometric, ThreeLoader, Point, THREE, ThreeTileMap, ThreeLayerMap, AviaryEntity, SoliderEntity, TreeEntity, /*BlacksmithEntity,*/ CastleEntity) {
 
         var Client = Class.extend({
             _classId: 'Client',
@@ -165,12 +170,13 @@ window.onload = function()
                         }
                     })
 
+                    .loadSea('Player', './game/assets/test_soldier/player.sea')
                     .loadSea('h_aviary_main', './game/assets/human/buildings/h_aviary/h_aviary.sea')
                     .loadSea('h_castle', './game/assets/human/buildings/h_castle/h_castle.sea')
+                    .loadSea('h_tree_001', './game/assets/other/tree/h_tree_001.sea?1')
 
 
                     .loadTexture('smoke_001', './game/assets/other/smoke_001.png')
-                    .loadTexture('ground', './game/assets/ground/grass001.jpg')
                     .loadTexture('tilesetText', './game/assets/map/tilesets.jpg')
 
 
@@ -240,6 +246,10 @@ window.onload = function()
                 engine.tilemap.dataTex = engine.tilemap.packArray([5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 15, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 15, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]);
                 */
 
+                var ts = new SoliderEntity();
+                ts.geometry(-500, 50, -256);
+                ts.threeRenderable.playAnimation('run'); //idle, idle+ball, run, pass#1, defence#1
+
                 var ae = new AviaryEntity();
                 //ae.geometry(0, 32.5, 0);
                 //ae.threeRenderable.playAnimation('idle');
@@ -247,6 +257,17 @@ window.onload = function()
 
                 var ce = new CastleEntity();
                 ce.geometry(256, 0, 256);
+
+                var t1 = new TreeEntity();
+                t1.geometry(-100, 0, -100);
+                var t2 = new TreeEntity();
+                t2.geometry(-100, 0, -200);
+                var t3 = new TreeEntity();
+                t3.geometry(-200, 0, -100);
+                var t4 = new TreeEntity();
+                t4.geometry(-150, 0, -150);
+                var t5 = new TreeEntity();
+                t5.geometry(-200, 0, -250);
 
                 /*var ae2 = new AviaryEntity();
                 ae2.threeRenderable.playAnimation('produce');

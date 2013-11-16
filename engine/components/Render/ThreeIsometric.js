@@ -12,6 +12,7 @@ define(['engine/core/Base', 'engine/components/Render/Three', 'THREE', 'engine/c
             'lib/three.js/examples/js/shaders/HorizontalTiltShiftShader',
             'lib/three.js/examples/js/shaders/VerticalTiltShiftShader'
 ],
+    //http://stackoverflow.com/questions/15275986/rendering-multiple-scenes-with-only-1-using-ssao-three-js
     function(Base, Three, THREE, Point, _) {
 
         /**
@@ -62,11 +63,6 @@ define(['engine/core/Base', 'engine/components/Render/Three', 'THREE', 'engine/c
                 mainCamera.position.z = options.camera.position.z;
                 mainCamera.lookAt(options.camera.lookAt);
 
-
-
-
-
-
                 //Set light
                 if(this.shadow()) {
                     this.createSceneObject('DirectionalLight', 'DirectionalLight', [0xfff5df, 0.7]);
@@ -92,7 +88,7 @@ define(['engine/core/Base', 'engine/components/Render/Three', 'THREE', 'engine/c
                 //Set controls
                 this._controls = new THREE.OrbitControls( mainCamera, this._renderer.domElement );
 
-                this.SSAO(options);
+                //this.SSAO(options);
 
                 return this;
             },
@@ -100,16 +96,16 @@ define(['engine/core/Base', 'engine/components/Render/Three', 'THREE', 'engine/c
             process: function() {
                 Base.prototype.process.call(this);
                 THREE.AnimationHandler.update( engine.deltaUptime() );
-                //this.group.rotation.x += engine.deltaUptime() * 0.2;
-                //this.group.rotation.y += engine.deltaUptime() * 0.5;
-                //console.log(  this.group.rotation.x);
-                //Three.prototype.process.call(this);
 
-                this._scene.overrideMaterial = this.depthMaterial;
-                this._renderer.render(this._scene, this._objs[this._mainCamera], this.depthTarget);
+                if(this.ssaoEnabled) {
+                    this._scene.overrideMaterial = this.depthMaterial;
+                    this._renderer.render(this._scene, this._objs[this._mainCamera], this.depthTarget);
 
-                this._scene.overrideMaterial = null;
-                this.composer.render();
+                    this._scene.overrideMaterial = null;
+                    this.composer.render();
+                } else {
+                    this._renderer.render(this._scene, this._objs[this._mainCamera]);
+                }
 
                 this._controls.update();
             },
@@ -129,6 +125,7 @@ define(['engine/core/Base', 'engine/components/Render/Three', 'THREE', 'engine/c
 
             SSAO: function (options)
             {
+                this.ssaoEnabled = true;
                 // depth
 
                 var depthShader = THREE.ShaderLib[ "depthRGBA" ];
@@ -141,8 +138,8 @@ define(['engine/core/Base', 'engine/components/Render/Three', 'THREE', 'engine/c
                 var camera = this._objs[this._mainCamera];
 
 
-                this.depthTarget = new THREE.WebGLRenderTarget( options.width, options.height, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter, format: THREE.RGBAFormat, stencilBuffer: false } );
-                this.colorTarget = new THREE.WebGLRenderTarget( options.width, options.height, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter, format: THREE.RGBFormat, stencilBuffer: false  } );
+                this.depthTarget = new THREE.WebGLRenderTarget( options.width, options.height, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter, format: THREE.RGBAFormat, stencilBuffer: true } );
+                this.colorTarget = new THREE.WebGLRenderTarget( options.width, options.height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBFormat, stencilBuffer: true  } );
                 this.composer = new THREE.EffectComposer( this._renderer, this.colorTarget );
                 this.composer.addPass( new THREE.RenderPass( this._scene, camera ) );
 

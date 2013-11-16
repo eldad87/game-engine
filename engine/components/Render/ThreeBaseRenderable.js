@@ -44,7 +44,7 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
                 }
                 if(engine.threeRenderer.shadow()) {
                     this._mesh.castShadow = true;
-                    this._mesh.receiveShadow  = false;
+                    this._mesh.receiveShadow  = true;
                 }
 
                 //Base class - attach default to the engine, therefore we must create the mesh above first (in order  for the attach() to work properly)
