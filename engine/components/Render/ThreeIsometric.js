@@ -1,19 +1,22 @@
-define(['engine/core/Base', 'engine/components/Render/Three', 'THREE', 'engine/core/Point', 'underscore', 'lib/three.js/examples/js/controls/OrbitControls',
-    'lib/three.js/examples/js/postprocessing/EffectComposer',
-    'lib/three.js/examples/js/shaders/CopyShader',
-    'lib/three.js/examples/js/shaders/SSAOShader',
-    'lib/three.js/examples/js/postprocessing/RenderPass',
-    'lib/three.js/examples/js/postprocessing/ShaderPass',
+define(['engine/core/Base', 'engine/components/Render/Three', 'THREE', 'engine/core/Point', 'underscore',
+        'engine/components/Render/controls/RTSControls',
+        'lib/three.js/examples/js/controls/OrbitControls',
+
+        'lib/three.js/examples/js/postprocessing/EffectComposer',
+        'lib/three.js/examples/js/shaders/CopyShader',
+        'lib/three.js/examples/js/shaders/SSAOShader',
+        'lib/three.js/examples/js/postprocessing/RenderPass',
+        'lib/three.js/examples/js/postprocessing/ShaderPass',
 
 
-            'lib/three.js/examples/js/shaders/ColorCorrectionShader',
-            'lib/three.js/examples/js/shaders/FXAAShader',
-            'lib/three.js/examples/js/shaders/VignetteShader',
-            'lib/three.js/examples/js/shaders/HorizontalTiltShiftShader',
-            'lib/three.js/examples/js/shaders/VerticalTiltShiftShader'
-],
+        'lib/three.js/examples/js/shaders/ColorCorrectionShader',
+        'lib/three.js/examples/js/shaders/FXAAShader',
+        'lib/three.js/examples/js/shaders/VignetteShader',
+        'lib/three.js/examples/js/shaders/HorizontalTiltShiftShader',
+        'lib/three.js/examples/js/shaders/VerticalTiltShiftShader'
+    ],
     //http://stackoverflow.com/questions/15275986/rendering-multiple-scenes-with-only-1-using-ssao-three-js
-    function(Base, Three, THREE, Point, _) {
+    function(Base, Three, THREE, Point, _, RTSControls) {
 
         /**
          * Define an isometric environment
@@ -86,7 +89,7 @@ define(['engine/core/Base', 'engine/components/Render/Three', 'THREE', 'engine/c
                 }
 
                 //Set controls
-                this._controls = new THREE.OrbitControls( mainCamera, this._renderer.domElement );
+                this._controls = new RTSControls( mainCamera, this._renderer.domElement );
 
                 //this.SSAO(options);
 
@@ -207,4 +210,4 @@ define(['engine/core/Base', 'engine/components/Render/Three', 'THREE', 'engine/c
         });
 
         return ThreeIsometric;
-    });
+});

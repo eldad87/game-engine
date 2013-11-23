@@ -2,37 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64054101-9990-4c5a-ae00-561e61fe17bb" name="Default" comment="layer map">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/other/tree/h_tree_001.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/map/tilesets2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/map/tilesets3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/map/tilesets4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/SoliderEntity.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/ThreeRenderableSoliderEntity.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/ThreeRenderableTreeEntity.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/TreeEntity.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/other/tree/h_tree_001.sea" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game/assets/test_soldier/player.sea" />
-      <change type="DELETED" beforePath="Z:\rawcept\game\assets\back\human\h_aviary\h_aviary.jpg" afterPath="" />
-      <change type="DELETED" beforePath="Z:\rawcept\game\assets\back\human\h_aviary\h_aviary.js" afterPath="" />
-      <change type="DELETED" beforePath="Z:\rawcept\game\assets\back\human\h_aviary\h_aviary.tga" afterPath="" />
-      <change type="DELETED" beforePath="Z:\rawcept\game\assets\back\human\h_aviary\maps\h_aviary.tga" afterPath="" />
-      <change type="DELETED" beforePath="Z:\rawcept\game\assets\back\map\devini.json" afterPath="" />
-      <change type="DELETED" beforePath="Z:\rawcept\game\assets\back\map\grass-tiles-2-small.png" afterPath="" />
-      <change type="DELETED" beforePath="Z:\rawcept\game\assets\back\smoke_001.png" afterPath="" />
-      <change type="DELETED" beforePath="Z:\rawcept\game\assets\ground\arid.jpg" afterPath="" />
-      <change type="DELETED" beforePath="Z:\rawcept\game\assets\ground\grass001.jpg" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/components/Render/controls/RTSControls.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_body.jpg" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_body.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_gears.jpg" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_gears.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_metalreflect.jpg" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump_metalreflect.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/src/math/Color.js" afterPath="$PROJECT_DIR$/lib/three.js/src/math/Color.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/README.md" afterPath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" afterPath="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/scripts/ThreeJsExportScript.mel" afterPath="$PROJECT_DIR$/lib/three.js/utils/exporters/maya/scripts/ThreeJsExportScript.mel" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/build/build.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/build/build.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/build/build_all.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/build/build_all.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/build/build_debug.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/build/build_debug.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client.js" afterPath="$PROJECT_DIR$/client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump.dae" afterPath="$PROJECT_DIR$/lib/three.js/examples/models/collada/pump/pump.dae" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js/utils/editors/sublime.sh" afterPath="$PROJECT_DIR$/lib/three.js/utils/editors/sublime.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/three.js" afterPath="$PROJECT_DIR$/lib/three.js" />
@@ -54,16 +35,35 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
+  <component name="DockManager">
+    <window id="4">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="OrbitControls.js" pinned="false" current="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/lib/three.js/examples/js/controls/OrbitControls.js">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state line="123" column="13" selection-start="3344" selection-end="3344" vertical-scroll-proportion="0.2762431" vertical-offset="1739" max-vertical-offset="9911">
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="rawcept" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="client.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="client.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="154" column="0" selection-start="6682" selection-end="6682" vertical-scroll-proportion="0.4099099" vertical-offset="2254" max-vertical-offset="5848">
+            <state line="137" column="36" selection-start="6031" selection-end="6031" vertical-scroll-proportion="0.0" vertical-offset="2942" max-vertical-offset="5848">
               <folding />
             </state>
           </provider>
@@ -72,25 +72,16 @@
       <file leaf-file-name="ThreeIsometric.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="31" selection-start="4657" selection-end="4657" vertical-scroll-proportion="0.0" vertical-offset="1332" max-vertical-offset="3655">
+            <state line="52" column="16" selection-start="2242" selection-end="2283" vertical-scroll-proportion="-10.461538" vertical-offset="612" max-vertical-offset="3757">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="three.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/three.js/build/three.js">
+      <file leaf-file-name="RTSControls.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/engine/components/Render/controls/RTSControls.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30059" column="0" selection-start="648387" selection-end="648387" vertical-scroll-proportion="0.0" vertical-offset="510694" max-vertical-offset="628235">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ThreeLoader.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeLoader.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="27" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3757">
+            <state line="19" column="18" selection-start="677" selection-end="677" vertical-scroll-proportion="0.3018868" vertical-offset="51" max-vertical-offset="1649">
               <folding />
             </state>
           </provider>
@@ -114,8 +105,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/engine/components/Render/Sea3D/ThreeSeaBaseRenderable.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/engine/components/Render/Three.js" />
         <option value="$PROJECT_DIR$/engine/components/Render/ThreeTileMap.js" />
         <option value="$PROJECT_DIR$/engine/components/Render/ThreeLayerMap.js" />
@@ -128,8 +117,10 @@
         <option value="$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js" />
         <option value="$PROJECT_DIR$/game/ThreeRenderableSoliderEntity.js" />
         <option value="$PROJECT_DIR$/game/ThreeRenderableTreeEntity.js" />
-        <option value="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" />
         <option value="$PROJECT_DIR$/client.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js" />
+        <option value="$PROJECT_DIR$/engine/components/Render/controls/RTSControls.js" />
       </list>
     </option>
   </component>
@@ -166,6 +157,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -312,7 +304,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -327,18 +318,18 @@
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="last_opened_file_path" value="Z:/webgl_deferred_postprocessing/webgl_deferred_postprocessing.html" />
+    <property name="last_opened_file_path" value="Z:/divinity/gameClasses/components/IgeScreenMoveComponent.js" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="309" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="982" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="975" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="982" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="302" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="294" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig">
     <servers>
@@ -360,11 +351,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="Z:\rawcept\engine\components\Render\controls" />
       <recent name="Z:\rawcept\game\assets\test_soldier" />
       <recent name="Z:\rawcept\game" />
       <recent name="Z:\rawcept\game\assets" />
       <recent name="Z:\rawcept\game\assets\other\tree" />
-      <recent name="Z:\rawcept\game\assets\terrain" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="Z:\rawcept\game\assets\other\tree" />
@@ -482,7 +473,11 @@
       <created>1383519169186</created>
       <updated>1383519169186</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="three/solider entity loading.">
+      <created>1384639406580</created>
+      <updated>1384639406580</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -491,20 +486,20 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35183245" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1359375" sideWeight="0.6477516" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32855567" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1359375" sideWeight="0.64816755" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3522484" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
@@ -534,7 +529,8 @@
     <MESSAGE value="layer map - fix, now ground isn't blury" />
     <MESSAGE value="layer map - shadow" />
     <MESSAGE value="Fix aviary smoke" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix aviary smoke" />
+    <MESSAGE value="three/solider entity loading." />
+    <option name="LAST_COMMIT_MESSAGE" value="three/solider entity loading." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -542,96 +538,114 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/engine/components/Render/Sea3D/SEA3DLoader.js">
+    <entry file="file://$PROJECT_DIR$/lib/three.js/examples/js/controls/PathControls.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="461" column="9" selection-start="10883" selection-end="10883" vertical-scroll-proportion="0.3626943" vertical-offset="0" max-vertical-offset="0" />
+        <state line="56" column="37" selection-start="1163" selection-end="1163" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="5610">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/components/Render/Sea3D/SEA3D.js">
+    <entry file="file://$PROJECT_DIR$/lib/three.js/examples/js/controls/TrackballControls.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1144" column="22" selection-start="22110" selection-end="22123" vertical-scroll-proportion="0.60830325" vertical-offset="0" max-vertical-offset="0" />
+        <state line="4" column="23" selection-start="68" selection-end="85" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9571">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="16" selection-start="462" selection-end="462" vertical-scroll-proportion="0.26415095" vertical-offset="0" max-vertical-offset="901">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/divinity/gameClasses/components/CommandComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11883">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/divinity/gameClasses/components/ControlComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="952">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/core/Base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="33" selection-start="482" selection-end="508" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3808">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/three.js/src/renderers/WebGLRenderer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="19" selection-start="1065" selection-end="1075" vertical-scroll-proportion="-11.538462" vertical-offset="176" max-vertical-offset="111503">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeTileMap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="27" selection-start="2266" selection-end="2266" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeBaseRenderable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="57" selection-start="2081" selection-end="2081" vertical-scroll-proportion="0.83246976" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/examples/js/shaders/SSAOShader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="6" selection-start="536" selection-end="536" vertical-scroll-proportion="-3.6993392" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/assets/test_soldier/player.sea">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/SoliderEntity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="327" selection-end="327" vertical-scroll-proportion="0.14977974" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/AviaryEntity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://Z:/webgl_deferred_postprocessing/webgl_deferred_postprocessing.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="36" selection-start="2804" selection-end="2804" vertical-scroll-proportion="0.72762644" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/TreeEntity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="927">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/ThreeRenderableTreeEntity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="65" selection-start="441" selection-end="441" vertical-scroll-proportion="0.201726" vertical-offset="0" max-vertical-offset="927">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/ThreeRenderableSoliderEntity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="492" selection-end="492" vertical-scroll-proportion="0.22006473" vertical-offset="0" max-vertical-offset="927">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeLoader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="27" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3757">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js/build/three.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30059" column="0" selection-start="648387" selection-end="648387" vertical-scroll-proportion="0.0" vertical-offset="510694" max-vertical-offset="628235">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="31" selection-start="4657" selection-end="4657" vertical-scroll-proportion="0.0" vertical-offset="1332" max-vertical-offset="3655">
+        <state line="0" column="9" selection-start="9" selection-end="9" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3706">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="0" selection-start="6682" selection-end="6682" vertical-scroll-proportion="0.4099099" vertical-offset="2254" max-vertical-offset="5848">
+        <state line="137" column="36" selection-start="6031" selection-end="6031" vertical-scroll-proportion="0.0" vertical-offset="2942" max-vertical-offset="5848">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/Render/Three.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="120" column="14" selection-start="4620" selection-end="4861" vertical-scroll-proportion="0.0" vertical-offset="1629" max-vertical-offset="3876">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeLayerMap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="182" column="0" selection-start="7700" selection-end="7700" vertical-scroll-proportion="0.0" vertical-offset="2384" max-vertical-offset="3298">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/divinity/gameClasses/components/IgeScreenMoveComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="0" selection-start="2489" selection-end="3197" vertical-scroll-proportion="0.0" vertical-offset="1526" max-vertical-offset="2669">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/Render/ThreeIsometric.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="16" selection-start="2242" selection-end="2283" vertical-scroll-proportion="-10.461538" vertical-offset="612" max-vertical-offset="3757">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/three.js/src/math/Vector3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="7" selection-start="1276" selection-end="1279" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="11679">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/three.js/examples/js/controls/OrbitControls.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="13" selection-start="3344" selection-end="3344" vertical-scroll-proportion="0.2762431" vertical-offset="1739" max-vertical-offset="9911">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/components/Render/controls/RTSControls.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="18" selection-start="677" selection-end="677" vertical-scroll-proportion="0.3018868" vertical-offset="51" max-vertical-offset="1649">
           <folding />
         </state>
       </provider>
