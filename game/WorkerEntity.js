@@ -11,6 +11,8 @@ define(['engine/core/Entity', 'ThreeRenderableWorkerEntity'], function (Entity, 
             if(!engine.isServer) {
                 var ta = new ThreeRenderableWorkerEntity();
                 ta.attach(this, 'threeRenderable');
+
+                engine.addObjectToGroup(this, 'army');
             }
 
         }

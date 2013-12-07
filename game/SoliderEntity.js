@@ -11,6 +11,8 @@ define(['engine/core/Entity', 'ThreeRenderableSoliderEntity'], function (Entity,
             if(!engine.isServer) {
                 var ta = new ThreeRenderableSoliderEntity();
                 ta.attach(this, 'threeRenderable');
+
+                engine.addObjectToGroup(this, 'army');
             }
 
         }

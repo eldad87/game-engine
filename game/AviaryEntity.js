@@ -14,6 +14,8 @@ define(['engine/core/Entity', 'ThreeRenderableAviaryEntity'], function (Entity, 
             if(!engine.isServer) {
                 var ta = new ThreeRenderableAviaryEntity();
                 ta.attach(this, 'threeRenderable');
+
+                engine.addObjectToGroup(this, 'army');
             }
 
         },

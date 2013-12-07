@@ -11,6 +11,8 @@ define(['engine/core/Entity', 'ThreeRenderableCastleEntity'], function (Entity, 
             if(!engine.isServer) {
                 var bs = new ThreeRenderableCastleEntity();
                 bs.attach(this, 'threeRenderable');
+
+                engine.addObjectToGroup(this, 'army');
             }
 
         }

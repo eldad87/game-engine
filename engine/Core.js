@@ -104,7 +104,7 @@ define(['engine/core/Base', 'engine/core/Exception'], function (Base, Exception)
                 this._groups[group] = {};
             }
 
-            this._groups[group][object.getId()] = object;
+            this._groups[group][object.id()] = object;
 
             return this;
         },

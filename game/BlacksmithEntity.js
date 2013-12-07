@@ -11,6 +11,8 @@ define(['engine/core/Entity', 'ThreeRenderableBlacksmithEntity'], function (Enti
             if(!engine.isServer) {
                 var bs = new ThreeRenderableBlacksmithEntity();
                 bs.attach(this, 'threeRenderable');
+
+                engine.addObjectToGroup(this, 'army');
             }
 
         }
