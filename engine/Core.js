@@ -6,6 +6,7 @@ define(['engine/core/Base', 'engine/core/Exception'], function (Base, Exception)
         init: function(ctx)
         {
             this._register = {};
+            this._groups = {};
             this._ctx = ctx;
             this._uptime = 0;
             this.isServer = (typeof(module) !== 'undefined' && module.exports);
@@ -64,6 +65,7 @@ define(['engine/core/Base', 'engine/core/Exception'], function (Base, Exception)
 
                 this.trigger('beforeUnRegisterObject', obj.id());
 
+                this.removeObjectFromGroup(obj);
                 delete this._register[obj.id()];
             }
             return this;
@@ -88,6 +90,67 @@ define(['engine/core/Base', 'engine/core/Exception'], function (Base, Exception)
          */
         getObjectById: function( objId ) {
             return this._register[objId];
+        },
+
+        /**
+         * Add object to group
+         * @param object
+         * @param group
+         * @returns {Core}
+         */
+        addObjectToGroup: function(object, group)
+        {
+            if(undefined === this._groups[group]) {
+                this._groups[group] = {};
+            }
+
+            this._groups[group][object.getId()] = object;
+
+            return this;
+        },
+
+        /**
+         * Remove object from group
+         * @param object
+         * @param group
+         * @returns {Core}
+         */
+        removeObjectFromGroup: function(object, group)
+        {
+
+            if(undefined === group) {
+                for(var i in this._groups) {
+                    this._removeObjectFromGroup(object, i);
+                }
+            } else {
+                this._removeObjectFromGroup(object, group);
+            }
+
+            return this;
+        },
+        _removeObjectFromGroup: function(object, group)
+        {
+            if(undefined === this._groups[group] ||
+                undefined === this._groups[group][object.getId()]) {
+                return true;
+            }
+
+            delete this._groups[group][object.getId()];
+        },
+
+        /**
+         * Get objects by group
+         * @param group
+         * @returns {*}
+         */
+        getObjectsByGroup: function(group)
+        {
+            if(undefined === this._groups[group])
+            {
+                return [];
+            }
+
+            return this._groups[group];
         },
 
         /**
