@@ -1,5 +1,5 @@
-define(['engine/core/Base', 'engine/core/Point', 'THREE', 'underscore', 'engine/core/Exception'],
-    function(Base, Point, THREE, _, Exception) {
+define(['engine/core/Base', 'engine/core/Point', 'THREE'],
+    function(Base, Point, THREE) {
 
     var RTSControls = Base.extend({
 
@@ -9,7 +9,6 @@ define(['engine/core/Base', 'engine/core/Point', 'THREE', 'underscore', 'engine/
             this.camera = camera;
             this.domElement = domElement;
             this.enabled = true;
-            this.noZoom = false;
 
             this.target = new THREE.Vector3();
 

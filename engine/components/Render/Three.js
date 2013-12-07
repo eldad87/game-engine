@@ -29,7 +29,9 @@ define(['engine/core/Base', 'engine/core/Point',
                 options = _.defaults(options, this._defaultOptions);
 
                 //Detect WebGL support: #http://stackoverflow.com/questions/9899807/three-js-detect-webgl-support-and-fallback-to-regular-canvas
-                this._renderer = Detector.webgl ? this.createObject('mainRenderer', 'WebGLRenderer') : this.createObject('mainRenderer', 'CanvasRenderer', [{ antialias: true }]);
+                this._renderer = Detector.webgl ?
+                    this.createObject('mainRenderer', 'WebGLRenderer', [{ antialias: true, preserveDrawingBuffer: options.preserveDrawingBuffer }]) :
+                    this.createObject('mainRenderer', 'CanvasRenderer', [{ antialias: true, preserveDrawingBuffer: options.preserveDrawingBuffer }]);
 
                 this.shadow(options.shadow);
 
