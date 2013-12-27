@@ -117,7 +117,6 @@ define(['engine/core/Base', 'engine/core/Exception'], function (Base, Exception)
          */
         removeObjectFromGroup: function(object, group)
         {
-
             if(undefined === group) {
                 for(var i in this._groups) {
                     this._removeObjectFromGroup(object, i);
@@ -128,6 +127,7 @@ define(['engine/core/Base', 'engine/core/Exception'], function (Base, Exception)
 
             return this;
         },
+
         _removeObjectFromGroup: function(object, group)
         {
             if(undefined === this._groups[group] ||

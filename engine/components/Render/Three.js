@@ -217,6 +217,97 @@ define(['engine/core/Base', 'engine/core/Point',
                 camera.updateProjectionMatrix();
 
                 return this;
+            },
+
+            /**
+             * Get all entities in given area
+             * @param x
+             * @param z
+             * @param width
+             * @param height
+             * @param inGroup
+             * @return array of entities' id
+             */
+            getEntitiesInSelection: function(x, z, width, height, inGroup) {
+                var self = this,
+                    entitiesMap = [],
+                    color = 0,
+                    colors = [],
+                    ids = [],
+                    pickingGeometry = new THREE.Geometry(),
+                    pickingMaterial = new THREE.MeshBasicMaterial( { vertexColors: THREE.VertexColors } ),
+                    pickingScene = new THREE.Scene(),
+                    pickingTexture = new THREE.WebGLRenderTarget( this._renderer.domElement.width, this._renderer.domElement.height),
+                    cloneMesh,
+                    entities = inGroup ?
+                        engine.getObjectsByGroup(inGroup) : engine.getRegisteredEntities();
+
+                pickingTexture.generateMipmaps = false;
+
+                //Go over each entity, change its color into its ID
+                _.forEach(entities, function(entity) {
+                    if(undefined == entity.threeRenderable) {
+                        return ;
+                    }
+
+                    //Clone entity
+                    cloneMesh = entity.threeRenderable.mesh().clone();
+                    cloneMesh.material = entity.threeRenderable.mesh().material.clone();
+                    cloneMesh.material.map = null;
+                    cloneMesh.material.vertexColors = THREE.VertexColors;
+                    cloneMesh.geometry = entity.threeRenderable.mesh().geometry.clone();
+                    cloneMesh.position.copy( entity.threeRenderable.mesh().position );
+                    cloneMesh.rotation.copy( entity.threeRenderable.mesh().rotation );
+                    cloneMesh.scale.copy( entity.threeRenderable.mesh().scale );
+
+                    //Cancel shadow
+                    cloneMesh.castShadow = false;
+                    cloneMesh.receiveShadow  = false;
+
+                    //Set color as entity ID
+                    entitiesMap[color] = entity.id();
+                    self._applyVertexColors(cloneMesh.geometry, new THREE.Color( color ) );
+                    color++;
+
+                    THREE.GeometryUtils.merge( pickingGeometry,  cloneMesh);
+                });
+
+                pickingScene.add( new THREE.Mesh( pickingGeometry, pickingMaterial ) );
+
+                //render the picking scene off-screen
+                this._renderer.render(pickingScene, this._objs[this._mainCamera], pickingTexture );
+                var gl = this._renderer.getContext();
+
+                //read the pixel under the mouse from the texture
+                var pixelBuffer = new Uint8Array( 4 * width * height );
+                gl.readPixels( x, this._renderer.domElement.height - z, width, height, gl.RGBA, gl.UNSIGNED_BYTE, pixelBuffer );
+
+                //Convert RGB in the selected area back to color
+                for(var i=0; i<pixelBuffer.length; i+=4) {
+                    if( 0 == pixelBuffer[i] && 0 == pixelBuffer[i+1] && 0 == pixelBuffer[i+2] && 0 == pixelBuffer[i+3] ) {
+                        continue;
+                    }
+
+                    color = ( pixelBuffer[i] << 16 ) | ( pixelBuffer[i+1] << 8 ) | ( pixelBuffer[i+2] );
+                    colors.push(color);
+                }
+                colors = _.unique(colors);
+
+                //Convert colors to ids
+                _.forEach(colors, function(color) {
+                    ids.push(entitiesMap[color]);
+                });
+
+                return ids;
+            },
+
+            _applyVertexColors: function( g, c ) {
+                g.faces.forEach( function( f ) {
+                    var n = ( f instanceof THREE.Face3 ) ? 3 : 4;
+                    for( var j = 0; j < n; j ++ ) {
+                        f.vertexColors[ j ] = c;
+                    }
+                });
             }
         });
 
