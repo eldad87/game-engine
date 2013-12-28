@@ -54,6 +54,9 @@ define(['engine/core/Base', 'engine/core/Point',
                 if(this._debug) {
                     this.createSceneObject('AxisHelper', 'AxisHelper', [100])
                 }
+
+                this.projector = new THREE.Projector();
+                this.raycaster = new THREE.Raycaster();
             },
 
             /**
@@ -220,7 +223,56 @@ define(['engine/core/Base', 'engine/core/Point',
             },
 
             /**
-             * Get all entities in given area
+             * Get entities in point - CPU
+             * @param x
+             * @param z
+             * @param inGroup
+             * @returns {*}
+             */
+            getEntitiesAtPoint: function(x, z, inGroup) {
+                    ids = [],
+                    map = [],
+                    mesh = false,
+                    intersectObjects = [],
+                    entities = inGroup ?
+                        engine.getObjectsByGroup(inGroup) : engine.getRegisteredEntities();
+
+
+                //Get the mesh of entities
+                _.forEach(entities, function(entity) {
+                    if(undefined == entity.threeRenderable) {
+                        return ;
+                    }
+                    mesh = entity.threeRenderable.mesh();
+                    intersectObjects.push(mesh);
+                    map[mesh.id] = entity.id();
+                });
+
+                //Conver cords
+                x = ( x / this._renderer.domElement.width ) * 2 - 1;
+                z = - (z / this._renderer.domElement.height ) * 2 + 1;
+
+                //this._renderer.domElement.height - z
+                var vector = new THREE.Vector3( x, z, 1 );
+                this.projector.unprojectVector( vector, this._objs[this._mainCamera] );
+                this.raycaster.set( this._objs[this._mainCamera].position, vector.sub( this._objs[this._mainCamera].position ).normalize() );
+
+
+                var intersects = this.raycaster.intersectObjects( intersectObjects );
+
+                if(0 == intersects.length) {
+                    return [];
+                }
+
+                _.forEach(intersects, function(obj) {
+                    ids.push(map[obj.object.id]);
+                });
+
+                return _.unique(ids);
+            },
+
+            /**
+             * Get all entities in given area - GPU
              * @param x
              * @param z
              * @param width
