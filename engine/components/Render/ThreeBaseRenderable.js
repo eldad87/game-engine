@@ -174,9 +174,14 @@ define(['engine/core/Base', 'engine/core/Exception', 'underscore'],
              * @returns {boolean}
              */
             process: function() {
-                if(this._parent && this._parent.geometry) {
-                    var point = this._parent.geometry();
+                if(this._parent && this._parent.position) {
+                    var point = this._parent.position();
                     this.mesh().position.set(point.x, point.y, point.z);
+                }
+
+                if(this._parent && this._parent.rotation) {
+                    var point = this._parent.rotation();
+                    this.mesh().rotation.set(point.x, point.y, point.z);
                 }
 
                 if(this.playAnimation()) {

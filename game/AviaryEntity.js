@@ -20,23 +20,27 @@ define(['engine/core/Entity', 'ThreeRenderableAviaryEntity'], function (Entity, 
 
         },
 
-        sync: function(data, deltaSyncOnly)
+        sync: function(data)
         {
             //console.log('DummyEntity:sync I');
 
             if(undefined === data) {
 
-                var syncData = Entity.prototype.sync.call(this, data, deltaSyncOnly);
+                var syncData = Entity.prototype.sync.call(this, data);
                 syncData['dummySection'] = [1,2,3];
 
                 return syncData;
-            }
+            } else {
+                Entity.prototype.sync.call(this, data);
 
-            if(undefined !== data['dummySection']) {
-                //Handle dummySection
+                if(undefined !== data['dummySection']) {
+                    //Handle dummySection
 
 
-                delete data['dummySection'];
+                    delete data['dummySection'];
+                }
+
+                return data;
             }
 
         }

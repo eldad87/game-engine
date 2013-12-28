@@ -18,6 +18,7 @@ requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/Networ
             this.log('start', 'log');
 
             engine.isServer = true;
+            var self = this;
 
             //Networking
             engine
@@ -32,9 +33,8 @@ requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/Networ
                     }, socketId);
                 });
 
-            //Define creation of a new entity
-            engine.network.defineMessageType('createAviaryEntity', function(/*data, sentUptime, messageId, socketId*/) {
-                engine.getRegisteredClassNewInstance('AviaryEntity')
+            engine.network.defineMessageType('build', function( data/*, sentUptime, messageId, socketId*/) {
+                self.build(data.entity, data.position, data.rotation);
             });
 
             //Sync
@@ -43,6 +43,12 @@ requirejs(['engine/core/Class', 'engine/Core', 'engine/components/Network/Networ
                 //.processMinLatency(100) - Client only
                 .attach(engine, 'sync')
                 .start();
+        },
+
+        build: function(buildingName, position, rotation) {
+            engine.getRegisteredClassNewInstance(buildingName)
+                .position(position.x, position.y, position.z)
+                .rotation(rotation.x, rotation.y, rotation.z);
         }
     });
 

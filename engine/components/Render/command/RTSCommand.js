@@ -42,10 +42,15 @@ define(['engine/core/Base', 'engine/core/Point', 'THREE'],
                  */
             },
 
+            handleMouseOverEntities: function(entities)
+            {
+
+            },
+
             handleClick: function(point)
             {
                 console.log('handleClick: ' + point.x + ', ' + point.y);
-                var ids = engine.threeRenderer.getEntitiesInSelection(point.x, point.y, 1, 1, 'army');
+                var ids = engine.threeRenderer.getEntitiesAtPoint(point.x, point.y, 'army');
                 console.log(ids);
                 /**
                  * if targeting a super-weapon
